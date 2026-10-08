@@ -68,12 +68,11 @@ export default function CyclingApp() {
       setAuxiliary(null);
       setShareUrl('');
       setMessage('');
-      if (!value.selection?.routeId && controller.current) {
+      if (controller.current) {
         const url = new URL(location.href);
-        if (url.searchParams.has('路线')) {
-          url.searchParams.delete('路线');
-          history.replaceState({}, '', url);
-        }
+        if (value.selection?.routeId) url.searchParams.set('路线', value.selection.routeId);
+        else url.searchParams.delete('路线');
+        if (url.href !== location.href) history.replaceState({}, '', url);
       }
       requestAnimationFrame(() => card.current?.scrollTo({ top: 0 }));
     }
@@ -198,7 +197,7 @@ export default function CyclingApp() {
   const status = auxiliary === 'routes' ? `${visibleRoutes.length} 条路线` : auxiliary === 'sources' ? '核对于 2026 年 10 月 8 日' : selected ? restricted ? '所选日期不适用' : selected.exportable ? '已有核对轨迹' : '轨迹待核' : entity?.status;
   const rows: [string, string][] = auxiliary === 'routes'
     ? [['范围', relatedIds ? '当前地标附近' : '全深圳'], ['可导出', `${visibleRoutes.filter(route => route.exportable).length} 条`]]
-    : auxiliary === 'sources' ? [['场景', '地标微缩，非等比例'], ['轨迹', '真实经纬度']]
+    : auxiliary === 'sources' ? [['底图', '深圳真实地理'], ['轨迹', '真实经纬度']]
     : selected ? [['里程', distanceText(selected)], ['爬升', selected.ascentM === null ? '待核实' : `${selected.ascentM} 米`], ['起点', selected.start], ['终点', selected.end], ['强度', selected.intensity], ['公路车', selected.roadBike], ['路面', selected.surface]]
     : entity?.rows ?? [];
 
@@ -249,15 +248,16 @@ export default function CyclingApp() {
             <label className="day-select">计划骑行<select aria-label="计划骑行日期" value={day} onChange={event => setDay(event.target.value)}><option>工作日</option><option>周末与节假日</option></select></label>
             {restricted && <p className="cycling-copy card-feedback" role="status">本路线含周末与节假日禁骑路段，请改选工作日或其他路线。</p>}
             <details className="cycling-details" open><summary>通行与补给</summary>{selected.hours && <p>开放时间：{selected.hours}</p>}<ul>{selected.restrictions.map((value, index) => <li key={index}>{value}</li>)}</ul><p>沿途：{selected.highlights.join(' · ')}</p><p>补给：{selected.services}</p></details>
-            <details className="cycling-details"><summary>里程、爬升与轨迹依据</summary><p>{selected.distanceNote}</p><p>{selected.ascentNote}</p><p>{selected.geometryNote}</p><p>场景内的线条是路线示意。导出文件使用真实经纬度，可导入码表与骑行软件。</p></details>
+            <details className="cycling-details"><summary>里程、爬升与轨迹依据</summary><p>{selected.distanceNote}</p><p>{selected.ascentNote}</p><p>{selected.geometryNote}</p><p>地图线路与导出文件使用同一份真实经纬度，分段分别显示。导出文件可导入码表与骑行软件。</p></details>
             <details className="cycling-details"><summary>查看资料来源 · {selected.sources.length} 项</summary>{selected.sources.map(source => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title}<small>{source.published ? `发布于 ${source.published} · ` : ''}核对于 {source.checked}</small></a>)}</details>
             {shareUrl && <label className="share-field">路线链接<input value={shareUrl} readOnly aria-label="路线分享链接" onFocus={event => event.target.select()} /><small>本地预览链接；尚未发布到互联网。</small></label>}
           </>}
 
           {auxiliary === 'sources' && <>
-            <p className="cycling-copy">用地标锚定深圳的微缩骑行场景。山海和街区经过抽象与比例压缩，呈现地标、岸线和路线的相邻关系。场景中的时间、天气和交通是氛围模拟。</p>
+            <p className="cycling-copy">深圳海岸、河湖、道路和区界来自真实地理数据，经过制图简化。已核路线按原始经纬度落在地图上。立体地标采用符号大小，骑手、时间和天气为场景模拟。</p>
             <p className="cycling-copy">路线资料核对日期为 2026 年 10 月 8 日。临时封闭、现场标识和管理方最新通知优先。爬升没有可靠数据时保留待核。</p>
-            <a className="source-link" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© 开放街道地图贡献者<small>真实路线坐标 · 开放数据库许可</small></a>
+            <a className="source-link" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© 开放街道地图贡献者<small>海岸、河湖、道路、区界与真实轨迹 · 开放数据库许可</small></a>
+            <a className="source-link" href="https://docs.overturemaps.org/attribution/" target="_blank" rel="noreferrer">Overture Maps Foundation<small>地标建筑位置与轮廓 · 开放数据库许可</small></a>
             <a className="source-link" href="https://github.com/Khalidabdi1/factory" target="_blank" rel="noreferrer">原作仓库<small>参考版本 148758ae · 图版、控件、渲染与交互来源</small></a>
             <p className="cycling-copy">保留原作对 ai-iso-skill（Tolga Cohce）与 Three.js 的致谢。本项目仅供本地预览，尚未公开发布。</p>
             <details className="cycling-details"><summary>路线公开资料 · {sourceItems.length} 项</summary>{sourceItems.map(source => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title}<small>{source.published ?? source.checked}</small></a>)}</details>

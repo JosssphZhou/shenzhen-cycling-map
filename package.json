@@ -2,7 +2,7 @@
   "name": "shenzhen-cycling-map",
   "version": "1.0.0",
   "private": true,
-  "description": "以地标锚定的深圳微缩骑行场景，面向公路车骑前选线",
+  "description": "基于真实地理的深圳骑行地图，面向公路车骑前选线",
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3701",
     "build": "next build",

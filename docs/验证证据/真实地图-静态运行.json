@@ -1,0 +1,47 @@
+{
+  "url": "http://127.0.0.1:53386/?debug=1&%E8%B7%AF%E7%BA%BF=taojinshan-main",
+  "stats": {
+    "roads": 7881,
+    "buildings": 5,
+    "drawCalls": 132,
+    "triangles": 458534,
+    "fps": 0,
+    "lastRenderMs": 43.30000001192093,
+    "zoom": 0.5765094276821483,
+    "fitZoom": 0.5720511842158214,
+    "target": [
+      110.55470682060512,
+      0,
+      -34.11320000000159
+    ],
+    "goal": null,
+    "selected": "taojinshan-main",
+    "following": false,
+    "paused": false,
+    "hour": 10.006666666666668,
+    "weather": {
+      "kind": "clear",
+      "amount": 0
+    },
+    "animation": {
+      "visible": 16,
+      "total": 16
+    },
+    "mode": "深圳真实地理",
+    "geographicRequests": 1,
+    "mapBytes": 1876701,
+    "mapUrl": "/data/shenzhen-map.json",
+    "mapLayers": {
+      "roads": 7881,
+      "landmarks": 5,
+      "terrain": false
+    }
+  },
+  "canvasCount": 1,
+  "resources": [
+    {
+      "name": "http://127.0.0.1:53386/data/shenzhen-map.json",
+      "bytes": 1876701
+    }
+  ]
+}

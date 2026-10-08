@@ -1,0 +1,18 @@
+{
+  "mode": "CPU geometry inspection; recording Part and blank landmark models, no browser or visual claim",
+  "roundTripMaxDegrees": 0,
+  "east1000MetersSceneUnits": 19.999999999991815,
+  "north1000MetersSceneUnits": 20.0000000000036,
+  "checkedPolygons": 1078,
+  "polygonHoles": 138,
+  "maxRelativeTriangulationError": 2.0833738152492755e-14,
+  "districtViews": 9,
+  "preservedRoutePoints": 5093,
+  "views": 14,
+  "splitFixture": {
+    "pathCount": 2,
+    "dynamicBlueprints": 2,
+    "renderedSegments": 2
+  },
+  "exactCornerSegmentCount": 2
+}

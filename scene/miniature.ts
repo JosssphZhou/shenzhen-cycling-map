@@ -8,22 +8,10 @@ import { buildFlats, buildHouse, buildVilla } from './factory/world/town';
 import { boxInto } from './factory/models/port';
 import { buildLandmark } from './landmarks';
 
-export type Point = [number, number];
+import type { Point, MiniEntity, MiniMovement } from './entities';
+export type { Point, MiniEntity, MiniMovement } from './entities';
 export interface MiniZone { id: string; name: string; districts: string[]; anchor: Point; bounds: [number, number, number, number]; path: Point[] }
 export interface MiniLabel { name: string; point: [number, number, number]; kind: 'district' | 'landmark' | 'water' }
-export interface MiniMovement { kind: 'car' | 'person' | 'train' | 'ship' | 'bicycle'; path: Point[]; count: number; speed: number; height?: number; closed?: boolean }
-export interface MiniEntity {
-  id: string;
-  kind: string;
-  title: string;
-  groups: THREE.Group[];
-  relatedRouteIds: string[];
-  followable: boolean;
-  info(): { title?: string; status: string; rows: [string, string][] };
-  route?(): { path: Path; s: number; closed?: boolean; reverse?: boolean; next?: { x: number; y: number; name?: string } };
-  bbox?(): THREE.Box3;
-  resolve?(point: THREE.Vector3): MiniEntity | null;
-}
 export const MINI_WORLD: [number, number, number, number] = [-80, 1930, -230, 680];
 export const BAY_VIEW: [number, number, number, number] = [75, 380, 95, 322];
 const lakeLoop = (x: number, y: number, a: number, b: number): Point[] => Array.from({ length: 25 }, (_, i) => [x + Math.cos(i / 24 * Math.PI * 2) * a, y + Math.sin(i / 24 * Math.PI * 2) * b]);

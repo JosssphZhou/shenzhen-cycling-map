@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { FILL } from './factory/theme';
 import { rand, rng } from './factory/kernel/math';
-import { MINI_WORLD } from './miniature';
+import type { Bounds } from './entities';
 
 // Factory yard/sim/weather.ts 的自动天气状态机；仅模拟时钟由实例提供，文案改为中文。
 export class CityWeather {
@@ -22,11 +22,12 @@ export class CityWeather {
   word() { return this.amount < .2 ? '' : this.look === 'rain' ? (this.amount > .7 ? '雨' : '阵雨') : this.look === 'fog' ? '雾' : ''; }
 }
 
-// Factory yard/world/weatherfx.ts 的五层海雾，边界换为深圳微缩场景。
-export function buildCityFog() {
+// Factory yard/world/weatherfx.ts 的五层海雾，边界取自深圳真实地理。
+export function buildCityFog(bounds: Bounds) {
   const group = new THREE.Group(); group.name = 'fog'; group.visible = false;
-  const Y1 = MINI_WORLD[3] + 24, CX = (MINI_WORLD[0] + MINI_WORLD[1]) / 2, SPAN = MINI_WORLD[1] - MINI_WORLD[0] + 120;
-  const sheets = [[255, Y1, .5, 1], [262, Y1, 2, .9], [270, Y1, 4.2, .7], [190, Y1, 1.2, .5], [-10, Y1, .8, .3]].map(([y0, y1, z, k]) => {
+  const Y1 = bounds[3] + 24, CX = (bounds[0] + bounds[1]) / 2, SPAN = bounds[1] - bounds[0] + 120;
+  const south = (fraction: number) => bounds[2] + (bounds[3] - bounds[2]) * fraction;
+  const sheets = [[south(.72), Y1, .5, 1], [south(.74), Y1, 2, .9], [south(.76), Y1, 4.2, .7], [south(.55), Y1, 1.2, .5], [south(.1), Y1, .8, .3]].map(([y0, y1, z, k]) => {
     const material = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(SPAN, y1 - y0).rotateX(-Math.PI / 2), material);
     mesh.position.set(CX, z, (y0 + y1) / 2); mesh.raycast = () => {}; mesh.renderOrder = 2; group.add(mesh);
