@@ -1,0 +1,5 @@
+
+> shenzhen-cycling-map@1.0.0 check:data
+> node scripts/check-data.mjs
+
+路线校验通过：41 条资料，8 条连续轨迹，5093 个原始坐标；禁导出、拓扑、方向、来源、距离与 GPX 一致性均通过。

@@ -1,0 +1,28 @@
+{
+  "name": "shenzhen-cycling-map",
+  "version": "1.0.0",
+  "private": true,
+  "description": "以地标锚定的深圳微缩骑行场景，面向公路车骑前选线",
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port 3701",
+    "build": "next build",
+    "start": "next dev --hostname 0.0.0.0 --port 3701",
+    "typecheck": "tsc --noEmit",
+    "check:data": "node scripts/check-data.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.29.9",
+    "@babel/traverse": "^7.29.8",
+    "@types/node": "^22",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
+    "typescript": "^5"
+  }
+}
