@@ -1,0 +1,150 @@
+{
+  "original": {
+    "width": 1309,
+    "height": 909,
+    "items": [
+      {
+        "selector": "body",
+        "fontSize": "13px",
+        "padding": "16px",
+        "borderRadius": "0px",
+        "gap": "normal"
+      },
+      {
+        "selector": "figure",
+        "fontSize": "13px",
+        "padding": "16px 20px",
+        "borderRadius": "22px",
+        "gap": "10px"
+      },
+      {
+        "selector": ".stage",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "14px",
+        "gap": "normal"
+      },
+      {
+        "selector": ".tools",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "0px",
+        "gap": "6px",
+        "top": "10px"
+      },
+      {
+        "selector": ".tools button",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "8px",
+        "gap": "normal",
+        "height": "31.9957px"
+      },
+      {
+        "selector": ".card",
+        "fontSize": "13px",
+        "padding": "12px 16px 14px",
+        "borderRadius": "14px",
+        "gap": "10px",
+        "width": "300px",
+        "top": "10px",
+        "right": "10px"
+      },
+      {
+        "selector": ".card .title",
+        "fontSize": "20px",
+        "padding": "0px",
+        "borderRadius": "0px",
+        "gap": "normal"
+      },
+      {
+        "selector": ".card .foot button",
+        "fontSize": "12px",
+        "padding": "5px 12px",
+        "borderRadius": "8px",
+        "gap": "normal"
+      },
+      {
+        "selector": ".sites",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "0px",
+        "gap": "4px 16px"
+      }
+    ]
+  },
+  "shenzhen": {
+    "width": 1309,
+    "height": 909,
+    "items": [
+      {
+        "selector": "body",
+        "fontSize": "13px",
+        "padding": "16px",
+        "borderRadius": "0px",
+        "gap": "normal"
+      },
+      {
+        "selector": "figure",
+        "fontSize": "13px",
+        "padding": "16px 20px",
+        "borderRadius": "22px",
+        "gap": "10px"
+      },
+      {
+        "selector": ".stage",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "14px",
+        "gap": "normal"
+      },
+      {
+        "selector": ".tools",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "0px",
+        "gap": "6px",
+        "top": "10px"
+      },
+      {
+        "selector": ".tools button",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "8px",
+        "gap": "normal",
+        "height": "31.9957px"
+      },
+      {
+        "selector": ".card",
+        "fontSize": "13px",
+        "padding": "12px 16px 14px",
+        "borderRadius": "14px",
+        "gap": "10px",
+        "width": "300px",
+        "top": "10px",
+        "right": "10px"
+      },
+      {
+        "selector": ".card .title",
+        "fontSize": "20px",
+        "padding": "0px",
+        "borderRadius": "0px",
+        "gap": "normal"
+      },
+      {
+        "selector": ".card .foot button",
+        "fontSize": "12px",
+        "padding": "5px 12px",
+        "borderRadius": "8px",
+        "gap": "normal"
+      },
+      {
+        "selector": ".sites",
+        "fontSize": "13px",
+        "padding": "0px",
+        "borderRadius": "0px",
+        "gap": "4px 16px"
+      }
+    ]
+  }
+}

@@ -2,231 +2,354 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
 import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
+import type { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 import type { CyclingRoute } from '@/lib/types';
-import { Palette } from './palette';
+import type { SceneController, SceneSelection, SceneSnapshot } from './contract';
+import { Palette, nightAmount } from './palette';
 import { W } from './factory/kernel/iso';
-import { Part, TEXT_MESHES } from './factory/kernel/part';
-import { TEXT } from './factory/theme';
+import { TEXT_MESHES, setTextFar } from './factory/kernel/part';
+import { TEXT, LINE, applyTheme } from './factory/theme';
 import { Path } from './factory/kernel/path';
 import { buildRain } from './factory/world/weatherfx';
-import { buildMiniature, diagramForRoute, ZONES, MINI_WORLD, BAY_VIEW, type MiniLabel } from './miniature';
+import { buildMiniature, diagramForRoute, ZONES, MINI_WORLD, BAY_VIEW, type MiniEntity } from './miniature';
 import { CityDynamics } from './dynamics';
+import { CityWeather, buildCityFog } from './interaction-weather';
 
-export interface SceneState { theme: 'light' | 'dark'; timeOfDay: number; weather: '晴' | '雨' | '雾'; paused: boolean }
-interface Label { element: HTMLElement; point: THREE.Vector3; kind: MiniLabel['kind'] | 'route'; id?: string }
-interface ViewGoal { zoom: number; target: THREE.Vector3 }
+interface ViewGoal { zoom: number; target?: THREE.Vector3 }
+type Bounds = [number, number, number, number, ...number[]];
 const ISO = new THREE.Vector3(1, 1, 1).normalize();
-const RIGHT = new THREE.Vector3(1, 0, -1).normalize();
-const UP = new THREE.Vector3(-1, 2, -1).normalize();
+const lines = LINE as Record<string, LineMaterial>;
+const clamp = THREE.MathUtils.clamp;
+const VIEWS: Bounds[] = [BAY_VIEW, ...ZONES.slice(1).map(zone => zone.bounds), [265, 425, -65, 95], [815, 1100, -115, 165], [705, 910, -70, 165], [960, 1145, -60, 120, 0, 80]];
+const editable = (target: EventTarget | null) => target instanceof Element && !!target.closest('input,textarea,select,[contenteditable="true"]');
 
-/** 地标微缩图与GPX完全分离。这里不下载或读取城市地理数据。 */
-export class CityEngine {
+/** Factory yard/view.ts 的镜头、拾取、浮签和时间交互，内容由深圳实体提供。 */
+export class CityEngine implements SceneController {
   readonly renderer: THREE.WebGLRenderer;
   readonly scene = new THREE.Scene();
   readonly camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 9000);
-  readonly controls: OrbitControls;
-  readonly palette = new Palette();
-  private world = buildMiniature();
-  private dynamics = new CityDynamics(this.world.movements);
-  private rain = buildRain();
-  private routeGroup = new THREE.Group();
-  private labels: Label[] = [];
+  readonly controls!: OrbitControls;
+  readonly palette!: Palette;
+  private world!: ReturnType<typeof buildMiniature>;
+  private dynamics!: CityDynamics;
+  private rain!: ReturnType<typeof buildRain>;
+  private fog!: ReturnType<typeof buildCityFog>;
+  private weather = new CityWeather();
   private routes: CyclingRoute[] = [];
-  private selected: CyclingRoute | null = null;
-  private activeBounds = BAY_VIEW;
-  private state: SceneState = { theme: 'light', timeOfDay: 10, weather: '晴', paused: false };
+  private selected: MiniEntity | null = null;
+  private routeSelection: CyclingRoute | null = null;
+  private selectionRevision = 0;
+  private hovered: MiniEntity | null = null;
+  private following = false;
+  private paused = false;
   private width = 1; private height = 1;
-  private fitZoom = 1;
+  private fitZoom = 1; private baseZoom = 1;
+  private home = new THREE.Vector3();
   private goal: ViewGoal | null = null;
-  private frameId = 0; private disposed = false;
-  private lastTime = 0; private lastRender = 0; private lastLabels = 0;
-  private dirty = true; private frameCount = 0; private fps = 0; private fpsSince = 0; private lastRenderMs = 0;
-  private labelLayer = document.createElement('div');
-  private observer: ResizeObserver;
-  private panelObserver: MutationObserver;
+  private sized = false;
+  private frameId = 0; private disposed = false; private contextLost = false;
+  private lastTime = performance.now(); private simTime = 80; private accumulator = 0; private cardTime = 0;
+  private shift = { h: 0, goal: 0 };
+  private frameCount = 0; private fps = 0; private fpsSince = performance.now(); private lastRenderMs = 0;
+  private observer!: ResizeObserver;
   private reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  private visibility = () => { this.lastTime = performance.now(); this.dirty = true; };
-  private manual = () => { this.goal = null; };
-  private changed = () => { this.dirty = true; };
-  private lost = (event: Event) => { event.preventDefault(); this.error('三维场景已暂停，请重新加载。'); };
+  private systemTheme = window.matchMedia('(prefers-color-scheme: light)');
+  private afterDark = false; private turnTimer = 0;
+  private ray = new THREE.Raycaster(); private ndc = new THREE.Vector2(); private box = new THREE.Box3();
+  private down: { x: number; y: number; t: number } | null = null;
+  private pointer: [number, number] | null = null; private hoverDirty = false;
+  private reticle!: LineSegments2; private routeLine!: LineSegments2; private reticleKey = '';
+  private routeNext: { point: THREE.Vector3; name: string } | null = null;
+  private tagHover: HTMLElement; private tagSel: HTMLElement; private tagStop: HTMLElement; private note: HTMLElement;
+  private reported = new Set<string>();
+  private registeredTexts = new Set<THREE.Object3D>();
+  private registeredTextMaterials = new Set<THREE.MeshBasicMaterial>();
 
-  constructor(private host: HTMLElement, private onSelect: (id: string) => void, private error: (message: string) => void) {
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    this.renderer.outputColorSpace = THREE.SRGBColorSpace;
-    this.renderer.domElement.style.cssText = 'display:block;width:100%;height:100%;touch-action:none;outline:none';
-    this.renderer.domElement.setAttribute('aria-label', '深圳地标微缩场景，非等比例，拖动平移，滚轮或双指缩放');
-    this.renderer.domElement.tabIndex = 0;
-    this.host.appendChild(this.renderer.domElement);
-    this.labelLayer.style.cssText = 'position:absolute;inset:0;overflow:hidden;pointer-events:none';
-    this.host.appendChild(this.labelLayer);
-    this.camera.position.copy(ISO).multiplyScalar(5000); this.camera.lookAt(0, 0, 0);
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    Object.assign(this.controls, { enableRotate: false, screenSpacePanning: true, zoomToCursor: true, enableDamping: !this.reduced, dampingFactor: .12 });
-    this.controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
-    this.controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN };
-    this.controls.addEventListener('start', this.manual); this.controls.addEventListener('change', this.changed);
-    this.controls.listenToKeyEvents(this.renderer.domElement);
-    this.renderer.domElement.addEventListener('webglcontextlost', this.lost);
-    this.scene.add(this.world.group, this.dynamics.group, this.routeGroup, this.rain.group);
-    for (const label of this.world.labels) {
-      const element = document.createElement('button');
-      element.textContent = label.name;
-      element.setAttribute('aria-label', `靠近查看${label.name}`);
-      element.style.cssText = 'position:absolute;left:0;top:0;white-space:nowrap;font:inherit;font-size:10px;letter-spacing:.1em;transform:translate(-2000px,-2000px);border:0;background:transparent;padding:5px;pointer-events:auto;cursor:pointer';
-      if (label.kind === 'water') element.style.letterSpacing = '.35em';
-      element.onclick = () => {
-        const [x, y] = label.point;
-        this.activeBounds = [x - 115, x + 115, y - 105, y + 100];
-        this.goal = this.frame(this.activeBounds, 110);
-      };
-      this.labelLayer.appendChild(element);
-      this.labels.push({ element, point: W(...label.point), kind: label.kind });
+  constructor(private canvas: HTMLCanvasElement, private stage: HTMLElement, private onSnapshot: (snapshot: SceneSnapshot) => void) {
+    this.tagHover = stage.querySelector('#tagHover')!; this.tagSel = stage.querySelector('#tagSel')!;
+    this.tagStop = stage.querySelector('#tagStop')!; this.note = stage.querySelector('#note')!;
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    // WebGL 创建成功后才分配城市模型。文字的全局登记也需要在半途失败时回收。
+    const previousTexts = new Set<THREE.Object3D>(TEXT_MESHES);
+    const previousMaterials = new Set<THREE.MeshBasicMaterial>((Object.values(TEXT) as THREE.MeshBasicMaterial[][]).flat());
+    const collectRegisteredText = () => {
+      for (const text of TEXT_MESHES as THREE.Object3D[]) if (!previousTexts.has(text)) this.registeredTexts.add(text);
+      for (const materials of Object.values(TEXT) as THREE.MeshBasicMaterial[][]) for (const material of materials) if (!previousMaterials.has(material)) this.registeredTextMaterials.add(material);
+    };
+    try {
+      this.palette = new Palette();
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      this.renderer.setClearColor(0x000000, 0);
+      const center = W((MINI_WORLD[0] + MINI_WORLD[1]) / 2, (MINI_WORLD[2] + MINI_WORLD[3]) / 2, 0);
+      this.camera.position.copy(center).addScaledVector(ISO, 5000); this.camera.lookAt(center);
+      this.controls = new OrbitControls(this.camera, canvas);
+      Object.assign(this.controls, { enableRotate: false, screenSpacePanning: true, zoomToCursor: true, enableDamping: !this.reduced, dampingFactor: .12 });
+      this.controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
+      this.controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_PAN };
+      this.controls.target.copy(center); this.controls.listenToKeyEvents(window);
+      this.world = buildMiniature(); this.scene.add(this.world.group);
+      this.dynamics = new CityDynamics(this.world.movements); this.scene.add(this.dynamics.group);
+      this.rain = buildRain(); this.scene.add(this.rain.group);
+      this.fog = buildCityFog(); this.scene.add(this.fog.group);
+      this.reticle = this.overlay(); this.routeLine = this.overlay();
+      this.controls.addEventListener('change', this.changed);
+      canvas.addEventListener('wheel', this.wheel, { passive: true });
+      canvas.addEventListener('pointerdown', this.pointerDown); canvas.addEventListener('pointerup', this.pointerUp);
+      canvas.addEventListener('pointermove', this.pointerMove); canvas.addEventListener('pointerleave', this.pointerLeave);
+      canvas.addEventListener('pointercancel', this.pointerCancel);
+      canvas.addEventListener('webglcontextlost', this.lost); canvas.addEventListener('webglcontextrestored', this.restored);
+      window.addEventListener('keydown', this.guardEditable, true); window.addEventListener('keydown', this.keyDown);
+      this.systemTheme.addEventListener('change', this.themeChanged);
+      document.addEventListener('visibilitychange', this.visibility);
+      this.observer = new ResizeObserver(this.resize); this.observer.observe(stage);
+      this.resize(); this.note.hidden = true; this.refresh(); this.frameId = requestAnimationFrame(this.animate);
+      collectRegisteredText();
+    } catch (error) {
+      collectRegisteredText(); this.dispose(); throw error;
     }
-    this.observer = new ResizeObserver(this.resize); this.observer.observe(this.host);
-    this.panelObserver = new MutationObserver(() => { this.goal = this.frame(this.activeBounds, 110); });
-    const stage = this.host.closest('.stage'); if (stage) this.panelObserver.observe(stage, { attributes: true, attributeFilter: ['class'] });
-    document.addEventListener('visibilitychange', this.visibility);
-    this.resize(); this.frameId = requestAnimationFrame(this.animate);
   }
-  private frame(bounds: [number, number, number, number], height = 110): ViewGoal {
-    this.camera.updateMatrixWorld();
-    const visibleBounds = this.width <= 700 && bounds === BAY_VIEW ? [145, 335, 120, 285] : bounds;
-    const [x0, x1, y0, y1] = visibleBounds, box = new THREE.Box3();
-    for (const x of [x0, x1]) for (const y of [y0, y1]) for (const z of [0, height]) box.expandByPoint(W(x, y, z).applyMatrix4(this.camera.matrixWorldInverse));
-    const stage = this.host.closest('.stage');
-    const panel = stage?.classList.contains('with-panel') ? stage.querySelector<HTMLElement>('.route-panel')?.getBoundingClientRect() : null;
-    const left = this.width > 700 ? (panel?.width || 0) + 32 : 18;
-    const right = this.width > 700 ? 50 : 42;
-    const top = this.width > 700 ? 62 : 63;
-    const bottom = this.width > 700 ? 45 : (panel?.height || 0) + 40;
-    const zoom = Math.min(Math.max(120, this.width - left - right) / (box.max.x - box.min.x), Math.max(120, this.height - top - bottom) / (box.max.y - box.min.y)) * .94;
-    const target = W((x0 + x1) / 2, (y0 + y1) / 2, bounds === BAY_VIEW ? 0 : height / 2);
-    target.addScaledVector(RIGHT, -(left - right) / (2 * zoom));
-    target.addScaledVector(UP, -(bottom - top) / (2 * zoom));
-    return { zoom, target };
+  private overlay() {
+    const line = new LineSegments2(new LineSegmentsGeometry(), lines.live);
+    line.raycast = () => {}; line.frustumCulled = false; line.visible = false; this.scene.add(line); return line;
+  }
+  private frame(bounds: Bounds, heights?: [number, number]): ViewGoal {
+    const [x0, x1, y0, y1, ...zr] = bounds, [z0, z1] = heights || (zr.length ? zr : [0, 12]);
+    this.camera.updateMatrixWorld(); const box = new THREE.Box3();
+    for (const x of [x0, x1]) for (const y of [y0, y1]) for (const z of [z0, z1]) box.expandByPoint(W(x, y, z).applyMatrix4(this.camera.matrixWorldInverse));
+    const center = box.getCenter(new THREE.Vector3()).applyMatrix4(this.camera.matrixWorld);
+    return { zoom: Math.min(this.width / (box.max.x - box.min.x), this.height / (box.max.y - box.min.y)) * .94, target: center.addScaledVector(ISO, -center.y / ISO.y) };
   }
   private resize = () => {
-    const width = this.host.clientWidth, height = this.host.clientHeight;
-    if (!width || !height) return;
-    const first = this.width === 1; this.width = width; this.height = height;
-    this.renderer.setSize(width, height, false); this.palette.resize(width, height);
+    const width = this.stage.clientWidth, height = this.stage.clientHeight; if (!width || !height) return;
+    this.width = width; this.height = height; this.renderer.setSize(width, height, false);
     Object.assign(this.camera, { left: -width / 2, right: width / 2, top: height / 2, bottom: -height / 2 });
-    this.camera.updateProjectionMatrix();
-    this.fitZoom = this.frame(MINI_WORLD).zoom;
-    this.controls.minZoom = this.fitZoom * .7; this.controls.maxZoom = 12;
-    const frame = this.frame(this.activeBounds);
-    if (first) { this.camera.zoom = frame.zoom; this.moveTarget(frame.target); this.camera.updateProjectionMatrix(); }
-    else this.goal = frame;
-    this.dirty = true;
+    const frame = this.frame(MINI_WORLD, [-4, 50]); this.fitZoom = frame.zoom; this.home.copy(frame.target!);
+    this.baseZoom = this.frame([MINI_WORLD[0], 1000, MINI_WORLD[2], MINI_WORLD[3]], [-4, 50]).zoom;
+    this.controls.minZoom = this.fitZoom * .6; this.controls.maxZoom = this.baseZoom * 36;
+    if (!this.sized) { this.sized = true; const first = width < 600 ? this.frame(VIEWS[0]) : frame; this.camera.zoom = first.zoom; this.moveTarget(first.target!); }
+    this.camera.zoom = clamp(this.camera.zoom, this.controls.minZoom, this.controls.maxZoom); this.camera.updateProjectionMatrix();
+    this.palette.resize(width, height); this.hoverDirty = true;
   };
   private moveTarget(target: THREE.Vector3) { const delta = target.clone().sub(this.controls.target); this.controls.target.add(delta); this.camera.position.add(delta); }
-  overview() { this.activeBounds = MINI_WORLD; this.goal = this.frame(MINI_WORLD); }
-  zoomBy(factor: number) { this.goal = { zoom: THREE.MathUtils.clamp((this.goal?.zoom || this.camera.zoom) * factor, this.controls.minZoom, this.controls.maxZoom), target: this.goal?.target.clone() || this.controls.target.clone() }; }
-  setState(state: SceneState) { this.state = state; this.dirty = true; }
-  setRoutes(routes: CyclingRoute[]) {
-    this.routes = routes;
-    this.labels.filter(label => label.kind === 'route').forEach(label => label.element.remove());
-    this.labels = this.labels.filter(label => label.kind !== 'route');
-    routes.forEach((route, index) => {
-      const diagram = diagramForRoute(route);
-      const element = document.createElement('button'); element.textContent = String(index + 1).padStart(2, '0');
-      element.setAttribute('aria-label', `查看${route.name}`); element.title = route.name;
-      element.style.cssText = 'position:absolute;left:0;top:0;width:25px;height:25px;border:1px solid currentColor;border-radius:50%;font:inherit;font-size:9px;padding:0;pointer-events:auto;cursor:pointer;transform:translate(-2000px,-2000px)';
-      element.onclick = () => this.onSelect(route.id); this.labelLayer.appendChild(element);
-      this.labels.push({ element, point: W(...diagram.anchor, 3), kind: 'route', id: route.id });
-    });
-    this.rebuildRoutes(); this.dirty = true;
+  overview() { this.setFollow(false); this.goal = { zoom: this.fitZoom, target: this.home.clone() }; }
+  goView(index: number) { if (!VIEWS[index]) return; this.setFollow(false); this.goal = this.frame(VIEWS[index]); }
+  zoomBy(factor: number) { this.goal = { zoom: clamp((this.goal?.zoom ?? this.camera.zoom) * factor, this.controls.minZoom, this.controls.maxZoom), target: this.goal?.target }; }
+  setRoutes(routes: CyclingRoute[]) { this.routes = routes; }
+  private entities() { return [...this.world.entities, ...this.dynamics.entities]; }
+  private setLive(entity: MiniEntity | null, on: boolean) {
+    if (!entity) return;
+    const walk = (object: THREE.Object3D) => {
+      if (object.userData.entity && object.userData.entity !== entity) return;
+      if (object instanceof LineSegments2 && object.userData.line === 'line') object.material = on ? lines.live : lines.line;
+      object.children.forEach(walk);
+    };
+    entity.groups.forEach(walk);
   }
-  select(route: CyclingRoute | null) {
-    if (this.selected?.id === route?.id) return;
-    this.selected = route; this.dirty = true;
-    this.activeBounds = route ? diagramForRoute(route).zone.bounds : BAY_VIEW;
-    this.goal = this.frame(this.activeBounds);
-    this.rebuildRoutes();
+  private bounds(entity: MiniEntity) {
+    this.box.makeEmpty(); if (entity.bbox) return this.box.copy(entity.bbox());
+    for (const group of entity.groups) this.box.expandByObject(group);
+    return this.box;
   }
-  private rebuildRoutes() {
-    this.routeGroup.traverse(object => (object as THREE.Mesh).geometry?.dispose()); this.routeGroup.clear();
+  private select(entity: MiniEntity | null, route: CyclingRoute | null = null) {
+    if (entity && entity === this.selected) return;
+    this.selectionRevision++;
+    this.setLive(this.selected, false); this.selected = entity; this.routeSelection = route;
+    this.setLive(entity, true); this.following = false; this.refresh(); this.drawRoute();
+  }
+  clearSelection() { this.select(null); this.canvas.focus(); }
+  selectRoute(route: CyclingRoute | null) {
+    if (!route) { this.clearSelection(); return; }
+    if (route.id === this.routeSelection?.id) return;
+    const diagram = diagramForRoute(route), path = diagram.points.length > 1 ? new Path(diagram.points, .01, false) : null;
+    const entity: MiniEntity = {
+      id: route.id, kind: '骑行路线', title: route.name, groups: [], relatedRouteIds: [], followable: false,
+      bbox: () => new THREE.Box3(W(diagram.anchor[0] - 2, diagram.anchor[1] - 2, 0), W(diagram.anchor[0] + 2, diagram.anchor[1] + 2, 2)),
+      info: () => ({ title: route.name, status: route.status, rows: [['里程', route.distanceKm === null ? '待核对' : `${route.distanceKm.toFixed(2)} 公里`], ['爬升', route.ascentM === null ? '待核对' : `${route.ascentM} 米`], ['路面', route.surface], ['公路车', route.roadBike]] }),
+      ...(path ? { route: () => ({ path, s: 0, closed: false, next: { x: diagram.points.at(-1)![0], y: diagram.points.at(-1)![1], name: route.end } }) } : {}),
+    };
+    this.select(entity, route);
+  }
+  focusSelection() {
     if (!this.selected) return;
-    const diagram = diagramForRoute(this.selected);
-    if (!diagram.points.length) return;
-    const path = new Path(diagram.points, 10, false), positions: number[] = [];
-    for (let s = 0; s < path.length; s += 2) { const a = path.at(s)!, b = path.at(Math.min(path.length, s + 2))!; positions.push(...W(a.x, a.y, .7).toArray(), ...W(b.x, b.y, .7).toArray()); }
-    const material = this.palette.line('live', 2.3); material.depthTest = false; material.depthWrite = false;
-    const line = new LineSegments2(new LineSegmentsGeometry().setPositions(positions), material); line.renderOrder = 10;
-    this.routeGroup.add(line);
-    const flags = new Part();
-    for (const [x, y] of [diagram.points[0], diagram.points.at(-1)!]) { flags.box(x - .12, y - .12, .1, .24, .24, 6); flags.box(x, y, 3.7, 4, .12, 2.2, 'k'); }
-    this.routeGroup.add(flags.build('路线示意起终点'));
-  }
-  private updateLabels() {
-    const used: { x: number; y: number; width: number }[] = [];
-    const labels = [...this.labels].sort((a, b) => Number(b.kind === 'landmark') - Number(a.kind === 'landmark'));
-    for (const label of labels) {
-      const screen = label.point.clone().project(this.camera);
-      const x = (screen.x + 1) * this.width / 2, y = (1 - screen.y) * this.height / 2;
-      const active = label.kind === 'route' && label.id === this.selected?.id;
-      let visible = x > 10 && x < this.width - 20 && y > 60 && y < this.height - 32;
-      if (label.kind === 'route') visible &&= active;
-      if (label.kind === 'district') visible &&= this.camera.zoom < .7;
-      if (label.kind === 'water') visible &&= this.camera.zoom > .55;
-      if (!active && used.some(p => Math.abs(x - p.x) < Math.max(28, p.width) && Math.abs(y - p.y) < 24)) visible = false;
-      if (visible) used.push({ x, y, width: label.kind === 'landmark' ? 45 : 30 });
-      label.element.style.display = visible ? '' : 'none';
-      label.element.style.color = `#${this.palette.colors[label.kind === 'landmark' || active ? 'live' : 'ink'].getHexString()}`;
-      if (label.kind === 'route') { label.element.style.background = `#${this.palette.colors.background.getHexString()}`; label.element.style.zIndex = '4'; }
-      if (visible) label.element.style.transform = `translate(${x}px,${y}px) translate(-50%,-100%)`;
+    this.setFollow(false);
+    if (this.routeSelection) this.goal = this.frame(diagramForRoute(this.routeSelection).zone.bounds);
+    else {
+      const box = this.bounds(this.selected), margin = Math.max(10, Math.max(box.max.x - box.min.x, box.max.z - box.min.z) * .3);
+      this.goal = this.frame([box.min.x - margin, box.max.x + margin, box.min.z - margin, box.max.z + margin], [Math.min(0, box.min.y), box.max.y]);
     }
   }
-  private animate = (time: number) => {
-    if (this.disposed) return;
-    this.frameId = requestAnimationFrame(this.animate);
-    if (document.hidden) return;
-    if (time - this.fpsSince > 1000) { this.fps = Math.round(this.frameCount * 1000 / (time - this.fpsSince)); this.frameCount = 0; this.fpsSince = time; }
-    if (time - this.lastRender < 1000 / 30 && !this.state.paused) return;
-    const dt = Math.min((time - (this.lastTime || time)) / 1000, .1); this.lastTime = time;
-    if (this.goal) {
-      const amount = this.reduced ? 1 : 1 - Math.exp(-dt * 6);
-      this.moveTarget(this.controls.target.clone().lerp(this.goal.target, amount));
-      this.camera.zoom += (this.goal.zoom - this.camera.zoom) * amount; this.camera.updateProjectionMatrix();
-      if (Math.abs(this.camera.zoom - this.goal.zoom) < .001 * this.camera.zoom && this.controls.target.distanceTo(this.goal.target) < .05) this.goal = null;
-      this.dirty = true;
+  private hit(clientX: number, clientY: number) {
+    const rect = this.canvas.getBoundingClientRect();
+    this.ndc.set((clientX - rect.left) / rect.width * 2 - 1, -(clientY - rect.top) / rect.height * 2 + 1);
+    this.ray.setFromCamera(this.ndc, this.camera);
+    for (const hit of this.ray.intersectObjects(this.scene.children, true)) {
+      if (!(hit.object instanceof THREE.Mesh)) continue;
+      let visible = true; for (let node: THREE.Object3D | null = hit.object; node; node = node.parent) if (!node.visible) visible = false;
+      if (!visible || hit.point.x < MINI_WORLD[0] || hit.point.x > MINI_WORLD[1] || hit.point.z < MINI_WORLD[2] || hit.point.z > MINI_WORLD[3]) continue;
+      let object: THREE.Object3D | null = hit.object; while (object && !object.userData.entity) object = object.parent;
+      const entity = object?.userData.entity as MiniEntity | undefined;
+      return entity ? entity.resolve ? entity.resolve(hit.point) : entity : null;
     }
-    this.controls.update();
-    this.palette.update(this.state.theme, this.state.timeOfDay, this.state.weather);
-    this.scene.background = this.palette.colors.background;
-    if (this.state.weather === '雾') { if (!this.scene.fog) this.scene.fog = new THREE.Fog(this.palette.colors.fog, 4450, 6500); else this.scene.fog.color.copy(this.palette.colors.fog); } else this.scene.fog = null;
-    this.dynamics.update(dt, this.state.paused || this.reduced, this.camera, this.state.weather, this.camera.zoom);
-    this.rain.update(this.state.paused || this.reduced ? 0 : dt, this.controls.target, this.width / this.camera.zoom, this.state.weather === '雨' ? .65 : 0);
-    if (time - this.lastLabels > 80 || this.dirty) { this.updateLabels(); this.lastLabels = time; }
-    if (this.dirty || (!this.state.paused && !this.reduced)) {
-      const start = performance.now(); this.renderer.render(this.scene, this.camera); this.lastRenderMs = performance.now() - start;
-      this.frameCount++; this.lastRender = time; this.dirty = false;
+    return null;
+  }
+  private setFollow(on: boolean) { const next = on && !!this.selected?.followable; if (next === this.following) return; this.following = next; this.refresh(); }
+  toggleFollow() { this.setFollow(!this.following); }
+  cycle(direction: number) {
+    const moving = this.dynamics.entities.filter(entity => entity.followable).sort((a, b) => a.id.localeCompare(b.id));
+    const index = moving.findIndex(entity => entity === this.selected); if (moving.length) this.select(moving[index < 0 ? (direction > 0 ? 0 : moving.length - 1) : (index + direction + moving.length) % moving.length]);
+  }
+  togglePause() { this.paused = !this.paused; this.refresh(); }
+  private theme(): 'light' | 'dark' { return document.documentElement.dataset.theme === 'light' ? 'light' : document.documentElement.dataset.theme === 'dark' ? 'dark' : this.systemTheme.matches ? 'light' : 'dark'; }
+  toggleTheme() {
+    const next = this.theme() === 'light' ? 'dark' : 'light'; document.documentElement.dataset.theme = next; applyTheme();
+    try { localStorage.setItem('shenzhen-yard-theme', next); } catch { /* 隐私窗口仅保留本次选择。 */ }
+    this.refresh();
+  }
+  skipTime() { this.shift.goal += 6; }
+  private hour() { return ((4 + 2 / 3 + this.simTime * 24 / 360 + this.shift.h) % 24 + 24) % 24; }
+  private activeView() {
+    const target = this.controls.target; if (this.camera.zoom <= this.fitZoom * 1.3) return null;
+    let index: number | null = null, best = Infinity;
+    VIEWS.forEach(([x0, x1, y0, y1, z0 = 0, z1 = 12], k) => {
+      const middle = (z0 + z1) / 2, distance = Math.hypot((x0 + x1) / 2 - middle - target.x, (y0 + y1) / 2 - middle - target.z);
+      if (target.x >= x0 - middle && target.x <= x1 - middle && target.z >= y0 - middle && target.z <= y1 - middle && distance < best) { best = distance; index = k; }
+    }); return index;
+  }
+  private selection(): SceneSelection | null {
+    const entity = this.selected; if (!entity) return null;
+    const info = entity.info?.();
+    return { id: entity.id, kind: entity.kind, title: info?.title || entity.title, status: info?.status || '深圳地标', rows: info?.rows || [], followable: !!entity.followable, following: this.following, routeId: this.routeSelection?.id, relatedRouteIds: entity.relatedRouteIds };
+  }
+  private refresh() {
+    const selection = this.selection(), minutes = Math.floor(this.hour() * 60) % 1440;
+    this.onSnapshot({ selection, selectionRevision: this.selectionRevision, clock: `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`, phase: [this.afterDark ? '夜晚' : '', this.weather.word()].filter(Boolean).map(word => ` · ${word}`).join(''), paused: this.paused, theme: this.theme(), activeView: this.activeView(), readout: `${this.paused ? '已暂停 · ' : ''}${selection ? `${selection.title} · ${selection.status}` : '未选择对象'}` });
+  }
+  private screenAt(point: THREE.Vector3): [number, number] { const screen = point.clone().project(this.camera); return [(screen.x + 1) / 2 * this.width, (1 - screen.y) / 2 * this.height]; }
+  private anchor(entity: MiniEntity) { const box = this.bounds(entity); return this.screenAt(new THREE.Vector3((box.min.x + box.max.x) / 2, box.max.y, (box.min.z + box.max.z) / 2)); }
+  private placeAt(element: HTMLElement, [x, y]: [number, number], text: string) {
+    element.hidden = false; if (element.textContent !== text) element.textContent = text;
+    const halfWidth = element.offsetWidth / 2 + 6;
+    element.style.left = `${clamp(x, halfWidth, this.width - halfWidth)}px`; element.style.top = `${clamp(y, element.offsetHeight + 16, this.height)}px`;
+  }
+  private placeTag(element: HTMLElement, entity: MiniEntity | null, text: string) { if (!entity) element.hidden = true; else this.placeAt(element, this.anchor(entity), text); }
+  private updateReticle() {
+    if (!this.selected) { this.reticle.visible = false; return; }
+    const box = this.bounds(this.selected), x0 = box.min.x - .8, z0 = box.min.z - .8, y = Math.max(0, box.min.y) + .06;
+    const width = box.max.x + .8 - x0, depth = box.max.z + .8 - z0, key = `${width.toFixed(1)}|${depth.toFixed(1)}`;
+    if (key !== this.reticleKey) {
+      this.reticleKey = key; const length = Math.min(3, width / 3, depth / 3), positions: number[] = [];
+      for (const [x, dx] of [[0, 1], [width, -1]]) for (const [z, dz] of [[0, 1], [depth, -1]]) positions.push(x, 0, z, x + dx * length, 0, z, x, 0, z, x, 0, z + dz * length);
+      this.reticle.geometry.dispose(); this.reticle.geometry = new LineSegmentsGeometry().setPositions(positions);
     }
+    this.reticle.position.set(x0, y, z0); this.reticle.visible = true;
+  }
+  private drawRoute() {
+    const route = this.selected?.route?.(), path = route?.path;
+    if (!route || !path?.length) { this.routeLine.visible = false; this.routeNext = null; return; }
+    const z = .24, positions: number[] = [], start = route.reverse ? 0 : route.s ?? 0, end = route.reverse ? route.s : route.closed ? start + path.length : path.length;
+    for (let distance = start; distance < end; distance += 1.6) { const a = path.at(distance)!, b = path.at(Math.min(distance + .8, end))!; positions.push(a.x, z, a.y, b.x, z, b.y); }
+    this.routeNext = route.next ? { point: W(route.next.x, route.next.y, z), name: route.next.name || '' } : null;
+    if (route.next) {
+      const radius = this.selected?.kind === '行人' ? 1.1 : 3.2;
+      for (let i = 0; i < 32; i++) { const a = i / 32 * Math.PI * 2, b = (i + 1) / 32 * Math.PI * 2; positions.push(route.next.x + Math.cos(a) * radius, z, route.next.y + Math.sin(a) * radius, route.next.x + Math.cos(b) * radius, z, route.next.y + Math.sin(b) * radius); }
+    }
+    this.routeLine.geometry.dispose(); this.routeLine.geometry = new LineSegmentsGeometry().setPositions(positions); this.routeLine.visible = true;
+  }
+  private markNight(amount: number) {
+    if (this.afterDark ? amount > .45 : amount < .55) return;
+    this.afterDark = !this.afterDark; const root = document.documentElement; root.classList.add('turning'); root.classList.toggle('after-dark', this.afterDark);
+    clearTimeout(this.turnTimer); this.turnTimer = window.setTimeout(() => root.classList.remove('turning'), 1300);
+  }
+  private changed = () => { this.hoverDirty = true; };
+  private wheel = () => { this.goal = null; };
+  private pointerDown = (event: PointerEvent) => { this.down = { x: event.clientX, y: event.clientY, t: performance.now() }; };
+  private pointerUp = (event: PointerEvent) => {
+    if (this.down && Math.hypot(event.clientX - this.down.x, event.clientY - this.down.y) < 6 && performance.now() - this.down.t < 700) this.select(this.hit(event.clientX, event.clientY));
+    this.down = null;
   };
-  stats() { return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, animation: this.dynamics.counts, mode: '地标微缩示意', geographicRequests: 0 }; }
+  private pointerMove = (event: PointerEvent) => {
+    if (this.down && Math.hypot(event.clientX - this.down.x, event.clientY - this.down.y) >= 6) { this.goal = null; this.setFollow(false); }
+    if (event.pointerType === 'mouse' && !event.buttons) { this.pointer = [event.clientX, event.clientY]; this.hoverDirty = true; }
+  };
+  private pointerLeave = () => { this.pointer = null; this.hovered = null; this.canvas.classList.remove('over'); };
+  private pointerCancel = () => { this.down = null; };
+  private guardEditable = (event: KeyboardEvent) => { if (editable(event.target) && event.key.startsWith('Arrow')) event.stopImmediatePropagation(); };
+  private keyDown = (event: KeyboardEvent) => {
+    if (event.metaKey || event.ctrlKey || event.altKey || editable(event.target)) return;
+    if ((event.key === ' ' || event.key === 'Enter') && event.target instanceof Element && event.target.closest('button,summary')) return;
+    if (event.key.startsWith('Arrow')) { this.goal = null; this.setFollow(false); return; }
+    const views = '123456789pevos', index = views.indexOf(event.key.toLowerCase());
+    const actions: Record<string, () => void> = { Escape: () => this.clearSelection(), f: () => this.toggleFollow(), F: () => this.toggleFollow(), ']': () => this.cycle(1), '[': () => this.cycle(-1), ' ': () => this.togglePause(), '+': () => this.zoomBy(1.4), '=': () => this.zoomBy(1.4), '-': () => this.zoomBy(1 / 1.4), '_': () => this.zoomBy(1 / 1.4), '0': () => this.overview(), Home: () => this.overview(), t: () => this.toggleTheme(), T: () => this.toggleTheme(), n: () => this.skipTime(), N: () => this.skipTime() };
+    const action = actions[event.key] || (index >= 0 && event.key.length === 1 ? () => this.goView(index) : null);
+    if (action) { action(); event.preventDefault(); }
+  };
+  private themeChanged = () => { applyTheme(); this.refresh(); };
+  private visibility = () => { this.lastTime = performance.now(); };
+  private lost = (event: Event) => { event.preventDefault(); this.contextLost = true; this.note.hidden = false; this.note.textContent = '正在重新绘制场景…'; };
+  private restored = () => { this.contextLost = false; this.note.hidden = true; applyTheme(); this.resize(); };
+  private animate = (time: number) => {
+    if (this.disposed) return; this.frameId = requestAnimationFrame(this.animate);
+    try { this.tick(time); } catch (error) { const key = String(error instanceof Error ? error.stack : error); if (!this.reported.has(key)) { this.reported.add(key); console.error('深圳场景绘制失败', error); } }
+  };
+  private tick(time: number) {
+    const dt = Math.max(0, Math.min(.1, (time - this.lastTime) / 1000)); this.lastTime = Math.max(this.lastTime, time);
+    if (!this.paused) { this.accumulator += dt; while (this.accumulator >= 1 / 60) { this.simTime += 1 / 60; this.weather.update(1 / 60, this.simTime, this.hour()); this.accumulator -= 1 / 60; } }
+    if (this.shift.h < this.shift.goal) this.shift.h = Math.min(this.shift.goal, this.shift.h + dt * (this.reduced ? 60 : 5));
+    const hour = this.hour(); this.palette.update(this.theme(), hour, this.weather.rain(), this.weather.fog()); this.markNight(nightAmount(hour));
+    this.rain.update(dt, this.controls.target, this.width / this.camera.zoom, this.weather.rain()); this.fog.update(this.simTime, this.weather.fog());
+    this.dynamics.update(dt, this.paused, this.camera, this.weather.rain() > .3 ? '雨' : this.weather.fog() > .3 ? '雾' : '晴', this.camera.zoom);
+    const amount = this.reduced ? 1 : 1 - Math.exp(-dt * 6);
+    if (this.following && this.selected) { const center = this.bounds(this.selected).getCenter(new THREE.Vector3()); this.moveTarget(this.controls.target.clone().lerp(center.addScaledVector(ISO, -center.y / ISO.y), amount)); }
+    if (this.goal) {
+      if (this.goal.target) this.moveTarget(this.controls.target.clone().lerp(this.goal.target, amount));
+      this.camera.zoom += (this.goal.zoom - this.camera.zoom) * amount; this.camera.updateProjectionMatrix();
+      if (Math.abs(this.goal.zoom - this.camera.zoom) < 1e-3 * this.goal.zoom && (!this.goal.target || this.controls.target.distanceTo(this.goal.target) < .05)) this.goal = null;
+    }
+    this.controls.update(dt);
+    const target = this.controls.target; this.moveTarget(target.clone().addScaledVector(ISO, -target.y / ISO.y));
+    const home = W(clamp(target.x, MINI_WORLD[0], MINI_WORLD[1]), clamp(target.z, MINI_WORLD[2], MINI_WORLD[3]), 0);
+    this.moveTarget(home.distanceTo(target) > 1 ? target.clone().lerp(home, amount) : home);
+    this.camera.updateMatrixWorld(); this.scene.updateMatrixWorld(); setTextFar(this.camera.zoom < 1.5);
+    if (this.hoverDirty && this.pointer) { this.hoverDirty = false; this.hovered = this.hit(...this.pointer); this.canvas.classList.toggle('over', !!this.hovered); }
+    this.placeTag(this.tagSel, this.selected, this.selected ? `${this.selected.title} · ${this.selected.info?.().status || '深圳地标'}` : '');
+    this.placeTag(this.tagHover, this.hovered !== this.selected ? this.hovered : null, this.hovered?.title || '');
+    this.updateReticle();
+    if ((this.cardTime -= dt) <= 0) { this.cardTime = .25; this.refresh(); this.drawRoute(); }
+    const stop = this.routeNext?.name ? this.screenAt(this.routeNext.point) : null, anchor = stop && this.selected ? this.anchor(this.selected) : null;
+    if (stop && anchor && stop[0] > 0 && stop[0] < this.width && stop[1] > 30 && stop[1] < this.height && Math.hypot(stop[0] - anchor[0], stop[1] - anchor[1]) > 70) this.placeAt(this.tagStop, stop, `下一站 · ${this.routeNext!.name}`);
+    else this.tagStop.hidden = true;
+    if (!this.contextLost) { const start = performance.now(); this.renderer.render(this.scene, this.camera); this.lastRenderMs = performance.now() - start; this.frameCount++; }
+    if (time - this.fpsSince >= 1000) { this.fps = Math.round(this.frameCount * 1000 / (time - this.fpsSince)); this.frameCount = 0; this.fpsSince = time; }
+  }
+  stats() { return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, mode: '地标微缩示意', geographicRequests: 0 }; }
+  debug() {
+    return { stats: () => this.stats(), overview: () => this.overview(), view: (index: number) => this.goView(index), all: () => this.entities().map(entity => ({ id: entity.id, kind: entity.kind, title: entity.title, followable: entity.followable })), select: (id: string) => this.select(this.entities().find(entity => entity.id === id) || null), screenOf: (id: string) => {
+      const entity = this.entities().find(candidate => candidate.id === id); if (!entity) return null;
+      this.scene.updateMatrixWorld(); const point = this.bounds(entity).getCenter(new THREE.Vector3()), [x, y] = this.screenAt(point), rect = this.canvas.getBoundingClientRect(); return [rect.left + x, rect.top + y];
+    }, weather: (kind: 'rain' | 'fog') => this.weather.set(kind, 90, this.simTime), loseContext: () => this.renderer.forceContextLoss(), restoreContext: () => this.renderer.forceContextRestore() };
+  }
   dispose() {
-    this.disposed = true; cancelAnimationFrame(this.frameId); this.observer.disconnect(); this.panelObserver.disconnect();
-    document.removeEventListener('visibilitychange', this.visibility);
-    this.controls.removeEventListener('start', this.manual); this.controls.removeEventListener('change', this.changed); this.controls.dispose();
-    this.renderer.domElement.removeEventListener('webglcontextlost', this.lost);
-    const geometries = new Set<THREE.BufferGeometry>();
-    const textMaterials = new Set<THREE.MeshBasicMaterial>();
-    const owned = new Set<THREE.Object3D>();
+    if (this.disposed) return;
+    this.disposed = true; cancelAnimationFrame(this.frameId); clearTimeout(this.turnTimer); this.observer?.disconnect();
+    this.controls?.removeEventListener('change', this.changed); this.controls?.dispose();
+    this.canvas.removeEventListener('wheel', this.wheel); this.canvas.removeEventListener('pointerdown', this.pointerDown); this.canvas.removeEventListener('pointerup', this.pointerUp);
+    this.canvas.removeEventListener('pointermove', this.pointerMove); this.canvas.removeEventListener('pointerleave', this.pointerLeave); this.canvas.removeEventListener('pointercancel', this.pointerCancel);
+    this.canvas.removeEventListener('webglcontextlost', this.lost); this.canvas.removeEventListener('webglcontextrestored', this.restored);
+    window.removeEventListener('keydown', this.guardEditable, true); window.removeEventListener('keydown', this.keyDown);
+    this.systemTheme.removeEventListener('change', this.themeChanged); document.removeEventListener('visibilitychange', this.visibility);
+    document.documentElement.classList.remove('after-dark', 'turning');
+    const geometries = new Set<THREE.BufferGeometry>(), textMaterials = new Set<THREE.MeshBasicMaterial>(this.registeredTextMaterials), owned = new Set<THREE.Object3D>(this.registeredTexts);
     this.scene.traverse(object => {
-      owned.add(object);
-      const mesh = object as THREE.Mesh; if (mesh.geometry) geometries.add(mesh.geometry);
+      owned.add(object); const mesh = object as THREE.Mesh; if (mesh.geometry) geometries.add(mesh.geometry);
       const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
       for (const material of materials) if ((material as THREE.MeshBasicMaterial | undefined)?.map) textMaterials.add(material as THREE.MeshBasicMaterial);
     });
-    for (const geometry of geometries) geometry.dispose();
-    for (const material of textMaterials) { material.map?.dispose(); material.dispose(); }
-    for (const materials of Object.values(TEXT) as THREE.MeshBasicMaterial[][]) {
-      for (let i = materials.length - 1; i >= 0; i--) if (textMaterials.has(materials[i])) materials.splice(i, 1);
-    }
-    const texts = TEXT_MESHES as THREE.Object3D[];
-    for (let i = texts.length - 1; i >= 0; i--) if (owned.has(texts[i])) texts.splice(i, 1);
-    this.palette.dispose(); this.renderer.dispose(); this.scene.clear();
-    this.renderer.domElement.remove(); this.labelLayer.remove();
+    this.registeredTexts.forEach(object => { const geometry = (object as THREE.Mesh).geometry; if (geometry) geometries.add(geometry); });
+    geometries.forEach(geometry => geometry.dispose());
+    textMaterials.forEach(material => { material.map?.dispose(); material.dispose(); });
+    for (const materials of Object.values(TEXT) as THREE.MeshBasicMaterial[][]) for (let i = materials.length - 1; i >= 0; i--) if (textMaterials.has(materials[i])) materials.splice(i, 1);
+    const texts = TEXT_MESHES as THREE.Object3D[]; for (let i = texts.length - 1; i >= 0; i--) if (owned.has(texts[i])) texts.splice(i, 1);
+    this.palette?.dispose(); this.fog?.dispose(); this.renderer.dispose(); this.scene.clear();
+    this.registeredTexts.clear(); this.registeredTextMaterials.clear();
   }
 }

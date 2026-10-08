@@ -12,6 +12,18 @@ export type Point = [number, number];
 export interface MiniZone { id: string; name: string; districts: string[]; anchor: Point; bounds: [number, number, number, number]; path: Point[] }
 export interface MiniLabel { name: string; point: [number, number, number]; kind: 'district' | 'landmark' | 'water' }
 export interface MiniMovement { kind: 'car' | 'person' | 'train' | 'ship' | 'bicycle'; path: Point[]; count: number; speed: number; height?: number; closed?: boolean }
+export interface MiniEntity {
+  id: string;
+  kind: string;
+  title: string;
+  groups: THREE.Group[];
+  relatedRouteIds: string[];
+  followable: boolean;
+  info(): { title?: string; status: string; rows: [string, string][] };
+  route?(): { path: Path; s: number; closed?: boolean; reverse?: boolean; next?: { x: number; y: number; name?: string } };
+  bbox?(): THREE.Box3;
+  resolve?(point: THREE.Vector3): MiniEntity | null;
+}
 export const MINI_WORLD: [number, number, number, number] = [-80, 1930, -230, 680];
 export const BAY_VIEW: [number, number, number, number] = [75, 380, 95, 322];
 const lakeLoop = (x: number, y: number, a: number, b: number): Point[] => Array.from({ length: 25 }, (_, i) => [x + Math.cos(i / 24 * Math.PI * 2) * a, y + Math.sin(i / 24 * Math.PI * 2) * b]);
@@ -27,6 +39,22 @@ export const ZONES: MiniZone[] = [
   { id: 'longgang', name: '龙岗', districts: ['龙岗'], anchor: [1022, -136], bounds: [890, 1220, -225, 75], path: [[895, -92], [950, -114], [1000, -134], [1055, -129], [1110, -101], [1190, -64]] },
   { id: 'pingshan', name: '坪山', districts: ['坪山'], anchor: [1345, -37], bounds: [1175, 1510, -160, 175], path: lakeLoop(1342, -21, 76, 46) },
 ];
+const ZONE_ROUTES: Record<string, string[]> = {
+  bay: ['shenzhen-bay-main', 'dasha-workday', 'xili-east'],
+  futian: ['shenzhen-bay-main', 'futian-river', 'xinzhou-river'],
+  luohu: ['wutong-main', 'taojinshan-main', 'yinhu-main'],
+  yantian: ['yantian-port-dameisha', 'enshang'],
+  dapeng: ['kuichong-coast', 'xindong-road', 'haibei-bay'],
+  baoan: ['shiyan-lake-long', 'xiwan'],
+  guangming: ['guangming-lake', 'maozhou', 'shiyan-lake-long'],
+  longhua: ['guanlan', 'niuhu', 'yangtaishan'],
+  longgang: ['longgang-river', 'gankeng', 'dayun'],
+  pingshan: ['dashanbei', 'pingshan-loop', 'pingshan-university'],
+};
+export function zoneAt(point: Point) {
+  return ZONES.reduce((nearest, zone) => Math.hypot(point[0] - zone.anchor[0], point[1] - zone.anchor[1]) < Math.hypot(point[0] - nearest.anchor[0], point[1] - nearest.anchor[1]) ? zone : nearest, ZONES[0]);
+}
+export function relatedRoutesAt(point: Point) { return [...ZONE_ROUTES[zoneAt(point).id]]; }
 export function zoneForRoute(route: CyclingRoute) {
   const text = `${route.name} ${route.districts.join(' ')}`;
   if (/银湖/.test(route.name)) return ZONES[2];
@@ -99,8 +127,19 @@ export function buildMiniature() {
   const ground = new Part(), gardens = new Part(), streets = new Part();
   const labels: MiniLabel[] = [];
   const movements: MiniMovement[] = [];
+  const entities: MiniEntity[] = [];
+  function register(model: THREE.Group, title: string, point: Point, kind = '街坊', routeIds = relatedRoutesAt(point)) {
+    const entity: MiniEntity = {
+      id: `${title} ${String(entities.length + 1).padStart(2, '0')}`, kind, title, groups: [model], relatedRouteIds: routeIds, followable: false,
+      info: () => ({ status: kind === '地标' ? '深圳地标' : '街区示意', rows: [['片区', zoneAt(point).name], ['说明', kind === '地标' ? '地标模型，比例经过压缩' : '普通街坊为微缩场景编排'], ['附近路线', `${routeIds.length} 条`]] }),
+    };
+    model.userData.entity = entity;
+    entities.push(entity);
+    return model;
+  }
   const coast: Point[] = [[-80, 243], [3, 270], [92, 308], [181, 330], [251, 327], [336, 301], [387, 284], [471, 322], [550, 329], [638, 311], [722, 279], [805, 265], [909, 246], [1016, 234], [1110, 274], [1192, 321], [1305, 350], [1373, 368], [1450, 402], [1510, 342], [1570, 399], [1640, 457], [1700, 465], [1770, 507], [1845, 506], [1930, 445]];
-  ground.box(-80, -230, -5, 2010, 910, 4.4, 'gr', { lines: false });
+  // 海面位于 -.6，底座顶面低 .1，避免共面闪烁。
+  ground.box(-80, -230, -5, 2010, 910, 4.3, 'gr', { lines: false });
   flatPolygon(ground, [[-80, -230], [1930, -230], [1930, 680], [-80, 680]], 'sea', -.6);
   const land: Point[] = [[-80, -230], [1930, -230], ...coast.toReversed()];
   flatPolygon(ground, land, 'ground', 0);
@@ -258,7 +297,7 @@ export function buildMiniature() {
     linePath(streets, road, 5.5, 'road'); addedRoads++;
     for (let i = 0; i < 3; i++) {
       const hx = x + 6 + i * 23, hy = y + 13 + i % 2 * 3;
-      buildings.add(buildHouse({ x: hx, y: hy, w: 12 + i % 2, d: 10, h: 5.5 + i % 2 * 2, rh: 3, ridgeY: i % 2 === 0, dormer: i % 2 === 1, porch: true, door: 2, lotX0: hx - 3, lotX1: hx + 18, lotY1: y + depth - 3, garage: i === 0 ? 4 : 0, gardens }));
+      buildings.add(register(buildHouse({ x: hx, y: hy, w: 12 + i % 2, d: 10, h: 5.5 + i % 2 * 2, rh: 3, ridgeY: i % 2 === 0, dormer: i % 2 === 1, porch: true, door: 2, lotX0: hx - 3, lotX1: hx + 18, lotY1: y + depth - 3, garage: i === 0 ? 4 : 0, gardens }), `${name}民居`, [hx, hy]));
       addedHouses++;
       (coastal ? palm : tree)(gardens, hx + 16, y + depth - 1, 1.2, .2);
     }
@@ -296,11 +335,11 @@ export function buildMiniature() {
   // 市民中心前广场留出地标轮廓；小树阵与长椅让空地有明确用途。
   gardens.box(591, 111, .04, 55, 22, .13, 'gr');
   for (const x of [596, 608, 620, 632, 642]) { tree(gardens, x, 129, .9, .2); bench(gardens, x, 124, 's'); }
-  for (const [name, x, y, w, d, h] of flats) buildings.add(buildFlats(name, x, y, w, d, h, w / 2));
+  for (const [name, x, y, w, d, h] of flats) buildings.add(register(buildFlats(name, x, y, w, d, h, w / 2), name, [x, y]));
   for (const [x, y, ridgeY, dormer] of [[57, 225, false, true], [82, 226, true, false], [109, 223, false, true], [135, 242, true, false]] as [number, number, boolean, boolean][]) {
-    buildings.add(buildHouse({ x, y, w: 11, d: 9, h: 6, rh: 3, ridgeY, dormer, porch: true, door: 2, lotX0: x - 3, lotX1: x + 17, lotY1: y + 16, garage: 4, car: [x + 15, y + 13] }));
+    buildings.add(register(buildHouse({ x, y, w: 11, d: 9, h: 6, rh: 3, ridgeY, dormer, porch: true, door: 2, lotX0: x - 3, lotX1: x + 17, lotY1: y + 16, garage: 4, car: [x + 15, y + 13] }), '湾畔民居', [x, y]));
   }
-  buildings.add(buildVilla({ x: 183, y: 204, w: 30, bw: 23, bd: 15, pool: [185, 226, 10, 5], lotY1: 234, palms: [[181, 224], [211, 218]] }));
+  buildings.add(register(buildVilla({ x: 183, y: 204, w: 30, bw: 23, bd: 15, pool: [185, 226, 10, 5], lotY1: 234, palms: [[181, 224], [211, 218]] }), '深圳湾花园住宅', [183, 204]));
   const landmarks: [string, string, number, number, number][] = [
     ['spring-bamboo', '春笋', 225, 165, 100], ['cocoon', '春茧', 120, 81, 18], ['pingan', '平安金融中心', 635, 166, 135],
     ['civic-center', '市民中心', 620, 91, 19], ['kk100', '京基一百', 940, 131, 115], ['bay-bridge', '深圳湾大桥', 95, 375, 44],
@@ -309,7 +348,8 @@ export function buildMiniature() {
   for (const [kind, name, x, y, height] of landmarks) {
     const model = buildLandmark(kind); model.position.copy(W(x, y, 0));
     if (kind === 'bay-bridge') model.rotation.y = .91;
-    buildings.add(model); labels.push({ name, point: [x, y, height + 6], kind: 'landmark' });
+    const related = kind === 'spring-bamboo' || kind === 'cocoon' || kind === 'bay-bridge' ? ['shenzhen-bay-main', 'dasha-workday'] : kind === 'port-crane' || kind === 'beach-tower' ? ['yantian-port-dameisha'] : relatedRoutesAt([x, y]);
+    buildings.add(register(model, name, [x, y], '地标', related)); labels.push({ name, point: [x, y, height + 6], kind: 'landmark' });
   }
   for (const [x, y, name] of [[295, 231, '人才公园'], [438, 291, '红树林'], [340, 2, '西丽湖'], [120, -90, '石岩湖'], [950, -2, '深圳水库'], [812, 50, '银湖山'], [1065, 24, '梧桐山'], [1660, 300, '七娘山']] as [number, number, string][]) labels.push({ name, point: [x, y, name.includes('山') ? 95 : 5], kind: 'landmark' });
   labels.push({ name: '深圳湾', point: [310, 384, -.5], kind: 'water' }, { name: '大鹏湾', point: [1450, 515, -.5], kind: 'water' });
@@ -317,6 +357,30 @@ export function buildMiniature() {
   ground.box(1200, 291, 0, 88, 45, 2, 'gr');
   const cargo = new Part();
   for (let row = 0; row < 3; row++) for (let col = 0; col < 5; col++) boxInto(cargo, 1210 + col * 13, 299 + row * 4, 2, true, (row + col) % 3 === 0 ? 'kb' : 'nb');
-  group.add(ground.build('山海示意'), gardens.build('公园与街树'), streets.build('骑行道与城市街道'), buildings, cargo.build('盐田港货箱'));
-  return { group, labels, movements, roads: localRoads.length + ZONES.length + 1 + addedRoads, buildings: flats.length + landmarks.length + 5 + addedHouses };
+  // 合批的湖面与山体只解析各自的实际区域；不把整片背景当作一个可选对象。
+  const regions: { entity: MiniEntity; contains(point: THREE.Vector3): boolean }[] = [];
+  function region(title: string, x: number, y: number, rx: number, ry: number, height: number, routeIds: string[], mountain = false) {
+    const box = new THREE.Box3(W(x - rx, y - ry, 0), W(x + rx, y + ry, height));
+    const entity: MiniEntity = {
+      id: title, title, kind: mountain ? '山体' : '公园与湖岸', groups: [], relatedRouteIds: routeIds, followable: false, bbox: () => box.clone(),
+      info: () => ({ status: '地标示意', rows: [['片区', zoneAt([x, y]).name], ['说明', '山海比例经过压缩，以附近路线资料为准'], ['附近路线', `${routeIds.length} 条`]] }),
+    };
+    regions.push({ entity, contains: point => ((point.x - x) / rx) ** 2 + ((point.z - y) / ry) ** 2 <= 1 && point.y >= (mountain ? .5 : -.05) && point.y <= height + .3 });
+    entities.push(entity);
+  }
+  region('人才公园', 294, 230, 53, 34, 10, ['shenzhen-bay-main', 'dasha-workday', 'talent-park']);
+  region('红树林', 438, 290, 44, 16, 9, ['shenzhen-bay-main']);
+  region('西丽湖', 340, 2, 36, 19, .15, ['xili-east', 'dasha-workday']);
+  region('石岩湖', 120, -90, 61, 33, .15, ['shiyan-lake-long']);
+  region('光明湖', 438, -111, 76, 28, .15, ['guangming-lake']);
+  region('深圳水库', 960, -2, 51, 31, .15, ['wutong-main', 'taojinshan-main', 'reservoir-south']);
+  region('大山陂', 1342, -21, 62, 33, .15, ['dashanbei']);
+  region('银湖山', 812, 50, 47, 31, 43, ['yinhu-main'], true);
+  region('梧桐山', 1065, 24, 70, 52, 85, ['wutong-main', 'taojinshan-main'], true);
+  region('七娘山', 1675, 295, 86, 54, 95, ['xindong-road'], true);
+  const surfaces = [ground.build('山海示意'), gardens.build('公园与街树'), streets.build('骑行道与城市街道')];
+  const resolver: MiniEntity = { id: '背景命中解析', title: '背景', kind: '背景', groups: [], relatedRouteIds: [], followable: false, info: () => ({ status: '', rows: [] }), resolve: point => regions.find(region => region.contains(point))?.entity ?? null };
+  for (const surface of surfaces) surface.userData.entity = resolver;
+  group.add(...surfaces, buildings, cargo.build('盐田港货箱'));
+  return { group, labels, movements, entities, roads: localRoads.length + ZONES.length + 1 + addedRoads, buildings: flats.length + landmarks.length + 5 + addedHouses };
 }
