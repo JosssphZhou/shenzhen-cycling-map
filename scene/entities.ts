@@ -63,3 +63,17 @@ export class ExactPath implements ScenePath {
     return result;
   }
 }
+
+/** 沿原线段细分并采样地形，只增加高度，不偏移平面轨迹。 */
+export function terrainSegment(a: Point, b: Point, surfaceHeight: (point: Point) => number, step = .4, lift = .24): number[] {
+  const divisions = Math.max(1, Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / Math.max(.01, step)));
+  const positions: number[] = [];
+  const point = (index: number): Point => [a[0] + (b[0] - a[0]) * index / divisions, a[1] + (b[1] - a[1]) * index / divisions];
+  let previous = a;
+  for (let index = 1; index <= divisions; index++) {
+    const next = point(index);
+    positions.push(previous[0], surfaceHeight(previous) + lift, previous[1], next[0], surfaceHeight(next) + lift, next[1]);
+    previous = next;
+  }
+  return positions;
+}

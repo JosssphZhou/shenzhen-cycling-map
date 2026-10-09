@@ -254,10 +254,12 @@ export default function CyclingApp() {
           </>}
 
           {auxiliary === 'sources' && <>
-            <p className="cycling-copy">深圳海岸、河湖、道路和区界来自真实地理数据，经过制图简化。已核路线按原始经纬度落在地图上。立体地标采用符号大小，骑手、时间和天气为场景模拟。</p>
+            <p className="cycling-copy">深圳海岸、街区、河湖与山体来自真实地理数据，建筑细节随视野加载。已核路线按原始经纬度落在地图上。地标造型、骑手、时间和天气为场景示意。</p>
             <p className="cycling-copy">路线资料核对日期为 2026 年 10 月 8 日。临时封闭、现场标识和管理方最新通知优先。爬升没有可靠数据时保留待核。</p>
             <a className="source-link" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© 开放街道地图贡献者<small>海岸、河湖、道路、区界与真实轨迹 · 开放数据库许可</small></a>
-            <a className="source-link" href="https://docs.overturemaps.org/attribution/" target="_blank" rel="noreferrer">Overture Maps Foundation<small>地标建筑位置与轮廓 · 开放数据库许可</small></a>
+            <a className="source-link" href="https://docs.overturemaps.org/attribution/" target="_blank" rel="noreferrer">Overture Maps Foundation<small>城市建筑位置与轮廓 · 开放数据库许可</small></a>
+            <a className="source-link" href="https://doi.org/10.5281/zenodo.8174931" target="_blank" rel="noreferrer">东亚建筑矢量数据研究<small>Qian Shi 等研究者 · 知识共享署名4.0许可 · 已裁切、简化并划分显示层级</small></a>
+            <details className="cycling-details"><summary>山体高程数据与署名</summary><p>山体起伏使用哥白尼全球高程数据，经裁切和重采样，仅供地形观察，不用于计算路线爬升。</p><a href="https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM" target="_blank" rel="noreferrer">哥白尼高程数据来源与许可</a><p lang="en">produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved</p></details>
             <a className="source-link" href="https://github.com/Khalidabdi1/factory" target="_blank" rel="noreferrer">原作仓库<small>参考版本 148758ae · 图版、控件、渲染与交互来源</small></a>
             <p className="cycling-copy">保留原作对 ai-iso-skill（Tolga Cohce）与 Three.js 的致谢。本项目仅供本地预览，尚未公开发布。</p>
             <details className="cycling-details"><summary>路线公开资料 · {sourceItems.length} 项</summary>{sourceItems.map(source => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title}<small>{source.published ?? source.checked}</small></a>)}</details>

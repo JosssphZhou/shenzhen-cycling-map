@@ -14,7 +14,7 @@ export class CityDynamics {
   readonly entities: MovingEntity[] = [];
   private models: MovingModel[] = [];
   private clock = 80;
-  constructor(blueprints: MiniMovement[], places: { zoneAt(point: Point): { name: string }; relatedRoutesAt(point: Point): string[] }) {
+  constructor(blueprints: MiniMovement[], private places: { zoneAt(point: Point): { name: string }; relatedRoutesAt(point: Point): string[]; surfaceHeight?(point: Point): number }) {
     const prototypes: Partial<Record<MiniMovement['kind'], THREE.Group>> = {};
     const prototype = (kind: MiniMovement['kind']): THREE.Group => {
       if (prototypes[kind]) return prototypes[kind]!;
@@ -35,7 +35,7 @@ export class CityDynamics {
         const group = prototype(blueprint.kind).clone(true);
         if (blueprint.kind === 'bicycle' || blueprint.kind === 'person') group.scale.setScalar(blueprint.scale ?? 1.3);
         this.group.add(group);
-        const model: MovingModel = { group, path, distance: ((index + .31 * order) / blueprint.count % 1) * path.length, speed: blueprint.speed, height: blueprint.height || .15, kind: blueprint.kind, closed: blueprint.closed || false, s: 0, reverse: false };
+        const model: MovingModel = { group, path, distance: ((index + .31 * order) / blueprint.count % 1) * path.length, speed: blueprint.speed, height: blueprint.height ?? .15, kind: blueprint.kind, closed: blueprint.closed || false, s: 0, reverse: false };
         const title = `${titles[model.kind]} ${String(++counts[model.kind]).padStart(2, '0')}`;
         const entity: MovingEntity = {
           id: title, title, kind: titles[model.kind], groups: [group], followable: true,
@@ -66,7 +66,15 @@ export class CityDynamics {
       model.reverse = reverse;
       const position = model.path.at(model.s)!;
       const heading = position.h + (reverse ? Math.PI : 0);
-      pose(model.group, position.x, position.y, heading, model.height);
+      const surface = this.places.surfaceHeight?.([position.x, position.y]) ?? 0;
+      pose(model.group, position.x, position.y, heading, surface + model.height);
+      // 骑友朝坡面方向轻微俯仰，位置仍沿原始轨迹，不从高程生成爬升数据。
+      if (model.kind === 'bicycle' && this.places.surfaceHeight) {
+        const direction = reverse ? -1 : 1;
+        const front = model.path.at(model.s + direction * .5)!, back = model.path.at(model.s - direction * .5)!;
+        const distance = Math.hypot(front.x - back.x, front.y - back.y);
+        model.group.rotation.z = distance > 1e-6 ? Math.atan2(this.places.surfaceHeight([front.x, front.y]) - this.places.surfaceHeight([back.x, back.y]), distance) : 0;
+      }
       const screen = model.group.position.clone().project(camera);
       model.group.visible = Math.abs(screen.x) < 1.12 && Math.abs(screen.y) < 1.12 && (model.kind !== 'person' || zoom > .6);
       if (model.kind === 'person' && model.group.visible) {

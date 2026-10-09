@@ -15,6 +15,7 @@ const record = (value: unknown): value is Record<string, unknown> => !!value && 
 const coordinate = (value: unknown): boolean => Array.isArray(value) && value.length === 2 && value.every(item => typeof item === 'number' && Number.isFinite(item));
 const points = (value: unknown, minimum: number): boolean => Array.isArray(value) && value.length >= minimum && value.every(coordinate);
 const rings = (value: unknown): boolean => Array.isArray(value) && value.length > 0 && value.every(ring => points(ring, 3));
+const geoBounds = (value: unknown): boolean => Array.isArray(value) && value.length === 4 && value.every(item => typeof item === 'number' && Number.isFinite(item)) && value[0] < value[2] && value[1] < value[3];
 function validMap(value: unknown): value is ShenzhenMapData {
   if (!record(value) || value.version !== 1 || !Array.isArray(value.bounds) || value.bounds.length !== 4 || !value.bounds.every(item => typeof item === 'number' && Number.isFinite(item))) return false;
   if (!(value.bounds[0] < value.bounds[2] && value.bounds[1] < value.bounds[3]) || !coordinate(value.center)) return false;
@@ -22,6 +23,10 @@ function validMap(value: unknown): value is ShenzhenMapData {
   if (!Array.isArray(value.roads) || !value.roads.every(item => record(item) && typeof item.id === 'string' && typeof item.kind === 'string' && points(item.points, 2))) return false;
   if (!Array.isArray(value.districts) || !value.districts.every(item => record(item) && typeof item.name === 'string' && coordinate(item.center) && rings(item.rings))) return false;
   if (!Array.isArray(value.landmarks) || !value.landmarks.every(item => record(item) && typeof item.id === 'string' && typeof item.name === 'string' && ['spring-bamboo', 'cocoon', 'pingan', 'civic-center', 'kk100'].includes(String(item.model)) && coordinate(item.coordinate) && rings(item.rings) && (item.height === undefined || typeof item.height === 'number' && Number.isFinite(item.height)))) return false;
+  if (!Array.isArray(value.buildings) || !value.buildings.every(item => record(item) && typeof item.id === 'string' && rings(item.rings) && ['height', 'minHeight'].every(key => item[key] === undefined || typeof item[key] === 'number' && Number.isFinite(item[key])))) return false;
+  const terrain = value.terrain;
+  if (!record(terrain) || !geoBounds(terrain.bounds) || !Number.isInteger(terrain.width) || !Number.isInteger(terrain.height) || Number(terrain.width) < 2 || Number(terrain.height) < 2 || !Array.isArray(terrain.values) || terrain.values.length !== Number(terrain.width) * Number(terrain.height) || !terrain.values.every(item => typeof item === 'number' && Number.isFinite(item))) return false;
+  if (!Array.isArray(value.buildingTiles) || !value.buildingTiles.every(item => record(item) && typeof item.id === 'string' && typeof item.url === 'string' && item.url.startsWith('/data/tiles/') && !item.url.includes('..') && geoBounds(item.bounds) && Number.isInteger(item.count) && Number(item.count) >= 0)) return false;
   return Array.isArray(value.sources) && typeof value.generated === 'string' && record(value.statistics);
 }
 
@@ -40,7 +45,7 @@ export default function CityMap(props: CityMapProps) {
     const start = async () => {
       try {
         requests.current++;
-        const response = await fetch('/data/shenzhen-map.json', { signal: abort.signal });
+        const response = await fetch('/data/shenzhen-city.json', { signal: abort.signal });
         if (!response.ok) throw new Error(`地图请求失败：${response.status}`);
         const bytes = await response.arrayBuffer();
         const data: unknown = JSON.parse(new TextDecoder().decode(bytes));
@@ -64,7 +69,7 @@ export default function CityMap(props: CityMapProps) {
   }, [attempt]);
   useEffect(() => { engine.current?.setRoutes(props.routes); }, [props.routes]);
   return <>
-    <canvas ref={canvas} id="view" tabIndex={0} role="img" aria-label="深圳真实地理骑行地图。拖动平移，滚轮或双指缩放，点击对象查看详情。空格暂停，F跟随，T切换主题，N快进六小时。" />
+    <canvas ref={canvas} id="view" tabIndex={0} role="img" aria-label="深圳真实三维骑行地图。拖动平移，滚轮或双指缩放，点击对象查看详情。空格暂停，F跟随，T切换主题，N快进六小时。" />
     <div className="tag hover" id="tagHover" hidden />
     <div className="tag" id="tagSel" hidden />
     <div className="tag stop" id="tagStop" hidden />

@@ -1,0 +1,43 @@
+{
+  "mode": "CPU-only execution of actual TS geometry with recording Part; no browser, GPU, visual or performance claim",
+  "files": {
+    "scene/city-geometry.ts": "4faef651ad1db4544e584cfe0553481342fbf8d0988e57f1bb142ad2b02fd83c",
+    "scene/geographic-geometry.ts": "61dc95c801e5cce5792927120d3436f0e8005ff9bb7a8de283229cb644da8feb",
+    "scene/geographic.ts": "9bacdde91ac8c2013a8dc5b9aac8127d159e58ff222cc9f96cec33e907cbd526",
+    "scene/map-types.ts": "0a6813b9c1d75b948a71cfd7c930d6d932bacb805553c34c3fc2c683db888064"
+  },
+  "scale": {
+    "metersPerSceneUnit": 50,
+    "east1kmSceneUnits": 19.999999999991815,
+    "north1kmSceneUnits": 20.0000000000036
+  },
+  "terrain": {
+    "gridSamples": 37265,
+    "gridMaxErrorSceneUnits": 7.0325967271855916e-12,
+    "triangles": 78841,
+    "clippedHeightMaxErrorSceneUnits": 1.7763568394002505e-15,
+    "contours": 35343
+  },
+  "polygons": {
+    "checked": 15052,
+    "holes": 1108,
+    "maxAreaErrorSceneUnitsSquared": 5.587935447692871e-9,
+    "donutHoleExcluded": true
+  },
+  "buildings": {
+    "checked": 10624,
+    "withMinHeight": 12,
+    "sourceCounts": {
+      "统一示意": 9585,
+      "楼层估算": 456,
+      "来源高度": 583
+    },
+    "roofHeightMaxErrorSceneUnits": 1.7763568394002505e-15
+  },
+  "roadWidthSceneUnits": 0.24,
+  "routes": {
+    "preservedPlanarPoints": 5093,
+    "preservedSeparateSegments": 8,
+    "views": 14
+  }
+}

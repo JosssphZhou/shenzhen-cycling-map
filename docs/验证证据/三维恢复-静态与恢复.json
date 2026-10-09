@@ -1,0 +1,137 @@
+{
+  "failure": {
+    "city": {
+      "overviewBuildings": 10624,
+      "loadedBuildings": 0,
+      "loadedTiles": 0,
+      "visibleTiles": 0,
+      "wantedTiles": 60,
+      "pendingTiles": 0,
+      "tileErrors": 4,
+      "terrainClipped": false,
+      "layerRequests": 5,
+      "layerBytes": 0,
+      "layerError": "地形细节尚未载入，正在显示概览地形。"
+    },
+    "note": "地形细节尚未载入，正在显示概览地形。重试",
+    "selected": "shenzhen-bay-main",
+    "exportEnabled": true
+  },
+  "staticRecovered": {
+    "stats": {
+      "roads": 33928,
+      "buildings": 532241,
+      "drawCalls": 408,
+      "triangles": 6400042,
+      "fps": 10,
+      "lastRenderMs": 1.399999976158142,
+      "zoom": 5.330658968291897,
+      "fitZoom": 0.5720511842158214,
+      "target": [
+        -352.96803964700166,
+        0,
+        317.47624654799665
+      ],
+      "goal": null,
+      "selected": "shenzhen-bay-main",
+      "following": false,
+      "paused": false,
+      "hour": 10.668888888888851,
+      "weather": {
+        "kind": "clear",
+        "amount": 0
+      },
+      "animation": {
+        "visible": 4,
+        "total": 16
+      },
+      "mode": "深圳真实三维城市",
+      "geographicRequests": 1,
+      "mapBytes": 13953719,
+      "mapUrl": "/data/shenzhen-city.json",
+      "loadedTiles": 60,
+      "terrainClipped": true,
+      "city": {
+        "overviewBuildings": 10624,
+        "loadedBuildings": 37304,
+        "loadedTiles": 60,
+        "visibleTiles": 60,
+        "wantedTiles": 60,
+        "pendingTiles": 0,
+        "tileErrors": 0,
+        "terrainClipped": true,
+        "layerRequests": 66,
+        "layerBytes": 19753011,
+        "layerError": null
+      },
+      "mapLayers": {
+        "roads": 33928,
+        "buildings": 532241,
+        "overviewBuildings": 10624,
+        "loadedBuildings": 37304,
+        "loadedTiles": 60,
+        "visibleTiles": 60,
+        "wantedTiles": 60,
+        "pendingTiles": 0,
+        "tileErrors": 0,
+        "terrainClipped": true,
+        "layerRequests": 66,
+        "layerBytes": 19753011,
+        "layerError": null
+      }
+    },
+    "canvases": 1,
+    "noteHidden": true,
+    "height": {
+      "id": "wutong-main",
+      "points": 721,
+      "minimum": 0.2844582390245863,
+      "maximum": 2.624751019718689,
+      "lift": 0.24,
+      "samples": [
+        {
+          "coordinate": [
+            114.1431065,
+            22.5563302
+          ],
+          "ground": 0.33415383981634494,
+          "route": 0.5741538398163449
+        },
+        {
+          "coordinate": [
+            114.1617299,
+            22.5838968
+          ],
+          "ground": 0.8345436538686962,
+          "route": 1.0745436538686963
+        },
+        {
+          "coordinate": [
+            114.1961454,
+            22.5935897
+          ],
+          "ground": 2.624751019718689,
+          "route": 2.864751019718689
+        }
+      ]
+    }
+  },
+  "overview": {
+    "zoom": 0.5724121797909836,
+    "fitZoom": 0.5720511842158214,
+    "selected": "shenzhen-bay-main",
+    "city": {
+      "overviewBuildings": 10624,
+      "loadedBuildings": 0,
+      "loadedTiles": 48,
+      "visibleTiles": 0,
+      "wantedTiles": 0,
+      "pendingTiles": 0,
+      "tileErrors": 0,
+      "terrainClipped": true,
+      "layerRequests": 66,
+      "layerBytes": 19753011,
+      "layerError": null
+    }
+  }
+}

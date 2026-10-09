@@ -8,7 +8,8 @@ import { FRONT, W } from './factory/kernel/iso';
 import { LINE } from './factory/theme';
 import type { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 import { buildLandmark } from './landmarks';
-import { GeometryBatch, boundsOf, distanceToSegment, insideBounds, makeProjection, pointInPolygon } from './geographic-geometry';
+import { CityLayers } from './city-layers';
+import { GeometryBatch, MAP_SCALE, boundsOf, distanceToSegment, insideBounds, makeProjection, pointInPolygon } from './geographic-geometry';
 
 interface GeographicZone {
   id: string;
@@ -27,8 +28,23 @@ const districtKey = (name: string) => name.replace(/新区$|区$/g, '');
 
 /** 真实海岸、河湖、主路与区界；仅五个有源坐标的地标使用立体地图符号。 */
 export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute[]) {
-  const projection = makeProjection(data.center);
+  const projection = makeProjection(data.center, data.terrain);
   const project = projection.project;
+  const surfaceHeight = (point: Point) => projection.height(projection.coordinate(W(...point)));
+  const terrainStep = projection.terrainStep;
+  const onSurface = (point: Point, lift: number) => W(...point, surfaceHeight(point) + lift);
+  const drapedPath = (points: Point[], lift: number) => {
+    const result: THREE.Vector3[] = [];
+    for (let i = 0; i < points.length; i++) {
+      if (i > 0) {
+        const a = points[i - 1], b = points[i], distance = Math.hypot(b[0] - a[0], b[1] - a[1]);
+        const subdivisions = Math.ceil(distance / Math.max(.2, terrainStep / 2));
+        for (let part = 1; part < subdivisions; part++) result.push(onSurface([a[0] + (b[0] - a[0]) * part / subdivisions, a[1] + (b[1] - a[1]) * part / subdivisions], lift));
+      }
+      result.push(onSurface(points[i], lift));
+    }
+    return result;
+  };
   const group = new THREE.Group(); group.name = '深圳真实地理';
   const entities: MiniEntity[] = [];
   const movements: MiniMovement[] = [];
@@ -39,7 +55,7 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
   const routeEntities = new Map<string, MiniEntity>();
   const indexedRoutes: { route: CyclingRoute; paths: Point[][]; anchor: Point; bounds: Bounds }[] = [];
 
-  // 图层高度只为避免共面闪烁；没有读取、生成或推断任何地形高程。
+  // 海面与真实岸线保持原始平面，高程由裁海三角网覆盖；图层微小偏移只用于消除共面闪烁。
   const sea = new GeometryBatch();
   const seaBounds = rectangle(bounds, 15);
   sea.polygon('sea', [[W(seaBounds[0], seaBounds[2], -.12), W(seaBounds[1], seaBounds[2], -.12), W(seaBounds[1], seaBounds[3], -.12), W(seaBounds[0], seaBounds[3], -.12)]]);
@@ -68,7 +84,7 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
       zoneMap.get(district.name)!.anchor = project(district.center);
       zoneLabelArea.set(district.name, squaredArea(extent));
     }
-    for (const ring of rings) districtLines.path('detail', ring.map(point => W(...point, .12)), true);
+    for (const ring of rings) districtLines.path('detail', drapedPath(ring, .12), true);
   }
   group.add(districtLines.build('真实行政区界'));
   const zones = [...zoneMap.values()];
@@ -96,7 +112,7 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
       ...(exactPaths.length ? { route: () => ({ paths: exactPaths, s: 0, closed: false }) } : {}),
     };
     routeEntities.set(route.id, entity); entities.push(entity);
-    for (const path of paths) if (path.length > 1) movements.push({ kind: 'bicycle', path, count: 2, speed: .14, height: .25, closed: false, routeId: route.id });
+    for (const path of paths) if (path.length > 1) movements.push({ kind: 'bicycle', path, count: 2, speed: .14, height: .04, scale: .06, closed: false, routeId: route.id });
   }
 
   const routeDistance = (point: Point, item: typeof indexedRoutes[number]) => {
@@ -129,25 +145,27 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
 
   const water = new GeometryBatch();
   const indexedWater: { polygon: PolygonIndex; entity: MiniEntity }[] = [];
-  const waterLabels = new Map<string, { point: Point; area: number }>();
+  const waterLabels = new Map<string, { point: Point; area: number; height: number }>();
   for (const polygon of data.water) {
     const rings = polygon.rings.map(ring => ring.map(project));
     if (!rings[0]?.length) continue;
     const extent = boundsOf(rings[0]);
-    const flat = rings.map(ring => ring.map(point => W(...point, .055)));
+    const elevations = polygon.rings[0].map(coordinate => projection.height(coordinate)).sort((a, b) => a - b);
+    const waterHeight = (elevations[Math.floor(elevations.length / 3)] || 0) + MAP_SCALE;
+    const flat = rings.map(ring => ring.map(point => W(...point, waterHeight)));
     water.polygon('sea', flat);
-    for (const ring of rings) water.path('detail', ring.map(point => W(...point, .075)), true);
+    for (const ring of rings) water.path('detail', ring.map(point => W(...point, waterHeight + .02)), true);
     const anchor = midpoint(extent);
     const entity: MiniEntity = {
       id: `水体：${polygon.id}`, title: polygon.name || '河湖水域', kind: '河湖', groups: [], followable: false,
       relatedRouteIds: relatedRoutesAt(anchor),
       info: () => ({ status: '真实水体轮廓', rows: [['片区', zoneAt(anchor).name], ['资料', '开放街道地图'], ['骑行', '水边通行以具体路线资料为准']] }),
-      bbox: () => boxFor(extent, .1),
+      bbox: () => boxFor(extent, waterHeight + .1),
     };
     entities.push(entity);
     indexedWater.push({ polygon: { rings, bounds: extent, name: polygon.name || '' }, entity });
     const area = squaredArea(extent);
-    if (polygon.name && area > 250 && area > (waterLabels.get(polygon.name)?.area ?? 0)) waterLabels.set(polygon.name, { point: anchor, area });
+    if (polygon.name && area > 250 && area > (waterLabels.get(polygon.name)?.area ?? 0)) waterLabels.set(polygon.name, { point: anchor, area, height: waterHeight });
   }
   const waterGroup = water.build('真实河湖'); group.add(waterGroup);
   waterGroup.userData.entity = {
@@ -158,23 +176,18 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
     },
   };
 
-  const roads = new GeometryBatch();
-  for (const road of data.roads) {
-    if (road.points.length < 2) continue;
-    // 原作的细线材质；主路只提供定位，不等于允许公路车通行。
-    roads.path('detail', road.points.map(coordinate => projection.flat(coordinate, .1)));
-  }
-  group.add(roads.build('真实主路与慢行道路'));
+  const cityLayers = new CityLayers(data, projection, basePicker);
+  group.add(cityLayers.group);
   const routeLines = new GeometryBatch();
   const markers = new Part();
   for (const item of indexedRoutes) {
-    if (item.paths.length) for (const path of item.paths) routeLines.path('line', path.map(point => W(...point, .18)));
+    if (item.paths.length) for (const path of item.paths) routeLines.path('line', drapedPath(path, .18));
     else {
       const [x, y] = item.anchor;
       // 空心标记只表示有来源的候选地点，不意味着存在骑行轨迹。
       for (let i = 0; i < 12; i++) {
         const a = i / 12 * Math.PI * 2, b = (i + 1) / 12 * Math.PI * 2;
-        markers.seg('detail', W(x + Math.cos(a) * 1.6, y + Math.sin(a) * 1.6, .19), W(x + Math.cos(b) * 1.6, y + Math.sin(b) * 1.6, .19));
+        markers.seg('detail', onSurface([x + Math.cos(a) * 1.6, y + Math.sin(a) * 1.6], .19), onSurface([x + Math.cos(b) * 1.6, y + Math.sin(b) * 1.6], .19));
       }
     }
   }
@@ -206,13 +219,13 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
     });
     mapLabels.push({ group: label, visual, width, size, kind }); group.add(label);
   };
-  for (const zone of zones) makeLabel(zone.name, zone.anchor, .4, 'district');
-  for (const [name, label] of waterLabels) makeLabel(name, label.point, .4, 'water');
+  for (const zone of zones) makeLabel(zone.name, zone.anchor, surfaceHeight(zone.anchor) + .4, 'district');
+  for (const [name, label] of waterLabels) makeLabel(name, label.point, label.height + .4, 'water');
   for (const landmark of data.landmarks) {
     const location = project(landmark.coordinate);
     const model = buildLandmark(landmark.model);
     model.scale.setScalar(landmark.model === 'cocoon' ? .09 : .1);
-    model.position.copy(W(...location, .2));
+    model.position.copy(onSurface(location, .2));
     const entity: MiniEntity = {
       id: `地标：${landmark.id}`, title: landmark.name, kind: '深圳地标', groups: [model], followable: false,
       relatedRouteIds: relatedRoutesAt(location),
@@ -262,5 +275,5 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
     routeView('xili-east'), reservoir ? rectangle(reservoir.polygon.bounds, 15) : routeView('taojinshan-main'), routeView('yinhu-main'), routeView('wutong-main'),
   ];
   group.updateMatrixWorld(true);
-  return { group, entities, movements, roads: data.roads.length, buildings: data.landmarks.length, bounds, views, project, routePaths, routeBounds, zoneAt, relatedRoutesAt, updateLabels, dispose: () => routeMaterial.dispose() };
+  return { group, entities, movements, roads: data.roads.length, buildings: data.buildingTiles?.reduce((sum, tile) => sum + tile.count, 0) || data.buildings?.length || data.landmarks.length, bounds, views, project, routePaths, routeBounds, zoneAt, relatedRoutesAt, surfaceHeight, terrainStep, updateLabels, update: cityLayers.update.bind(cityLayers), stats: cityLayers.stats.bind(cityLayers), retryLayers: cityLayers.retryLayers.bind(cityLayers), dispose: () => { cityLayers.dispose(); routeMaterial.dispose(); } };
 }

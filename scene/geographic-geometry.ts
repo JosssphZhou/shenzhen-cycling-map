@@ -1,23 +1,51 @@
 import * as THREE from 'three';
 import type { Coordinate } from '@/lib/types';
+import type { TerrainGrid } from './map-types';
 import { Part } from './factory/kernel/part';
 import type { Point, Bounds } from './entities';
 
-/** 沿用归档 geography.ts 的局部米制投影；每场景单位为 50 米，北方为负 y。 */
-export function makeProjection(center: Coordinate) {
-  const eastScale = 111320 * Math.cos(center[1] * Math.PI / 180) * .02;
-  const northScale = 111132 * .02;
+export const MAP_SCALE = .02;
+
+/** 沿用归档 geography.ts 的米制投影及真实高程双线性插值，统一缩为每单位 50 米。 */
+export function makeProjection(center: Coordinate, terrain?: TerrainGrid) {
+  const eastScale = 111320 * Math.cos(center[1] * Math.PI / 180) * MAP_SCALE;
+  const northScale = 111132 * MAP_SCALE;
   const project = (coordinate: Coordinate): Point => [
     (coordinate[0] - center[0]) * eastScale,
     (center[1] - coordinate[1]) * northScale,
   ];
-  const point = (coordinate: Coordinate, elevation = 0) => {
+  const height = (coordinate: Coordinate) => {
+    if (!terrain) return 0;
+    const [west, south, east, north] = terrain.bounds;
+    const u = (coordinate[0] - west) / (east - west) * (terrain.width - 1);
+    const v = (north - coordinate[1]) / (north - south) * (terrain.height - 1);
+    if (u < 0 || v < 0 || u > terrain.width - 1 || v > terrain.height - 1) return 0;
+    const x = Math.min(terrain.width - 2, Math.floor(u)), y = Math.min(terrain.height - 2, Math.floor(v));
+    const tx = u - x, ty = v - y;
+    const at = (a: number, b: number) => Math.max(0, terrain.values[b * terrain.width + a] || 0);
+    return ((at(x, y) * (1 - tx) + at(x + 1, y) * tx) * (1 - ty)
+      + (at(x, y + 1) * (1 - tx) + at(x + 1, y + 1) * tx) * ty) * MAP_SCALE;
+  };
+  const flat = (coordinate: Coordinate, elevation = 0) => {
     const [x, y] = project(coordinate);
     return new THREE.Vector3(x, elevation, y);
   };
+  const point = (coordinate: Coordinate, lift = 0) => flat(coordinate, height(coordinate) + lift);
   const coordinate = (point: THREE.Vector3): Coordinate => [center[0] + point.x / eastScale, center[1] - point.z / northScale];
-  return { project, point, flat: point, coordinate };
+  const terrainStep = terrain ? Math.min((terrain.bounds[2] - terrain.bounds[0]) * eastScale / (terrain.width - 1), (terrain.bounds[3] - terrain.bounds[1]) * northScale / (terrain.height - 1)) : 5;
+  return { project, point, flat, height, coordinate, terrainStep };
 }
+export type Projection = ReturnType<typeof makeProjection>;
+
+/** 旧建筑和道路几何继续以米计算，完成后整体缩放，不改旧高度/路宽/等高线参数。 */
+export function meterProjection(projection: Projection) {
+  return {
+    height: (coordinate: Coordinate) => projection.height(coordinate) / MAP_SCALE,
+    point: (coordinate: Coordinate, lift = 0) => projection.point(coordinate, lift * MAP_SCALE).multiplyScalar(1 / MAP_SCALE),
+    flat: (coordinate: Coordinate, elevation = 0) => projection.flat(coordinate, elevation * MAP_SCALE).multiplyScalar(1 / MAP_SCALE),
+  };
+}
+export type MeterProjection = ReturnType<typeof meterProjection>;
 
 /** 直接沿用归档 GeometryBatch 的 Part 合批与 Earcut 孔洞三角化。 */
 export class GeometryBatch {
