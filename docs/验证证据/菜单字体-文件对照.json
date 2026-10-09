@@ -1,0 +1,1628 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-09T16:31:04.425262+00:00",
+  "scope": "字体文件、CSS 声明和加载配置的静态文件对照；未使用浏览器，未修改源码。",
+  "result": "所列文件与声明核对通过；不包含浏览器实际字形与视觉验收结论。",
+  "upstream": {
+    "root": "/Users/zhousefu/projects/参考/factory",
+    "gitCommit": "148758ae19a9b2201245485bf3619ab5e742f8f4",
+    "workingTreeClean": true,
+    "sources": [
+      {
+        "path": "app/globals.css",
+        "bytes": 6824,
+        "sha256": "a7ceeaf56c3b3a33b3e568e574592251d967a4fa54152b25ccf0c0be20c5b95e"
+      },
+      {
+        "path": "app/layout.tsx",
+        "bytes": 1191,
+        "sha256": "01f1eaa38d5b8562e75977f49b63a35d6f03a53dfba44317c250252dc5891dcf"
+      },
+      {
+        "path": "yard/kernel/part.ts",
+        "bytes": 8241,
+        "sha256": "fa632cb92a8b098faba7cffe30b6b34ba97819ceb090c15c10179a60dd10d642"
+      },
+      {
+        "path": "yard/index.ts",
+        "bytes": 24820,
+        "sha256": "0e705a66b094f43310a934185c234c03e7c3301be4cca29d362521db44aca034"
+      }
+    ],
+    "builtFontStylesheet": {
+      "path": ".next/dev/static/chunks/[next]_internal_font_google_dm_mono_164b4879_module_css_1igg3k2._.single.css",
+      "bytes": 2056,
+      "sha256": "b26041270c904942150dbe3ec1620bf9365795b2fbd464077b4aa105d3b4726a"
+    },
+    "builtFontManifest": {
+      "path": ".next/dev/server/next-font-manifest.json",
+      "bytes": 381,
+      "sha256": "691521144e38d3115d0a47f0bd247a2ab714fda09f7c167c298ffca89a589254"
+    }
+  },
+  "current": {
+    "root": "/Users/zhousefu/Documents/Codex/2026-10-08/http-localhost-3700-http-localhost-3700/outputs/深圳骑行地图",
+    "gitCommit": "8d54d743c2e1e8a4e8434ae5a37bb2399d5c4d74",
+    "note": "当前含协作中的未提交更改，以本报告各文件 SHA-256 为准。",
+    "sources": [
+      {
+        "path": "app/factory.css",
+        "bytes": 6824,
+        "sha256": "a7ceeaf56c3b3a33b3e568e574592251d967a4fa54152b25ccf0c0be20c5b95e"
+      },
+      {
+        "path": "app/globals.css",
+        "bytes": 2995,
+        "sha256": "93081143b012a36ccf9716c5680d541b680b664e4aea0553a9990bdd16f71943"
+      },
+      {
+        "path": "app/layout.tsx",
+        "bytes": 1038,
+        "sha256": "dafd634e564fa7eed5891ba1b67952c43d87d6c3138d39e03dacd2265857a463"
+      },
+      {
+        "path": "components/CityMap.tsx",
+        "bytes": 6947,
+        "sha256": "cb2aad6af93affc396009e7bb1a7815a0979722ed86faf46881dfa678ebad4de"
+      },
+      {
+        "path": "scene/factory/kernel/part.ts",
+        "bytes": 8241,
+        "sha256": "fa632cb92a8b098faba7cffe30b6b34ba97819ceb090c15c10179a60dd10d642"
+      }
+    ]
+  },
+  "fontFiles": [
+    {
+      "current": {
+        "path": "public/fonts/dm-mono-latin-400.woff2",
+        "bytes": 8688,
+        "sha256": "fd7521f3531a5ccfc655b25c4f22e9871df3ec141ad79bb27fde20d0df347b6d"
+      },
+      "upstream": {
+        "path": ".next/dev/static/media/36363bfb06833f56-s.p.38hmww4cj4vme.woff2",
+        "bytes": 8688,
+        "sha256": "fd7521f3531a5ccfc655b25c4f22e9871df3ec141ad79bb27fde20d0df347b6d"
+      },
+      "sameBytes": true,
+      "weight": 400,
+      "italic": false,
+      "cmapCodepoints": 221,
+      "hanCodepointsU3400ToU9FFF": 0,
+      "containsShenzhen": false
+    },
+    {
+      "current": {
+        "path": "public/fonts/dm-mono-latin-500.woff2",
+        "bytes": 8724,
+        "sha256": "0e263db52797086e763679c54f84ded8cc1249879bc27dca2bd5dd446f6d9f36"
+      },
+      "upstream": {
+        "path": ".next/dev/static/media/a73419dd2ba2d841-s.p.2yee423r7ahpo.woff2",
+        "bytes": 8724,
+        "sha256": "0e263db52797086e763679c54f84ded8cc1249879bc27dca2bd5dd446f6d9f36"
+      },
+      "sameBytes": true,
+      "weight": 500,
+      "italic": false,
+      "cmapCodepoints": 221,
+      "hanCodepointsU3400ToU9FFF": 0,
+      "containsShenzhen": false
+    },
+    {
+      "current": {
+        "path": "public/fonts/dm-mono-latin-ext-400.woff2",
+        "bytes": 5700,
+        "sha256": "7f8712cbbd64135f9e74a527475a97cd8c5a49d8e0a1de7a65f8e2c30c5214d9"
+      },
+      "upstream": {
+        "path": ".next/dev/static/media/b12e986493c137cf-s.p.2njitm-prmz2_.woff2",
+        "bytes": 5700,
+        "sha256": "7f8712cbbd64135f9e74a527475a97cd8c5a49d8e0a1de7a65f8e2c30c5214d9"
+      },
+      "sameBytes": true,
+      "weight": 400,
+      "italic": false,
+      "cmapCodepoints": 138,
+      "hanCodepointsU3400ToU9FFF": 0,
+      "containsShenzhen": false
+    },
+    {
+      "current": {
+        "path": "public/fonts/dm-mono-latin-ext-500.woff2",
+        "bytes": 5700,
+        "sha256": "e284f2a17fc9cca89cc30f496945bd9a2903010944a9469fb357924da21b6f6c"
+      },
+      "upstream": {
+        "path": ".next/dev/static/media/b2fa3ef4ca165ab4-s.p.12_ml6bnugnre.woff2",
+        "bytes": 5700,
+        "sha256": "e284f2a17fc9cca89cc30f496945bd9a2903010944a9469fb357924da21b6f6c"
+      },
+      "sameBytes": true,
+      "weight": 500,
+      "italic": false,
+      "cmapCodepoints": 138,
+      "hanCodepointsU3400ToU9FFF": 0,
+      "containsShenzhen": false
+    }
+  ],
+  "fontFaces": {
+    "sameFamilyWeightStyleDisplayUnicodeRangeAndFallbackMetrics": true,
+    "details": [
+      {
+        "upstreamLine": 2,
+        "currentLine": 4,
+        "sameNonUrlDeclarations": true,
+        "declarations": {
+          "font-family": "DM Mono",
+          "font-style": "normal",
+          "font-weight": "400",
+          "font-display": "swap",
+          "unicode-range": "U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+        },
+        "upstreamSource": "url(\"../media/b12e986493c137cf-s.p.2njitm-prmz2_.woff2\") format(\"woff2\")",
+        "currentSource": "url(\"/fonts/dm-mono-latin-ext-400.woff2\") format(\"woff2\")"
+      },
+      {
+        "upstreamLine": 11,
+        "currentLine": 13,
+        "sameNonUrlDeclarations": true,
+        "declarations": {
+          "font-family": "DM Mono",
+          "font-style": "normal",
+          "font-weight": "400",
+          "font-display": "swap",
+          "unicode-range": "U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+        },
+        "upstreamSource": "url(\"../media/36363bfb06833f56-s.p.38hmww4cj4vme.woff2\") format(\"woff2\")",
+        "currentSource": "url(\"/fonts/dm-mono-latin-400.woff2\") format(\"woff2\")"
+      },
+      {
+        "upstreamLine": 20,
+        "currentLine": 22,
+        "sameNonUrlDeclarations": true,
+        "declarations": {
+          "font-family": "DM Mono",
+          "font-style": "normal",
+          "font-weight": "500",
+          "font-display": "swap",
+          "unicode-range": "U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+        },
+        "upstreamSource": "url(\"../media/b2fa3ef4ca165ab4-s.p.12_ml6bnugnre.woff2\") format(\"woff2\")",
+        "currentSource": "url(\"/fonts/dm-mono-latin-ext-500.woff2\") format(\"woff2\")"
+      },
+      {
+        "upstreamLine": 29,
+        "currentLine": 31,
+        "sameNonUrlDeclarations": true,
+        "declarations": {
+          "font-family": "DM Mono",
+          "font-style": "normal",
+          "font-weight": "500",
+          "font-display": "swap",
+          "unicode-range": "U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+        },
+        "upstreamSource": "url(\"../media/a73419dd2ba2d841-s.p.2yee423r7ahpo.woff2\") format(\"woff2\")",
+        "currentSource": "url(\"/fonts/dm-mono-latin-500.woff2\") format(\"woff2\")"
+      },
+      {
+        "upstreamLine": 38,
+        "currentLine": 40,
+        "sameNonUrlDeclarations": true,
+        "declarations": {
+          "font-family": "DM Mono Fallback",
+          "ascent-override": "73.71%",
+          "descent-override": "23.03%",
+          "line-gap-override": "0.0%",
+          "size-adjust": "134.59%"
+        },
+        "upstreamSource": "local(Arial)",
+        "currentSource": "local(Arial)"
+      }
+    ]
+  },
+  "factoryStylesheet": {
+    "upstream": {
+      "path": "app/globals.css",
+      "bytes": 6824,
+      "sha256": "a7ceeaf56c3b3a33b3e568e574592251d967a4fa54152b25ccf0c0be20c5b95e"
+    },
+    "current": {
+      "path": "app/factory.css",
+      "bytes": 6824,
+      "sha256": "a7ceeaf56c3b3a33b3e568e574592251d967a4fa54152b25ccf0c0be20c5b95e"
+    },
+    "sameBytes": true,
+    "keyRuleCount": 33,
+    "keyRules": [
+      {
+        "selector": "body",
+        "context": [],
+        "upstreamLine": 42,
+        "currentLine": 42,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "margin",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "var(--page-bg)",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "font-family",
+            "value": "var(--mono)",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "13px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "16px",
+            "important": false
+          },
+          {
+            "property": "overflow",
+            "value": "hidden",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".cap",
+        "context": [],
+        "upstreamLine": 45,
+        "currentLine": 45,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "flex",
+            "important": false
+          },
+          {
+            "property": "flex-wrap",
+            "value": "wrap",
+            "important": false
+          },
+          {
+            "property": "justify-content",
+            "value": "space-between",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "4px 18px",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".14em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".cap .hi",
+        "context": [],
+        "upstreamLine": 46,
+        "currentLine": 46,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "none",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".05em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": "button",
+        "context": [],
+        "upstreamLine": 52,
+        "currentLine": 52,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "font",
+            "value": "inherit",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "var(--page-panel)",
+            "important": false
+          },
+          {
+            "property": "border",
+            "value": "1px solid var(--page-edge)",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "8px",
+            "important": false
+          },
+          {
+            "property": "cursor",
+            "value": "pointer",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": "button:hover",
+        "context": [],
+        "upstreamLine": 53,
+        "currentLine": 53,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "border-color",
+            "value": "var(--page-line)",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": "button:focus-visible",
+        "context": [],
+        "upstreamLine": 54,
+        "currentLine": 54,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "outline",
+            "value": "2px solid var(--page-live)",
+            "important": false
+          },
+          {
+            "property": "outline-offset",
+            "value": "2px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tools",
+        "context": [],
+        "upstreamLine": 55,
+        "currentLine": 55,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "position",
+            "value": "absolute",
+            "important": false
+          },
+          {
+            "property": "left",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "top",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "display",
+            "value": "grid",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "6px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tools button",
+        "context": [],
+        "upstreamLine": 56,
+        "currentLine": 56,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "width",
+            "value": "32px",
+            "important": false
+          },
+          {
+            "property": "height",
+            "value": "32px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "display",
+            "value": "grid",
+            "important": false
+          },
+          {
+            "property": "place-items",
+            "value": "center",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tools svg",
+        "context": [],
+        "upstreamLine": 57,
+        "currentLine": 57,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "width",
+            "value": "16px",
+            "important": false
+          },
+          {
+            "property": "height",
+            "value": "16px",
+            "important": false
+          },
+          {
+            "property": "fill",
+            "value": "none",
+            "important": false
+          },
+          {
+            "property": "stroke",
+            "value": "currentColor",
+            "important": false
+          },
+          {
+            "property": "stroke-width",
+            "value": "1.25",
+            "important": false
+          },
+          {
+            "property": "stroke-linecap",
+            "value": "round",
+            "important": false
+          },
+          {
+            "property": "stroke-linejoin",
+            "value": "round",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tools .gap",
+        "context": [],
+        "upstreamLine": 58,
+        "currentLine": 58,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "height",
+            "value": "4px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tag",
+        "context": [],
+        "upstreamLine": 59,
+        "currentLine": 59,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "position",
+            "value": "absolute",
+            "important": false
+          },
+          {
+            "property": "left",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "top",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "transform",
+            "value": "translate(-50%, calc(-100% - 10px))",
+            "important": false
+          },
+          {
+            "property": "pointer-events",
+            "value": "none",
+            "important": false
+          },
+          {
+            "property": "white-space",
+            "value": "nowrap",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "11px",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".1em",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "var(--page-panel)",
+            "important": false
+          },
+          {
+            "property": "border",
+            "value": "1px solid var(--page-live)",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "6px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "3px 8px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tag.hover",
+        "context": [],
+        "upstreamLine": 62,
+        "currentLine": 62,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "border-color",
+            "value": "var(--page-line)",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".tag.stop",
+        "context": [],
+        "upstreamLine": 63,
+        "currentLine": 63,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "border-style",
+            "value": "dashed",
+            "important": false
+          },
+          {
+            "property": "transform",
+            "value": "translate(-50%, calc(-100% - 6px))",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card",
+        "context": [],
+        "upstreamLine": 64,
+        "currentLine": 64,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "position",
+            "value": "absolute",
+            "important": false
+          },
+          {
+            "property": "top",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "right",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "width",
+            "value": "min(300px, calc(100% - 64px))",
+            "important": false
+          },
+          {
+            "property": "max-height",
+            "value": "calc(100% - 20px)",
+            "important": false
+          },
+          {
+            "property": "overflow",
+            "value": "auto",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "var(--page-panel)",
+            "important": false
+          },
+          {
+            "property": "border",
+            "value": "1px solid var(--page-edge)",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "14px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "12px 16px 14px",
+            "important": false
+          },
+          {
+            "property": "display",
+            "value": "grid",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "10px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .head",
+        "context": [],
+        "upstreamLine": 66,
+        "currentLine": 66,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "flex",
+            "important": false
+          },
+          {
+            "property": "justify-content",
+            "value": "space-between",
+            "important": false
+          },
+          {
+            "property": "align-items",
+            "value": "center",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "8px",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "11px",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".14em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .head button",
+        "context": [],
+        "upstreamLine": 67,
+        "currentLine": 67,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "width",
+            "value": "26px",
+            "important": false
+          },
+          {
+            "property": "height",
+            "value": "26px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "display",
+            "value": "grid",
+            "important": false
+          },
+          {
+            "property": "place-items",
+            "value": "center",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "15px",
+            "important": false
+          },
+          {
+            "property": "line-height",
+            "value": "1",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .title",
+        "context": [],
+        "upstreamLine": 68,
+        "currentLine": 68,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "20px",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".04em",
+            "important": false
+          },
+          {
+            "property": "line-height",
+            "value": "1.1",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .status",
+        "context": [],
+        "upstreamLine": 69,
+        "currentLine": 69,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "justify-self",
+            "value": "start",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "border",
+            "value": "1px solid var(--page-line)",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "999px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "2px 10px",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "12px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card dl",
+        "context": [],
+        "upstreamLine": 70,
+        "currentLine": 70,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "margin",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "display",
+            "value": "grid",
+            "important": false
+          },
+          {
+            "property": "grid-template-columns",
+            "value": "auto 1fr",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card dt, .card dd",
+        "context": [],
+        "upstreamLine": 71,
+        "currentLine": 71,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "margin",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "6px 0",
+            "important": false
+          },
+          {
+            "property": "border-top",
+            "value": "1px solid var(--page-edge)",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "12px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card dd",
+        "context": [],
+        "upstreamLine": 72,
+        "currentLine": 72,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "text-align",
+            "value": "right",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "padding-left",
+            "value": "12px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .bar",
+        "context": [],
+        "upstreamLine": 73,
+        "currentLine": 73,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "grid",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "5px",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "11px",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".12em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .bar div",
+        "context": [],
+        "upstreamLine": 74,
+        "currentLine": 74,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "height",
+            "value": "6px",
+            "important": false
+          },
+          {
+            "property": "border",
+            "value": "1px solid var(--page-line)",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "3px",
+            "important": false
+          },
+          {
+            "property": "overflow",
+            "value": "hidden",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .bar i",
+        "context": [],
+        "upstreamLine": 75,
+        "currentLine": 75,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "block",
+            "important": false
+          },
+          {
+            "property": "height",
+            "value": "100%",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "var(--page-live)",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .foot",
+        "context": [],
+        "upstreamLine": 76,
+        "currentLine": 76,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "flex",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "8px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .foot button",
+        "context": [],
+        "upstreamLine": 77,
+        "currentLine": 77,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "padding",
+            "value": "5px 12px",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "12px",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".12em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .foot button[aria-pressed=\"true\"]",
+        "context": [],
+        "upstreamLine": 78,
+        "currentLine": 78,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "border-color",
+            "value": "var(--page-live)",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".sites",
+        "context": [],
+        "upstreamLine": 79,
+        "currentLine": 79,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "flex",
+            "important": false
+          },
+          {
+            "property": "flex-wrap",
+            "value": "wrap",
+            "important": false
+          },
+          {
+            "property": "gap",
+            "value": "4px 16px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".sites button",
+        "context": [],
+        "upstreamLine": 80,
+        "currentLine": 80,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "border",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "none",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "3px",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".14em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".sites button:hover, .sites button[aria-current=\"true\"]",
+        "context": [],
+        "upstreamLine": 81,
+        "currentLine": 81,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".sites button[aria-current=\"true\"]",
+        "context": [],
+        "upstreamLine": 82,
+        "currentLine": 82,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "text-decoration",
+            "value": "underline",
+            "important": false
+          },
+          {
+            "property": "text-underline-offset",
+            "value": "5px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": "body",
+        "context": [
+          "@media (max-width:600px)"
+        ],
+        "upstreamLine": 88,
+        "currentLine": 88,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "padding-block",
+            "value": "10px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card",
+        "context": [
+          "@media (max-width:600px)"
+        ],
+        "upstreamLine": 90,
+        "currentLine": 90,
+        "sameDeclarations": true,
+        "declarations": [
+          {
+            "property": "top",
+            "value": "auto",
+            "important": false
+          },
+          {
+            "property": "bottom",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "left",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "right",
+            "value": "10px",
+            "important": false
+          },
+          {
+            "property": "width",
+            "value": "auto",
+            "important": false
+          },
+          {
+            "property": "max-height",
+            "value": "55%",
+            "important": false
+          }
+        ]
+      }
+    ]
+  },
+  "fontStack": {
+    "value": "var(--font-dm-mono),ui-monospace,\"SF Mono\",Menlo,Consolas,monospace",
+    "upstreamLocation": {
+      "path": "app/globals.css",
+      "line": 9
+    },
+    "currentInheritedLocation": {
+      "path": "app/factory.css",
+      "line": 9
+    },
+    "currentImportLocation": {
+      "path": "app/globals.css",
+      "line": 1
+    },
+    "currentVariableLocation": {
+      "path": "app/globals.css",
+      "line": 50
+    },
+    "currentGlobalsHasMonoOverride": false,
+    "currentGlobalsHasExtraPingFangOrYaHeiFallback": false,
+    "sameFinalDeclaredStack": true,
+    "language": {
+      "path": "app/layout.tsx",
+      "line": 12,
+      "value": "zh-CN",
+      "preserved": true
+    }
+  },
+  "preloads": {
+    "currentLocation": {
+      "path": "app/layout.tsx",
+      "startLine": 15,
+      "endLine": 16
+    },
+    "currentCount": 4,
+    "urls": [
+      "/fonts/dm-mono-latin-400.woff2",
+      "/fonts/dm-mono-latin-ext-400.woff2",
+      "/fonts/dm-mono-latin-500.woff2",
+      "/fonts/dm-mono-latin-ext-500.woff2"
+    ],
+    "attributes": {
+      "rel": "preload",
+      "as": "font",
+      "type": "font/woff2",
+      "crossOrigin": "anonymous"
+    },
+    "upstreamDefinitionLocation": {
+      "path": "app/layout.tsx",
+      "line": 7
+    },
+    "upstreamManifestFiles": [
+      "static/media/b12e986493c137cf-s.p.2njitm-prmz2_.woff2",
+      "static/media/36363bfb06833f56-s.p.38hmww4cj4vme.woff2",
+      "static/media/b2fa3ef4ca165ab4-s.p.12_ml6bnugnre.woff2",
+      "static/media/a73419dd2ba2d841-s.p.2yee423r7ahpo.woff2"
+    ],
+    "sameFontBytesAsUpstreamPreloadSet": true,
+    "runtimeNetworkNotChecked": true
+  },
+  "canvasText": {
+    "samePartBytes": true,
+    "font": "500 64px var(--mono) 的计算值",
+    "currentFontWaitLocation": {
+      "path": "components/CityMap.tsx",
+      "line": 56
+    },
+    "upstreamFontWaitLocation": {
+      "path": "yard/index.ts",
+      "line": 63
+    },
+    "timeoutMilliseconds": 2500,
+    "notes": "确认代码在创建场景前请求相同字体字重；本报告未模拟慢速网络或检查实际 Canvas 纹理。"
+  },
+  "currentAdditionalCssRules": {
+    "path": "app/globals.css",
+    "rules": [
+      {
+        "selector": ".card dd",
+        "context": [],
+        "line": 53,
+        "declarations": [
+          {
+            "property": "min-width",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "overflow-wrap",
+            "value": "anywhere",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .menu-link",
+        "context": [],
+        "line": 54,
+        "declarations": [
+          {
+            "property": "border",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "none",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "3px",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "text-align",
+            "value": "inherit",
+            "important": false
+          },
+          {
+            "property": "text-transform",
+            "value": "uppercase",
+            "important": false
+          },
+          {
+            "property": "letter-spacing",
+            "value": ".14em",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card .menu-link:hover",
+        "context": [],
+        "line": 55,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "text-decoration",
+            "value": "underline",
+            "important": false
+          },
+          {
+            "property": "text-underline-offset",
+            "value": "5px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card input, .card select",
+        "context": [],
+        "line": 56,
+        "declarations": [
+          {
+            "property": "min-width",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "width",
+            "value": "100%",
+            "important": false
+          },
+          {
+            "property": "max-width",
+            "value": "100%",
+            "important": false
+          },
+          {
+            "property": "font",
+            "value": "inherit",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "background",
+            "value": "var(--page-panel)",
+            "important": false
+          },
+          {
+            "property": "border",
+            "value": "1px solid var(--page-edge)",
+            "important": false
+          },
+          {
+            "property": "border-radius",
+            "value": "8px",
+            "important": false
+          },
+          {
+            "property": "padding",
+            "value": "5px 12px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card input[type=\"checkbox\"]",
+        "context": [],
+        "line": 57,
+        "declarations": [
+          {
+            "property": "width",
+            "value": "auto",
+            "important": false
+          },
+          {
+            "property": "margin",
+            "value": "0",
+            "important": false
+          },
+          {
+            "property": "accent-color",
+            "value": "var(--page-live)",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card input:focus-visible, .card select:focus-visible, .card a:focus-visible",
+        "context": [],
+        "line": 58,
+        "declarations": [
+          {
+            "property": "outline",
+            "value": "2px solid var(--page-live)",
+            "important": false
+          },
+          {
+            "property": "outline-offset",
+            "value": "2px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card a",
+        "context": [],
+        "line": 59,
+        "declarations": [
+          {
+            "property": "color",
+            "value": "var(--page-ink-hi)",
+            "important": false
+          },
+          {
+            "property": "text-underline-offset",
+            "value": "5px",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card small",
+        "context": [],
+        "line": 60,
+        "declarations": [
+          {
+            "property": "display",
+            "value": "block",
+            "important": false
+          },
+          {
+            "property": "color",
+            "value": "var(--page-ink)",
+            "important": false
+          },
+          {
+            "property": "font-size",
+            "value": "inherit",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".card button:disabled",
+        "context": [],
+        "line": 61,
+        "declarations": [
+          {
+            "property": "opacity",
+            "value": ".45",
+            "important": false
+          },
+          {
+            "property": "cursor",
+            "value": "not-allowed",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".note",
+        "context": [],
+        "line": 62,
+        "declarations": [
+          {
+            "property": "pointer-events",
+            "value": "none",
+            "important": false
+          }
+        ]
+      },
+      {
+        "selector": ".note button",
+        "context": [],
+        "line": 63,
+        "declarations": [
+          {
+            "property": "pointer-events",
+            "value": "auto",
+            "important": false
+          }
+        ]
+      }
+    ],
+    "notes": "这些是中文资料与表单的新增规则，不属于上游字节对照。原 .card dd 只新增最小宽度和换行；新增表单使用 font:inherit，small 使用 font-size:inherit。 后续追加的 .note 指针事件规则不改变字体。"
+  },
+  "limitations": [
+    "四个 DM Mono 字库的 U+3400 至 U+9FFF 汉字数量均为 0；中文仍由浏览器和系统字体补足。",
+    "字体栈、资源和声明一致不等于已验证所有平台的中文字形一致。",
+    "未浏览页面，未读取 computed style 或 rendered fonts，未作截图判断。"
+  ]
+}

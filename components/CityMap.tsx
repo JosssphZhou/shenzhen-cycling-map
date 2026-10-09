@@ -51,6 +51,12 @@ export default function CityMap(props: CityMapProps) {
         const data: unknown = JSON.parse(new TextDecoder().decode(bytes));
         if (!validMap(data)) throw new Error('地图数据格式不完整');
         if (cancelled || !canvas.current) return;
+        // 与上游 yard/index.ts 一样，先等文字纹理使用的字体；超时仍可继续显示地图。
+        await Promise.race([
+          document.fonts.load(`500 64px ${getComputedStyle(document.documentElement).getPropertyValue('--mono').trim()}`),
+          new Promise(resolve => setTimeout(resolve, 2500)),
+        ]).catch(() => {});
+        if (cancelled || abort.signal.aborted || !canvas.current) return;
         mounted = new CityEngine(canvas.current, stage, snapshot => latest.current.onSnapshot(snapshot), data, latest.current.routes, { requests: requests.current, bytes: bytes.byteLength });
         engine.current = mounted; latest.current.onController(mounted);
         if (new URLSearchParams(window.location.search).has('debug')) (window as unknown as { shenzhenMap?: unknown }).shenzhenMap = mounted.debug();
@@ -68,11 +74,5 @@ export default function CityMap(props: CityMapProps) {
     return () => { cancelled = true; abort.abort(); mounted?.dispose(); engine.current = null; latest.current.onController(null); delete (window as unknown as { shenzhenMap?: unknown }).shenzhenMap; };
   }, [attempt]);
   useEffect(() => { engine.current?.setRoutes(props.routes); }, [props.routes]);
-  return <>
-    <canvas ref={canvas} id="view" tabIndex={0} role="img" aria-label="深圳真实三维骑行地图。拖动平移，滚轮或双指缩放，点击对象查看详情。空格暂停，F跟随，T切换主题，N快进六小时。" />
-    <div className="tag hover" id="tagHover" hidden />
-    <div className="tag" id="tagSel" hidden />
-    <div className="tag stop" id="tagStop" hidden />
-    <p className="note" id="note" hidden />
-  </>;
+  return <canvas ref={canvas} id="view" tabIndex={0} role="img" aria-label="深圳真实三维骑行地图。拖动平移，滚轮或双指缩放，点击对象查看详情。空格暂停，F跟随，T切换主题，N快进六小时。" />;
 }

@@ -10,7 +10,11 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="zh-CN" suppressHydrationWarning>
-    <head><script dangerouslySetInnerHTML={{ __html: restoreTheme }} /></head>
+    <head>
+      <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
+      {['latin-400', 'latin-ext-400', 'latin-500', 'latin-ext-500'].map(face =>
+        <link key={face} rel="preload" href={`/fonts/dm-mono-${face}.woff2`} as="font" type="font/woff2" crossOrigin="anonymous" />)}
+    </head>
     <body>{children}</body>
   </html>;
 }

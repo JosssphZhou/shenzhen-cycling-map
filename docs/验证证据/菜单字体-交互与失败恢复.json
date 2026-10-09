@@ -1,0 +1,44 @@
+{
+  "filters": {
+    "empty": "0 条符合条件",
+    "reset": "41 条符合条件"
+  },
+  "failure": {
+    "reached": {
+      "page": "more",
+      "notice": "地图暂时无法载入，仍可从路线集查看与导出路线。重新载入",
+      "card": "深圳湾 · 东角头至红树林"
+    },
+    "exportEnabled": true
+  },
+  "recovered": {
+    "canvas": 1,
+    "selected": "shenzhen-bay-main",
+    "page": "route"
+  },
+  "mobile": {
+    "p1": {
+      "viewport": [
+        429,
+        928
+      ],
+      "scrollWidth": 429,
+      "cardWidth": 347,
+      "bottomGap": 10,
+      "maxHeight": "55%",
+      "font": "\"DM Mono\", \"DM Mono Fallback\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace"
+    },
+    "p2": {
+      "viewport": [
+        429,
+        928
+      ],
+      "scrollWidth": 429,
+      "cardWidth": 347,
+      "bottomGap": 10,
+      "maxHeight": "55%",
+      "font": "\"DM Mono\", \"DM Mono Fallback\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace"
+    },
+    "limitation": "截图捕获超时，备用捕获为非页面图像；手机尺寸的后续输入未到达预期控件，未记为手机交互通过。这里只记录DOM布局。"
+  }
+}

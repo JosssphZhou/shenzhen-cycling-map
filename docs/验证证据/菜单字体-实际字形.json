@@ -1,0 +1,41 @@
+{
+  "note": "两页以同一中文与拉丁文字探针核对实际渲染字体，探针已移除",
+  "p1": {
+    "font": "13px \"DM Mono\", \"DM Mono Fallback\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace",
+    "fonts": {
+      "fonts": [
+        {
+          "familyName": "PingFang SC",
+          "postScriptName": "PingFangSC-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "DM Mono",
+          "postScriptName": "DMMono-Regular",
+          "isCustomFont": true,
+          "glyphCount": 13
+        }
+      ]
+    }
+  },
+  "p2": {
+    "font": "13px \"DM Mono\", \"DM Mono Fallback\", ui-monospace, \"SF Mono\", Menlo, Consolas, monospace",
+    "fonts": {
+      "fonts": [
+        {
+          "familyName": "PingFang SC",
+          "postScriptName": "PingFangSC-Regular",
+          "isCustomFont": false,
+          "glyphCount": 4
+        },
+        {
+          "familyName": "DM Mono",
+          "postScriptName": "DMMono-Regular",
+          "isCustomFont": true,
+          "glyphCount": 13
+        }
+      ]
+    }
+  }
+}

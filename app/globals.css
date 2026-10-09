@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./fonts/dm-mono-latin-ext-400.woff2") format("woff2");
+  src: url("/fonts/dm-mono-latin-ext-400.woff2") format("woff2");
   unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -15,7 +15,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("./fonts/dm-mono-latin-400.woff2") format("woff2");
+  src: url("/fonts/dm-mono-latin-400.woff2") format("woff2");
   unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -24,7 +24,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("./fonts/dm-mono-latin-ext-500.woff2") format("woff2");
+  src: url("/fonts/dm-mono-latin-ext-500.woff2") format("woff2");
   unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -33,7 +33,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("./fonts/dm-mono-latin-500.woff2") format("woff2");
+  src: url("/fonts/dm-mono-latin-500.woff2") format("woff2");
   unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -48,37 +48,16 @@
 
 :root {
   --font-dm-mono:"DM Mono","DM Mono Fallback";
-  --mono:var(--font-dm-mono),ui-monospace,"SF Mono",Menlo,Consolas,"PingFang SC","Microsoft YaHei",monospace;
 }
-/* 只有中文骑行资料在原对象卡内部需要下面这些补充样式。 */
-.cap .route-entry { border:0; background:none; padding:0; border-radius:3px; color:inherit; letter-spacing:inherit; }
-.cap .route-entry:hover { text-decoration:underline; text-underline-offset:5px; }
-.card[data-page="route"] > .foot, .card[data-page="routes"] > .foot { flex-wrap:wrap; }
-.card .cycling-copy { margin:0; font-size:12px; line-height:1.65; }
-.card .cycling-copy + .cycling-copy { margin-top:0; }
-.card .cycling-details { border-top:1px solid var(--page-edge); padding-top:8px; font-size:12px; line-height:1.65; }
-.card .cycling-details summary { cursor:pointer; color:var(--page-ink-hi); }
-.card .cycling-details p { margin:8px 0 0; }
-.card .cycling-details ul { padding-left:16px; margin:8px 0 0; }
-.card .cycling-details li + li { margin-top:6px; }
-.card .cycling-details a, .card .source-link { display:block; color:var(--page-ink-hi); text-underline-offset:3px; overflow-wrap:anywhere; }
-.card .cycling-details a { margin-top:8px; }
-.card small { display:block; color:var(--page-ink); font-size:10px; line-height:1.5; }
-.card input, .card select { min-width:0; max-width:100%; font:inherit; color:var(--page-ink-hi); background:var(--page-panel); border:1px solid var(--page-edge); border-radius:5px; padding:5px 6px; }
-.card input:focus-visible, .card select:focus-visible, .card summary:focus-visible, .card a:focus-visible { outline:2px solid var(--page-live); outline-offset:2px; }
+/* 骑行资料使用原对象卡的 dl 与 foot；新增表单继承同一字体和控件规格。 */
+.card dd { min-width:0; overflow-wrap:anywhere; }
+.card .menu-link { border:0; background:none; padding:0; border-radius:3px; color:var(--page-ink); text-align:inherit; text-transform:uppercase; letter-spacing:.14em; }
+.card .menu-link:hover { color:var(--page-ink-hi); text-decoration:underline; text-underline-offset:5px; }
+.card input, .card select { min-width:0; width:100%; max-width:100%; font:inherit; color:var(--page-ink-hi); background:var(--page-panel); border:1px solid var(--page-edge); border-radius:8px; padding:5px 12px; }
+.card input[type="checkbox"] { width:auto; margin:0; accent-color:var(--page-live); }
+.card input:focus-visible, .card select:focus-visible, .card a:focus-visible { outline:2px solid var(--page-live); outline-offset:2px; }
+.card a { color:var(--page-ink-hi); text-underline-offset:5px; }
+.card small { display:block; color:var(--page-ink); font-size:inherit; }
 .card button:disabled { opacity:.45; cursor:not-allowed; }
-.card .route-filters { display:grid; gap:8px; padding-top:8px; }
-.card .route-filters > label { display:grid; gap:4px; }
-.card .route-filters input[type="search"] { width:100%; }
-.card .route-filters .track-filter { display:flex; align-items:center; gap:6px; }
-.card .track-filter input { margin:0; accent-color:var(--page-live); }
-.card .route-list { display:grid; }
-.card .route-item { display:grid; gap:4px; text-align:left; padding:8px 0; border:0; border-top:1px solid var(--page-edge); border-radius:0; background:none; font-size:12px; line-height:1.5; }
-.card .route-item > span { color:var(--page-ink-hi); }
-.card .route-item:hover > span { text-decoration:underline; text-underline-offset:3px; }
-.card .day-select { display:flex; justify-content:space-between; align-items:center; gap:6px; font-size:12px; }
-.card .day-select select { max-width:65%; }
-.card .share-field { display:grid; gap:5px; font-size:12px; }
-.card .share-field input { width:100%; }
-.card .source-link { border-top:1px solid var(--page-edge); padding-top:8px; font-size:12px; line-height:1.5; }
-.card .card-feedback { color:var(--page-ink-hi); }
+.note { pointer-events:none; }
+.note button { pointer-events:auto; }
