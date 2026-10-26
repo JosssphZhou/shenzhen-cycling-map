@@ -7,7 +7,7 @@ const { gzipSync } = require('node:zlib');
 const { pathToFileURL } = require('node:url');
 const { createAssetHandler } = require('./assets.cjs');
 
-async function fixture(t) {
+async function fixture(t, packaged = false) {
   const directory = await mkdtemp(join(tmpdir(), 'shenzhen-desktop-assets-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
   const root = join(directory, 'site');
@@ -20,11 +20,15 @@ async function fixture(t) {
   await writeFile(join(root, 'data', 'city.json.gz'), gzipSync(data));
   const protectedFile = join(directory, 'protected.txt');
   await writeFile(protectedFile, '此文件不得通过本地协议读出');
-  return { handle: createAssetHandler(root), html, data, protectedFile };
+  const manifest = packaged ? { assets: [
+    { path: 'prototype/delivery.html', storedPath: 'prototype/delivery.html.gz', storage: 'gzip', logicalBytes: Buffer.byteLength(html), sha256: 'fixture-html' },
+    { path: 'data/city.json', storedPath: 'data/city.json.gz', storage: 'gzip', logicalBytes: Buffer.byteLength(data), sha256: 'fixture-json' },
+  ] } : undefined;
+  return { handle: createAssetHandler(root, { manifest }), html, data, protectedFile };
 }
 
 test('压缩资源能按原地址读取，同名RSC目录不会盖住页面', async t => {
-  const { handle, html, data } = await fixture(t);
+  const { handle, html, data } = await fixture(t, true);
   const page = await handle(new Request('shenzhen://app/prototype/delivery?mode=demo'));
   assert.equal(page.status, 200);
   assert.match(page.headers.get('content-type'), /^text\/html/);

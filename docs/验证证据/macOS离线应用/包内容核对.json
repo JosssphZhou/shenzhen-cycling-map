@@ -1,0 +1,37 @@
+{
+  "sourceRevision": "477f71e708baf15d5729ecd2bdea88276bfb0615",
+  "entry": "shenzhen://app/prototype/delivery",
+  "resources": {
+    "logicalFiles": 1783,
+    "logicalBytes": 363323755,
+    "storedFiles": 1783,
+    "storedBytes": 114221322,
+    "gzipFiles": 1729
+  },
+  "package": {
+    "name": "shenzhen-delivery-desktop",
+    "productName": "深圳骑行地图",
+    "version": "1.0.0",
+    "main": "main.cjs",
+    "description": "基于真实地理的深圳骑行地图，面向公路车骑前选线"
+  },
+  "code": [
+    {
+      "file": "main.cjs",
+      "sourceMatches": true,
+      "sha256": "c4d50302a792b3fd86a9860ba0aa356cc4bba7f18a0ff9bbbd725c5364ef2d19"
+    },
+    {
+      "file": "assets.cjs",
+      "sourceMatches": true,
+      "sha256": "9b72ce85e40e0adf7afe2ba50464dca19088fc5c5eeb1abbfe642b3cd8fd2cf2"
+    },
+    {
+      "file": "preload.cjs",
+      "sourceMatches": true,
+      "sha256": "34ef0fed6ad847b2e226bcbffee0bb7e5be944568437d2dbd3d75b1e194313ea"
+    }
+  ],
+  "noticeIncluded": true,
+  "nodeModulesIncluded": false
+}

@@ -1,0 +1,16 @@
+{
+  "path": "desktop-dist/深圳骑行地图-macOS-arm64.zip",
+  "bytes": 231673743,
+  "sha256": "3bd83d77aab96098217cbb225b5ecc8be658d4b755db1ce46db78972afe676e8",
+  "sourceRevision": "477f71e708baf15d5729ecd2bdea88276bfb0615",
+  "electronVersion": "45.0.0",
+  "resources": {
+    "logicalFiles": 1783,
+    "logicalBytes": 363323755,
+    "storedFiles": 1783,
+    "storedBytes": 114221322,
+    "gzipFiles": 1729
+  },
+  "signing": "ad-hoc",
+  "notarized": false
+}

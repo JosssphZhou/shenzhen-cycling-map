@@ -1,0 +1,25 @@
+
+> shenzhen-cycling-map@1.0.0 desktop:package
+> node scripts/package-desktop.mjs
+
+正在收集1783份离线资源…
+资源已核对，使用Electron 45.0.0打包arm64应用…
+Packaging app for platform darwin arm64 using electron v45.0.0
+{
+  "applications": [
+    "/Users/zhousefu/Documents/Codex/2026-10-08/http-localhost-3700-http-localhost-3700/outputs/深圳骑行地图/desktop-dist/深圳骑行地图-darwin-arm64/深圳骑行地图.app"
+  ],
+  "archives": [
+    "/Users/zhousefu/Documents/Codex/2026-10-08/http-localhost-3700-http-localhost-3700/outputs/深圳骑行地图/desktop-dist/深圳骑行地图-macOS-arm64.zip"
+  ],
+  "signing": "ad-hoc",
+  "signatureVerified": true,
+  "notarized": false,
+  "resources": {
+    "logicalFiles": 1783,
+    "logicalBytes": 363323755,
+    "storedFiles": 1783,
+    "storedBytes": 114221322,
+    "gzipFiles": 1729
+  }
+}

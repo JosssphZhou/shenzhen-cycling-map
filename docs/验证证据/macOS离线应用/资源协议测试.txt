@@ -1,0 +1,14 @@
+
+> shenzhen-cycling-map@1.0.0 desktop:test
+> node --test desktop/assets.test.cjs
+
+✔ 压缩资源能按原地址读取，同名RSC目录不会盖住页面 (35.475208ms)
+✔ 本地协议拒绝越界、外域和写入请求，缺失资源返回404 (5.33475ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 150.013292
