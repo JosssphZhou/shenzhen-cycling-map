@@ -351,8 +351,8 @@ export default function DeliveryPrototype() {
       if (networkState.kind === 'error') rows.push(['路网', <span className="delivery-message">{networkState.message}</span>]);
       actions = [
         { label: networkState.kind === 'loading' ? '正在准备路线' : mode === 'demo' ? '开始试跑' : copy.start, disabled: busy || networkState.kind !== 'ready', onClick: () => void startShift() },
-        { label: '找到骑手', onClick: () => controller.current?.focusDelivery() },
-        ...(networkState.kind === 'error' ? [{ label: '重新载入', onClick: () => setNetworkAttempt(value => value + 1) }] : []),
+        networkState.kind === 'error' ? { label: '重新载入', onClick: () => setNetworkAttempt(value => value + 1) } : { label: '找到骑手', onClick: () => controller.current?.focusDelivery() },
+        ...(profile.receipts.length ? [{ label: '上趟账单', onClick: () => { setReceipt(profile.receipts[0]); openPane('receipt'); } }] : []),
       ];
     }
     if (store.notice) rows.push(['存档', <span className="delivery-message">{store.notice}</span>]);
