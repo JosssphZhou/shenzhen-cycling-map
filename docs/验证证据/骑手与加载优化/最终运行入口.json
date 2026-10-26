@@ -1,0 +1,111 @@
+{
+  "candidate": "a73c7e5",
+  "profiles": {
+    "shenzhen-delivery-prototype:demo:v1": {
+      "digest": "f13cb9a7e59d5894d6d092c334d59dd34f46f788a2b738a9ac1aa1e86acd5f34",
+      "walletCents": 4540,
+      "receipts": 2,
+      "active": null
+    },
+    "shenzhen-delivery-prototype:focus:v1": {
+      "digest": null,
+      "active": null
+    }
+  },
+  "stats": {
+    "roads": 33928,
+    "buildings": 532241,
+    "drawCalls": 181,
+    "triangles": 2175295,
+    "fps": 30,
+    "lastRenderMs": 0.8999999761581421,
+    "zoom": 29.377504288285053,
+    "fitZoom": 0.5720511842158214,
+    "target": [
+      -366.7144455582036,
+      0,
+      224.11895416495688
+    ],
+    "goal": null,
+    "selected": "delivery-rider",
+    "following": false,
+    "paused": false,
+    "hour": 10.088888888888889,
+    "weather": {
+      "kind": "clear",
+      "amount": 0
+    },
+    "animation": {
+      "visible": 0,
+      "total": 0
+    },
+    "delivery": {
+      "position": [
+        113.9525961,
+        22.5481576
+      ],
+      "status": "收工休息中",
+      "active": false,
+      "brand": "meituan",
+      "pathPoints": 0,
+      "completedDistance": 0,
+      "stops": 0,
+      "routeBuilds": 0,
+      "routeSegments": 0,
+      "completedSegments": 0
+    },
+    "mode": "深圳真实三维城市",
+    "geographicRequests": 5,
+    "mapBytes": 7931119,
+    "mapUrl": "/data/fast-city/bootstrap.json",
+    "loadedTiles": 48,
+    "terrainClipped": true,
+    "city": {
+      "overviewBuildings": 10624,
+      "visibleOverviewBuildings": 0,
+      "overviewReady": false,
+      "loadedBuildings": 11009,
+      "visibleDetailedBuildings": 11009,
+      "loadedTiles": 48,
+      "visibleTiles": 14,
+      "wantedTiles": 14,
+      "pendingTiles": 0,
+      "tileErrors": 0,
+      "terrainClipped": true,
+      "layerRequests": 50,
+      "layerBytes": 15577385,
+      "geometryCache": true,
+      "preloadedTiles": 3,
+      "globalPending": 0,
+      "globalReady": false,
+      "loadingMessage": null,
+      "layerError": null
+    },
+    "mapLayers": {
+      "roads": 33928,
+      "buildings": 532241,
+      "overviewBuildings": 10624,
+      "visibleOverviewBuildings": 0,
+      "overviewReady": false,
+      "loadedBuildings": 11009,
+      "visibleDetailedBuildings": 11009,
+      "loadedTiles": 48,
+      "visibleTiles": 14,
+      "wantedTiles": 14,
+      "pendingTiles": 0,
+      "tileErrors": 0,
+      "terrainClipped": true,
+      "layerRequests": 50,
+      "layerBytes": 15577385,
+      "geometryCache": true,
+      "preloadedTiles": 3,
+      "globalPending": 0,
+      "globalReady": false,
+      "loadingMessage": null,
+      "layerError": null
+    }
+  },
+  "url": "http://localhost:3701/prototype/delivery?mode=demo",
+  "canvases": 1,
+  "profilesUnchanged": true
+}

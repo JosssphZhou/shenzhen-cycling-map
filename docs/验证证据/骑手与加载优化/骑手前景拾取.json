@@ -1,0 +1,101 @@
+{
+  "clicked": [
+    653.758925936434,
+    460.9027981933368
+  ],
+  "pointerSelectedRider": true,
+  "stats": {
+    "roads": 33928,
+    "buildings": 532241,
+    "drawCalls": 204,
+    "triangles": 2501607,
+    "fps": 29,
+    "lastRenderMs": 0.5,
+    "zoom": 25.692161759842065,
+    "fitZoom": 0.5720511842158214,
+    "target": [
+      -366.71431776391285,
+      0,
+      224.1188274549067
+    ],
+    "goal": null,
+    "selected": "delivery-rider",
+    "following": false,
+    "paused": false,
+    "hour": 15.823333333335242,
+    "weather": {
+      "kind": "clear",
+      "amount": 0
+    },
+    "animation": {
+      "visible": 0,
+      "total": 0
+    },
+    "delivery": {
+      "position": [
+        113.9525961,
+        22.5481576
+      ],
+      "status": "收工休息中",
+      "active": false,
+      "brand": "meituan",
+      "pathPoints": 0,
+      "completedDistance": 0,
+      "stops": 0,
+      "routeBuilds": 0,
+      "routeSegments": 0,
+      "completedSegments": 0
+    },
+    "mode": "深圳真实三维城市",
+    "geographicRequests": 5,
+    "mapBytes": 7931119,
+    "mapUrl": "/data/fast-city/bootstrap.json",
+    "loadedTiles": 48,
+    "terrainClipped": true,
+    "city": {
+      "overviewBuildings": 10624,
+      "visibleOverviewBuildings": 0,
+      "overviewReady": false,
+      "loadedBuildings": 11525,
+      "visibleDetailedBuildings": 11525,
+      "loadedTiles": 48,
+      "visibleTiles": 15,
+      "wantedTiles": 15,
+      "pendingTiles": 0,
+      "tileErrors": 0,
+      "terrainClipped": true,
+      "layerRequests": 50,
+      "layerBytes": 15577385,
+      "geometryCache": true,
+      "preloadedTiles": 3,
+      "globalPending": 0,
+      "globalReady": false,
+      "loadingMessage": null,
+      "layerError": null
+    },
+    "mapLayers": {
+      "roads": 33928,
+      "buildings": 532241,
+      "overviewBuildings": 10624,
+      "visibleOverviewBuildings": 0,
+      "overviewReady": false,
+      "loadedBuildings": 11525,
+      "visibleDetailedBuildings": 11525,
+      "loadedTiles": 48,
+      "visibleTiles": 15,
+      "wantedTiles": 15,
+      "pendingTiles": 0,
+      "tileErrors": 0,
+      "terrainClipped": true,
+      "layerRequests": 50,
+      "layerBytes": 15577385,
+      "geometryCache": true,
+      "preloadedTiles": 3,
+      "globalPending": 0,
+      "globalReady": false,
+      "loadingMessage": null,
+      "layerError": null
+    }
+  },
+  "canvases": 1
+}

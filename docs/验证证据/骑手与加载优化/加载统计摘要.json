@@ -1,0 +1,87 @@
+{
+  "baseline": "33a3689",
+  "candidate": "a73c7e5",
+  "conditions": {
+    "downloadBps": 2500000,
+    "latencyMs": 40,
+    "cpuRate": 4,
+    "httpCacheDisabled": true
+  },
+  "runsPerSide": 5,
+  "excludedWarmupPerSide": 1,
+  "rows": {
+    "before": {
+      "uiReady": {
+        "median": 1547.3999999761581,
+        "min": 1526.2000000476837,
+        "max": 1575.4000000357628
+      },
+      "first3D": {
+        "median": 4966.899999976158,
+        "min": 4917.100000023842,
+        "max": 5881.5
+      },
+      "stable": {
+        "median": 13550.5,
+        "min": 12778.600000023842,
+        "max": 17293.099999964237
+      },
+      "completedRequestTransferBytes": {
+        "median": 8799298,
+        "min": 8799298,
+        "max": 9097634
+      },
+      "maxLongTaskMs": {
+        "median": 941,
+        "min": 924,
+        "max": 1020
+      },
+      "failures": 0,
+      "appErrors": 0,
+      "httpFailures": 0,
+      "visibleBuildings": [
+        33804
+      ],
+      "visibleTiles": [
+        45
+      ]
+    },
+    "after": {
+      "uiReady": {
+        "median": 1556.300000011921,
+        "min": 1429.800000011921,
+        "max": 1609.1000000238419
+      },
+      "first3D": {
+        "median": 4617,
+        "min": 3438.5,
+        "max": 4654.299999952316
+      },
+      "stable": {
+        "median": 6167.400000035763,
+        "min": 5172.300000011921,
+        "max": 6683.699999988079
+      },
+      "completedRequestTransferBytes": {
+        "median": 11220625,
+        "min": 11220625,
+        "max": 11220625
+      },
+      "maxLongTaskMs": {
+        "median": 194,
+        "min": 166,
+        "max": 223
+      },
+      "failures": 0,
+      "appErrors": 0,
+      "httpFailures": 0,
+      "visibleBuildings": [
+        33804
+      ],
+      "visibleTiles": [
+        45
+      ]
+    }
+  },
+  "detailedReductionPercent": 54.485812331384366
+}

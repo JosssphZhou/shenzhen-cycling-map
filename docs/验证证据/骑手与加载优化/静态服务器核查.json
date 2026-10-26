@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "encoding": "gzip",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "responseEncoding": "gzip",
+      "html": true,
+      "etag": "\"d47-1a1775f5041-gz\""
+    },
+    {
+      "encoding": "gzip;q=0",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "responseEncoding": null,
+      "html": true,
+      "etag": "\"310b-1a1773fe71e\""
+    },
+    {
+      "encoding": "identity",
+      "status": 200,
+      "type": "text/html; charset=utf-8",
+      "responseEncoding": null,
+      "html": true,
+      "etag": "\"310b-1a1773fe71e\""
+    }
+  ],
+  "conditionalStatus": 304,
+  "missingStatus": 404,
+  "postStatus": 405
+}

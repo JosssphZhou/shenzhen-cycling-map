@@ -1,0 +1,184 @@
+{
+  "fallback": {
+    "stats": {
+      "roads": 33928,
+      "buildings": 532241,
+      "drawCalls": 99,
+      "triangles": 2643378,
+      "fps": 0,
+      "lastRenderMs": 1.9000000357627869,
+      "zoom": 11.68,
+      "fitZoom": 0.5530600112985349,
+      "target": [
+        -378.5224734565119,
+        0,
+        267.40228690931815
+      ],
+      "goal": null,
+      "selected": "delivery-rider",
+      "following": true,
+      "paused": false,
+      "hour": 10.00888888888889,
+      "weather": {
+        "kind": "clear",
+        "amount": 0
+      },
+      "animation": {
+        "visible": 0,
+        "total": 0
+      },
+      "delivery": {
+        "position": [
+          113.9425627,
+          22.524858
+        ],
+        "status": "收工休息中",
+        "active": false,
+        "brand": "meituan",
+        "pathPoints": 0,
+        "completedDistance": 0,
+        "stops": 0,
+        "routeBuilds": 0,
+        "routeSegments": 0,
+        "completedSegments": 0
+      },
+      "mode": "深圳真实三维城市",
+      "geographicRequests": 2,
+      "mapBytes": 13953719,
+      "mapUrl": "/data/shenzhen-city.json",
+      "loadedTiles": 2,
+      "terrainClipped": true,
+      "city": {
+        "overviewBuildings": 10624,
+        "loadedBuildings": 264,
+        "loadedTiles": 2,
+        "visibleTiles": 2,
+        "wantedTiles": 31,
+        "pendingTiles": 0,
+        "tileErrors": 0,
+        "terrainClipped": true,
+        "layerRequests": 3,
+        "layerBytes": 6413578,
+        "layerError": null
+      },
+      "mapLayers": {
+        "roads": 33928,
+        "buildings": 532241,
+        "overviewBuildings": 10624,
+        "loadedBuildings": 264,
+        "loadedTiles": 2,
+        "visibleTiles": 2,
+        "wantedTiles": 31,
+        "pendingTiles": 0,
+        "tileErrors": 0,
+        "terrainClipped": true,
+        "layerRequests": 3,
+        "layerBytes": 6413578,
+        "layerError": null
+      }
+    },
+    "canvases": 1
+  },
+  "error": {
+    "note": "地图暂时无法载入，仍可从路线集查看与导出路线。重新载入",
+    "canvases": 1,
+    "controllerPresent": false
+  },
+  "recovered": {
+    "stats": {
+      "roads": 33928,
+      "buildings": 532241,
+      "drawCalls": 393,
+      "triangles": 3798837,
+      "fps": 0,
+      "lastRenderMs": 3.300000011920929,
+      "zoom": 11.68,
+      "fitZoom": 0.5530600112985349,
+      "target": [
+        -378.4786650170194,
+        0,
+        267.4450336132458
+      ],
+      "goal": null,
+      "selected": "delivery-rider",
+      "following": true,
+      "paused": false,
+      "hour": 10.02111111111111,
+      "weather": {
+        "kind": "clear",
+        "amount": 0
+      },
+      "animation": {
+        "visible": 0,
+        "total": 0
+      },
+      "delivery": {
+        "position": [
+          113.9425627,
+          22.524858
+        ],
+        "status": "收工休息中",
+        "active": false,
+        "brand": "meituan",
+        "pathPoints": 0,
+        "completedDistance": 0,
+        "stops": 0,
+        "routeBuilds": 0,
+        "routeSegments": 0,
+        "completedSegments": 0
+      },
+      "mode": "深圳真实三维城市",
+      "geographicRequests": 7,
+      "mapBytes": 7779943,
+      "mapUrl": "/data/fast-city/bootstrap.json",
+      "loadedTiles": 31,
+      "terrainClipped": true,
+      "city": {
+        "overviewBuildings": 10624,
+        "visibleOverviewBuildings": 0,
+        "overviewReady": false,
+        "loadedBuildings": 24403,
+        "visibleDetailedBuildings": 24403,
+        "loadedTiles": 31,
+        "visibleTiles": 31,
+        "wantedTiles": 31,
+        "pendingTiles": 0,
+        "tileErrors": 0,
+        "terrainClipped": true,
+        "layerRequests": 29,
+        "layerBytes": 11555938,
+        "geometryCache": true,
+        "preloadedTiles": 3,
+        "globalPending": 0,
+        "globalReady": false,
+        "loadingMessage": null,
+        "layerError": null
+      },
+      "mapLayers": {
+        "roads": 33928,
+        "buildings": 532241,
+        "overviewBuildings": 10624,
+        "visibleOverviewBuildings": 0,
+        "overviewReady": false,
+        "loadedBuildings": 24403,
+        "visibleDetailedBuildings": 24403,
+        "loadedTiles": 31,
+        "visibleTiles": 31,
+        "wantedTiles": 31,
+        "pendingTiles": 0,
+        "tileErrors": 0,
+        "terrainClipped": true,
+        "layerRequests": 29,
+        "layerBytes": 11555938,
+        "geometryCache": true,
+        "preloadedTiles": 3,
+        "globalPending": 0,
+        "globalReady": false,
+        "loadingMessage": null,
+        "layerError": null
+      }
+    },
+    "canvases": 1,
+    "noteHidden": true
+  }
+}
