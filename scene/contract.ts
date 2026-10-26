@@ -1,4 +1,5 @@
 import type { CyclingRoute } from '@/lib/types';
+import type { DeliverySceneState } from '@/lib/delivery/scene-contract';
 
 /** Factory 的对象卡合同，内容替换为深圳地标与骑行资料。 */
 export interface SceneSelection {
@@ -34,6 +35,9 @@ export interface SceneController {
   toggleFollow(): void;
   cycle(direction: number): void;
   focusSelection(): void;
+  setDelivery(state: DeliverySceneState | null): void;
+  focusDelivery(): void;
+  followDelivery(): void;
   stats(): Record<string, unknown>;
 }
 export const PLACE_NAMES = ['深圳湾','福田','罗湖','盐田','大鹏','宝安','光明','龙华','龙岗','坪山','西丽','水库','银湖','梧桐'];

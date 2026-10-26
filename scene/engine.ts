@@ -4,6 +4,7 @@ import { LineSegments2 } from 'three/addons/lines/LineSegments2.js';
 import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
 import type { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 import type { Coordinate, CyclingRoute } from '@/lib/types';
+import type { DeliverySceneState } from '@/lib/delivery/scene-contract';
 import type { SceneController, SceneSelection, SceneSnapshot } from './contract';
 import { Palette, nightAmount } from './palette';
 import { W } from './factory/kernel/iso';
@@ -14,6 +15,7 @@ import { buildGeographicScene } from './geographic';
 import type { ShenzhenMapData } from './map-types';
 import { ExactPath, terrainSegment, type MiniEntity, type Bounds, type Point } from './entities';
 import { CityDynamics } from './dynamics';
+import { DeliveryLayer } from './delivery';
 import { CityWeather, buildCityFog } from './interaction-weather';
 
 interface ViewGoal { zoom: number; target?: THREE.Vector3 }
@@ -36,6 +38,7 @@ export class CityEngine implements SceneController {
     stats?: () => Record<string, unknown>; retryLayers?: () => void; dispose?: () => void;
   };
   private dynamics!: CityDynamics;
+  private delivery: DeliveryLayer | null = null;
   private rain!: ReturnType<typeof buildRain>;
   private fog!: ReturnType<typeof buildCityFog>;
   private weather = new CityWeather();
@@ -145,14 +148,49 @@ export class CityEngine implements SceneController {
     this.controls.minZoom = this.fitZoom * .6; this.controls.maxZoom = this.baseZoom * 36;
     if (!this.sized) { this.sized = true; const first = this.placeFrame(0); this.camera.zoom = first.zoom; this.moveTarget(first.target!); }
     this.camera.zoom = clamp(this.camera.zoom, this.controls.minZoom, this.controls.maxZoom); this.camera.updateProjectionMatrix();
-    this.palette.resize(width, height); this.hoverDirty = true;
+    this.palette.resize(width, height); this.delivery?.resize(width, height); this.hoverDirty = true;
   };
   private moveTarget(target: THREE.Vector3) { const delta = target.clone().sub(this.controls.target); this.controls.target.add(delta); this.camera.position.add(delta); }
   overview() { this.setFollow(false); this.goal = { zoom: this.fitZoom, target: this.home.clone() }; }
   goView(index: number) { if (!this.world.views[index]) return; this.setFollow(false); this.goal = this.placeFrame(index); }
   zoomBy(factor: number) { this.goal = { zoom: clamp((this.goal?.zoom ?? this.camera.zoom) * factor, this.controls.minZoom, this.controls.maxZoom), target: this.goal?.target }; }
   setRoutes(routes: CyclingRoute[]) { this.routes = routes; }
-  private entities() { return [...this.world.entities, ...this.dynamics.entities]; }
+  private entities() { return [...this.world.entities, ...this.dynamics.entities, ...(this.delivery?.entities ?? [])]; }
+  setDelivery(state: DeliverySceneState | null) {
+    if (!state) {
+      if (!this.delivery) return;
+      if (this.selected && this.delivery.entities.includes(this.selected)) this.clearSelection();
+      this.scene.remove(this.delivery.group); this.delivery.dispose(); this.delivery = null;
+      return;
+    }
+    if (this.delivery) this.delivery.setState(state);
+    else { this.delivery = new DeliveryLayer(this.world, state); this.delivery.resize(this.width, this.height); this.scene.add(this.delivery.group); }
+  }
+  focusDelivery() {
+    if (!this.delivery) return;
+    this.select(this.delivery.entity); this.setFollow(false);
+    const { bounds, heights } = this.delivery.extent();
+    this.goal = this.frame(bounds, heights);
+    this.goal.zoom = clamp(this.goal.zoom, this.controls.minZoom, this.controls.maxZoom);
+  }
+  followDelivery() {
+    if (!this.delivery) return;
+    this.select(this.delivery.entity);
+    this.goal = { zoom: clamp(Math.min(this.width, this.height) / (this.width < 600 ? 65 : 100), this.controls.minZoom, this.controls.maxZoom) };
+    this.setFollow(true);
+  }
+  private followTarget() {
+    const selected = this.selected;
+    if (!selected) return this.controls.target;
+    const center = this.bounds(selected).getCenter(new THREE.Vector3());
+    center.addScaledVector(ISO, -center.y / ISO.y);
+    if (selected !== this.delivery?.entity) return center;
+    const right = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0);
+    const up = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1); up.y = 0;
+    if (this.width >= 700) center.addScaledVector(right, Math.min(145, this.width * .12) / this.camera.zoom);
+    else if (up.lengthSq()) center.addScaledVector(up, -this.height * .18 / this.camera.zoom / up.lengthSq());
+    return center;
+  }
   private setLive(entity: MiniEntity | null, on: boolean) {
     if (!entity) return;
     const walk = (object: THREE.Object3D) => {
@@ -351,8 +389,9 @@ export class CityEngine implements SceneController {
     const hour = this.hour(); this.palette.update(this.theme(), hour, this.weather.rain(), this.weather.fog()); this.markNight(nightAmount(hour));
     this.rain.update(dt, this.controls.target, this.width / this.camera.zoom, this.weather.rain()); this.fog.update(this.simTime, this.weather.fog());
     this.dynamics.update(dt, this.paused, this.camera, this.weather.rain() > .3 ? '雨' : this.weather.fog() > .3 ? '雾' : '晴', this.camera.zoom);
+    this.delivery?.update(dt, this.camera, this.reduced, nightAmount(hour), this.theme());
     const amount = this.reduced ? 1 : 1 - Math.exp(-dt * 6);
-    if (this.following && this.selected) { const center = this.bounds(this.selected).getCenter(new THREE.Vector3()); this.moveTarget(this.controls.target.clone().lerp(center.addScaledVector(ISO, -center.y / ISO.y), amount)); }
+    if (this.following && this.selected) this.moveTarget(this.controls.target.clone().lerp(this.followTarget(), amount));
     if (this.goal) {
       if (this.goal.target) this.moveTarget(this.controls.target.clone().lerp(this.goal.target, amount));
       this.camera.zoom += (this.goal.zoom - this.camera.zoom) * amount; this.camera.updateProjectionMatrix();
@@ -377,7 +416,7 @@ export class CityEngine implements SceneController {
     if (!this.contextLost) { const start = performance.now(); this.renderer.render(this.scene, this.camera); this.lastRenderMs = performance.now() - start; this.frameCount++; }
     if (time - this.fpsSince >= 1000) { this.fps = Math.round(this.frameCount * 1000 / (time - this.fpsSince)); this.frameCount = 0; this.fpsSince = time; }
   }
-  stats() { const city = this.world.stats?.() ?? {}; return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, mode: '深圳真实三维城市', geographicRequests: this.mapMetrics.requests, mapBytes: this.mapMetrics.bytes, mapUrl: '/data/shenzhen-city.json', loadedTiles: city.loadedTiles, terrainClipped: city.terrainClipped, city, mapLayers: { roads: this.world.roads, buildings: this.world.buildings, ...city } }; }
+  stats() { const city = this.world.stats?.() ?? {}; return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, delivery: this.delivery?.stats() ?? null, mode: '深圳真实三维城市', geographicRequests: this.mapMetrics.requests, mapBytes: this.mapMetrics.bytes, mapUrl: '/data/shenzhen-city.json', loadedTiles: city.loadedTiles, terrainClipped: city.terrainClipped, city, mapLayers: { roads: this.world.roads, buildings: this.world.buildings, ...city } }; }
   debug() {
     return { stats: () => this.stats(), overview: () => this.overview(), view: (index: number) => this.goView(index), all: () => this.entities().map(entity => ({ id: entity.id, kind: entity.kind, title: entity.title, followable: entity.followable })), select: (id: string) => this.select(this.entities().find(entity => entity.id === id) || null), screenOf: (id: string) => {
       const entity = this.entities().find(candidate => candidate.id === id); if (!entity) return null;
@@ -405,6 +444,7 @@ export class CityEngine implements SceneController {
     window.removeEventListener('keydown', this.guardEditable, true); window.removeEventListener('keydown', this.keyDown);
     this.systemTheme.removeEventListener('change', this.themeChanged); document.removeEventListener('visibilitychange', this.visibility);
     document.documentElement.classList.remove('after-dark', 'turning');
+    if (this.delivery) { this.scene.remove(this.delivery.group); this.delivery.dispose(); this.delivery = null; }
     const geometries = new Set<THREE.BufferGeometry>(), textMaterials = new Set<THREE.MeshBasicMaterial>(this.registeredTextMaterials), owned = new Set<THREE.Object3D>(this.registeredTexts);
     this.scene.traverse(object => {
       owned.add(object); const mesh = object as THREE.Mesh; if (mesh.geometry) geometries.add(mesh.geometry);
