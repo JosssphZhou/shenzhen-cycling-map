@@ -6,6 +6,7 @@ import { registerHooks } from 'node:module';
 import { createHash } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
 import * as THREE from 'three';
+import { encodeCityCacheV1, packCityCache } from './city-cache-codec.mjs';
 
 const repository = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 registerHooks({ resolve(specifier, context, next) {
@@ -18,6 +19,36 @@ registerHooks({ resolve(specifier, context, next) {
 const { makeProjection, meterProjection, buildCityBase } = await import('../scene/geographic-geometry.ts');
 const { buildBuildings, buildRoads, buildClippedTerrain, buildGridTerrain, disposeGeometry } = await import('../scene/city-geometry.ts');
 const { decodeCityCache } = await import('../scene/city-cache.ts');
+if (process.argv[2] === '--transcode') {
+  const output = resolve(process.argv[3] || 'public/data/fast-city');
+  const statistics = JSON.parse(await readFile(resolve(output, 'build-statistics.json'), 'utf8'));
+  let beforeBytes = 0, beforeGzip = 0, afterBytes = 0, afterGzip = 0, v2 = 0;
+  for (const [index, file] of statistics.files.entries()) {
+    const path = resolve(output, file.name), before = await readFile(path);
+    const decoded = decodeCityCache(before.buffer.slice(before.byteOffset, before.byteOffset + before.byteLength));
+    const raw = encodeCityCacheV1(decoded), packed = packCityCache(raw);
+    if (before.readUInt32LE(0) === 0x31474353 && !before.equals(raw)) throw new Error(`原V1字节核对失败：${file.name}`);
+    const restored = decodeCityCache(packed.buffer.slice(packed.byteOffset, packed.byteOffset + packed.byteLength));
+    if (!raw.equals(encodeCityCacheV1(restored))) throw new Error(`转码改变了原始Float32位或层级：${file.name}`);
+    const gzipBytes = gzipSync(packed, { level: 6 }).length;
+    beforeBytes += before.length; beforeGzip += gzipSync(before, { level: 6 }).length; afterBytes += packed.length; afterGzip += gzipBytes;
+    if (packed.readUInt32LE(0) === 0x32474353) v2++;
+    await writeFile(path, packed);
+    Object.assign(file, { bytes: packed.length, gzipBytes, geometryRoundtrip: true, sha256: createHash('sha256').update(packed).digest('hex') });
+    for (const group of [...decoded.values(), ...restored.values()]) disposeGeometry(group);
+    if (index % 100 === 0) console.log('transcode', index + 1, '/', statistics.files.length);
+  }
+  const bootstrapPath = resolve(output, 'bootstrap.json'), bootstrap = JSON.parse(await readFile(bootstrapPath, 'utf8'));
+  const byName = new Map(statistics.files.map(file => [file.name, file]));
+  for (const tile of bootstrap.buildingTiles) tile.cache.bytes = byName.get(`tiles/${tile.id}.bin`).bytes;
+  const boot = Buffer.from(JSON.stringify(bootstrap)); await writeFile(bootstrapPath, boot);
+  statistics.geometryVersion = 2; statistics.bootstrapBytes = boot.length; statistics.bootstrapGzipBytes = gzipSync(boot).length;
+  const tiles = statistics.files.filter(file => file.name.startsWith('tiles/'));
+  statistics.tileBytes = tiles.reduce((sum, file) => sum + file.bytes, 0); statistics.tileGzipBytes = tiles.reduce((sum, file) => sum + file.gzipBytes, 0);
+  statistics.losslessTranscode = { beforeBytes, beforeGzip, afterBytes, afterGzip, v2, verified: statistics.files.length, originalV1BytesVerified: true };
+  await writeFile(resolve(output, 'build-statistics.json'), JSON.stringify(statistics, null, 2) + '\n');
+  console.log(JSON.stringify(statistics.losslessTranscode)); process.exit(0);
+}
 const sourceRoot = resolve(process.argv[2] || 'public/data');
 const outputRoot = resolve(process.argv[3] || 'public/data/fast-city');
 await mkdir(outputRoot, { recursive: true });
@@ -28,21 +59,7 @@ const excluded = new Set(city.landmarks.map(item => item.sourceId));
 const statistics = { files: [], tileBuildings: 0, tileBytes: 0, tileGzipBytes: 0, sourceSha256: createHash('sha256').update(citySource).digest('hex') };
 
 function encode(groups) {
-  const arrays = []; let cursor = 0;
-  const visit = object => {
-    let kind = 'group', tone = '', array = null;
-    if (object.userData.line) { kind = 'line'; tone = object.userData.line; array = object.geometry.attributes.instanceStart.data.array; }
-    else if (object.userData.fill) { kind = 'fill'; tone = object.userData.fill; array = object.geometry.attributes.position.array; }
-    const node = { name: object.name, transform: [...object.position.toArray(), ...object.quaternion.toArray(), ...object.scale.toArray()], visible: object.visible, kind, tone, offset: cursor, count: array?.length || 0, children: [] };
-    if (array) { arrays.push(array); cursor += array.length; }
-    node.children = object.children.map(visit); return node;
-  };
-  const metadata = Buffer.from(JSON.stringify({ version: 1, groups: Object.fromEntries([...groups].map(([key, group]) => [key, visit(group)])) }));
-  const offset = Math.ceil((8 + metadata.length) / 4) * 4;
-  const buffer = Buffer.alloc(offset + cursor * 4); buffer.writeUInt32LE(0x31474353, 0); buffer.writeUInt32LE(metadata.length, 4); metadata.copy(buffer, 8);
-  const floats = new Float32Array(buffer.buffer, buffer.byteOffset + offset, cursor);
-  let index = 0; for (const array of arrays) { floats.set(array, index); index += array.length; }
-  return buffer;
+  return packCityCache(encodeCityCacheV1(groups));
 }
 async function store(name, groups) {
   const buffer = encode(groups), path = resolve(outputRoot, name);
