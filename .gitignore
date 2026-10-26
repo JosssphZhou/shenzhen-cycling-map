@@ -8,3 +8,4 @@ work/
 .venv/
 __pycache__/
 *.pyc
+desktop-dist/

@@ -10,7 +10,10 @@
     "postbuild": "node scripts/compress-static.mjs",
     "build:city-cache": "node scripts/build-city-cache.mjs",
     "typecheck": "tsc --noEmit",
-    "check:data": "node scripts/check-data.mjs"
+    "check:data": "node scripts/check-data.mjs",
+    "desktop:package": "node scripts/package-desktop.mjs",
+    "desktop:build": "npm run build && npm run desktop:package",
+    "desktop:test": "node --test desktop/assets.test.cjs"
   },
   "dependencies": {
     "next": "16.3.8",
@@ -21,10 +24,12 @@
   "devDependencies": {
     "@babel/parser": "^7.29.9",
     "@babel/traverse": "^7.29.8",
+    "@electron/packager": "20.3.0",
     "@types/node": "^22",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/three": "0.186.0",
+    "electron": "45.0.0",
     "typescript": "^5"
   }
 }
