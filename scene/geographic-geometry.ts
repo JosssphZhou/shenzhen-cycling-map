@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import type { Coordinate } from '@/lib/types';
-import type { TerrainGrid } from './map-types';
+import type { ShenzhenMapData, TerrainGrid } from './map-types';
 import { Part } from './factory/kernel/part';
 import type { Point, Bounds } from './entities';
 
@@ -74,6 +74,38 @@ export class GeometryBatch {
     for (const face of faces) this.triangle(tone, flat[face[0]], flat[face[1]], flat[face[2]]);
   }
   build(name: string): THREE.Group { return this.part.build(name); }
+}
+
+/** 可离线调用的原海陆、河湖与区界构造；运行时只恢复相同Float32缓冲。 */
+export function buildCityBase(data: ShenzhenMapData, projection: Projection) {
+  const [west, south, east, north] = data.bounds, extent = boundsOf([projection.project([west, north]), projection.project([east, south])]);
+  const sea = new GeometryBatch(), land = new GeometryBatch(), water = new GeometryBatch(), districts = new GeometryBatch();
+  sea.polygon('sea', [[new THREE.Vector3(extent[0] - 15, -.12, extent[2] - 15), new THREE.Vector3(extent[1] + 15, -.12, extent[2] - 15), new THREE.Vector3(extent[1] + 15, -.12, extent[3] + 15), new THREE.Vector3(extent[0] - 15, -.12, extent[3] + 15)]]);
+  for (const polygon of data.land) {
+    land.polygon('ground', polygon.rings.map(ring => ring.map(coordinate => projection.flat(coordinate, 0))));
+    for (const ring of polygon.rings) land.path('line', ring.map(coordinate => projection.flat(coordinate, .025)), true);
+  }
+  for (const polygon of data.water) {
+    const elevations = polygon.rings[0].map(coordinate => projection.height(coordinate)).sort((a, b) => a - b), height = (elevations[Math.floor(elevations.length / 3)] || 0) + MAP_SCALE;
+    water.polygon('sea', polygon.rings.map(ring => ring.map(coordinate => projection.flat(coordinate, height))));
+    for (const ring of polygon.rings) water.path('detail', ring.map(coordinate => projection.flat(coordinate, height + .02)), true);
+  }
+  for (const district of data.districts) for (const ring of district.rings) {
+    const points: THREE.Vector3[] = [];
+    for (let i = 0; i < ring.length; i++) {
+      if (i > 0) {
+        const a = projection.project(ring[i - 1]), b = projection.project(ring[i]);
+        const count = Math.ceil(Math.hypot(b[0] - a[0], b[1] - a[1]) / Math.max(.2, projection.terrainStep / 2));
+        for (let step = 1; step < count; step++) {
+          const point = new THREE.Vector3(a[0] + (b[0] - a[0]) * step / count, 0, a[1] + (b[1] - a[1]) * step / count);
+          point.y = projection.height(projection.coordinate(point)) + .12; points.push(point);
+        }
+      }
+      const endpoint = projection.flat(ring[i]); endpoint.y = projection.height(projection.coordinate(endpoint)) + .12; points.push(endpoint);
+    }
+    districts.path('detail', points, true);
+  }
+  return new Map([['base/sea', sea.build('海面')], ['base/land', land.build('真实陆地与海岸')], ['base/water', water.build('真实河湖')], ['base/districts', districts.build('真实行政区界')]]);
 }
 
 export function boundsOf(points: Point[], padding = 0): Bounds {

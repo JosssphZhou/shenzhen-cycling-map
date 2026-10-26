@@ -1,15 +1,18 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import type { CyclingRoute } from '@/lib/types';
+import type { Coordinate, CyclingRoute } from '@/lib/types';
 import type { SceneController, SceneSnapshot } from '@/scene/contract';
 import type { ShenzhenMapData } from '@/scene/map-types';
 import { CityEngine } from '@/scene/engine';
+import { fetchCityCache } from '@/scene/city-cache';
+import { disposeGeometry } from '@/scene/city-geometry';
 
 export interface CityMapProps {
   routes: CyclingRoute[];
   onController: (controller: SceneController | null) => void;
   onSnapshot: (snapshot: SceneSnapshot) => void;
+  initialCoordinate?: Coordinate | null;
 }
 const record = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
 const coordinate = (value: unknown): boolean => Array.isArray(value) && value.length === 2 && value.every(item => typeof item === 'number' && Number.isFinite(item));
@@ -38,18 +41,43 @@ export default function CityMap(props: CityMapProps) {
   const latest = useRef(props); latest.current = props;
   useEffect(() => {
     let cancelled = false, mounted: CityEngine | null = null;
+    let prepared: ShenzhenMapData | null = null;
     const abort = new AbortController();
     const stage = canvas.current?.closest<HTMLElement>('#stage'); if (!stage) return;
     const note = stage.querySelector<HTMLElement>('#note');
     if (note) { note.hidden = false; note.textContent = '正在载入深圳地图…'; }
     const start = async () => {
       try {
-        requests.current++;
-        const response = await fetch('/data/shenzhen-city.json', { signal: abort.signal });
-        if (!response.ok) throw new Error(`地图请求失败：${response.status}`);
-        const bytes = await response.arrayBuffer();
-        const data: unknown = JSON.parse(new TextDecoder().decode(bytes));
-        if (!validMap(data)) throw new Error('地图数据格式不完整');
+        performance.mark('shenzhen-map-load-start');
+        let data: ShenzhenMapData, totalBytes = 0;
+        const loadJson = async (url: string) => {
+          requests.current++; const response = await fetch(url, { signal: abort.signal });
+          if (!response.ok) throw new Error(`地图请求失败：${response.status}`);
+          const bytes = await response.arrayBuffer(); totalBytes += bytes.byteLength;
+          const value: unknown = JSON.parse(new TextDecoder().decode(bytes)); if (!validMap(value)) throw new Error('地图数据格式不完整');
+          return value;
+        };
+        try {
+          data = await loadJson('/data/fast-city/bootstrap.json');
+          if (!data.fastCity || data.fastCity.version !== 1) throw new Error('地图缓存索引不完整');
+          requests.current++; const cached = await fetchCityCache(data.fastCity.baseUrl, abort.signal); totalBytes += cached.bytes;
+          data.cachedGeometry = cached.groups; prepared = data;
+          const [longitude, latitude] = latest.current.initialCoordinate ?? [113.9425627, 22.524858];
+          const nearest = [...(data.buildingTiles ?? [])].filter(tile => tile.cache && (tile.cache.buildings > 0)).sort((a, b) => Math.hypot((a.bounds[0] + a.bounds[2]) / 2 - longitude, (a.bounds[1] + a.bounds[3]) / 2 - latitude) - Math.hypot((b.bounds[0] + b.bounds[2]) / 2 - longitude, (b.bounds[1] + b.bounds[3]) / 2 - latitude)).slice(0, 3);
+          const results = await Promise.allSettled(nearest.map(async tile => {
+            requests.current++; const entry = await fetchCityCache(tile.cache!.url, abort.signal);
+            if (!entry.groups.has(`tile/${tile.id}`)) { entry.groups.forEach(disposeGeometry); throw new Error('首屏街区缓存不完整'); }
+            return entry;
+          }));
+          if (abort.signal.aborted) { for (const result of results) if (result.status === 'fulfilled') result.value.groups.forEach(disposeGeometry); throw new DOMException('已取消', 'AbortError'); }
+          for (const result of results) if (result.status === 'fulfilled') { totalBytes += result.value.bytes; for (const [key, group] of result.value.groups) cached.groups.set(key, group); }
+          if (!results.some(result => result.status === 'fulfilled')) throw new Error('首屏街区缓存未载入');
+          performance.mark('shenzhen-map-geometry-ready');
+        } catch (error) {
+          prepared?.cachedGeometry?.forEach(disposeGeometry); prepared = null;
+          if (abort.signal.aborted) throw error;
+          data = await loadJson('/data/shenzhen-city.json');
+        }
         if (cancelled || !canvas.current) return;
         // 与上游 yard/index.ts 一样，先等文字纹理使用的字体；超时仍可继续显示地图。
         await Promise.race([
@@ -57,11 +85,14 @@ export default function CityMap(props: CityMapProps) {
           new Promise(resolve => setTimeout(resolve, 2500)),
         ]).catch(() => {});
         if (cancelled || abort.signal.aborted || !canvas.current) return;
-        mounted = new CityEngine(canvas.current, stage, snapshot => latest.current.onSnapshot(snapshot), data, latest.current.routes, { requests: requests.current, bytes: bytes.byteLength });
+        performance.mark('shenzhen-map-engine-start');
+        mounted = new CityEngine(canvas.current, stage, snapshot => latest.current.onSnapshot(snapshot), data, latest.current.routes, { requests: requests.current, bytes: totalBytes });
+        performance.mark('shenzhen-map-engine-ready'); data.cachedGeometry = undefined; prepared = null;
         engine.current = mounted; latest.current.onController(mounted);
         if (new URLSearchParams(window.location.search).has('debug')) (window as unknown as { shenzhenMap?: unknown }).shenzhenMap = mounted.debug();
       } catch (error) {
         if (cancelled || abort.signal.aborted) return;
+        prepared?.cachedGeometry?.forEach(disposeGeometry); prepared = null;
         mounted?.dispose(); mounted = null; engine.current = null; latest.current.onController(null);
         console.error('深圳地图加载失败', error);
         if (note) {
@@ -71,7 +102,7 @@ export default function CityMap(props: CityMapProps) {
       }
     };
     void start();
-    return () => { cancelled = true; abort.abort(); mounted?.dispose(); engine.current = null; latest.current.onController(null); delete (window as unknown as { shenzhenMap?: unknown }).shenzhenMap; };
+    return () => { cancelled = true; abort.abort(); mounted?.dispose(); prepared?.cachedGeometry?.forEach(disposeGeometry); prepared = null; engine.current = null; latest.current.onController(null); delete (window as unknown as { shenzhenMap?: unknown }).shenzhenMap; };
   }, [attempt]);
   useEffect(() => { engine.current?.setRoutes(props.routes); }, [props.routes]);
   return <canvas ref={canvas} id="view" tabIndex={0} role="img" aria-label="深圳真实三维骑行地图。拖动平移，滚轮或双指缩放，点击对象查看详情。空格暂停，F跟随，T切换主题，N快进六小时。" />;

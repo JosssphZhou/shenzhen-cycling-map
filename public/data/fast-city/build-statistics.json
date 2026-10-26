@@ -1,0 +1,6066 @@
+{
+  "files": [
+    {
+      "name": "base.bin",
+      "bytes": 8476020,
+      "gzipBytes": 2462339,
+      "geometryRoundtrip": true,
+      "sha256": "ef6cbdb8afd27aabd5e33aafe840b2843943702a01fd1628c7e3a766c3b460df"
+    },
+    {
+      "name": "roads.bin",
+      "bytes": 10975540,
+      "gzipBytes": 5312808,
+      "geometryRoundtrip": true,
+      "sha256": "9b3fd213415343fa5d4a7eadd4fd54e6028f32311045b56000ea27eee914c111"
+    },
+    {
+      "name": "terrain.bin",
+      "bytes": 3687236,
+      "gzipBytes": 1008464,
+      "geometryRoundtrip": true,
+      "sha256": "f39bd481f4a3e9a266d1c89494438a752e9012b58497ef73b9546900a073939d"
+    },
+    {
+      "name": "tiles/b-0-17.bin",
+      "bytes": 2512,
+      "gzipBytes": 674,
+      "geometryRoundtrip": true,
+      "sha256": "0df7208118a038147b044892f4b5e9928026d27cfb0846bb418eb292d6e2fbbe"
+    },
+    {
+      "name": "tiles/b-0-18.bin",
+      "bytes": 11044,
+      "gzipBytes": 4151,
+      "geometryRoundtrip": true,
+      "sha256": "e5d0b436b5e25449bb6a851f7313c23877831614e83f1d4a0af92079ebd29979"
+    },
+    {
+      "name": "tiles/b-1-9.bin",
+      "bytes": 30628,
+      "gzipBytes": 8825,
+      "geometryRoundtrip": true,
+      "sha256": "2121ce032428d054af14974e6d7571ca71c16c8d4e1c078603a5c12012869f0c"
+    },
+    {
+      "name": "tiles/b-1-17.bin",
+      "bytes": 28788,
+      "gzipBytes": 11100,
+      "geometryRoundtrip": true,
+      "sha256": "cfd0cf1d72ee9dbfca49c472c84c7bbc8ddbcad3998a155c0fc74d134a14e449"
+    },
+    {
+      "name": "tiles/b-1-18.bin",
+      "bytes": 169100,
+      "gzipBytes": 49970,
+      "geometryRoundtrip": true,
+      "sha256": "54283d812a1a0e073da5697fad0d9bf6280adbf2b4f6bafe9319335094440f66"
+    },
+    {
+      "name": "tiles/b-1-19.bin",
+      "bytes": 73636,
+      "gzipBytes": 22876,
+      "geometryRoundtrip": true,
+      "sha256": "b5c6d05effe20832eafc388b9be3e9ce424df0f49b6d25fbd6d8aa911001dc50"
+    },
+    {
+      "name": "tiles/b-1-20.bin",
+      "bytes": 91428,
+      "gzipBytes": 23508,
+      "geometryRoundtrip": true,
+      "sha256": "15f1908903f28d4e037a823ac8d63eed40b2bfbdc71319eb52ef0d6670989f75"
+    },
+    {
+      "name": "tiles/b-2-14.bin",
+      "bytes": 33224,
+      "gzipBytes": 13616,
+      "geometryRoundtrip": true,
+      "sha256": "d5677519dbf3bf31bc93a0546fd3b9341bb7e1870b771bab948fa5c73a73c00c"
+    },
+    {
+      "name": "tiles/b-2-15.bin",
+      "bytes": 15484,
+      "gzipBytes": 5099,
+      "geometryRoundtrip": true,
+      "sha256": "1c2d07fa72835e4c0214a0bfb25fb51d778cfcb9d2babd083f529b07999d06f5"
+    },
+    {
+      "name": "tiles/b-2-16.bin",
+      "bytes": 191780,
+      "gzipBytes": 56462,
+      "geometryRoundtrip": true,
+      "sha256": "68bb874f55bc70348c188a6f8e73ccaf848284bcbff268e5a9cd853bc92abee2"
+    },
+    {
+      "name": "tiles/b-2-17.bin",
+      "bytes": 426348,
+      "gzipBytes": 128181,
+      "geometryRoundtrip": true,
+      "sha256": "954ec8e4bb16751a0ed84fab8137425e3c407be542fd84350e67b1fe42bcaf5a"
+    },
+    {
+      "name": "tiles/b-2-18.bin",
+      "bytes": 636020,
+      "gzipBytes": 189438,
+      "geometryRoundtrip": true,
+      "sha256": "93e05fa7e323c2da7a214f1dc7b09c772fe1f6f01bd30a1369870f2ebf225257"
+    },
+    {
+      "name": "tiles/b-2-19.bin",
+      "bytes": 1001468,
+      "gzipBytes": 270329,
+      "geometryRoundtrip": true,
+      "sha256": "3b7c26f09393f4f44e337f7bc4d21e628f757af9d1489bfe936d32475a2c8829"
+    },
+    {
+      "name": "tiles/b-2-20.bin",
+      "bytes": 760072,
+      "gzipBytes": 216443,
+      "geometryRoundtrip": true,
+      "sha256": "e5494022198c8fe268e53026fb13c4f6667ee7841ba42d2450211f387f6fe49e"
+    },
+    {
+      "name": "tiles/b-2-21.bin",
+      "bytes": 151060,
+      "gzipBytes": 40111,
+      "geometryRoundtrip": true,
+      "sha256": "d89c229915dc616dd7a9d60587cf1828ea7bfd35fff4a3b65de9f0a6236effa2"
+    },
+    {
+      "name": "tiles/b-3-12.bin",
+      "bytes": 9700,
+      "gzipBytes": 3548,
+      "geometryRoundtrip": true,
+      "sha256": "2ce3a0e926daddd1345853d6ac5b1a9346b1d9bcedc9e119157ca7191aad53cd"
+    },
+    {
+      "name": "tiles/b-3-13.bin",
+      "bytes": 11504,
+      "gzipBytes": 3961,
+      "geometryRoundtrip": true,
+      "sha256": "1050d6b887a633081bc8cfc520ea0fd6fcf0efe24941064c301b894bdacb0c2d"
+    },
+    {
+      "name": "tiles/b-3-14.bin",
+      "bytes": 57196,
+      "gzipBytes": 16920,
+      "geometryRoundtrip": true,
+      "sha256": "6119eee5913cc929588b7be23614704290e0c88a0b6d3d766db4f6999a296f74"
+    },
+    {
+      "name": "tiles/b-3-15.bin",
+      "bytes": 413796,
+      "gzipBytes": 126088,
+      "geometryRoundtrip": true,
+      "sha256": "18520a0a7096eb5a6601fc016df2570ac83c7c505c042cd88e14fc6fbe2b560c"
+    },
+    {
+      "name": "tiles/b-3-16.bin",
+      "bytes": 865532,
+      "gzipBytes": 256671,
+      "geometryRoundtrip": true,
+      "sha256": "ae629a150d8c901851b392b83db7c29e03c9fff8a952ccc292abf1cc58ae7956"
+    },
+    {
+      "name": "tiles/b-3-17.bin",
+      "bytes": 1603296,
+      "gzipBytes": 448887,
+      "geometryRoundtrip": true,
+      "sha256": "021502a46170e12b811de3a189a95bced255f39facf6f59f3a3376ec21ee105e"
+    },
+    {
+      "name": "tiles/b-3-18.bin",
+      "bytes": 744788,
+      "gzipBytes": 210645,
+      "geometryRoundtrip": true,
+      "sha256": "de368a2362ce145f31a34fcc553c7116ce92378f96d4ed9f6b5ad52b58d8b255"
+    },
+    {
+      "name": "tiles/b-3-19.bin",
+      "bytes": 936356,
+      "gzipBytes": 260788,
+      "geometryRoundtrip": true,
+      "sha256": "5171bd1d13e3c1b3651448937525a11a2f212ee94f95600209fa3d12b0c5ac7c"
+    },
+    {
+      "name": "tiles/b-3-20.bin",
+      "bytes": 1477508,
+      "gzipBytes": 412566,
+      "geometryRoundtrip": true,
+      "sha256": "9e4897710d52d95e83b6748fd59473e7d49bb2de6c2903af2a2893dbf8d3a3b5"
+    },
+    {
+      "name": "tiles/b-3-21.bin",
+      "bytes": 1107800,
+      "gzipBytes": 319010,
+      "geometryRoundtrip": true,
+      "sha256": "3df683374e7b5297132c0c291415f45fd007aceb2c5849c3d3a3e2c2f50d4143"
+    },
+    {
+      "name": "tiles/b-3-22.bin",
+      "bytes": 619520,
+      "gzipBytes": 179249,
+      "geometryRoundtrip": true,
+      "sha256": "21801eb640ce07a912075ce3b9b14b87ae492f9d480ff23c8b7a19502c226934"
+    },
+    {
+      "name": "tiles/b-3-23.bin",
+      "bytes": 230236,
+      "gzipBytes": 68995,
+      "geometryRoundtrip": true,
+      "sha256": "28a1ffd392ade65afd676249d9a8df0f80a95c44d873f45e6080620287913ff2"
+    },
+    {
+      "name": "tiles/b-4-11.bin",
+      "bytes": 54240,
+      "gzipBytes": 21241,
+      "geometryRoundtrip": true,
+      "sha256": "d675fa4d4a32c91676f6ac7f1eec313777591396beb95611aedff4825d15e8e8"
+    },
+    {
+      "name": "tiles/b-4-12.bin",
+      "bytes": 130524,
+      "gzipBytes": 44755,
+      "geometryRoundtrip": true,
+      "sha256": "86b7321090e6774cc5782a98350a1e5210ad77b1a6ba073291673948f79507aa"
+    },
+    {
+      "name": "tiles/b-4-13.bin",
+      "bytes": 174156,
+      "gzipBytes": 59645,
+      "geometryRoundtrip": true,
+      "sha256": "29f0fc9e74678444328d5c7e194011e36325eb821b82b090f2721cc80c030cb2"
+    },
+    {
+      "name": "tiles/b-4-14.bin",
+      "bytes": 133004,
+      "gzipBytes": 41143,
+      "geometryRoundtrip": true,
+      "sha256": "521dc7c0501ca361a09ff2ce9552c728311534fbe3a04bde0cf1e1b63914653c"
+    },
+    {
+      "name": "tiles/b-4-15.bin",
+      "bytes": 1044248,
+      "gzipBytes": 306815,
+      "geometryRoundtrip": true,
+      "sha256": "3842532fde270297cf8fde92be867827a22fdf637175d364eaa2a8e92d0cad7d"
+    },
+    {
+      "name": "tiles/b-4-16.bin",
+      "bytes": 1260516,
+      "gzipBytes": 371423,
+      "geometryRoundtrip": true,
+      "sha256": "679d1fd7479b8f7563ee51175c6f7563a61704628facb6c65cba4bbe8cf79080"
+    },
+    {
+      "name": "tiles/b-4-17.bin",
+      "bytes": 1236504,
+      "gzipBytes": 350905,
+      "geometryRoundtrip": true,
+      "sha256": "170aa576fcdb7c054011e6e120ef33afa409e43d12eeb7cf0d16b802637b6158"
+    },
+    {
+      "name": "tiles/b-4-18.bin",
+      "bytes": 1740156,
+      "gzipBytes": 479356,
+      "geometryRoundtrip": true,
+      "sha256": "d168b8203a920f4bb32549aa684afd55134cbf49b691988621141b31a2e0f98f"
+    },
+    {
+      "name": "tiles/b-4-19.bin",
+      "bytes": 1373108,
+      "gzipBytes": 393969,
+      "geometryRoundtrip": true,
+      "sha256": "d84e8d40b686f004a21d0c4e5b005e44a9441a4912639fd2cb571e522dd168d9"
+    },
+    {
+      "name": "tiles/b-4-20.bin",
+      "bytes": 2854728,
+      "gzipBytes": 782381,
+      "geometryRoundtrip": true,
+      "sha256": "b5a28b856f73da02f2cf0de6954b8e4162e715034dbbbe1b0e004b952cee9a53"
+    },
+    {
+      "name": "tiles/b-4-21.bin",
+      "bytes": 2119844,
+      "gzipBytes": 598119,
+      "geometryRoundtrip": true,
+      "sha256": "f9bf307da675cd056e230b74c58afa21594b3c75e09bd1cd659b5e9d73698ff0"
+    },
+    {
+      "name": "tiles/b-4-22.bin",
+      "bytes": 917804,
+      "gzipBytes": 264528,
+      "geometryRoundtrip": true,
+      "sha256": "93e58e195e289a76c4987c276c5f3611c740be9e09e27d16930eb61fdb200f24"
+    },
+    {
+      "name": "tiles/b-4-23.bin",
+      "bytes": 962996,
+      "gzipBytes": 267883,
+      "geometryRoundtrip": true,
+      "sha256": "fc6f28550df5ee0d34fa3d69dd81007cbb59999d75aef0f61d2d6b6c84d7752d"
+    },
+    {
+      "name": "tiles/b-4-24.bin",
+      "bytes": 89572,
+      "gzipBytes": 14352,
+      "geometryRoundtrip": true,
+      "sha256": "4c0647dbc23f0ca0413e8d81a743d5c6b85a56cac469f7a8651fe513cf3c60ba"
+    },
+    {
+      "name": "tiles/b-5-7.bin",
+      "bytes": 2416,
+      "gzipBytes": 567,
+      "geometryRoundtrip": true,
+      "sha256": "2a80ca8923d8c5469b98fa2dd0e1a9d72c531a2a418c79087320a4eecebb344f"
+    },
+    {
+      "name": "tiles/b-5-10.bin",
+      "bytes": 21540,
+      "gzipBytes": 8654,
+      "geometryRoundtrip": true,
+      "sha256": "e1b50ccbf454427c92f01011b572e32b003084a22becd2b1fdb1ee22a1a89e35"
+    },
+    {
+      "name": "tiles/b-5-11.bin",
+      "bytes": 226608,
+      "gzipBytes": 75383,
+      "geometryRoundtrip": true,
+      "sha256": "f16b37c54c228054ac96eb54a93a15e53b6985a0369b4b35948fcf9478f9e11b"
+    },
+    {
+      "name": "tiles/b-5-12.bin",
+      "bytes": 204524,
+      "gzipBytes": 63792,
+      "geometryRoundtrip": true,
+      "sha256": "a7b479b68f19583af945f7fff495f6884f39df562e670c23d8978dd4b1a87205"
+    },
+    {
+      "name": "tiles/b-5-13.bin",
+      "bytes": 484244,
+      "gzipBytes": 150713,
+      "geometryRoundtrip": true,
+      "sha256": "e6eb8a158b026d7d9b95cded0d93ff1052863ec18e3e2a420d4703531f914e4c"
+    },
+    {
+      "name": "tiles/b-5-14.bin",
+      "bytes": 898796,
+      "gzipBytes": 276040,
+      "geometryRoundtrip": true,
+      "sha256": "5c3b8c12326b6419d007c74c6d20a4806520c31a13c0790bd799506a183f5a09"
+    },
+    {
+      "name": "tiles/b-5-15.bin",
+      "bytes": 762128,
+      "gzipBytes": 224396,
+      "geometryRoundtrip": true,
+      "sha256": "e86cc96bbe507fb87dabbf37147422140ece19d6867634357665d8ec78105cd6"
+    },
+    {
+      "name": "tiles/b-5-16.bin",
+      "bytes": 1327340,
+      "gzipBytes": 383431,
+      "geometryRoundtrip": true,
+      "sha256": "ef0ec3effcec9191026398e16c1839cf13eac9e09bd00d8f098687ae40bbecb6"
+    },
+    {
+      "name": "tiles/b-5-17.bin",
+      "bytes": 989628,
+      "gzipBytes": 286829,
+      "geometryRoundtrip": true,
+      "sha256": "ceb4da7a1ef90302c0675b48aa8dbf4b9eaacc9244ac44e07a31027342f68732"
+    },
+    {
+      "name": "tiles/b-5-18.bin",
+      "bytes": 1183632,
+      "gzipBytes": 333745,
+      "geometryRoundtrip": true,
+      "sha256": "0206d7565e8468e4a3f59240e1af4a941e267df762d8b1290b2e058c38433d8d"
+    },
+    {
+      "name": "tiles/b-5-19.bin",
+      "bytes": 1641704,
+      "gzipBytes": 449639,
+      "geometryRoundtrip": true,
+      "sha256": "9ad8890a1ff658106d10501cdd52145a0c3abc9bdb784984ca1e81aa9674e833"
+    },
+    {
+      "name": "tiles/b-5-20.bin",
+      "bytes": 1845252,
+      "gzipBytes": 519407,
+      "geometryRoundtrip": true,
+      "sha256": "fffdd6e5ce53a972bfeac0609b605e3db79a7dcf232a8681244b3e77cf0d9ea5"
+    },
+    {
+      "name": "tiles/b-5-21.bin",
+      "bytes": 779912,
+      "gzipBytes": 223224,
+      "geometryRoundtrip": true,
+      "sha256": "e74b0cfa11de5b8d47d155603a2a94837dbf3d0798979fe220e1407d0812b080"
+    },
+    {
+      "name": "tiles/b-5-22.bin",
+      "bytes": 950960,
+      "gzipBytes": 272079,
+      "geometryRoundtrip": true,
+      "sha256": "7bb8f9a0a342c6a64cc3c744f900e8644d6866886b1ac374aab6a37919fea7fe"
+    },
+    {
+      "name": "tiles/b-5-23.bin",
+      "bytes": 1272092,
+      "gzipBytes": 356318,
+      "geometryRoundtrip": true,
+      "sha256": "cdf47f90d57b52aace95166a7089ca8ef3156cc59aec4624b6c4dcfead09484d"
+    },
+    {
+      "name": "tiles/b-5-24.bin",
+      "bytes": 175440,
+      "gzipBytes": 50581,
+      "geometryRoundtrip": true,
+      "sha256": "56d124f876cedc51d8d1d14389055f95a9c9c8ff22c3fa1368b56daf68155bf8"
+    },
+    {
+      "name": "tiles/b-5-26.bin",
+      "bytes": 1684,
+      "gzipBytes": 353,
+      "geometryRoundtrip": true,
+      "sha256": "14c51292a0a47853ae47dcd061cca3777f2de5ccda5adee5c14e572d67661d0e"
+    },
+    {
+      "name": "tiles/b-6-4.bin",
+      "bytes": 57076,
+      "gzipBytes": 12786,
+      "geometryRoundtrip": true,
+      "sha256": "eec0a4e63326fc7725d5610025c0fdffc947d7f4c79bc9dc8a3e19cf9fcc1f37"
+    },
+    {
+      "name": "tiles/b-6-5.bin",
+      "bytes": 47128,
+      "gzipBytes": 12487,
+      "geometryRoundtrip": true,
+      "sha256": "5e779fb71f1d6694279cdfd8781ccd2330ee04732e0601e9f0b63d4716e69c69"
+    },
+    {
+      "name": "tiles/b-6-7.bin",
+      "bytes": 5940,
+      "gzipBytes": 1920,
+      "geometryRoundtrip": true,
+      "sha256": "7e9186f7b276d86417c08ee1e5a3601899db4cbbc6e81af73f9efc743345f685"
+    },
+    {
+      "name": "tiles/b-6-8.bin",
+      "bytes": 6136,
+      "gzipBytes": 2181,
+      "geometryRoundtrip": true,
+      "sha256": "f8b6981d34bb244fa25fe5522eb621ae500e611c7881774ecaa99c6519b2ad11"
+    },
+    {
+      "name": "tiles/b-6-9.bin",
+      "bytes": 131932,
+      "gzipBytes": 36846,
+      "geometryRoundtrip": true,
+      "sha256": "c1d243224c361874999a6e329bfcba114fcb1c6e348d7692fe691cf689164996"
+    },
+    {
+      "name": "tiles/b-6-10.bin",
+      "bytes": 1140048,
+      "gzipBytes": 331299,
+      "geometryRoundtrip": true,
+      "sha256": "7b830ed7e46a97a7585fdde5295334018ff9ab6c53e0bbdd62b6853d161ec6e8"
+    },
+    {
+      "name": "tiles/b-6-11.bin",
+      "bytes": 1506552,
+      "gzipBytes": 439274,
+      "geometryRoundtrip": true,
+      "sha256": "0d17ea77b7159ff81cec94a8f58f92d3deaf14d4e2ef5e8188eea60a459d9197"
+    },
+    {
+      "name": "tiles/b-6-12.bin",
+      "bytes": 1000124,
+      "gzipBytes": 296882,
+      "geometryRoundtrip": true,
+      "sha256": "9851a01c94247f4ef5ba5e1fd79c5e5a3009349a6a3408b009b12b385d962b75"
+    },
+    {
+      "name": "tiles/b-6-13.bin",
+      "bytes": 1481684,
+      "gzipBytes": 438383,
+      "geometryRoundtrip": true,
+      "sha256": "e8d475b0e68f9296cc5e38903136282d6c6c27ef7d27a4435f39e399ecb47bab"
+    },
+    {
+      "name": "tiles/b-6-14.bin",
+      "bytes": 404704,
+      "gzipBytes": 125077,
+      "geometryRoundtrip": true,
+      "sha256": "a0a921e208ac81d86e570915a19058d39e9e10bae869292c00b6df2f2db29521"
+    },
+    {
+      "name": "tiles/b-6-15.bin",
+      "bytes": 63576,
+      "gzipBytes": 24505,
+      "geometryRoundtrip": true,
+      "sha256": "839fbf87dd964fae53827f944d3f7350572294f7d26969b4b86b55f33286c6e5"
+    },
+    {
+      "name": "tiles/b-6-16.bin",
+      "bytes": 311088,
+      "gzipBytes": 96267,
+      "geometryRoundtrip": true,
+      "sha256": "06030921eefee9e4489c45a1aca3476e1c9e97e434be46a0acb94e0d1552de44"
+    },
+    {
+      "name": "tiles/b-6-17.bin",
+      "bytes": 1277876,
+      "gzipBytes": 367184,
+      "geometryRoundtrip": true,
+      "sha256": "c3b4b1a872952c752c9e649ce9480fa09b58c43318f8a8420c26c38d97188c65"
+    },
+    {
+      "name": "tiles/b-6-18.bin",
+      "bytes": 1080872,
+      "gzipBytes": 314759,
+      "geometryRoundtrip": true,
+      "sha256": "edbd283cd1abc9d73b32f661eae371d0ccd2186a9e747b9d0c10b02b3543c5b3"
+    },
+    {
+      "name": "tiles/b-6-19.bin",
+      "bytes": 1634120,
+      "gzipBytes": 467833,
+      "geometryRoundtrip": true,
+      "sha256": "7d2678e348119d170414445ea7ceac50df03b34c5322b93b42f591f62ca3a6c3"
+    },
+    {
+      "name": "tiles/b-6-20.bin",
+      "bytes": 1614312,
+      "gzipBytes": 468791,
+      "geometryRoundtrip": true,
+      "sha256": "2dd2b850f9307697398358d29fbbd143fa5fdf54b1633d73c09dbda6b43bb82b"
+    },
+    {
+      "name": "tiles/b-6-21.bin",
+      "bytes": 1418612,
+      "gzipBytes": 407212,
+      "geometryRoundtrip": true,
+      "sha256": "b11fdacc9e8c722e9ff83e2779debaacc074d599bc70e344c0110afe3445029f"
+    },
+    {
+      "name": "tiles/b-6-22.bin",
+      "bytes": 2450064,
+      "gzipBytes": 690802,
+      "geometryRoundtrip": true,
+      "sha256": "f19431b8e0878b161574e6d449d1ec8d3a37ca9e46e01acd3950448a62d5905f"
+    },
+    {
+      "name": "tiles/b-6-23.bin",
+      "bytes": 940856,
+      "gzipBytes": 272191,
+      "geometryRoundtrip": true,
+      "sha256": "80a80e70ca5669b2441939d4ce6dc5151d9eb0395e94f1e90d70d5af0f200cdd"
+    },
+    {
+      "name": "tiles/b-6-24.bin",
+      "bytes": 573200,
+      "gzipBytes": 169020,
+      "geometryRoundtrip": true,
+      "sha256": "6c843fbf473e4fafa5932c939bfe427d97632955be8496411f9fc67e62d9d83a"
+    },
+    {
+      "name": "tiles/b-6-25.bin",
+      "bytes": 290300,
+      "gzipBytes": 85044,
+      "geometryRoundtrip": true,
+      "sha256": "e4fbb42f0b0566d9f42b3a96a098f7f94ad0b36e74a085e0633a0b5c806dd995"
+    },
+    {
+      "name": "tiles/b-6-26.bin",
+      "bytes": 73904,
+      "gzipBytes": 18695,
+      "geometryRoundtrip": true,
+      "sha256": "bfc918b86748d3325cbc35cad4d2cf723ffe11358b507284d19ccc582eb86bf9"
+    },
+    {
+      "name": "tiles/b-6-27.bin",
+      "bytes": 4920,
+      "gzipBytes": 1784,
+      "geometryRoundtrip": true,
+      "sha256": "78558a94577a0c35dc287917a21e552165dca2d68a76b073c257518384e92555"
+    },
+    {
+      "name": "tiles/b-7-4.bin",
+      "bytes": 7028,
+      "gzipBytes": 1386,
+      "geometryRoundtrip": true,
+      "sha256": "bda6db74ba5d74a460143b94fc9f5ce3812be9f663194478658084a8ecadf080"
+    },
+    {
+      "name": "tiles/b-7-5.bin",
+      "bytes": 45536,
+      "gzipBytes": 13109,
+      "geometryRoundtrip": true,
+      "sha256": "b6a2519b7fe097ac4f2126b493d5c18bb7753784e5e08d33efed142a1dabf270"
+    },
+    {
+      "name": "tiles/b-7-6.bin",
+      "bytes": 12736,
+      "gzipBytes": 4962,
+      "geometryRoundtrip": true,
+      "sha256": "bc2154c23b4d835dd49a43e42fbc5fbd24c285126d0db0572203e4dfca5e0f9f"
+    },
+    {
+      "name": "tiles/b-7-7.bin",
+      "bytes": 71080,
+      "gzipBytes": 16982,
+      "geometryRoundtrip": true,
+      "sha256": "68e93f6c7eb1e8f940cbb79bf1160738cee89e4a0d743b7ba36e8f701233968f"
+    },
+    {
+      "name": "tiles/b-7-8.bin",
+      "bytes": 337404,
+      "gzipBytes": 99998,
+      "geometryRoundtrip": true,
+      "sha256": "84a7e51094c5c41b2cb4ca1dab950c7fc98f4f853fa3b39ad2b22747c5d42f2b"
+    },
+    {
+      "name": "tiles/b-7-9.bin",
+      "bytes": 1502768,
+      "gzipBytes": 412579,
+      "geometryRoundtrip": true,
+      "sha256": "a8ef1a8df3a29008d040995266e2be3810aeeaf5fdc441bc5010abe9045bc934"
+    },
+    {
+      "name": "tiles/b-7-10.bin",
+      "bytes": 1160316,
+      "gzipBytes": 331661,
+      "geometryRoundtrip": true,
+      "sha256": "c1b2e54d4411e8110857bf5bddb6a4866fd929b6343ee2a4fcf8d32e8cb20577"
+    },
+    {
+      "name": "tiles/b-7-11.bin",
+      "bytes": 1264796,
+      "gzipBytes": 367945,
+      "geometryRoundtrip": true,
+      "sha256": "2981944d09566e1dc7ad24e80e8b9e4386333dd7b75cb027129db0971802ac76"
+    },
+    {
+      "name": "tiles/b-7-12.bin",
+      "bytes": 933636,
+      "gzipBytes": 267167,
+      "geometryRoundtrip": true,
+      "sha256": "1bf4b5fff79a695a62e8f3cbf735b6cac0957cdfe4203f33ae1bdd796c71ed60"
+    },
+    {
+      "name": "tiles/b-7-13.bin",
+      "bytes": 668716,
+      "gzipBytes": 204721,
+      "geometryRoundtrip": true,
+      "sha256": "1f87bddac7ff94cf1c8d0465ac4f1537ac96fe9b075858a5add90d79757feced"
+    },
+    {
+      "name": "tiles/b-7-14.bin",
+      "bytes": 652092,
+      "gzipBytes": 195655,
+      "geometryRoundtrip": true,
+      "sha256": "1786067c996368ce9e68bc9cdea7fed27e3be1ac0d2970369ece2838c892ab83"
+    },
+    {
+      "name": "tiles/b-7-15.bin",
+      "bytes": 651392,
+      "gzipBytes": 191725,
+      "geometryRoundtrip": true,
+      "sha256": "47d24344e03e6ae1e25884533459db22c90f3bf41c0a22073388ed9b9fa1b06f"
+    },
+    {
+      "name": "tiles/b-7-16.bin",
+      "bytes": 176488,
+      "gzipBytes": 54525,
+      "geometryRoundtrip": true,
+      "sha256": "a42249e1e75fbd3d380a3df56686746a25367397b0164ba0475698a318b712bd"
+    },
+    {
+      "name": "tiles/b-7-17.bin",
+      "bytes": 67500,
+      "gzipBytes": 21244,
+      "geometryRoundtrip": true,
+      "sha256": "e3e64d69a2a5710349ce470515f6cf19fa3f13b9bf8de64b340686becb7f99d6"
+    },
+    {
+      "name": "tiles/b-7-18.bin",
+      "bytes": 515272,
+      "gzipBytes": 153836,
+      "geometryRoundtrip": true,
+      "sha256": "4a7946abe487e6700af0f999e69dbee4f654c07f35043cacfc601e7a0e01f2fa"
+    },
+    {
+      "name": "tiles/b-7-19.bin",
+      "bytes": 985460,
+      "gzipBytes": 281530,
+      "geometryRoundtrip": true,
+      "sha256": "c172a2e772b83d72688518148a99f80f8f50ac1bc2c00720281bc5a135fe3d83"
+    },
+    {
+      "name": "tiles/b-7-20.bin",
+      "bytes": 723416,
+      "gzipBytes": 215335,
+      "geometryRoundtrip": true,
+      "sha256": "6909feb5e91f701b1b78c2eb268ab0717f5935bfa85ababf7885ef29fb9e5ddf"
+    },
+    {
+      "name": "tiles/b-7-21.bin",
+      "bytes": 838832,
+      "gzipBytes": 243205,
+      "geometryRoundtrip": true,
+      "sha256": "352a7cdb71b01410db7a16dd226e0f17a3c14cd145a2d53e7aa1f51e7d069fb2"
+    },
+    {
+      "name": "tiles/b-7-22.bin",
+      "bytes": 1178348,
+      "gzipBytes": 321930,
+      "geometryRoundtrip": true,
+      "sha256": "2ac42e4a19195bd4f2a9c9fecfd2fbffdf43cdbd380c479ae04a4ae0e33fdeca"
+    },
+    {
+      "name": "tiles/b-7-23.bin",
+      "bytes": 655372,
+      "gzipBytes": 185972,
+      "geometryRoundtrip": true,
+      "sha256": "41bd0d617f98aa76baed10130e6e2afefad735d5973506893b8dc533f2925fd6"
+    },
+    {
+      "name": "tiles/b-7-24.bin",
+      "bytes": 577052,
+      "gzipBytes": 167650,
+      "geometryRoundtrip": true,
+      "sha256": "c43e064e72885a0184be0a385d7c7ac688ec42226c33e978ba6b3523783206a1"
+    },
+    {
+      "name": "tiles/b-7-25.bin",
+      "bytes": 356556,
+      "gzipBytes": 103176,
+      "geometryRoundtrip": true,
+      "sha256": "1ce1e709aee9e3c62ccaffcca14c601905f0d939408bf14d5815861a1d28b876"
+    },
+    {
+      "name": "tiles/b-7-26.bin",
+      "bytes": 114272,
+      "gzipBytes": 33022,
+      "geometryRoundtrip": true,
+      "sha256": "88dcc32268927fda7c4747e237b4401158af50c10075eea01ee82f6a0968e014"
+    },
+    {
+      "name": "tiles/b-7-27.bin",
+      "bytes": 16596,
+      "gzipBytes": 6721,
+      "geometryRoundtrip": true,
+      "sha256": "c2fd47ead973b5a60c523af498bb2e141d600922c5301644d1e0d7df12c0b0e0"
+    },
+    {
+      "name": "tiles/b-8-2.bin",
+      "bytes": 35760,
+      "gzipBytes": 8893,
+      "geometryRoundtrip": true,
+      "sha256": "4d57ed4edae559c908c454126aca74504e3172f1c2d6382743f5a03dd4f8e696"
+    },
+    {
+      "name": "tiles/b-8-3.bin",
+      "bytes": 426688,
+      "gzipBytes": 120765,
+      "geometryRoundtrip": true,
+      "sha256": "f6ddab13ef9762ac926797113c7086a6564db14d5af97ad5532e403f6c2114f1"
+    },
+    {
+      "name": "tiles/b-8-4.bin",
+      "bytes": 255308,
+      "gzipBytes": 74915,
+      "geometryRoundtrip": true,
+      "sha256": "d05e25a79ef23cd033fb678b766bb9437d6ea2c5b36a84d2a77370cda0a09071"
+    },
+    {
+      "name": "tiles/b-8-5.bin",
+      "bytes": 247992,
+      "gzipBytes": 67179,
+      "geometryRoundtrip": true,
+      "sha256": "8c1c7a4b4308368fd011b754aa0a8ee657286a1b2621b9c0f92d96528d6a2c6f"
+    },
+    {
+      "name": "tiles/b-8-6.bin",
+      "bytes": 18720,
+      "gzipBytes": 6734,
+      "geometryRoundtrip": true,
+      "sha256": "40f2c1a53ea8b334c67ff9ca0b31d719232f5d734af25ed61c728db13d9f4cd2"
+    },
+    {
+      "name": "tiles/b-8-7.bin",
+      "bytes": 130172,
+      "gzipBytes": 35598,
+      "geometryRoundtrip": true,
+      "sha256": "32929b32217ad1b191e33718ce742601f0ded58bf6b16e8cd8a5c99312fb4106"
+    },
+    {
+      "name": "tiles/b-8-8.bin",
+      "bytes": 848448,
+      "gzipBytes": 240398,
+      "geometryRoundtrip": true,
+      "sha256": "a466ae1e5d5f988e98b25f649f4982c05f8a9a13a565c59a0786acefeb4d214f"
+    },
+    {
+      "name": "tiles/b-8-9.bin",
+      "bytes": 2104700,
+      "gzipBytes": 593311,
+      "geometryRoundtrip": true,
+      "sha256": "a2e63de260ba56bc3435acb447d0e6f9813b42e291ddb3e2fabb30fbb065af14"
+    },
+    {
+      "name": "tiles/b-8-10.bin",
+      "bytes": 1562832,
+      "gzipBytes": 449642,
+      "geometryRoundtrip": true,
+      "sha256": "4486da64294ebbe744ae10a5b210ac0a77802404e06ee0f1bd73c6c60cbbdfea"
+    },
+    {
+      "name": "tiles/b-8-11.bin",
+      "bytes": 912156,
+      "gzipBytes": 267114,
+      "geometryRoundtrip": true,
+      "sha256": "9ebfe5401434eb112ac7920c24d9e704b4c9632fd51f7b7860f846197fe1b64c"
+    },
+    {
+      "name": "tiles/b-8-12.bin",
+      "bytes": 298740,
+      "gzipBytes": 89980,
+      "geometryRoundtrip": true,
+      "sha256": "ab66f5f7107185ab34b4e0c07f72302dc275aaeb23730fb2e60d2832a284c3d8"
+    },
+    {
+      "name": "tiles/b-8-13.bin",
+      "bytes": 219788,
+      "gzipBytes": 62926,
+      "geometryRoundtrip": true,
+      "sha256": "6f79dfac5030f9a77c325fc829e564d5f98e9692d8e1218ef4933e05e4ee9ecf"
+    },
+    {
+      "name": "tiles/b-8-14.bin",
+      "bytes": 232488,
+      "gzipBytes": 72276,
+      "geometryRoundtrip": true,
+      "sha256": "826eed8cef51c3fe1f030e0280b0241d9791f40f611c28771334b1e9886bcf1a"
+    },
+    {
+      "name": "tiles/b-8-15.bin",
+      "bytes": 628440,
+      "gzipBytes": 187005,
+      "geometryRoundtrip": true,
+      "sha256": "c79aa30ec1285c3eb0fb4bba380ff15e1db2aede03d8cb0fe54a5ac62f89c69a"
+    },
+    {
+      "name": "tiles/b-8-16.bin",
+      "bytes": 206920,
+      "gzipBytes": 60320,
+      "geometryRoundtrip": true,
+      "sha256": "6090c8c09df14ce4744e419ded6261464343f1b6fca2f7312bc952abcc502f8a"
+    },
+    {
+      "name": "tiles/b-8-17.bin",
+      "bytes": 20884,
+      "gzipBytes": 8045,
+      "geometryRoundtrip": true,
+      "sha256": "f3738f90676dd16c0e0ee466a2126abea7b138b62a23441e843f5fe26857ff4c"
+    },
+    {
+      "name": "tiles/b-8-18.bin",
+      "bytes": 64988,
+      "gzipBytes": 18681,
+      "geometryRoundtrip": true,
+      "sha256": "f1c0ff1bc894b96839cae625e6bdce48e3ef42a5c7516fe122df6f50ca6461fc"
+    },
+    {
+      "name": "tiles/b-8-19.bin",
+      "bytes": 81824,
+      "gzipBytes": 22740,
+      "geometryRoundtrip": true,
+      "sha256": "7ff113fc98d34b60f4deaecd416ab13cd7d6586b1ff63ea325c8f7de3eee2ac7"
+    },
+    {
+      "name": "tiles/b-8-20.bin",
+      "bytes": 142740,
+      "gzipBytes": 40170,
+      "geometryRoundtrip": true,
+      "sha256": "547918da4f75b0c2506ffdf9400026f1d501664d1e62f244a0afc0fea15b4b42"
+    },
+    {
+      "name": "tiles/b-8-21.bin",
+      "bytes": 394884,
+      "gzipBytes": 115859,
+      "geometryRoundtrip": true,
+      "sha256": "1c30b4aae55e304262b013367af57e390b8d0c5a56a4edd8ed15b0b987734ff6"
+    },
+    {
+      "name": "tiles/b-8-22.bin",
+      "bytes": 576088,
+      "gzipBytes": 164329,
+      "geometryRoundtrip": true,
+      "sha256": "937d5a28a5c3a5bfb331db99a4b0b0f7d4101c0f1b00dc020e7c5f199b705070"
+    },
+    {
+      "name": "tiles/b-8-23.bin",
+      "bytes": 1308272,
+      "gzipBytes": 355207,
+      "geometryRoundtrip": true,
+      "sha256": "b46015007a5c98b57ebd7a4d9450a752fea8268a08660fbf570183959447b43e"
+    },
+    {
+      "name": "tiles/b-8-24.bin",
+      "bytes": 884972,
+      "gzipBytes": 252033,
+      "geometryRoundtrip": true,
+      "sha256": "9e9b88644c86dbeb20e585250573f6640d89781cbf5f9a859c952872a07e2417"
+    },
+    {
+      "name": "tiles/b-8-25.bin",
+      "bytes": 526048,
+      "gzipBytes": 147766,
+      "geometryRoundtrip": true,
+      "sha256": "af94a760130d50ec5845c746a11617df2f288c69179d850243dafd3c0346763e"
+    },
+    {
+      "name": "tiles/b-8-26.bin",
+      "bytes": 214332,
+      "gzipBytes": 61027,
+      "geometryRoundtrip": true,
+      "sha256": "001d569c762cb5b6450bab1600a0acf90616fe780bb486eeeb4bff4fc5025782"
+    },
+    {
+      "name": "tiles/b-8-27.bin",
+      "bytes": 37864,
+      "gzipBytes": 11105,
+      "geometryRoundtrip": true,
+      "sha256": "8d9345d0bcd8acf12d16a297e5a18cac713df7b6185a19d5b89383f822a1f838"
+    },
+    {
+      "name": "tiles/b-8-28.bin",
+      "bytes": 7344,
+      "gzipBytes": 1495,
+      "geometryRoundtrip": true,
+      "sha256": "e82533c20c6d3951e0a79f4036fcd2d2492e3db3637aaf0930abe1ac6d140071"
+    },
+    {
+      "name": "tiles/b-9-1.bin",
+      "bytes": 19456,
+      "gzipBytes": 5915,
+      "geometryRoundtrip": true,
+      "sha256": "dcfbe09f8c37fa45583e4d83d6bb1c64a3cbc88621c56bb222d67f6cb1856bcc"
+    },
+    {
+      "name": "tiles/b-9-2.bin",
+      "bytes": 273236,
+      "gzipBytes": 82455,
+      "geometryRoundtrip": true,
+      "sha256": "362acfbc5ecf7c00f8b6fd005cd269bcdbea30dda7f36d4e9dcfcbccea503967"
+    },
+    {
+      "name": "tiles/b-9-3.bin",
+      "bytes": 655952,
+      "gzipBytes": 192102,
+      "geometryRoundtrip": true,
+      "sha256": "3f54c869c34083e350bf0350ee64fd8df05ec1722b7d9522c76e298896eb7d0d"
+    },
+    {
+      "name": "tiles/b-9-4.bin",
+      "bytes": 569224,
+      "gzipBytes": 166656,
+      "geometryRoundtrip": true,
+      "sha256": "e736c5d24d55a9d101491edc5f3b8734140d674c2fe70fd8d55ca9728b888a22"
+    },
+    {
+      "name": "tiles/b-9-5.bin",
+      "bytes": 228824,
+      "gzipBytes": 69589,
+      "geometryRoundtrip": true,
+      "sha256": "8e5d5c057bf2c2e235d7acf83e108f23e9bfa807a61d479a54a944cfea6bc91c"
+    },
+    {
+      "name": "tiles/b-9-6.bin",
+      "bytes": 100896,
+      "gzipBytes": 38586,
+      "geometryRoundtrip": true,
+      "sha256": "4c04b3498ee7ab39ae75517200427ba0109143d496a345bca983e0ebd734cf87"
+    },
+    {
+      "name": "tiles/b-9-7.bin",
+      "bytes": 304752,
+      "gzipBytes": 93423,
+      "geometryRoundtrip": true,
+      "sha256": "66a9cf6a8ef5618b3f9b57fd84aa25ef027007d54e66da01f624df588ce59e73"
+    },
+    {
+      "name": "tiles/b-9-8.bin",
+      "bytes": 1014524,
+      "gzipBytes": 281860,
+      "geometryRoundtrip": true,
+      "sha256": "06fdd73a10c3f6d17085a073a60c8e6c1ec48fde1f8edb157a99a794396896a2"
+    },
+    {
+      "name": "tiles/b-9-9.bin",
+      "bytes": 2232032,
+      "gzipBytes": 621242,
+      "geometryRoundtrip": true,
+      "sha256": "6cda63883219bd11b7ccc1b97cfcc84bf4fc0de38f9a7345e15ca6004b18054c"
+    },
+    {
+      "name": "tiles/b-9-10.bin",
+      "bytes": 1581348,
+      "gzipBytes": 438540,
+      "geometryRoundtrip": true,
+      "sha256": "8916a243a1de966ba2020e3489217a1a57f3e998a5c856f9e4beb5bed3af3400"
+    },
+    {
+      "name": "tiles/b-9-11.bin",
+      "bytes": 810992,
+      "gzipBytes": 238408,
+      "geometryRoundtrip": true,
+      "sha256": "60a073cb35a719b859ba7dd509b564258c34c4fdc40cb8229c624cbcd6a5a3b8"
+    },
+    {
+      "name": "tiles/b-9-12.bin",
+      "bytes": 108520,
+      "gzipBytes": 30175,
+      "geometryRoundtrip": true,
+      "sha256": "43a04bd26d39c9f3e300c239725e46708caef0a236977501a18f37d2fed69489"
+    },
+    {
+      "name": "tiles/b-9-14.bin",
+      "bytes": 10128,
+      "gzipBytes": 2861,
+      "geometryRoundtrip": true,
+      "sha256": "61fa0e3d1ff61b096c070907cb08acfb1964c6d5b1f60e1af56efbcc41b08aec"
+    },
+    {
+      "name": "tiles/b-9-15.bin",
+      "bytes": 238212,
+      "gzipBytes": 70126,
+      "geometryRoundtrip": true,
+      "sha256": "202711727b15fb7efbe6c5427482a85b8de1644eb75465244a626cc47fb9906a"
+    },
+    {
+      "name": "tiles/b-9-16.bin",
+      "bytes": 339388,
+      "gzipBytes": 106451,
+      "geometryRoundtrip": true,
+      "sha256": "96ccee8330cbff58492acd543ee67f0fb0da0da2976e09bb4a6e8d803374324e"
+    },
+    {
+      "name": "tiles/b-9-17.bin",
+      "bytes": 83172,
+      "gzipBytes": 28210,
+      "geometryRoundtrip": true,
+      "sha256": "12d373dd776ac0636dccc1d389fec6859f7ec082bd1e199960deb5a852e3049a"
+    },
+    {
+      "name": "tiles/b-9-18.bin",
+      "bytes": 371648,
+      "gzipBytes": 110767,
+      "geometryRoundtrip": true,
+      "sha256": "95c3fd4baf44c4c3435236131b178b793603d7ab72edf71d5c498a53f8834c59"
+    },
+    {
+      "name": "tiles/b-9-19.bin",
+      "bytes": 369184,
+      "gzipBytes": 113110,
+      "geometryRoundtrip": true,
+      "sha256": "72d02d96074d90d7a2aa490ba214ea62697e3a7544b722e9c584707a4a0335b6"
+    },
+    {
+      "name": "tiles/b-9-20.bin",
+      "bytes": 206552,
+      "gzipBytes": 59075,
+      "geometryRoundtrip": true,
+      "sha256": "0977fe48cf850b13e887158e9ab8d6ed077afb9a63963dee8287b0727a51c5d3"
+    },
+    {
+      "name": "tiles/b-9-21.bin",
+      "bytes": 207944,
+      "gzipBytes": 58920,
+      "geometryRoundtrip": true,
+      "sha256": "312e92476606f7f5d3bbc5ef9886279defc4b1bb153eef27e919733d6431290f"
+    },
+    {
+      "name": "tiles/b-9-22.bin",
+      "bytes": 356272,
+      "gzipBytes": 104884,
+      "geometryRoundtrip": true,
+      "sha256": "6bf8fd194220706983ce8a418d5bcfcef17308b9b62879b5afc6c6e7f6f408ba"
+    },
+    {
+      "name": "tiles/b-9-23.bin",
+      "bytes": 1825868,
+      "gzipBytes": 497378,
+      "geometryRoundtrip": true,
+      "sha256": "b0b1e046429af332bb56a6f8f01ed7cc253a49b2f1ee9bfa2f9e2b8b11796037"
+    },
+    {
+      "name": "tiles/b-9-24.bin",
+      "bytes": 1118028,
+      "gzipBytes": 312280,
+      "geometryRoundtrip": true,
+      "sha256": "07c2adea3ab82333eacf33b971b9306746b8705013fae89548f38d1a5ffcd6ec"
+    },
+    {
+      "name": "tiles/b-9-25.bin",
+      "bytes": 551656,
+      "gzipBytes": 154677,
+      "geometryRoundtrip": true,
+      "sha256": "8bb0ca8e46c49f185693a0a35fe48c32d624482964c99fc9d5a74f9b99e3b684"
+    },
+    {
+      "name": "tiles/b-9-26.bin",
+      "bytes": 158544,
+      "gzipBytes": 51242,
+      "geometryRoundtrip": true,
+      "sha256": "9d963629009769b0ad83b45ec801fa63448915aed682912aa9d9f25391e5d073"
+    },
+    {
+      "name": "tiles/b-9-27.bin",
+      "bytes": 21344,
+      "gzipBytes": 7841,
+      "geometryRoundtrip": true,
+      "sha256": "635d6cf72d31a309b19561c8ac2f86fd7f6c7dcd2991ce7843a64c0e37e84d1f"
+    },
+    {
+      "name": "tiles/b-9-28.bin",
+      "bytes": 7772,
+      "gzipBytes": 1543,
+      "geometryRoundtrip": true,
+      "sha256": "eaaf5d9d0551716d3719fc55519b3873768983e4ce844738d781271ecbc7a6f5"
+    },
+    {
+      "name": "tiles/b-10-1.bin",
+      "bytes": 24764,
+      "gzipBytes": 6353,
+      "geometryRoundtrip": true,
+      "sha256": "458eae05b5f5cba1f63dc5df62ab6ac972ed75b0b7693db4d61cbb66700b311b"
+    },
+    {
+      "name": "tiles/b-10-2.bin",
+      "bytes": 454744,
+      "gzipBytes": 126512,
+      "geometryRoundtrip": true,
+      "sha256": "38612d11a73e43b8f7e5086b32eb1c0ded1001cfd951df34a073cf81c88c21ff"
+    },
+    {
+      "name": "tiles/b-10-3.bin",
+      "bytes": 580536,
+      "gzipBytes": 173514,
+      "geometryRoundtrip": true,
+      "sha256": "a555d9ba9a7c36cdb0039b9eae61b2c8de661d95cf86113ca021c4054325d1b8"
+    },
+    {
+      "name": "tiles/b-10-4.bin",
+      "bytes": 230088,
+      "gzipBytes": 72908,
+      "geometryRoundtrip": true,
+      "sha256": "e34d07891f514b701f2f4f22c9e3ad1180ec918c6130848f51ac72c1dfd4d300"
+    },
+    {
+      "name": "tiles/b-10-5.bin",
+      "bytes": 685364,
+      "gzipBytes": 200757,
+      "geometryRoundtrip": true,
+      "sha256": "b71eb92c8242e51d3c0864f82c0fc272e2e7bc0bc4351995447ae5d32489c1c2"
+    },
+    {
+      "name": "tiles/b-10-6.bin",
+      "bytes": 585872,
+      "gzipBytes": 179981,
+      "geometryRoundtrip": true,
+      "sha256": "717501ef31869a436f09ced87e66f28bb8e687111908c57530107d0d5674adb8"
+    },
+    {
+      "name": "tiles/b-10-7.bin",
+      "bytes": 545576,
+      "gzipBytes": 169455,
+      "geometryRoundtrip": true,
+      "sha256": "ea1a17645314fdcdb7dd6bc2c053b6ba9d33f505cf0b47927107c0cfb86c5e71"
+    },
+    {
+      "name": "tiles/b-10-8.bin",
+      "bytes": 1551648,
+      "gzipBytes": 438217,
+      "geometryRoundtrip": true,
+      "sha256": "fe168c1762c5df1034b2bef9beff0094b3f0e5a05d984d247c1295433bfe18c8"
+    },
+    {
+      "name": "tiles/b-10-9.bin",
+      "bytes": 1619900,
+      "gzipBytes": 445366,
+      "geometryRoundtrip": true,
+      "sha256": "8704c5d6d3373a7003a6a3a0428fd84473d4ffb6660dec2330426d65f626d114"
+    },
+    {
+      "name": "tiles/b-10-10.bin",
+      "bytes": 1096848,
+      "gzipBytes": 319028,
+      "geometryRoundtrip": true,
+      "sha256": "cf5bbf846fefeff4b99b70fac33843fcf903c4e965aadcd37472e844fe156906"
+    },
+    {
+      "name": "tiles/b-10-11.bin",
+      "bytes": 643596,
+      "gzipBytes": 181049,
+      "geometryRoundtrip": true,
+      "sha256": "16fff55e9418f9b49c981fab859b976dcb619bf0b57feba532659390f9403fc3"
+    },
+    {
+      "name": "tiles/b-10-12.bin",
+      "bytes": 2536,
+      "gzipBytes": 572,
+      "geometryRoundtrip": true,
+      "sha256": "54c79f2d3b18cb1bd44ddeb26ccecfd8c874ee292d9bcf371967ce70c4b5261f"
+    },
+    {
+      "name": "tiles/b-10-14.bin",
+      "bytes": 61000,
+      "gzipBytes": 20205,
+      "geometryRoundtrip": true,
+      "sha256": "467087ccc48c2a4c6611a8b67996492791339e2a4bf7f5ee9353fc134fdfeb34"
+    },
+    {
+      "name": "tiles/b-10-15.bin",
+      "bytes": 148120,
+      "gzipBytes": 44792,
+      "geometryRoundtrip": true,
+      "sha256": "b3ad07f3363ec73a05f9b9abc8762f9f8b4ee5326fa5efca620ace071da43df3"
+    },
+    {
+      "name": "tiles/b-10-16.bin",
+      "bytes": 238872,
+      "gzipBytes": 72628,
+      "geometryRoundtrip": true,
+      "sha256": "a6a01dda9e754f3f443b4474a9e05e04a3537bba88d9b9237d5c6d9832785baa"
+    },
+    {
+      "name": "tiles/b-10-17.bin",
+      "bytes": 13480,
+      "gzipBytes": 4594,
+      "geometryRoundtrip": true,
+      "sha256": "93c566a7ac9a760b68c758e9bafab21fff1260723ca277cce9fa0e50d8e6a1ab"
+    },
+    {
+      "name": "tiles/b-10-18.bin",
+      "bytes": 332812,
+      "gzipBytes": 101351,
+      "geometryRoundtrip": true,
+      "sha256": "5bc7bb8dc79133009f1e1ff78fa9b7fac1852ee19b3dad2f8b68a1464faa4cfb"
+    },
+    {
+      "name": "tiles/b-10-19.bin",
+      "bytes": 872468,
+      "gzipBytes": 253322,
+      "geometryRoundtrip": true,
+      "sha256": "ed6a8be28d40815a18061509643f6fda91eec07ad215082bd4c3ee56495bf764"
+    },
+    {
+      "name": "tiles/b-10-20.bin",
+      "bytes": 797084,
+      "gzipBytes": 224257,
+      "geometryRoundtrip": true,
+      "sha256": "5036b87489d4c6bc1ccdd9017ed4e9932401330a49fb64312668895b992a3533"
+    },
+    {
+      "name": "tiles/b-10-21.bin",
+      "bytes": 1178276,
+      "gzipBytes": 327415,
+      "geometryRoundtrip": true,
+      "sha256": "7009b251384704c964da2b5c7e7775b2275c153b2a8e06102bd93bc432146af4"
+    },
+    {
+      "name": "tiles/b-10-22.bin",
+      "bytes": 1024644,
+      "gzipBytes": 288180,
+      "geometryRoundtrip": true,
+      "sha256": "1ae843dc24a359aeead26cba736d8cdc48b5978e0c604eb9f29aca45ef861f72"
+    },
+    {
+      "name": "tiles/b-10-23.bin",
+      "bytes": 1004160,
+      "gzipBytes": 278047,
+      "geometryRoundtrip": true,
+      "sha256": "6f3949e81ae07641cb9c596c4bd5f3a4867d7b4260721a52773802de4abf2357"
+    },
+    {
+      "name": "tiles/b-10-24.bin",
+      "bytes": 745436,
+      "gzipBytes": 214520,
+      "geometryRoundtrip": true,
+      "sha256": "0fc30402f0bf22bf1aef71b4c3e3273325182cfa2bcee9b6a6b21e4ee5f69374"
+    },
+    {
+      "name": "tiles/b-10-25.bin",
+      "bytes": 345600,
+      "gzipBytes": 99720,
+      "geometryRoundtrip": true,
+      "sha256": "ef8406c60e1ff4dd83533af3f7355737b736a0ecd1df80e9a86cb4f38ba243a3"
+    },
+    {
+      "name": "tiles/b-10-26.bin",
+      "bytes": 36660,
+      "gzipBytes": 13859,
+      "geometryRoundtrip": true,
+      "sha256": "06572c1a2df208c53937f5bf010fa33a0aeb25ba8837f41116c3a8ffae5abb16"
+    },
+    {
+      "name": "tiles/b-10-27.bin",
+      "bytes": 36356,
+      "gzipBytes": 14055,
+      "geometryRoundtrip": true,
+      "sha256": "f8513cdb0a922e337a6c8bd62c5e1b2be859535d411f18203f87dd98785f5772"
+    },
+    {
+      "name": "tiles/b-10-28.bin",
+      "bytes": 3760,
+      "gzipBytes": 1237,
+      "geometryRoundtrip": true,
+      "sha256": "479ed87197feb074e5c6bc1c839064433f09d72c45ef71040fa31598a214f000"
+    },
+    {
+      "name": "tiles/b-11-2.bin",
+      "bytes": 63516,
+      "gzipBytes": 15634,
+      "geometryRoundtrip": true,
+      "sha256": "44dc7b0c4a0435804c488d7e1f076f2a4c45f7125daa26b4c93295776afd140d"
+    },
+    {
+      "name": "tiles/b-11-3.bin",
+      "bytes": 656192,
+      "gzipBytes": 184690,
+      "geometryRoundtrip": true,
+      "sha256": "b4ab6ef40acce15fd04842167325b6823d37b1f0420bd77d626cf64fd672b1e0"
+    },
+    {
+      "name": "tiles/b-11-4.bin",
+      "bytes": 1127964,
+      "gzipBytes": 309101,
+      "geometryRoundtrip": true,
+      "sha256": "4139dd64a9b9f8d85efca005552f117ee23d93cc4fe76490c6544e1954132157"
+    },
+    {
+      "name": "tiles/b-11-5.bin",
+      "bytes": 1251912,
+      "gzipBytes": 345380,
+      "geometryRoundtrip": true,
+      "sha256": "3667c01e12e082432e7e824e71705b37f7fbbafaf59213bd1aeece0736efe78a"
+    },
+    {
+      "name": "tiles/b-11-6.bin",
+      "bytes": 2119308,
+      "gzipBytes": 561127,
+      "geometryRoundtrip": true,
+      "sha256": "16eedb012a39d35e4544701122d29b347b79f07faa64510aecfabdf2ea56a163"
+    },
+    {
+      "name": "tiles/b-11-7.bin",
+      "bytes": 1847028,
+      "gzipBytes": 499807,
+      "geometryRoundtrip": true,
+      "sha256": "15f2cdea9337061047fc3a507ccbe1cc1f0d9ee3397d8deac746dcd1f1e3a5c8"
+    },
+    {
+      "name": "tiles/b-11-8.bin",
+      "bytes": 947040,
+      "gzipBytes": 267293,
+      "geometryRoundtrip": true,
+      "sha256": "71655c22570dfb70ff409931ed6780bf1edb16ce1be76e7182fa2c404ebf44a5"
+    },
+    {
+      "name": "tiles/b-11-9.bin",
+      "bytes": 1057452,
+      "gzipBytes": 288842,
+      "geometryRoundtrip": true,
+      "sha256": "42e4a8a3eece609869821f86793254e9f6a3d29342191c3806c2cfcce67cde04"
+    },
+    {
+      "name": "tiles/b-11-10.bin",
+      "bytes": 822180,
+      "gzipBytes": 230596,
+      "geometryRoundtrip": true,
+      "sha256": "4f9cfaa84d15b097089c3057112f43ad1394a9d31e5392e1decb165872d61fbd"
+    },
+    {
+      "name": "tiles/b-11-11.bin",
+      "bytes": 257928,
+      "gzipBytes": 80620,
+      "geometryRoundtrip": true,
+      "sha256": "0d3c89ff9a12b9813d332467dd32f7f3560a2c651a8c31119c4c866f3b4f9e42"
+    },
+    {
+      "name": "tiles/b-11-12.bin",
+      "bytes": 67164,
+      "gzipBytes": 21148,
+      "geometryRoundtrip": true,
+      "sha256": "b6e566dcf729ba2cc3e3902ab330539eba95e6892c74f291deccf6f9c54cc8a8"
+    },
+    {
+      "name": "tiles/b-11-13.bin",
+      "bytes": 67264,
+      "gzipBytes": 22979,
+      "geometryRoundtrip": true,
+      "sha256": "627af45e9ebec1a321f0aeee6ba1777362947eea669a199b25ac1c07c78a746b"
+    },
+    {
+      "name": "tiles/b-11-14.bin",
+      "bytes": 466520,
+      "gzipBytes": 145125,
+      "geometryRoundtrip": true,
+      "sha256": "89b6768d92b456d0333ec570ac064547683034232638a0390c78bd819fc57850"
+    },
+    {
+      "name": "tiles/b-11-15.bin",
+      "bytes": 711920,
+      "gzipBytes": 214664,
+      "geometryRoundtrip": true,
+      "sha256": "19f8b354084aeb1f657a5c5ecf61c9321ca763fb6cceb99b969cf5762d82bb0a"
+    },
+    {
+      "name": "tiles/b-11-16.bin",
+      "bytes": 535172,
+      "gzipBytes": 163056,
+      "geometryRoundtrip": true,
+      "sha256": "49f7ac6127c24222b5cfc73072ac11a010d1bd85f92f7ec4f454076ae38d95e7"
+    },
+    {
+      "name": "tiles/b-11-17.bin",
+      "bytes": 335668,
+      "gzipBytes": 103707,
+      "geometryRoundtrip": true,
+      "sha256": "161f3f6762db96ca6f961d92407c0282bc052675a0340b1bb87b7afb66995507"
+    },
+    {
+      "name": "tiles/b-11-18.bin",
+      "bytes": 139116,
+      "gzipBytes": 40602,
+      "geometryRoundtrip": true,
+      "sha256": "41c0c48f5bbfd24a8c23a73a047190198538ebe58136e3d5bc522dee4a61860e"
+    },
+    {
+      "name": "tiles/b-11-19.bin",
+      "bytes": 863480,
+      "gzipBytes": 242464,
+      "geometryRoundtrip": true,
+      "sha256": "661d5d7ab6de162e801bffee5236b67022e9b212be1d0a41a48120ed9bdbe57b"
+    },
+    {
+      "name": "tiles/b-11-20.bin",
+      "bytes": 431116,
+      "gzipBytes": 125959,
+      "geometryRoundtrip": true,
+      "sha256": "71fd86770126b34223a4dc8c9b3ffd64fdab3a6fc02baa33660a80de4414c29d"
+    },
+    {
+      "name": "tiles/b-11-21.bin",
+      "bytes": 601808,
+      "gzipBytes": 169834,
+      "geometryRoundtrip": true,
+      "sha256": "b70d02e6aceca5383d1a0dcb335b2c8bce1d7f1fa99bb254cfe641fc7194e69f"
+    },
+    {
+      "name": "tiles/b-11-22.bin",
+      "bytes": 767544,
+      "gzipBytes": 219002,
+      "geometryRoundtrip": true,
+      "sha256": "55861e7a953380866c11b0114cef00b3ff55d5dcd83713687ca0da67c1fb4d6d"
+    },
+    {
+      "name": "tiles/b-11-23.bin",
+      "bytes": 631644,
+      "gzipBytes": 183251,
+      "geometryRoundtrip": true,
+      "sha256": "81704dbddae244b281f84002e19ad9c3b2f6f4df4b9acda74d7057a2b8c84a91"
+    },
+    {
+      "name": "tiles/b-11-24.bin",
+      "bytes": 205252,
+      "gzipBytes": 68968,
+      "geometryRoundtrip": true,
+      "sha256": "e36a7294e485f8bf1e30463f7f3db7c819311ccd6d5376a58146ba043a59ed49"
+    },
+    {
+      "name": "tiles/b-11-25.bin",
+      "bytes": 74956,
+      "gzipBytes": 25555,
+      "geometryRoundtrip": true,
+      "sha256": "5e76cf2c629561653e93cd07580dc6db0a04ae05f94364cb458303bfa9d03a11"
+    },
+    {
+      "name": "tiles/b-11-26.bin",
+      "bytes": 61160,
+      "gzipBytes": 22707,
+      "geometryRoundtrip": true,
+      "sha256": "9b5c0d01d87bcf6a99a8dc33c1cd647ced6c2b86651212ef413ce33372dbbf80"
+    },
+    {
+      "name": "tiles/b-11-27.bin",
+      "bytes": 11200,
+      "gzipBytes": 3759,
+      "geometryRoundtrip": true,
+      "sha256": "91dfdfcc3439607da124ef20c9fec4ab0381cde84f01f97beb1dc48bd798fb3e"
+    },
+    {
+      "name": "tiles/b-12-3.bin",
+      "bytes": 484736,
+      "gzipBytes": 135575,
+      "geometryRoundtrip": true,
+      "sha256": "ec2379ed495ce2e85ed788753fac99f0ab244b5194e9da23fe412eff60128e90"
+    },
+    {
+      "name": "tiles/b-12-4.bin",
+      "bytes": 1732824,
+      "gzipBytes": 467590,
+      "geometryRoundtrip": true,
+      "sha256": "a404073ab05b2d8b13ab896bb929111d56f603043d9aa7af6d994748cd5d46aa"
+    },
+    {
+      "name": "tiles/b-12-5.bin",
+      "bytes": 1560192,
+      "gzipBytes": 398338,
+      "geometryRoundtrip": true,
+      "sha256": "8f8f2fad47533cdd343ef1926e365f5ef2c112bfe25c0398dcbc2f65fbbdf332"
+    },
+    {
+      "name": "tiles/b-12-6.bin",
+      "bytes": 1274188,
+      "gzipBytes": 359929,
+      "geometryRoundtrip": true,
+      "sha256": "32464268551bb5a47d6a8c9e86d4ff0324a633342e0efbb392022c83e3abe54e"
+    },
+    {
+      "name": "tiles/b-12-7.bin",
+      "bytes": 955872,
+      "gzipBytes": 268658,
+      "geometryRoundtrip": true,
+      "sha256": "c9aa2c6f03f7dd8ea7bae931383eab26df5df3e3286e8061fb3c6c194208328c"
+    },
+    {
+      "name": "tiles/b-12-8.bin",
+      "bytes": 651296,
+      "gzipBytes": 192329,
+      "geometryRoundtrip": true,
+      "sha256": "cc6f0ad636b34cddb8423b19f5faf1c8bc8c5efdfb935b0222bd2642c61cd952"
+    },
+    {
+      "name": "tiles/b-12-9.bin",
+      "bytes": 675404,
+      "gzipBytes": 193777,
+      "geometryRoundtrip": true,
+      "sha256": "a77865569ae45ad70c38afc897363a7f334d1091d3fb2c883cb9fa40c604cb3d"
+    },
+    {
+      "name": "tiles/b-12-10.bin",
+      "bytes": 555444,
+      "gzipBytes": 169143,
+      "geometryRoundtrip": true,
+      "sha256": "572152363221a418f7e1731efe3f7af485d10b40e4256d8d2d62380076ed72e1"
+    },
+    {
+      "name": "tiles/b-12-11.bin",
+      "bytes": 354088,
+      "gzipBytes": 112519,
+      "geometryRoundtrip": true,
+      "sha256": "c5cf5d07d919ca745b8463cb66d005ef21ade59c45178e781343ae25229a075e"
+    },
+    {
+      "name": "tiles/b-12-12.bin",
+      "bytes": 375040,
+      "gzipBytes": 113633,
+      "geometryRoundtrip": true,
+      "sha256": "790bf3743cac525c6a6ec982dceed9bd5018de84d29a8385f02fb26291af7a0e"
+    },
+    {
+      "name": "tiles/b-12-13.bin",
+      "bytes": 357124,
+      "gzipBytes": 108057,
+      "geometryRoundtrip": true,
+      "sha256": "a4f4b1f3cf3db4a078ccf246da60154875a926a99420b03c997a4aa96eb27712"
+    },
+    {
+      "name": "tiles/b-12-14.bin",
+      "bytes": 485492,
+      "gzipBytes": 150772,
+      "geometryRoundtrip": true,
+      "sha256": "7d3c1d3f077ea343e8bd58d4d175cd0af78c06fe5cf392efb7a9117c31aa904f"
+    },
+    {
+      "name": "tiles/b-12-15.bin",
+      "bytes": 335044,
+      "gzipBytes": 101607,
+      "geometryRoundtrip": true,
+      "sha256": "26f6c69038902e90b73eb1566e6313c51f2448d976ac69e838c70e743efd0c94"
+    },
+    {
+      "name": "tiles/b-12-16.bin",
+      "bytes": 1754436,
+      "gzipBytes": 504797,
+      "geometryRoundtrip": true,
+      "sha256": "6488a540b28b875f4554401e45a940b99e0a750cf3aca6a90b66767231a7505b"
+    },
+    {
+      "name": "tiles/b-12-17.bin",
+      "bytes": 1454424,
+      "gzipBytes": 416709,
+      "geometryRoundtrip": true,
+      "sha256": "beeecbade4c952289497b04eedd905e86e225caca40740bbee98dc652fbc16b6"
+    },
+    {
+      "name": "tiles/b-12-18.bin",
+      "bytes": 112328,
+      "gzipBytes": 30955,
+      "geometryRoundtrip": true,
+      "sha256": "d1ec057487f153ee9ebb96c9111aacb76359d4096653a3f5a908b4aba88a0d05"
+    },
+    {
+      "name": "tiles/b-12-19.bin",
+      "bytes": 552200,
+      "gzipBytes": 149815,
+      "geometryRoundtrip": true,
+      "sha256": "7e78faed53c743c454dba8c5cd2f2365dbf7e52a74c03d3fd01b8c112bfbdce8"
+    },
+    {
+      "name": "tiles/b-12-20.bin",
+      "bytes": 898740,
+      "gzipBytes": 243190,
+      "geometryRoundtrip": true,
+      "sha256": "3fcbfd423bd6f42b456970b17fab71dd6e9c363351783c924fbe6e4a9a46b215"
+    },
+    {
+      "name": "tiles/b-12-21.bin",
+      "bytes": 643292,
+      "gzipBytes": 166477,
+      "geometryRoundtrip": true,
+      "sha256": "416669d4ad271e0318388ff539bb506150917e5cf93ba4edea3766df78d88d3f"
+    },
+    {
+      "name": "tiles/b-12-22.bin",
+      "bytes": 755132,
+      "gzipBytes": 193125,
+      "geometryRoundtrip": true,
+      "sha256": "c9922beaaa39b817879ae0fa2549280692d6eca5521ed5752c9326f22da79477"
+    },
+    {
+      "name": "tiles/b-12-23.bin",
+      "bytes": 1009124,
+      "gzipBytes": 284423,
+      "geometryRoundtrip": true,
+      "sha256": "c76efbcf60a5c42550ba6e0b0786a0845c2ef9a9ca0e20d1b018d3392a29b575"
+    },
+    {
+      "name": "tiles/b-12-24.bin",
+      "bytes": 234456,
+      "gzipBytes": 70300,
+      "geometryRoundtrip": true,
+      "sha256": "8285100e691c8da9ef93f4b962915bd6810526c52f424e836899e9e3e3ab3387"
+    },
+    {
+      "name": "tiles/b-12-25.bin",
+      "bytes": 151128,
+      "gzipBytes": 39530,
+      "geometryRoundtrip": true,
+      "sha256": "3387baa13ba7c06d6601c2ff74afa6e7f54c22d5c0cc5742d7ca81b2b5c0ccad"
+    },
+    {
+      "name": "tiles/b-12-26.bin",
+      "bytes": 128872,
+      "gzipBytes": 36555,
+      "geometryRoundtrip": true,
+      "sha256": "7a0d54906c41b45aefc0f4f7db8c3720be92c58cebddcab052afe94792ce8a93"
+    },
+    {
+      "name": "tiles/b-12-27.bin",
+      "bytes": 11344,
+      "gzipBytes": 2360,
+      "geometryRoundtrip": true,
+      "sha256": "9a46fb0ab63dd0d90e2ba375e99b90178e1ac7f18ada915966f42d535bbc9b06"
+    },
+    {
+      "name": "tiles/b-13-3.bin",
+      "bytes": 35572,
+      "gzipBytes": 11118,
+      "geometryRoundtrip": true,
+      "sha256": "e63c29538fa29bd3a79d02aa1cf8331a17fcd52de9484257e26459a1da327879"
+    },
+    {
+      "name": "tiles/b-13-4.bin",
+      "bytes": 308196,
+      "gzipBytes": 98550,
+      "geometryRoundtrip": true,
+      "sha256": "2e903215d6074cd42cc2b082fdd619d6371df173aedf736747a99ab3e9002085"
+    },
+    {
+      "name": "tiles/b-13-5.bin",
+      "bytes": 426716,
+      "gzipBytes": 138136,
+      "geometryRoundtrip": true,
+      "sha256": "b5ad49a89ea7296c07c83144c3ac5a8687321854246ee0b386889f0a9fa86280"
+    },
+    {
+      "name": "tiles/b-13-6.bin",
+      "bytes": 854256,
+      "gzipBytes": 239700,
+      "geometryRoundtrip": true,
+      "sha256": "557d38b416e1829a8115b6ae5817e52930e411e14af39e8923dc86392d883ba5"
+    },
+    {
+      "name": "tiles/b-13-7.bin",
+      "bytes": 947848,
+      "gzipBytes": 266026,
+      "geometryRoundtrip": true,
+      "sha256": "45c328e0f678d48789ffa902f9a13ca8ce67d9d7c750c3c007ee40eafe44fc8f"
+    },
+    {
+      "name": "tiles/b-13-8.bin",
+      "bytes": 953664,
+      "gzipBytes": 246112,
+      "geometryRoundtrip": true,
+      "sha256": "c46444064639fbe332e26f783bca92c483b76acaae0023f8ca24958108a97328"
+    },
+    {
+      "name": "tiles/b-13-9.bin",
+      "bytes": 816488,
+      "gzipBytes": 233062,
+      "geometryRoundtrip": true,
+      "sha256": "d673e66455043d6a642bb2f9e5b2b1c8d61e3ee36d86beabdd55850ab5f855db"
+    },
+    {
+      "name": "tiles/b-13-10.bin",
+      "bytes": 991704,
+      "gzipBytes": 277644,
+      "geometryRoundtrip": true,
+      "sha256": "85f739db43d4d28ef012183b37d4bde78c0a78a0d9ec32e01a09b7353778d348"
+    },
+    {
+      "name": "tiles/b-13-11.bin",
+      "bytes": 77812,
+      "gzipBytes": 25567,
+      "geometryRoundtrip": true,
+      "sha256": "7e8f82292aa48892f751178724537db6c9ff1580a7b33c1b9fbec5d27987be73"
+    },
+    {
+      "name": "tiles/b-13-12.bin",
+      "bytes": 143908,
+      "gzipBytes": 43670,
+      "geometryRoundtrip": true,
+      "sha256": "75fde502de53a0fb8da3dd15c94b78d96ad237b17cc725693243b6eeeb05e597"
+    },
+    {
+      "name": "tiles/b-13-13.bin",
+      "bytes": 501056,
+      "gzipBytes": 151903,
+      "geometryRoundtrip": true,
+      "sha256": "64affdaf52957fff56d20069234c7b120ed0086ee750392f073f9fb6fee171e3"
+    },
+    {
+      "name": "tiles/b-13-14.bin",
+      "bytes": 69240,
+      "gzipBytes": 18079,
+      "geometryRoundtrip": true,
+      "sha256": "04ce629227d1dd8614c8825e4cc473ac0240586478465f2e278f4b956695055a"
+    },
+    {
+      "name": "tiles/b-13-15.bin",
+      "bytes": 158172,
+      "gzipBytes": 52315,
+      "geometryRoundtrip": true,
+      "sha256": "23c60234b3960d06627814c738e22bbb651ba9bbbad5c15ab25e3bbb219c4f25"
+    },
+    {
+      "name": "tiles/b-13-16.bin",
+      "bytes": 1326640,
+      "gzipBytes": 382757,
+      "geometryRoundtrip": true,
+      "sha256": "4cb02c1ea6ea1a1c98e6dc637e80eae42e0c7b9e1233630582426e07c31d11bf"
+    },
+    {
+      "name": "tiles/b-13-17.bin",
+      "bytes": 947052,
+      "gzipBytes": 271478,
+      "geometryRoundtrip": true,
+      "sha256": "6c1d8bae93dcd8051b7ad916bc355e1388d058ba8d44907faa2da80bc6e08cde"
+    },
+    {
+      "name": "tiles/b-13-18.bin",
+      "bytes": 38140,
+      "gzipBytes": 12582,
+      "geometryRoundtrip": true,
+      "sha256": "364e761834abcffe57456f27da4237e399385952092b05ab19aeb83566aa0bdc"
+    },
+    {
+      "name": "tiles/b-13-19.bin",
+      "bytes": 172232,
+      "gzipBytes": 50946,
+      "geometryRoundtrip": true,
+      "sha256": "416f8fbfad5f3951e13267b7396e7c62db749018b86510d1bd40e67b1609584a"
+    },
+    {
+      "name": "tiles/b-13-20.bin",
+      "bytes": 620004,
+      "gzipBytes": 164347,
+      "geometryRoundtrip": true,
+      "sha256": "aa758ba94cd07eb0ceefde09ba89240d8ece78f41fb0bf4531e6b71c253acae8"
+    },
+    {
+      "name": "tiles/b-13-21.bin",
+      "bytes": 797088,
+      "gzipBytes": 227268,
+      "geometryRoundtrip": true,
+      "sha256": "b840dc92647794bff73520266ba3cae5ab513751b54b08610d3781b0cc659e25"
+    },
+    {
+      "name": "tiles/b-13-22.bin",
+      "bytes": 926856,
+      "gzipBytes": 262240,
+      "geometryRoundtrip": true,
+      "sha256": "da3cbafcd6ae40e107c2dc718ab93d8170c3ab00adf6a4ea33cf15a8be1e3261"
+    },
+    {
+      "name": "tiles/b-13-23.bin",
+      "bytes": 254304,
+      "gzipBytes": 78947,
+      "geometryRoundtrip": true,
+      "sha256": "5b6acc7b9742462d38064d06eff696a1319a0a5f0f9148ff6a2778b0388244fb"
+    },
+    {
+      "name": "tiles/b-13-24.bin",
+      "bytes": 679752,
+      "gzipBytes": 198715,
+      "geometryRoundtrip": true,
+      "sha256": "1f34d1f61f138ba7e40b10b83dc53261e7d836131d93950bdd6ecfa1fb8e9ef2"
+    },
+    {
+      "name": "tiles/b-13-25.bin",
+      "bytes": 387424,
+      "gzipBytes": 111636,
+      "geometryRoundtrip": true,
+      "sha256": "5bfa0b6f3c0a6580a151e64ac675a42738ae31da0d688c5e165a957966a2ddc4"
+    },
+    {
+      "name": "tiles/b-13-26.bin",
+      "bytes": 110020,
+      "gzipBytes": 28346,
+      "geometryRoundtrip": true,
+      "sha256": "d91de65a32252a6df8b63373e2cfa3c9a1a12d544595e02348b9282f9921ea55"
+    },
+    {
+      "name": "tiles/b-14-5.bin",
+      "bytes": 5288,
+      "gzipBytes": 1805,
+      "geometryRoundtrip": true,
+      "sha256": "7c0691465b152aa0744ac3745df942ccb1cfd13a947e46519d8ed8573e6f71a7"
+    },
+    {
+      "name": "tiles/b-14-6.bin",
+      "bytes": 471980,
+      "gzipBytes": 131256,
+      "geometryRoundtrip": true,
+      "sha256": "15881cfe76db6c88063b1e9aaba1588e1da3a2c3589991ff912b6ed263ea3e74"
+    },
+    {
+      "name": "tiles/b-14-7.bin",
+      "bytes": 1276596,
+      "gzipBytes": 348877,
+      "geometryRoundtrip": true,
+      "sha256": "2a39be69672e0bacc2e0ec9b38a05ebb35b8383e554833f67dc6c7b4f15bf070"
+    },
+    {
+      "name": "tiles/b-14-8.bin",
+      "bytes": 836316,
+      "gzipBytes": 235242,
+      "geometryRoundtrip": true,
+      "sha256": "e392562535ee13ff344c9d3776f208b71e6292b726a01ad415c4a9e8b2814ac8"
+    },
+    {
+      "name": "tiles/b-14-9.bin",
+      "bytes": 944652,
+      "gzipBytes": 270223,
+      "geometryRoundtrip": true,
+      "sha256": "094766b038b6f8e323787fb508c0c0e4fa0f9ef2941368ead7869e04d00e8b8d"
+    },
+    {
+      "name": "tiles/b-14-10.bin",
+      "bytes": 1017544,
+      "gzipBytes": 291582,
+      "geometryRoundtrip": true,
+      "sha256": "f0266574b8f73199045e11aef5ddd8785581f19b7d575acabb8c7399c300c499"
+    },
+    {
+      "name": "tiles/b-14-11.bin",
+      "bytes": 368860,
+      "gzipBytes": 109276,
+      "geometryRoundtrip": true,
+      "sha256": "4d51df4cc6e61af95d14ae0ae2ac8b40b870ea468295ecd70841bf33f73a699b"
+    },
+    {
+      "name": "tiles/b-14-12.bin",
+      "bytes": 49028,
+      "gzipBytes": 19320,
+      "geometryRoundtrip": true,
+      "sha256": "1378bf80b8014a80e18c6135de2ce0b79c50032525f31c5715e253bbc5b0e8eb"
+    },
+    {
+      "name": "tiles/b-14-13.bin",
+      "bytes": 139024,
+      "gzipBytes": 40727,
+      "geometryRoundtrip": true,
+      "sha256": "047e8bc59779a2fd22e5563e855bea09ebd818500a67d3c31ffe13aa48e57911"
+    },
+    {
+      "name": "tiles/b-14-14.bin",
+      "bytes": 24944,
+      "gzipBytes": 10373,
+      "geometryRoundtrip": true,
+      "sha256": "12516291bd21763e79137b8f2a78876fd51e351d5cd5fb3cbcfe51e3c1acee82"
+    },
+    {
+      "name": "tiles/b-14-15.bin",
+      "bytes": 23024,
+      "gzipBytes": 9365,
+      "geometryRoundtrip": true,
+      "sha256": "4db7f7e88f11fce84c2caf71435f8f2c3062622987ee8dda18bd1f69b6ac1555"
+    },
+    {
+      "name": "tiles/b-14-16.bin",
+      "bytes": 159684,
+      "gzipBytes": 46023,
+      "geometryRoundtrip": true,
+      "sha256": "f92349a832541f227e303dc67964560a494e2114c965a8fc7ec9ef7de9501f7f"
+    },
+    {
+      "name": "tiles/b-14-17.bin",
+      "bytes": 897252,
+      "gzipBytes": 262323,
+      "geometryRoundtrip": true,
+      "sha256": "5c71ca3e64fbad9d3fee93c6c193b86678e52885b39930da5006e6d6511b94af"
+    },
+    {
+      "name": "tiles/b-14-18.bin",
+      "bytes": 513380,
+      "gzipBytes": 148992,
+      "geometryRoundtrip": true,
+      "sha256": "3157c2e8def21cdce450cff32f233bfff94b8fa2ef266ed07fd621f8aca49738"
+    },
+    {
+      "name": "tiles/b-14-19.bin",
+      "bytes": 52116,
+      "gzipBytes": 12893,
+      "geometryRoundtrip": true,
+      "sha256": "4f1a7550f566293e43c16211ce8f32894f5204b93309a136fe7a4bfc314e9b39"
+    },
+    {
+      "name": "tiles/b-14-20.bin",
+      "bytes": 375652,
+      "gzipBytes": 106553,
+      "geometryRoundtrip": true,
+      "sha256": "464218c88b1df97fe36ac563257af6b08e9db21a6ec68434abcacb7452594f95"
+    },
+    {
+      "name": "tiles/b-14-21.bin",
+      "bytes": 134388,
+      "gzipBytes": 41677,
+      "geometryRoundtrip": true,
+      "sha256": "9bb21e8c0bd9727cb1b58fefb52d6995983578ec606bea5c629fc20a46d697cd"
+    },
+    {
+      "name": "tiles/b-14-22.bin",
+      "bytes": 488760,
+      "gzipBytes": 143025,
+      "geometryRoundtrip": true,
+      "sha256": "1ef55efc4f006d883d73fff06e14f4d6606ee78330244b0c8cc503111b69386a"
+    },
+    {
+      "name": "tiles/b-14-23.bin",
+      "bytes": 105452,
+      "gzipBytes": 32739,
+      "geometryRoundtrip": true,
+      "sha256": "9dd530da1ff3abe99b3d06b27592f9d187235f4f84bc46c3b7c191cc4f980a7a"
+    },
+    {
+      "name": "tiles/b-14-24.bin",
+      "bytes": 574112,
+      "gzipBytes": 159827,
+      "geometryRoundtrip": true,
+      "sha256": "0dc74a3e8237478e447754244678d9c00334124b673eb9d2e523125305176797"
+    },
+    {
+      "name": "tiles/b-14-25.bin",
+      "bytes": 251892,
+      "gzipBytes": 75552,
+      "geometryRoundtrip": true,
+      "sha256": "74ec13de6026c19fd012bc6fd074cb691fe49ddda3dc6fdb3aa0476573ca285f"
+    },
+    {
+      "name": "tiles/b-14-26.bin",
+      "bytes": 15992,
+      "gzipBytes": 3667,
+      "geometryRoundtrip": true,
+      "sha256": "acc56d12d52a06531b0ea031c889c2e84b8651a9f0d95b210077f10c9708fec2"
+    },
+    {
+      "name": "tiles/b-15-6.bin",
+      "bytes": 687788,
+      "gzipBytes": 188947,
+      "geometryRoundtrip": true,
+      "sha256": "cb2f2b0d5d33f1e6e8297b86435fc726305dc686096dd629ba98454eafbbf59f"
+    },
+    {
+      "name": "tiles/b-15-7.bin",
+      "bytes": 1583352,
+      "gzipBytes": 420470,
+      "geometryRoundtrip": true,
+      "sha256": "0c270539f6154fcc5461faf703f53d1dac7b5dcaf4bf2d62a66d89a54ba3b9c9"
+    },
+    {
+      "name": "tiles/b-15-8.bin",
+      "bytes": 1386912,
+      "gzipBytes": 367298,
+      "geometryRoundtrip": true,
+      "sha256": "43164772d385fb80b81070aa640f2ba2b4558539ec0471ae3aad8de85975f8c3"
+    },
+    {
+      "name": "tiles/b-15-9.bin",
+      "bytes": 282732,
+      "gzipBytes": 87703,
+      "geometryRoundtrip": true,
+      "sha256": "17358ea3cc4a0e593588d6c94fb622032afcf74dbcb4c36bb10c81c18aaddd77"
+    },
+    {
+      "name": "tiles/b-15-10.bin",
+      "bytes": 369956,
+      "gzipBytes": 114879,
+      "geometryRoundtrip": true,
+      "sha256": "785331e772bd1ac714dc7158de1d109e8f243b74ab9e1a7b353cbaccdbb4a442"
+    },
+    {
+      "name": "tiles/b-15-11.bin",
+      "bytes": 292720,
+      "gzipBytes": 92083,
+      "geometryRoundtrip": true,
+      "sha256": "27a9d229208ccb70efd769400495814129714c7b79073ecca1db3bb25aaef12a"
+    },
+    {
+      "name": "tiles/b-15-12.bin",
+      "bytes": 362072,
+      "gzipBytes": 110573,
+      "geometryRoundtrip": true,
+      "sha256": "886fcc85aa19771acc50226e2b38ffe88735ac05c1512623d907281cbe5e001d"
+    },
+    {
+      "name": "tiles/b-15-13.bin",
+      "bytes": 355520,
+      "gzipBytes": 110614,
+      "geometryRoundtrip": true,
+      "sha256": "7b55c8b02b528ca2b311d2dbe8b231c37dc0dbc85566d82be5ae44d8a2a2a77d"
+    },
+    {
+      "name": "tiles/b-15-14.bin",
+      "bytes": 53140,
+      "gzipBytes": 22758,
+      "geometryRoundtrip": true,
+      "sha256": "ca1299e2ef122e30a27bbc55faf1f630ea7ad828bfb704086159380c48533fd8"
+    },
+    {
+      "name": "tiles/b-15-15.bin",
+      "bytes": 42244,
+      "gzipBytes": 18254,
+      "geometryRoundtrip": true,
+      "sha256": "35c265a96a2eb7901b76b313148d9caa73166b103fa6c5eb1b2e25c3ba8a4f6d"
+    },
+    {
+      "name": "tiles/b-15-16.bin",
+      "bytes": 428196,
+      "gzipBytes": 132002,
+      "geometryRoundtrip": true,
+      "sha256": "83462e536085b1b1105430cf0b7a2b0d6177ecc01d85b15f65919a91e248eb74"
+    },
+    {
+      "name": "tiles/b-15-17.bin",
+      "bytes": 322096,
+      "gzipBytes": 99024,
+      "geometryRoundtrip": true,
+      "sha256": "8a4a452e36d947a87c397508b986179316288c4f326479b7a329fb210b2a21ff"
+    },
+    {
+      "name": "tiles/b-15-18.bin",
+      "bytes": 189024,
+      "gzipBytes": 51200,
+      "geometryRoundtrip": true,
+      "sha256": "95bdb5cea5e309dc154e5af49295742b579ca0a905cede06b60bb15b482b24cc"
+    },
+    {
+      "name": "tiles/b-15-19.bin",
+      "bytes": 57264,
+      "gzipBytes": 13508,
+      "geometryRoundtrip": true,
+      "sha256": "9bfac4ed5666b99a4dd321020357a24cc01e0fe54104de2ae32abb1809af5f5b"
+    },
+    {
+      "name": "tiles/b-15-20.bin",
+      "bytes": 95324,
+      "gzipBytes": 28027,
+      "geometryRoundtrip": true,
+      "sha256": "ac25040eb7c908f6b6f62633d7cf4218d5d59e39de020f04f3bc100809392ca9"
+    },
+    {
+      "name": "tiles/b-15-21.bin",
+      "bytes": 20940,
+      "gzipBytes": 8488,
+      "geometryRoundtrip": true,
+      "sha256": "d04b50e459054e72e01857f836bc53751891593ecd2016c5854b27b082624dbc"
+    },
+    {
+      "name": "tiles/b-15-22.bin",
+      "bytes": 59460,
+      "gzipBytes": 15769,
+      "geometryRoundtrip": true,
+      "sha256": "d8744d4ef847a7710fc7460fc294b10159ede4bbfe784cc05f14d0d1e2d4ad08"
+    },
+    {
+      "name": "tiles/b-15-23.bin",
+      "bytes": 2800,
+      "gzipBytes": 805,
+      "geometryRoundtrip": true,
+      "sha256": "23ffeb66b904f33f074857bc02619130a6647efca105f1cc08a00c2ca301693a"
+    },
+    {
+      "name": "tiles/b-15-24.bin",
+      "bytes": 74228,
+      "gzipBytes": 20223,
+      "geometryRoundtrip": true,
+      "sha256": "35b8521c8f8c22fc2c7af09ffd2d659306af459872435d82098b8c4f366daeb7"
+    },
+    {
+      "name": "tiles/b-15-25.bin",
+      "bytes": 22972,
+      "gzipBytes": 5098,
+      "geometryRoundtrip": true,
+      "sha256": "a7ad1d9bcf79f15f02b4b54a46fc6cde7ecaf9435aa18f4b8e0add232b456e97"
+    },
+    {
+      "name": "tiles/b-16-6.bin",
+      "bytes": 531416,
+      "gzipBytes": 155819,
+      "geometryRoundtrip": true,
+      "sha256": "119d9931364ced4741eddfd1db661108aa3c310cf03e33f8dcb4b5f122f17e4a"
+    },
+    {
+      "name": "tiles/b-16-7.bin",
+      "bytes": 1011312,
+      "gzipBytes": 274858,
+      "geometryRoundtrip": true,
+      "sha256": "f3c0e09f8cd8375ad1c4ab38da39f949e44138d5e91f06ab31204af24c67fd21"
+    },
+    {
+      "name": "tiles/b-16-8.bin",
+      "bytes": 747800,
+      "gzipBytes": 206869,
+      "geometryRoundtrip": true,
+      "sha256": "b690de946f78790987644c303f7e671a3cbb55a2f46ca4848188995af4676fd8"
+    },
+    {
+      "name": "tiles/b-16-9.bin",
+      "bytes": 132344,
+      "gzipBytes": 41633,
+      "geometryRoundtrip": true,
+      "sha256": "c0f8af9adc301e379b4d95c939857e16460d3a18697f5596f549b44ca1a3bfda"
+    },
+    {
+      "name": "tiles/b-16-10.bin",
+      "bytes": 633384,
+      "gzipBytes": 179148,
+      "geometryRoundtrip": true,
+      "sha256": "f28576702b2e55ccf7fe6c1cd5e0f2d01256257cb470ebe138bb821bd31412af"
+    },
+    {
+      "name": "tiles/b-16-11.bin",
+      "bytes": 344128,
+      "gzipBytes": 114771,
+      "geometryRoundtrip": true,
+      "sha256": "43a3b4eaeff5b73c20198e8faad1881d1565f49c64c6c3a30ab7d4e03072ad18"
+    },
+    {
+      "name": "tiles/b-16-12.bin",
+      "bytes": 38936,
+      "gzipBytes": 13082,
+      "geometryRoundtrip": true,
+      "sha256": "c7dc4195a84d71b8f55d3216b780a5451c4f242a2494a383ca1dc11db081912b"
+    },
+    {
+      "name": "tiles/b-16-13.bin",
+      "bytes": 90060,
+      "gzipBytes": 29928,
+      "geometryRoundtrip": true,
+      "sha256": "19456b95050f0345977a200353b46cd42012ada8f94df64c487d338fb18703f0"
+    },
+    {
+      "name": "tiles/b-16-14.bin",
+      "bytes": 51012,
+      "gzipBytes": 19380,
+      "geometryRoundtrip": true,
+      "sha256": "2335fb3466b78d1e463dcdfe9fcf4b6fc9bd6ea945f816506cd4e6980c3e6b00"
+    },
+    {
+      "name": "tiles/b-16-15.bin",
+      "bytes": 622224,
+      "gzipBytes": 201116,
+      "geometryRoundtrip": true,
+      "sha256": "242e28a7afb835181a63df045f34915cee36a45539a8f14f174d25e8e7cbbebc"
+    },
+    {
+      "name": "tiles/b-16-16.bin",
+      "bytes": 1211092,
+      "gzipBytes": 354079,
+      "geometryRoundtrip": true,
+      "sha256": "8b699eb78eb0e7261b14f38f21309da67b6d5d5d824f39367bd6e5aee955d466"
+    },
+    {
+      "name": "tiles/b-16-17.bin",
+      "bytes": 766404,
+      "gzipBytes": 225975,
+      "geometryRoundtrip": true,
+      "sha256": "a2cc2abbe0b874172fb9f5fea95b15404d4b68eef6e93801c9ed87947527e3ef"
+    },
+    {
+      "name": "tiles/b-16-18.bin",
+      "bytes": 194316,
+      "gzipBytes": 55715,
+      "geometryRoundtrip": true,
+      "sha256": "575eed3d5b4810d41ef5e9e1ed0f801b268cc734c8e7983240f1d52e88a980aa"
+    },
+    {
+      "name": "tiles/b-16-19.bin",
+      "bytes": 17908,
+      "gzipBytes": 7103,
+      "geometryRoundtrip": true,
+      "sha256": "f439f2dfd880f8abd3cdc1a4df377534e229f015dd78c2c8979229380e3a8888"
+    },
+    {
+      "name": "tiles/b-16-20.bin",
+      "bytes": 511484,
+      "gzipBytes": 145709,
+      "geometryRoundtrip": true,
+      "sha256": "21d442dca06a19d50b79626914267f389fb4a4d999c7b8f30894c4cc0764d5b9"
+    },
+    {
+      "name": "tiles/b-16-21.bin",
+      "bytes": 66716,
+      "gzipBytes": 16956,
+      "geometryRoundtrip": true,
+      "sha256": "cc7235e4ec52792005ef45fb288fde9c99fe7c17bc26eb7d20bfb1e8ca492056"
+    },
+    {
+      "name": "tiles/b-16-22.bin",
+      "bytes": 6300,
+      "gzipBytes": 2107,
+      "geometryRoundtrip": true,
+      "sha256": "328ab21b9330321dcbedac59258f941060d295be7802fba63cf6eb090a63eb89"
+    },
+    {
+      "name": "tiles/b-16-23.bin",
+      "bytes": 6180,
+      "gzipBytes": 2057,
+      "geometryRoundtrip": true,
+      "sha256": "e894a581547bc82a351afaf516f09e032bce5d8111d2dacbf58ea397cb7ab39c"
+    },
+    {
+      "name": "tiles/b-16-24.bin",
+      "bytes": 8508,
+      "gzipBytes": 2894,
+      "geometryRoundtrip": true,
+      "sha256": "0a72f85816ed2165302afdf5ab35d52b09b6e7b74aa07c86a9ca893a119149f3"
+    },
+    {
+      "name": "tiles/b-17-6.bin",
+      "bytes": 174408,
+      "gzipBytes": 57632,
+      "geometryRoundtrip": true,
+      "sha256": "79f641b13b0f60ce5a72dc043204c3f381d555ebfbd11c6511467486e74ccbcb"
+    },
+    {
+      "name": "tiles/b-17-7.bin",
+      "bytes": 934260,
+      "gzipBytes": 262792,
+      "geometryRoundtrip": true,
+      "sha256": "962100dfb5657532a3a26bec2da5bc6943bae20b29d3f9eb1f2131bb915df9ff"
+    },
+    {
+      "name": "tiles/b-17-8.bin",
+      "bytes": 557216,
+      "gzipBytes": 150549,
+      "geometryRoundtrip": true,
+      "sha256": "fd7ddd2cb1ef8178ed50306526d5c748d27bb75d18f70e1ef74376bf04f70713"
+    },
+    {
+      "name": "tiles/b-17-9.bin",
+      "bytes": 61832,
+      "gzipBytes": 17937,
+      "geometryRoundtrip": true,
+      "sha256": "c91b5f500b7fbe3c376df60f0d4de6bd9787bf99b5174c7ca0409c5c71c9a93f"
+    },
+    {
+      "name": "tiles/b-17-10.bin",
+      "bytes": 142452,
+      "gzipBytes": 44570,
+      "geometryRoundtrip": true,
+      "sha256": "38559bfe41e5ddad3209bb81c9b37dd4988eeb7698377d26054c261ac7ce33d5"
+    },
+    {
+      "name": "tiles/b-17-11.bin",
+      "bytes": 392392,
+      "gzipBytes": 116892,
+      "geometryRoundtrip": true,
+      "sha256": "a5b9772a5846e77ca4647c75798964396471c44764cc48bf0eb225a569c917bb"
+    },
+    {
+      "name": "tiles/b-17-12.bin",
+      "bytes": 46608,
+      "gzipBytes": 18738,
+      "geometryRoundtrip": true,
+      "sha256": "4bf28f77afaf1d40719479a545420a213e324351010aa2ecf047cae6b084cd4f"
+    },
+    {
+      "name": "tiles/b-17-13.bin",
+      "bytes": 584856,
+      "gzipBytes": 179432,
+      "geometryRoundtrip": true,
+      "sha256": "83b17685d1052e49144a3b46c35ee098890fc4eff6dffa76182e9a3b9301cdad"
+    },
+    {
+      "name": "tiles/b-17-14.bin",
+      "bytes": 1752580,
+      "gzipBytes": 491844,
+      "geometryRoundtrip": true,
+      "sha256": "b5c8292c8df59de7feadca6134ecc633f16626be4b5a9c7bdbd0047070abc5f4"
+    },
+    {
+      "name": "tiles/b-17-15.bin",
+      "bytes": 1505136,
+      "gzipBytes": 450735,
+      "geometryRoundtrip": true,
+      "sha256": "3dccace3de701831a8e1f3b51e6712cee5024e34f520e25d08644d82e4badd5a"
+    },
+    {
+      "name": "tiles/b-17-16.bin",
+      "bytes": 1174692,
+      "gzipBytes": 347663,
+      "geometryRoundtrip": true,
+      "sha256": "81dabd9321ef8b567b18892553997db131c48ba572e8cefe9e3e6f33e04fa7e8"
+    },
+    {
+      "name": "tiles/b-17-17.bin",
+      "bytes": 620636,
+      "gzipBytes": 180656,
+      "geometryRoundtrip": true,
+      "sha256": "5e7f1c5b94cad1ce89184adcbdf82164c22510e4a9d843deaea8fa872cefbd50"
+    },
+    {
+      "name": "tiles/b-17-18.bin",
+      "bytes": 18556,
+      "gzipBytes": 6880,
+      "geometryRoundtrip": true,
+      "sha256": "33c175399f415c8ba1fe13e3444131a5ecfaaddda0d0ec170547f12be4dc6336"
+    },
+    {
+      "name": "tiles/b-17-19.bin",
+      "bytes": 195792,
+      "gzipBytes": 55922,
+      "geometryRoundtrip": true,
+      "sha256": "595e45e1d572521c27d8366eb5ceb164513287f60653b6fb464a7d3e52ba05a1"
+    },
+    {
+      "name": "tiles/b-17-20.bin",
+      "bytes": 546824,
+      "gzipBytes": 158567,
+      "geometryRoundtrip": true,
+      "sha256": "ccb7640f9155b955c635a4e66ffc70cc04ca852b193f7f74afb2d01042b97a38"
+    },
+    {
+      "name": "tiles/b-17-21.bin",
+      "bytes": 71232,
+      "gzipBytes": 24989,
+      "geometryRoundtrip": true,
+      "sha256": "bb19f4df82c408587dfd6138873650a1e3edb38577f4fff0e6441c2f6a6d3e70"
+    },
+    {
+      "name": "tiles/b-17-22.bin",
+      "bytes": 8144,
+      "gzipBytes": 2251,
+      "geometryRoundtrip": true,
+      "sha256": "89362c76d570b37b36c9b1529ecd5eb4e50e7351c11bcdbe767354b84bbf97a1"
+    },
+    {
+      "name": "tiles/b-18-6.bin",
+      "bytes": 1057784,
+      "gzipBytes": 290298,
+      "geometryRoundtrip": true,
+      "sha256": "88a5c99ba17a048b573d0d1d14c4fe63a9aa7ce5f9cf3ff78513d09c94fb7005"
+    },
+    {
+      "name": "tiles/b-18-7.bin",
+      "bytes": 963132,
+      "gzipBytes": 279209,
+      "geometryRoundtrip": true,
+      "sha256": "54d8ecc34f5acdcc3d5ebc39c7f0de1269c44dae09279d3be0be3cecf45bda7c"
+    },
+    {
+      "name": "tiles/b-18-8.bin",
+      "bytes": 710696,
+      "gzipBytes": 200447,
+      "geometryRoundtrip": true,
+      "sha256": "8b656d4bf1467680ee34045c8c15d6a0fa1938e78897814846bac6bf6f3ab48f"
+    },
+    {
+      "name": "tiles/b-18-9.bin",
+      "bytes": 101408,
+      "gzipBytes": 27898,
+      "geometryRoundtrip": true,
+      "sha256": "9acd35040ac0c8e914a981dd21b13d2097400c3c1fcca8ab9695a6a68412a74b"
+    },
+    {
+      "name": "tiles/b-18-10.bin",
+      "bytes": 47100,
+      "gzipBytes": 19978,
+      "geometryRoundtrip": true,
+      "sha256": "213b71b3cd7106832a190c4dfb0a8b63b1ae80fdfea6e4caf300b3ed6cfae223"
+    },
+    {
+      "name": "tiles/b-18-11.bin",
+      "bytes": 392032,
+      "gzipBytes": 119829,
+      "geometryRoundtrip": true,
+      "sha256": "a3ea6b4682a05be2b105debf3534b43f0a4b3fd1065c02f0c94116a0850cc48d"
+    },
+    {
+      "name": "tiles/b-18-12.bin",
+      "bytes": 449972,
+      "gzipBytes": 141701,
+      "geometryRoundtrip": true,
+      "sha256": "d1038656aaf66936e015fe082c81dbd4afa32eb6ac06de289e15a63f18869ccf"
+    },
+    {
+      "name": "tiles/b-18-13.bin",
+      "bytes": 1609420,
+      "gzipBytes": 448752,
+      "geometryRoundtrip": true,
+      "sha256": "39407293f452ef92340cbfb7ac8aa3f841246a573f9875f7cb488c0dce94b53d"
+    },
+    {
+      "name": "tiles/b-18-14.bin",
+      "bytes": 1833036,
+      "gzipBytes": 515237,
+      "geometryRoundtrip": true,
+      "sha256": "6d5044e4a6895a1575d4b5f0a34f38826c5a797522c61739b19387d0ea46d6fd"
+    },
+    {
+      "name": "tiles/b-18-15.bin",
+      "bytes": 1754940,
+      "gzipBytes": 508023,
+      "geometryRoundtrip": true,
+      "sha256": "879a2c7b5eef61777dfd7100b696527a099a4bd6d16c3856a495f85e1a8523de"
+    },
+    {
+      "name": "tiles/b-18-16.bin",
+      "bytes": 1063896,
+      "gzipBytes": 312023,
+      "geometryRoundtrip": true,
+      "sha256": "d3f2e5ad985a0543dcf8b59655d379272888b3860168bc3556aba283dd169ceb"
+    },
+    {
+      "name": "tiles/b-18-17.bin",
+      "bytes": 358852,
+      "gzipBytes": 108929,
+      "geometryRoundtrip": true,
+      "sha256": "2484a95fc59a87ac58ee793e7d5bd3a24d42487c81db477733d2e75adfebc798"
+    },
+    {
+      "name": "tiles/b-18-18.bin",
+      "bytes": 221976,
+      "gzipBytes": 61985,
+      "geometryRoundtrip": true,
+      "sha256": "0200071342ee0c7a74a365252c915891499b73a63f5f26af8ec3623cf2674a80"
+    },
+    {
+      "name": "tiles/b-18-19.bin",
+      "bytes": 581660,
+      "gzipBytes": 171717,
+      "geometryRoundtrip": true,
+      "sha256": "19b6e881feeb9acad4c9447513333b55bdbddbc5ca9bbad2d2c66e3616ddd8cb"
+    },
+    {
+      "name": "tiles/b-18-20.bin",
+      "bytes": 798464,
+      "gzipBytes": 227092,
+      "geometryRoundtrip": true,
+      "sha256": "95f88f59364a57c9bd8fce3afe4e692914027361239911cc18ad2881e50d2595"
+    },
+    {
+      "name": "tiles/b-18-21.bin",
+      "bytes": 575384,
+      "gzipBytes": 173040,
+      "geometryRoundtrip": true,
+      "sha256": "01cb79d224faab728ec4b01d646ccf45a761101a15397d261fdbdca7994294c4"
+    },
+    {
+      "name": "tiles/b-18-22.bin",
+      "bytes": 9672,
+      "gzipBytes": 2115,
+      "geometryRoundtrip": true,
+      "sha256": "eae24f8c80a7766d08cc405881e7b440d358c10599ab9f2251f4aee1528f6894"
+    },
+    {
+      "name": "tiles/b-19-5.bin",
+      "bytes": 408244,
+      "gzipBytes": 114657,
+      "geometryRoundtrip": true,
+      "sha256": "a9b1ac887f8eae06d8382581fa0500fc354685eac4475f3b84fa629cba0a5430"
+    },
+    {
+      "name": "tiles/b-19-6.bin",
+      "bytes": 1570064,
+      "gzipBytes": 434907,
+      "geometryRoundtrip": true,
+      "sha256": "d9a1ecd183d37bf054e978db44e8ac92cf8881bf629029435a50dac3f08d6c4e"
+    },
+    {
+      "name": "tiles/b-19-7.bin",
+      "bytes": 832880,
+      "gzipBytes": 229920,
+      "geometryRoundtrip": true,
+      "sha256": "8cb2c323c7b15dd19cac3bc05a8bcd92e38a12b8ba7581a2511443021f5a9d2b"
+    },
+    {
+      "name": "tiles/b-19-8.bin",
+      "bytes": 1194956,
+      "gzipBytes": 326987,
+      "geometryRoundtrip": true,
+      "sha256": "06c609dac5b26416caa09cda4ecf87b381fc3daf027ddc54e21202112e2b3730"
+    },
+    {
+      "name": "tiles/b-19-9.bin",
+      "bytes": 1030044,
+      "gzipBytes": 270935,
+      "geometryRoundtrip": true,
+      "sha256": "5d6c9c670524ae4ebe3718a29952e8fdb2aa267ee97cf5a49b4ed6f21b01544c"
+    },
+    {
+      "name": "tiles/b-19-10.bin",
+      "bytes": 68620,
+      "gzipBytes": 25688,
+      "geometryRoundtrip": true,
+      "sha256": "192c7182d7f7a4de589049bfa5b3e7c53d46f79724c2a81736fcb51fccdb5101"
+    },
+    {
+      "name": "tiles/b-19-11.bin",
+      "bytes": 891612,
+      "gzipBytes": 256492,
+      "geometryRoundtrip": true,
+      "sha256": "f2de98147ca849d95ef39505facc4215f797ad32626d3ba311b9a5633b2ec7e9"
+    },
+    {
+      "name": "tiles/b-19-12.bin",
+      "bytes": 1323544,
+      "gzipBytes": 388043,
+      "geometryRoundtrip": true,
+      "sha256": "3b035c7988644c50ff527f57bf3011ada166902faeedbd4cac69b25994a2d0fa"
+    },
+    {
+      "name": "tiles/b-19-13.bin",
+      "bytes": 1587312,
+      "gzipBytes": 462205,
+      "geometryRoundtrip": true,
+      "sha256": "72efe40d366e8f2543f1cb2ecaa35d640fcb1540e8c5535403a1f38b86eb8129"
+    },
+    {
+      "name": "tiles/b-19-14.bin",
+      "bytes": 1628140,
+      "gzipBytes": 468025,
+      "geometryRoundtrip": true,
+      "sha256": "a63607228e0adbe84b6605395b4b57d96e00695e4c42e99553d0dd805fb15e30"
+    },
+    {
+      "name": "tiles/b-19-15.bin",
+      "bytes": 996400,
+      "gzipBytes": 304907,
+      "geometryRoundtrip": true,
+      "sha256": "0b84258dc5d6a4f96924c8cbda05c78e7e725554e111c4240be51a8de27465fd"
+    },
+    {
+      "name": "tiles/b-19-16.bin",
+      "bytes": 753288,
+      "gzipBytes": 227416,
+      "geometryRoundtrip": true,
+      "sha256": "c36d998b6d3108969edd03b7bac2f3ec8a52f6cbc0660d2ba0df0315d656d149"
+    },
+    {
+      "name": "tiles/b-19-17.bin",
+      "bytes": 750096,
+      "gzipBytes": 224186,
+      "geometryRoundtrip": true,
+      "sha256": "531863c1ada52ce14053721382f57b9f55a98dae87f9cb501df5df3b2e486f01"
+    },
+    {
+      "name": "tiles/b-19-18.bin",
+      "bytes": 1157096,
+      "gzipBytes": 324220,
+      "geometryRoundtrip": true,
+      "sha256": "c5faf5a3d8555cb4e017a9403c8dc43b8864237164e896fd9bfbf647839e2a24"
+    },
+    {
+      "name": "tiles/b-19-19.bin",
+      "bytes": 897000,
+      "gzipBytes": 258889,
+      "geometryRoundtrip": true,
+      "sha256": "e286b85b0f950b2db808c81ff46ca77c1dfcb924bf4c9a79f14d7ebce240c805"
+    },
+    {
+      "name": "tiles/b-19-20.bin",
+      "bytes": 772116,
+      "gzipBytes": 224915,
+      "geometryRoundtrip": true,
+      "sha256": "b1b4b0e6816e9d9ab9aab7535504ce802e0ebe15ea957c70752fd5ea8c61f8a5"
+    },
+    {
+      "name": "tiles/b-19-21.bin",
+      "bytes": 655368,
+      "gzipBytes": 191944,
+      "geometryRoundtrip": true,
+      "sha256": "8259dfc689748d44d490fa56dc06b60bba10e8a87b42f7041033daa65e789a08"
+    },
+    {
+      "name": "tiles/b-19-22.bin",
+      "bytes": 130912,
+      "gzipBytes": 33194,
+      "geometryRoundtrip": true,
+      "sha256": "3b3a1c5a3df725f324aeb3a42ff25860ac063b7db97c61c93125e3183ee40947"
+    },
+    {
+      "name": "tiles/b-20-4.bin",
+      "bytes": 77644,
+      "gzipBytes": 28561,
+      "geometryRoundtrip": true,
+      "sha256": "66055d29f22c5969671363493475c657773ec69318e47155f904eec0f965396a"
+    },
+    {
+      "name": "tiles/b-20-5.bin",
+      "bytes": 1098444,
+      "gzipBytes": 296482,
+      "geometryRoundtrip": true,
+      "sha256": "f47c73c66fe5e0ebe9e7e4e5d884ac30618e49b34cac36f670e2eccaa6432a71"
+    },
+    {
+      "name": "tiles/b-20-6.bin",
+      "bytes": 1640844,
+      "gzipBytes": 445692,
+      "geometryRoundtrip": true,
+      "sha256": "f4d7501b9443bd72d8e5b54457c98618b15fb387852f0099a707ff9abd52b1fe"
+    },
+    {
+      "name": "tiles/b-20-7.bin",
+      "bytes": 698564,
+      "gzipBytes": 205032,
+      "geometryRoundtrip": true,
+      "sha256": "de970a2ec3d9f18a6668c409ef67aa81802aa16e1ca619b67b3145e2451e0f9f"
+    },
+    {
+      "name": "tiles/b-20-8.bin",
+      "bytes": 829788,
+      "gzipBytes": 229812,
+      "geometryRoundtrip": true,
+      "sha256": "05efeada37acbb100be6fe7649e11b094cba351978db6ef3a2bdb202fab1557f"
+    },
+    {
+      "name": "tiles/b-20-9.bin",
+      "bytes": 1332444,
+      "gzipBytes": 357038,
+      "geometryRoundtrip": true,
+      "sha256": "120aefb5adb23a8c6956052b8d40c129c73e49d1a8e553c4fdfd3ff017a3c660"
+    },
+    {
+      "name": "tiles/b-20-10.bin",
+      "bytes": 159468,
+      "gzipBytes": 52658,
+      "geometryRoundtrip": true,
+      "sha256": "58a62483edc510987ddad08f2ca9f006f069e1b780a3e9e1d2a2e9e915b412c3"
+    },
+    {
+      "name": "tiles/b-20-11.bin",
+      "bytes": 1232848,
+      "gzipBytes": 342110,
+      "geometryRoundtrip": true,
+      "sha256": "f695a40b04a189d939e9ae2e9ca357ed3b80aa59e48d9d7ea7356c61f4e74b01"
+    },
+    {
+      "name": "tiles/b-20-12.bin",
+      "bytes": 1121228,
+      "gzipBytes": 304787,
+      "geometryRoundtrip": true,
+      "sha256": "4d03f174e27fb1d683a21e6f36762fb398b7591fb82fa6eb64ecc1d0d33f3c0f"
+    },
+    {
+      "name": "tiles/b-20-13.bin",
+      "bytes": 1206816,
+      "gzipBytes": 351359,
+      "geometryRoundtrip": true,
+      "sha256": "5c501ba32f3169e34c6ceffd1e35682560ebcba6612f65231c9adeb03db1cd0d"
+    },
+    {
+      "name": "tiles/b-20-14.bin",
+      "bytes": 1108452,
+      "gzipBytes": 326294,
+      "geometryRoundtrip": true,
+      "sha256": "ae2f226029045c5574710edaa6ff4415f4dcb1c954d647181ae49f73241e08a4"
+    },
+    {
+      "name": "tiles/b-20-15.bin",
+      "bytes": 528848,
+      "gzipBytes": 167216,
+      "geometryRoundtrip": true,
+      "sha256": "295174ba649f30bf089d4de24d1b287ee594ad3d801e9452cd3e9fc89216d863"
+    },
+    {
+      "name": "tiles/b-20-16.bin",
+      "bytes": 764016,
+      "gzipBytes": 235974,
+      "geometryRoundtrip": true,
+      "sha256": "dcab8ffb4843135a481c06c9cc7c41ae894364c46219056cb9a334d71429375f"
+    },
+    {
+      "name": "tiles/b-20-17.bin",
+      "bytes": 709068,
+      "gzipBytes": 209188,
+      "geometryRoundtrip": true,
+      "sha256": "64c5ff766ff2fa4707264eeaee809a43082bf35494c82fd87b260a028a0011fe"
+    },
+    {
+      "name": "tiles/b-20-18.bin",
+      "bytes": 1142124,
+      "gzipBytes": 335284,
+      "geometryRoundtrip": true,
+      "sha256": "78fdfca0a5c9bcd39677a6114b3d262a151896c8bb506127f2f8862ee6d995a2"
+    },
+    {
+      "name": "tiles/b-20-19.bin",
+      "bytes": 1467120,
+      "gzipBytes": 425573,
+      "geometryRoundtrip": true,
+      "sha256": "69bba5fc93fbd69ad9a111a050f828d44c3c35187c95f62bcc8891cefb3496dc"
+    },
+    {
+      "name": "tiles/b-20-20.bin",
+      "bytes": 493236,
+      "gzipBytes": 150857,
+      "geometryRoundtrip": true,
+      "sha256": "129d51071cf804d25fd8f2f682566fbe946512bb1cb48958d027be02b175b9d1"
+    },
+    {
+      "name": "tiles/b-20-21.bin",
+      "bytes": 456872,
+      "gzipBytes": 135668,
+      "geometryRoundtrip": true,
+      "sha256": "e425a3a6751ca534f6d21c1de681ac66b6d31856d607ef6fb4253c94f708eedb"
+    },
+    {
+      "name": "tiles/b-20-22.bin",
+      "bytes": 4340,
+      "gzipBytes": 895,
+      "geometryRoundtrip": true,
+      "sha256": "8efb63d2abb274677d531e0b9e5ebea9689010ec789a279fa2d280790d3f69e0"
+    },
+    {
+      "name": "tiles/b-21-5.bin",
+      "bytes": 413828,
+      "gzipBytes": 117325,
+      "geometryRoundtrip": true,
+      "sha256": "746e0b14e8f9327ede0118244fc05c334cdee08456845698196a5d1b90c4e79d"
+    },
+    {
+      "name": "tiles/b-21-6.bin",
+      "bytes": 1612656,
+      "gzipBytes": 429030,
+      "geometryRoundtrip": true,
+      "sha256": "7e0355428406bec91d5e6fcf85c59d0d232ff0fcce020d47680e714b3b0d6349"
+    },
+    {
+      "name": "tiles/b-21-7.bin",
+      "bytes": 1431744,
+      "gzipBytes": 387762,
+      "geometryRoundtrip": true,
+      "sha256": "0a225ada4884400c369e3fdf89bd9b42ce88447bd3326ca74afcf5064b3fd688"
+    },
+    {
+      "name": "tiles/b-21-8.bin",
+      "bytes": 1070928,
+      "gzipBytes": 274581,
+      "geometryRoundtrip": true,
+      "sha256": "cfd61991f8d47a9c2bd7d3dc611f89f96bc832e794b374cc92c0f9c441dc5f1e"
+    },
+    {
+      "name": "tiles/b-21-9.bin",
+      "bytes": 945996,
+      "gzipBytes": 260545,
+      "geometryRoundtrip": true,
+      "sha256": "d0b9d53f5814d7c9d82bf7c468f00fbb93599ed4d81397bd5f21be256d67ff5c"
+    },
+    {
+      "name": "tiles/b-21-10.bin",
+      "bytes": 106016,
+      "gzipBytes": 33618,
+      "geometryRoundtrip": true,
+      "sha256": "b8ddfb4f1645a88ba373100a32a92c3e1f41c8ff9b1cca202973926e637b6c98"
+    },
+    {
+      "name": "tiles/b-21-11.bin",
+      "bytes": 266568,
+      "gzipBytes": 74305,
+      "geometryRoundtrip": true,
+      "sha256": "0c8981c068dc05d0583e7665fdd9fc746a92be70cc317feb0fe915f601d40410"
+    },
+    {
+      "name": "tiles/b-21-12.bin",
+      "bytes": 1350852,
+      "gzipBytes": 378691,
+      "geometryRoundtrip": true,
+      "sha256": "f89cc32246d8590c1a1bce2c309fc9534793ade4114348248f60fd8115777f6a"
+    },
+    {
+      "name": "tiles/b-21-13.bin",
+      "bytes": 1802892,
+      "gzipBytes": 509953,
+      "geometryRoundtrip": true,
+      "sha256": "928c02d8a3040b90f54187a562659bf3bf6734539e217d026c285d2bb57d55ff"
+    },
+    {
+      "name": "tiles/b-21-14.bin",
+      "bytes": 1093712,
+      "gzipBytes": 329929,
+      "geometryRoundtrip": true,
+      "sha256": "f1140d913aac397312f2729579f92c0a405eda5204dc35f78abcb12a93b20780"
+    },
+    {
+      "name": "tiles/b-21-15.bin",
+      "bytes": 1200948,
+      "gzipBytes": 362028,
+      "geometryRoundtrip": true,
+      "sha256": "a1ed20ed6bcc8118a8bb8656c877a46bfa127fc2950fcfc5b1ee75f4c3d6ec95"
+    },
+    {
+      "name": "tiles/b-21-16.bin",
+      "bytes": 461024,
+      "gzipBytes": 145734,
+      "geometryRoundtrip": true,
+      "sha256": "b2d7a1a78379aa18d574e3ec8a51da4f4e83025c96b7cb5d1c38615f928401eb"
+    },
+    {
+      "name": "tiles/b-21-17.bin",
+      "bytes": 497672,
+      "gzipBytes": 149802,
+      "geometryRoundtrip": true,
+      "sha256": "fe4d4a8ee85ea0ba71d9c34692fc8ce744e3cd3bfbd2f0981cb0053f65d5abef"
+    },
+    {
+      "name": "tiles/b-21-18.bin",
+      "bytes": 493040,
+      "gzipBytes": 150541,
+      "geometryRoundtrip": true,
+      "sha256": "3db5d3faaf982fe4319ffabd7a59c27d97b1ca47af9f22263401c1e8c9e5fdf0"
+    },
+    {
+      "name": "tiles/b-21-19.bin",
+      "bytes": 1331828,
+      "gzipBytes": 385421,
+      "geometryRoundtrip": true,
+      "sha256": "ae275b7b84c40c05590e54a1c2c786c06e18b6f7243a1e061cc75641de6638e2"
+    },
+    {
+      "name": "tiles/b-21-20.bin",
+      "bytes": 695732,
+      "gzipBytes": 191402,
+      "geometryRoundtrip": true,
+      "sha256": "e48470cc8e05564c9ad0f7da0925a6e55a1e520053560cdb0a1b38b64b9add0c"
+    },
+    {
+      "name": "tiles/b-21-21.bin",
+      "bytes": 162956,
+      "gzipBytes": 43587,
+      "geometryRoundtrip": true,
+      "sha256": "1be6d8ac6bde014ed231693c9e2956fa28ac0200e19038b55e1e521e2289aa70"
+    },
+    {
+      "name": "tiles/b-22-5.bin",
+      "bytes": 50688,
+      "gzipBytes": 20745,
+      "geometryRoundtrip": true,
+      "sha256": "77087ca32d248c1db6fcf56b59bfc5fea9c02ba9f270ddd7f02b61a8f616b400"
+    },
+    {
+      "name": "tiles/b-22-6.bin",
+      "bytes": 727796,
+      "gzipBytes": 208617,
+      "geometryRoundtrip": true,
+      "sha256": "2803da6aae35aacd3ef75930bd5d3b175ebc4d197f2e7a3637797c8738321898"
+    },
+    {
+      "name": "tiles/b-22-7.bin",
+      "bytes": 1258404,
+      "gzipBytes": 346318,
+      "geometryRoundtrip": true,
+      "sha256": "a325921641ffd0f69f13aa154deb455072dd888dae4e80c8b4dcb1ffe8266469"
+    },
+    {
+      "name": "tiles/b-22-8.bin",
+      "bytes": 823824,
+      "gzipBytes": 230943,
+      "geometryRoundtrip": true,
+      "sha256": "71bc3850ffdac6e674e943fab60d1a2377d378e281cf7ceae8f41fde462907c2"
+    },
+    {
+      "name": "tiles/b-22-9.bin",
+      "bytes": 621368,
+      "gzipBytes": 194021,
+      "geometryRoundtrip": true,
+      "sha256": "90b6c824d1134e05491e7c6c6681a1bcf46bd8d9a1ecb9248572dfcdbd4d6c9f"
+    },
+    {
+      "name": "tiles/b-22-10.bin",
+      "bytes": 291264,
+      "gzipBytes": 93112,
+      "geometryRoundtrip": true,
+      "sha256": "45cda7272088aef5162ee73a939429985df4d4d3bdefb638ba7c319aed5e9da7"
+    },
+    {
+      "name": "tiles/b-22-11.bin",
+      "bytes": 65784,
+      "gzipBytes": 24858,
+      "geometryRoundtrip": true,
+      "sha256": "b4f9b486f15fa95d72579b93b6a366d6e9978640418a0ebc8431301e6fe74ca5"
+    },
+    {
+      "name": "tiles/b-22-12.bin",
+      "bytes": 306832,
+      "gzipBytes": 97075,
+      "geometryRoundtrip": true,
+      "sha256": "36693557371eea30386f23e4251b7682c5e08851b0edd58f269c768573ebb10d"
+    },
+    {
+      "name": "tiles/b-22-13.bin",
+      "bytes": 1053996,
+      "gzipBytes": 305610,
+      "geometryRoundtrip": true,
+      "sha256": "72857a4d62fed68376f050271be3178a3c60989827d786d1cdd58f5dfcc65fc7"
+    },
+    {
+      "name": "tiles/b-22-14.bin",
+      "bytes": 905964,
+      "gzipBytes": 277218,
+      "geometryRoundtrip": true,
+      "sha256": "93ab5ddc56f89016952f79b99d1f6db5ca7f4ae6292a6e3a653e0c4fa93a42cc"
+    },
+    {
+      "name": "tiles/b-22-15.bin",
+      "bytes": 411320,
+      "gzipBytes": 122331,
+      "geometryRoundtrip": true,
+      "sha256": "0a6ef0435009d7ecf0c0ae82be6499aabd472331fe4572d78b45946c7fc8b3d6"
+    },
+    {
+      "name": "tiles/b-22-16.bin",
+      "bytes": 320752,
+      "gzipBytes": 101518,
+      "geometryRoundtrip": true,
+      "sha256": "9724fe55d08196fcadb5501ce712b26c3479e315ee97fb08443be064562e46ca"
+    },
+    {
+      "name": "tiles/b-22-17.bin",
+      "bytes": 444028,
+      "gzipBytes": 133134,
+      "geometryRoundtrip": true,
+      "sha256": "447195ef4ce437ce4a080e2b11df12c901bdf056e694f652e37d87ec9d116f91"
+    },
+    {
+      "name": "tiles/b-22-18.bin",
+      "bytes": 1073160,
+      "gzipBytes": 315658,
+      "geometryRoundtrip": true,
+      "sha256": "65c97864c94e7c8807d431a9794b64587e113bcf14fb0449044a5adbb5fdffa4"
+    },
+    {
+      "name": "tiles/b-22-19.bin",
+      "bytes": 693536,
+      "gzipBytes": 203042,
+      "geometryRoundtrip": true,
+      "sha256": "f862eae37c892dd023cf850cc2e6ac4a79c475d4bbe605fb3d6bdd7f6d824c83"
+    },
+    {
+      "name": "tiles/b-22-20.bin",
+      "bytes": 670496,
+      "gzipBytes": 193448,
+      "geometryRoundtrip": true,
+      "sha256": "f267b3d26786f63c41a77cd46ecbec5f07507c7b39381084e5b95f72ebe998c7"
+    },
+    {
+      "name": "tiles/b-22-21.bin",
+      "bytes": 23560,
+      "gzipBytes": 5096,
+      "geometryRoundtrip": true,
+      "sha256": "9f95991e97d940380c0635a4df1f31e417a71200ccb221f46d74d1ea735c2240"
+    },
+    {
+      "name": "tiles/b-23-6.bin",
+      "bytes": 29708,
+      "gzipBytes": 7784,
+      "geometryRoundtrip": true,
+      "sha256": "3bd9caacf9e2cc11a93cf0df398515cd1a5b92752c2f8738e8a5e4d4308ef5f1"
+    },
+    {
+      "name": "tiles/b-23-7.bin",
+      "bytes": 1405824,
+      "gzipBytes": 377758,
+      "geometryRoundtrip": true,
+      "sha256": "fda26c6d102d0e3845efc420607d932e8b31c94cd5d644c7e587943c54e98342"
+    },
+    {
+      "name": "tiles/b-23-8.bin",
+      "bytes": 1467768,
+      "gzipBytes": 380982,
+      "geometryRoundtrip": true,
+      "sha256": "3e1ceb25405c62472d48a30ecbf2f01db8646dfd45dca53669341c780a195c78"
+    },
+    {
+      "name": "tiles/b-23-9.bin",
+      "bytes": 1041600,
+      "gzipBytes": 303788,
+      "geometryRoundtrip": true,
+      "sha256": "d71f6a86864318bef24474aac23331d21edcbcf1dc77f5b63d2f313a7a747c83"
+    },
+    {
+      "name": "tiles/b-23-10.bin",
+      "bytes": 267780,
+      "gzipBytes": 85645,
+      "geometryRoundtrip": true,
+      "sha256": "4fc9ccbf3c5483086f049e7d9427ffd05fbd5a3fcbdfc4f5b5075bfe98d2c444"
+    },
+    {
+      "name": "tiles/b-23-11.bin",
+      "bytes": 503616,
+      "gzipBytes": 160378,
+      "geometryRoundtrip": true,
+      "sha256": "0df7b95b863454548e6244cd9a4a665ab6cc64b3091ef1af1bf6518c020493eb"
+    },
+    {
+      "name": "tiles/b-23-12.bin",
+      "bytes": 465440,
+      "gzipBytes": 140772,
+      "geometryRoundtrip": true,
+      "sha256": "3aeb72bbae324fef1fca6b08cb05ff51e501ee18d3ad1f83590e490c78db3821"
+    },
+    {
+      "name": "tiles/b-23-13.bin",
+      "bytes": 551240,
+      "gzipBytes": 174960,
+      "geometryRoundtrip": true,
+      "sha256": "b14f0f4caa98bcec71275d2b2d0648863fbd78f4def7680b9a49ebbed6665cdc"
+    },
+    {
+      "name": "tiles/b-23-14.bin",
+      "bytes": 491848,
+      "gzipBytes": 153674,
+      "geometryRoundtrip": true,
+      "sha256": "e8fad77061f30d864ca1f06d2015b2e0fa22edccc0ce5e268c395d3c07d736b5"
+    },
+    {
+      "name": "tiles/b-23-15.bin",
+      "bytes": 281100,
+      "gzipBytes": 94821,
+      "geometryRoundtrip": true,
+      "sha256": "522a7a034591c32e9bd2744af64b499444bd9e4a103a2ecd16c7aaeed30f5570"
+    },
+    {
+      "name": "tiles/b-23-16.bin",
+      "bytes": 66228,
+      "gzipBytes": 20443,
+      "geometryRoundtrip": true,
+      "sha256": "da66ff8e9d43525895c606e157173495e9266c22b739e5674fdd759e3e4eb8ba"
+    },
+    {
+      "name": "tiles/b-23-17.bin",
+      "bytes": 548700,
+      "gzipBytes": 168245,
+      "geometryRoundtrip": true,
+      "sha256": "138a7bcf890816186a9fccf192129f067b50fe9bf42febb04d6197e6a0431e17"
+    },
+    {
+      "name": "tiles/b-23-18.bin",
+      "bytes": 954528,
+      "gzipBytes": 288778,
+      "geometryRoundtrip": true,
+      "sha256": "3afcd01cd7dbd1914e196bbfb11b49976bc61b355fe7bba2bb5cdf2822cc272d"
+    },
+    {
+      "name": "tiles/b-23-19.bin",
+      "bytes": 1123568,
+      "gzipBytes": 325782,
+      "geometryRoundtrip": true,
+      "sha256": "12448a7c57340d295c129060ce1b8ba2d24223f662b1492bed550bb3fdf87c55"
+    },
+    {
+      "name": "tiles/b-23-20.bin",
+      "bytes": 452216,
+      "gzipBytes": 134971,
+      "geometryRoundtrip": true,
+      "sha256": "1ed08975f0c509680df5aaa76e9f47cca6a1758f76988bb49a49b443f99cd1d5"
+    },
+    {
+      "name": "tiles/b-23-21.bin",
+      "bytes": 15152,
+      "gzipBytes": 4670,
+      "geometryRoundtrip": true,
+      "sha256": "b97c23fcb35943f2e5658f4833957aa5b5cbca31dd9067d8c2df522245639408"
+    },
+    {
+      "name": "tiles/b-24-6.bin",
+      "bytes": 155768,
+      "gzipBytes": 43856,
+      "geometryRoundtrip": true,
+      "sha256": "410537e2b7a6699f0c87677e3802cf33d56524a7730f73e71600e1a55a185180"
+    },
+    {
+      "name": "tiles/b-24-7.bin",
+      "bytes": 1401120,
+      "gzipBytes": 397350,
+      "geometryRoundtrip": true,
+      "sha256": "014e725c023bc302c52ee660fd4e384923ad40beca10ea164b0a516766686035"
+    },
+    {
+      "name": "tiles/b-24-8.bin",
+      "bytes": 1247632,
+      "gzipBytes": 361908,
+      "geometryRoundtrip": true,
+      "sha256": "f7c2569df8fbdbe5da91ab8ad33273fc7102558c1cce046d40bc0c9ed4bcf570"
+    },
+    {
+      "name": "tiles/b-24-9.bin",
+      "bytes": 962152,
+      "gzipBytes": 296188,
+      "geometryRoundtrip": true,
+      "sha256": "e5adec98aea022b171857298ae6eaf027bcb707f6fbdb84e1ac1d725abde2534"
+    },
+    {
+      "name": "tiles/b-24-10.bin",
+      "bytes": 1597204,
+      "gzipBytes": 471579,
+      "geometryRoundtrip": true,
+      "sha256": "adf25dfb34194d608acdbda09437653000b8be412fda88d387958dad851db16c"
+    },
+    {
+      "name": "tiles/b-24-11.bin",
+      "bytes": 2264284,
+      "gzipBytes": 659358,
+      "geometryRoundtrip": true,
+      "sha256": "1783cfa08baf41eb9d122c1dbc02775a7e365e9bb37ed25eba56d1c895de2d20"
+    },
+    {
+      "name": "tiles/b-24-12.bin",
+      "bytes": 2524152,
+      "gzipBytes": 737000,
+      "geometryRoundtrip": true,
+      "sha256": "496e493556ce134dd24a46486b01425f5f402e3f11d2c565ed8cbe2ac91702bc"
+    },
+    {
+      "name": "tiles/b-24-13.bin",
+      "bytes": 1385764,
+      "gzipBytes": 406010,
+      "geometryRoundtrip": true,
+      "sha256": "a505df74a1235810f3714c1f791d48ba2ed395d530649b21b81fc0cc8ad71ef7"
+    },
+    {
+      "name": "tiles/b-24-14.bin",
+      "bytes": 337876,
+      "gzipBytes": 111491,
+      "geometryRoundtrip": true,
+      "sha256": "b29b20489f383a7740cac756470613355dee5aa49455007d6c994dbf4ac974f6"
+    },
+    {
+      "name": "tiles/b-24-15.bin",
+      "bytes": 586472,
+      "gzipBytes": 181926,
+      "geometryRoundtrip": true,
+      "sha256": "27efda9c98cc1c3b8acc8b6030367fd30a04c6fe9fd8dec26e7b12cdbdf21371"
+    },
+    {
+      "name": "tiles/b-24-16.bin",
+      "bytes": 306972,
+      "gzipBytes": 102414,
+      "geometryRoundtrip": true,
+      "sha256": "044eea5c92c99348f620d2cdd05d4f4d2edc20b94885f49d4f22414e8dd7e544"
+    },
+    {
+      "name": "tiles/b-24-17.bin",
+      "bytes": 1285652,
+      "gzipBytes": 373249,
+      "geometryRoundtrip": true,
+      "sha256": "071ec7aed854f3a6e527aa31dd612ff9afffa66ba363a3272d43b3509919d420"
+    },
+    {
+      "name": "tiles/b-24-18.bin",
+      "bytes": 698216,
+      "gzipBytes": 210708,
+      "geometryRoundtrip": true,
+      "sha256": "b903c2028cfc32877d0ee1944b9719aaa11f8dd0369bf89ab2de943a4b4ef9e7"
+    },
+    {
+      "name": "tiles/b-24-19.bin",
+      "bytes": 247076,
+      "gzipBytes": 72994,
+      "geometryRoundtrip": true,
+      "sha256": "544ff38fdd64025c36d78834c2738b2023f81b9251c9b03f97c5c57dc088d3e3"
+    },
+    {
+      "name": "tiles/b-24-20.bin",
+      "bytes": 11900,
+      "gzipBytes": 2533,
+      "geometryRoundtrip": true,
+      "sha256": "cc08c486e55ba85aadca355685bfe0bfc375b2246cece4afc3ebd387920a612a"
+    },
+    {
+      "name": "tiles/b-25-6.bin",
+      "bytes": 20388,
+      "gzipBytes": 7444,
+      "geometryRoundtrip": true,
+      "sha256": "4dcd93dc8e3ca1446121626ca7d7570c0db05122ceca117203a1b7b2dd316584"
+    },
+    {
+      "name": "tiles/b-25-7.bin",
+      "bytes": 1252956,
+      "gzipBytes": 359171,
+      "geometryRoundtrip": true,
+      "sha256": "c2824b7f5ba1d1a54be4ca71186ff2ef65077c7731646756f4fe8adee661fe38"
+    },
+    {
+      "name": "tiles/b-25-8.bin",
+      "bytes": 1687224,
+      "gzipBytes": 487170,
+      "geometryRoundtrip": true,
+      "sha256": "e8b2662c9ba4d449489dcf09f8f835bfe64b43ccd68a41e1df8ac789c971d273"
+    },
+    {
+      "name": "tiles/b-25-9.bin",
+      "bytes": 1044876,
+      "gzipBytes": 310335,
+      "geometryRoundtrip": true,
+      "sha256": "467fdd64c91a99a654f1c262e7892b0070b5d91ee316b137d7fcfa1cc5eb3245"
+    },
+    {
+      "name": "tiles/b-25-10.bin",
+      "bytes": 1081368,
+      "gzipBytes": 306054,
+      "geometryRoundtrip": true,
+      "sha256": "e23083a57bbead2266ed03b9e029d7ba98a886e58314acca6523124ce54ef64f"
+    },
+    {
+      "name": "tiles/b-25-11.bin",
+      "bytes": 1666720,
+      "gzipBytes": 479133,
+      "geometryRoundtrip": true,
+      "sha256": "725e8cffe0558fde20538dec2c68aaf527d8229c923c53eb3205f875b23b018a"
+    },
+    {
+      "name": "tiles/b-25-12.bin",
+      "bytes": 1032832,
+      "gzipBytes": 315717,
+      "geometryRoundtrip": true,
+      "sha256": "514504e3d217db1429b59b9b95aabf3c0f10107ddd878f795f4202387322a241"
+    },
+    {
+      "name": "tiles/b-25-13.bin",
+      "bytes": 809064,
+      "gzipBytes": 257106,
+      "geometryRoundtrip": true,
+      "sha256": "3c0e7cbc98089ef87dc60176fdf3c915517019e7bf264b86fcf4c1ad37a32487"
+    },
+    {
+      "name": "tiles/b-25-14.bin",
+      "bytes": 676932,
+      "gzipBytes": 220083,
+      "geometryRoundtrip": true,
+      "sha256": "d411790dd28164ebb6e63e617c82956ceb63f82a0cd4755e5498fd5da02a7232"
+    },
+    {
+      "name": "tiles/b-25-15.bin",
+      "bytes": 817812,
+      "gzipBytes": 256974,
+      "geometryRoundtrip": true,
+      "sha256": "d56a4fabde5b408fce33a6292b3257d2f59e9249f0f23facfdaad13e979dda99"
+    },
+    {
+      "name": "tiles/b-25-16.bin",
+      "bytes": 529736,
+      "gzipBytes": 167741,
+      "geometryRoundtrip": true,
+      "sha256": "1c9e53370c23c77e3fb425b32d3046fc847cf7e6b851440fa56df23af45467b2"
+    },
+    {
+      "name": "tiles/b-25-17.bin",
+      "bytes": 1306992,
+      "gzipBytes": 391889,
+      "geometryRoundtrip": true,
+      "sha256": "12c47084cb484b7a782015ab83e3b4101bc876a998115b153e1a8d70a541ec3e"
+    },
+    {
+      "name": "tiles/b-25-18.bin",
+      "bytes": 1000068,
+      "gzipBytes": 309894,
+      "geometryRoundtrip": true,
+      "sha256": "93f742c4128667eb6918a51370d4c9679139a2d1a2637cb8b71b5abb41830607"
+    },
+    {
+      "name": "tiles/b-25-19.bin",
+      "bytes": 26260,
+      "gzipBytes": 7438,
+      "geometryRoundtrip": true,
+      "sha256": "4689cd1abcb558d900771470a22a187e5d9d5eb72d4cc0cdc607dd128e190299"
+    },
+    {
+      "name": "tiles/b-26-7.bin",
+      "bytes": 759300,
+      "gzipBytes": 216038,
+      "geometryRoundtrip": true,
+      "sha256": "ed83fb438a944ca32a8aefb213bfba6d115ad4f55b85f25a2a2eb388736a3ec6"
+    },
+    {
+      "name": "tiles/b-26-8.bin",
+      "bytes": 1479048,
+      "gzipBytes": 430360,
+      "geometryRoundtrip": true,
+      "sha256": "2f3410bd47ad7bb1858705e5b84d394b9a0106fcd4c6a030b8cd3ff07bbc0dfb"
+    },
+    {
+      "name": "tiles/b-26-9.bin",
+      "bytes": 1144884,
+      "gzipBytes": 345899,
+      "geometryRoundtrip": true,
+      "sha256": "5339eae7e264dccf9b7fde5509f3aa1300948c44ef1ff3e9e46d77a56a245bdb"
+    },
+    {
+      "name": "tiles/b-26-10.bin",
+      "bytes": 805920,
+      "gzipBytes": 236426,
+      "geometryRoundtrip": true,
+      "sha256": "ba975ce8b77bbebcf21b1c78eb651c0f1d96b15a515865808ff503cd63c55487"
+    },
+    {
+      "name": "tiles/b-26-11.bin",
+      "bytes": 1171332,
+      "gzipBytes": 320806,
+      "geometryRoundtrip": true,
+      "sha256": "efc921193909b83acb4d7ba8d8ba81bea2907ca77e9f41f76a72b5596f62adc8"
+    },
+    {
+      "name": "tiles/b-26-12.bin",
+      "bytes": 1838956,
+      "gzipBytes": 539682,
+      "geometryRoundtrip": true,
+      "sha256": "10a408b5b7feedf49593533a4302111c73bc50be3e04a7c0f32f190e60910f46"
+    },
+    {
+      "name": "tiles/b-26-13.bin",
+      "bytes": 843048,
+      "gzipBytes": 254106,
+      "geometryRoundtrip": true,
+      "sha256": "6b74cce0746a6743bd5fbacf4318faaec5cbfbb9d59acf79ed0a30e2f3a3a4de"
+    },
+    {
+      "name": "tiles/b-26-14.bin",
+      "bytes": 488612,
+      "gzipBytes": 167998,
+      "geometryRoundtrip": true,
+      "sha256": "c1b55c767e0632e4a0ce41c2fb057d8f03f6d860eac24c54611041da749759e1"
+    },
+    {
+      "name": "tiles/b-26-15.bin",
+      "bytes": 796140,
+      "gzipBytes": 250777,
+      "geometryRoundtrip": true,
+      "sha256": "90a17a8fef198c11814be9e000bac5d41fa14abe8d2e494dc68e91925ce784b0"
+    },
+    {
+      "name": "tiles/b-26-16.bin",
+      "bytes": 711672,
+      "gzipBytes": 220167,
+      "geometryRoundtrip": true,
+      "sha256": "1e059aa5381dd20b23bd00c0ea487c256b162e7e7798d0f5e76f278b48a939ac"
+    },
+    {
+      "name": "tiles/b-26-17.bin",
+      "bytes": 1337100,
+      "gzipBytes": 402543,
+      "geometryRoundtrip": true,
+      "sha256": "92b793aba3f982bd576a11870b591fb3506cefa9bed60337ab1849b02b69f528"
+    },
+    {
+      "name": "tiles/b-26-18.bin",
+      "bytes": 306892,
+      "gzipBytes": 99456,
+      "geometryRoundtrip": true,
+      "sha256": "783d2b3a4df49569fb663ae173f53686795827538c562fbd2a552bfd0f9c84be"
+    },
+    {
+      "name": "tiles/b-26-19.bin",
+      "bytes": 14180,
+      "gzipBytes": 4563,
+      "geometryRoundtrip": true,
+      "sha256": "b6b42537e87caf1122f4e3874657c79e5287e57a43b9a4f24f9ed28d824d3952"
+    },
+    {
+      "name": "tiles/b-27-7.bin",
+      "bytes": 289368,
+      "gzipBytes": 80811,
+      "geometryRoundtrip": true,
+      "sha256": "ce5483a373c620025c5e1b54b632b27543d69056bb42d8091c4a6b6784163101"
+    },
+    {
+      "name": "tiles/b-27-8.bin",
+      "bytes": 729588,
+      "gzipBytes": 216415,
+      "geometryRoundtrip": true,
+      "sha256": "a5fd9d8aca2ca8278d253dadcf0e9ef206a539a8d97ff982ce6ef7b253272489"
+    },
+    {
+      "name": "tiles/b-27-9.bin",
+      "bytes": 360880,
+      "gzipBytes": 92202,
+      "geometryRoundtrip": true,
+      "sha256": "10ec94ebd2d7892d6968b5db696b243cae34a8ffbe2911492cd0891dd2361e24"
+    },
+    {
+      "name": "tiles/b-27-10.bin",
+      "bytes": 29072,
+      "gzipBytes": 9629,
+      "geometryRoundtrip": true,
+      "sha256": "93eaabb3c4f506b817f4e51e3794f5740734b07c54a1546a2e63525967147bdf"
+    },
+    {
+      "name": "tiles/b-27-11.bin",
+      "bytes": 546900,
+      "gzipBytes": 172749,
+      "geometryRoundtrip": true,
+      "sha256": "ede64be8cc77d28a923c416e18f2786b77bfd8e1788a63522f83bb175836a2b1"
+    },
+    {
+      "name": "tiles/b-27-12.bin",
+      "bytes": 1618156,
+      "gzipBytes": 488721,
+      "geometryRoundtrip": true,
+      "sha256": "6cc171be42b3cb85a942b179e9a38139df997bc71c7618a8b351931645bf2de4"
+    },
+    {
+      "name": "tiles/b-27-13.bin",
+      "bytes": 810012,
+      "gzipBytes": 256610,
+      "geometryRoundtrip": true,
+      "sha256": "343cabadf6391abf2606f913aa0595414844391cd6be97e2a5f4dd64f39f8b54"
+    },
+    {
+      "name": "tiles/b-27-14.bin",
+      "bytes": 553476,
+      "gzipBytes": 179663,
+      "geometryRoundtrip": true,
+      "sha256": "ea69295412dba37d84d557d24c6ad73cda7a14c016738e7d5d89bc7eb5b42dc5"
+    },
+    {
+      "name": "tiles/b-27-15.bin",
+      "bytes": 471920,
+      "gzipBytes": 150029,
+      "geometryRoundtrip": true,
+      "sha256": "328400f25dcbb88ea344ff3af603b1df006bb89eae541b95156a225faf420e7c"
+    },
+    {
+      "name": "tiles/b-27-16.bin",
+      "bytes": 706536,
+      "gzipBytes": 219028,
+      "geometryRoundtrip": true,
+      "sha256": "cf41de25e27b6d97eba21594a594ea51ad2a50524e7590d27cf10040cfd10ea8"
+    },
+    {
+      "name": "tiles/b-27-17.bin",
+      "bytes": 251016,
+      "gzipBytes": 75490,
+      "geometryRoundtrip": true,
+      "sha256": "2c6e440d0a2a7e76bb86ab06ca264aa1619a86ae888836b69ec9ae3805d2bfdc"
+    },
+    {
+      "name": "tiles/b-28-8.bin",
+      "bytes": 677324,
+      "gzipBytes": 163672,
+      "geometryRoundtrip": true,
+      "sha256": "735881c1efcdf0c62bdc8691158b32e99d83a1e19052734219be3f13f61fa1f7"
+    },
+    {
+      "name": "tiles/b-28-9.bin",
+      "bytes": 907752,
+      "gzipBytes": 238620,
+      "geometryRoundtrip": true,
+      "sha256": "5b32468bd144751497cbfe7ceadc26d0c437c16f2a5018dfcb2d4ee98c369acc"
+    },
+    {
+      "name": "tiles/b-28-10.bin",
+      "bytes": 117504,
+      "gzipBytes": 39775,
+      "geometryRoundtrip": true,
+      "sha256": "4a112c78cdaf4b9bff6772ed39412556f79d2d4558c27649891234fa8a426718"
+    },
+    {
+      "name": "tiles/b-28-11.bin",
+      "bytes": 984364,
+      "gzipBytes": 283850,
+      "geometryRoundtrip": true,
+      "sha256": "be8339022f3b6e12227b92b80e71543b74dabafd75a263c2187026ffaa6ca1c6"
+    },
+    {
+      "name": "tiles/b-28-12.bin",
+      "bytes": 263848,
+      "gzipBytes": 84405,
+      "geometryRoundtrip": true,
+      "sha256": "4a6110a108e5f040474eaed6194db43c9621304ca3795de3dac3fc5193a2e124"
+    },
+    {
+      "name": "tiles/b-28-13.bin",
+      "bytes": 668060,
+      "gzipBytes": 209777,
+      "geometryRoundtrip": true,
+      "sha256": "3936464e844256b452ab650121e29feaa6d6db02499b341a9f3db089bb1444c3"
+    },
+    {
+      "name": "tiles/b-28-14.bin",
+      "bytes": 675152,
+      "gzipBytes": 207147,
+      "geometryRoundtrip": true,
+      "sha256": "78d396c0e597f1fbdbec9cef91cc1ee2d74fff992ed74702bd9a582f149be4cc"
+    },
+    {
+      "name": "tiles/b-28-15.bin",
+      "bytes": 34864,
+      "gzipBytes": 13186,
+      "geometryRoundtrip": true,
+      "sha256": "63b45165988167247675515a10637ade4f8cc61767853f984231f40a1b9a9f49"
+    },
+    {
+      "name": "tiles/b-28-16.bin",
+      "bytes": 19232,
+      "gzipBytes": 5358,
+      "geometryRoundtrip": true,
+      "sha256": "a446fb7f2f5d61b4e53a041091a882bfeb206badce72f41732e9b00bc691e970"
+    },
+    {
+      "name": "tiles/b-29-8.bin",
+      "bytes": 382972,
+      "gzipBytes": 105942,
+      "geometryRoundtrip": true,
+      "sha256": "15e0fbe847f2242660d4f41a30ef941ef3f3d348b115e098305d3cdddd896bec"
+    },
+    {
+      "name": "tiles/b-29-9.bin",
+      "bytes": 200784,
+      "gzipBytes": 61282,
+      "geometryRoundtrip": true,
+      "sha256": "aeea331d87c647cab090c9b4dbb73d818c8e6e71f3b8269edf28159adec5871f"
+    },
+    {
+      "name": "tiles/b-29-10.bin",
+      "bytes": 331444,
+      "gzipBytes": 100389,
+      "geometryRoundtrip": true,
+      "sha256": "64231b1e904e96f5f7f82fb78fbede40af9b612c47cb541c6d2109d4d8dbb02d"
+    },
+    {
+      "name": "tiles/b-29-11.bin",
+      "bytes": 235272,
+      "gzipBytes": 68360,
+      "geometryRoundtrip": true,
+      "sha256": "145db38f8dc7869dbaf000a4e23c95539985bbce786ca717f9d3c9b083ecf515"
+    },
+    {
+      "name": "tiles/b-29-12.bin",
+      "bytes": 152220,
+      "gzipBytes": 48635,
+      "geometryRoundtrip": true,
+      "sha256": "1f9ed93136b960e0a5908bb612a09479f749b13b64d9f2d7cc1f46db9c2be856"
+    },
+    {
+      "name": "tiles/b-29-13.bin",
+      "bytes": 1227876,
+      "gzipBytes": 358233,
+      "geometryRoundtrip": true,
+      "sha256": "cbf4e48e9555cdc0834291a7b82fef858e94ad2b35a7ec7d7d56ecc90cdeccde"
+    },
+    {
+      "name": "tiles/b-29-14.bin",
+      "bytes": 1258824,
+      "gzipBytes": 374480,
+      "geometryRoundtrip": true,
+      "sha256": "234c81c259bc6717d8e6e490662d8f0ba27d2b331613daca77241e82069a7089"
+    },
+    {
+      "name": "tiles/b-29-15.bin",
+      "bytes": 277200,
+      "gzipBytes": 85980,
+      "geometryRoundtrip": true,
+      "sha256": "bf8c982dc701c23074416b67f440d4ace2ab0ddfde34d8b2f970811ba346d8c8"
+    },
+    {
+      "name": "tiles/b-29-16.bin",
+      "bytes": 36904,
+      "gzipBytes": 12810,
+      "geometryRoundtrip": true,
+      "sha256": "29c6c64ba380029dd5534e35312d81c136fbd622ecc5f5790657ddd6dbc9aed3"
+    },
+    {
+      "name": "tiles/b-29-22.bin",
+      "bytes": 24988,
+      "gzipBytes": 7609,
+      "geometryRoundtrip": true,
+      "sha256": "56d8d5d989f641e76b6b6e6f7a8d0b6d3d004e74e4e47fabab1995ea6d8add7f"
+    },
+    {
+      "name": "tiles/b-29-23.bin",
+      "bytes": 8720,
+      "gzipBytes": 2252,
+      "geometryRoundtrip": true,
+      "sha256": "16dffc08c7533146b6f2fc412f955dd5a024d24c7b640c05180d015f4a77e54b"
+    },
+    {
+      "name": "tiles/b-30-8.bin",
+      "bytes": 73924,
+      "gzipBytes": 25556,
+      "geometryRoundtrip": true,
+      "sha256": "e68acd3091593a0255126c6893e1d0a9a45920566e04b7d3ad39e0003a9e28fc"
+    },
+    {
+      "name": "tiles/b-30-9.bin",
+      "bytes": 62052,
+      "gzipBytes": 24549,
+      "geometryRoundtrip": true,
+      "sha256": "0169487d0566d03cc7196490e215334ed3f1d46b903332e7b448c2843c5cd8e3"
+    },
+    {
+      "name": "tiles/b-30-10.bin",
+      "bytes": 118836,
+      "gzipBytes": 37098,
+      "geometryRoundtrip": true,
+      "sha256": "5d2ec10e46afc90adb134bb0337be6ec71b94f48d4026d1d8fb80063ca76bd95"
+    },
+    {
+      "name": "tiles/b-30-11.bin",
+      "bytes": 256828,
+      "gzipBytes": 79573,
+      "geometryRoundtrip": true,
+      "sha256": "2cd9c724e7a73d10a085dd9f1480e545c4abbafe13d123a61d160a051ab76c0f"
+    },
+    {
+      "name": "tiles/b-30-12.bin",
+      "bytes": 21392,
+      "gzipBytes": 8302,
+      "geometryRoundtrip": true,
+      "sha256": "38b55587f94c18e5bbc16921d7f3023096b52686df4621d87b4af60e4108bdff"
+    },
+    {
+      "name": "tiles/b-30-13.bin",
+      "bytes": 403392,
+      "gzipBytes": 126152,
+      "geometryRoundtrip": true,
+      "sha256": "68adc19d432d88c5116bafaa920f2f8f6c0bb273a5497c28a5a24dbe45591332"
+    },
+    {
+      "name": "tiles/b-30-14.bin",
+      "bytes": 1668984,
+      "gzipBytes": 503260,
+      "geometryRoundtrip": true,
+      "sha256": "2672d6b3cf699a386a027b9ff74a8adbddc0a54256d3821b1b484c822eb4bbe3"
+    },
+    {
+      "name": "tiles/b-30-15.bin",
+      "bytes": 981612,
+      "gzipBytes": 296659,
+      "geometryRoundtrip": true,
+      "sha256": "e852f884e8a806f6dc0ec84fa7931e0ca5b790c89615e8d85c38e4ce83e70c53"
+    },
+    {
+      "name": "tiles/b-30-16.bin",
+      "bytes": 178752,
+      "gzipBytes": 54550,
+      "geometryRoundtrip": true,
+      "sha256": "589aa6a332a4a8986d8ad1e0fc3ce01c351ea24e46331d9f8233e1f329726e14"
+    },
+    {
+      "name": "tiles/b-30-17.bin",
+      "bytes": 199228,
+      "gzipBytes": 64073,
+      "geometryRoundtrip": true,
+      "sha256": "dfe057dc55f0d2fd5d5b464262f35b8e0aecbf6d512285e1a9467208b1e2ea25"
+    },
+    {
+      "name": "tiles/b-30-18.bin",
+      "bytes": 450548,
+      "gzipBytes": 121481,
+      "geometryRoundtrip": true,
+      "sha256": "da63cbdb5de381d913a84f6656da84a8ac53743d6ecd668684de1a1fe6b86a73"
+    },
+    {
+      "name": "tiles/b-30-19.bin",
+      "bytes": 34824,
+      "gzipBytes": 11415,
+      "geometryRoundtrip": true,
+      "sha256": "12f22e3f0e6795028ab1f4661840a15bc8b8e5d0575243cf6871a3e3a60041be"
+    },
+    {
+      "name": "tiles/b-30-21.bin",
+      "bytes": 36740,
+      "gzipBytes": 14854,
+      "geometryRoundtrip": true,
+      "sha256": "f66bba9a7691349df78773e706346e66b003239795caa9f121d6923fa7a8e877"
+    },
+    {
+      "name": "tiles/b-30-22.bin",
+      "bytes": 13712,
+      "gzipBytes": 4546,
+      "geometryRoundtrip": true,
+      "sha256": "50cd97d05d7a8727d0eb05d9a275b97719d8538c521a9707013f2cffc1210fe5"
+    },
+    {
+      "name": "tiles/b-30-23.bin",
+      "bytes": 28396,
+      "gzipBytes": 11134,
+      "geometryRoundtrip": true,
+      "sha256": "69673bf754f4b64cbd178911f7218e25e4cfdad6e4a342d06bcf0ad592b0970f"
+    },
+    {
+      "name": "tiles/b-31-8.bin",
+      "bytes": 280884,
+      "gzipBytes": 80869,
+      "geometryRoundtrip": true,
+      "sha256": "e8180a7e164d406a29b11c548bad50a575cca96d0bf1f26ea890379f3d7f5da1"
+    },
+    {
+      "name": "tiles/b-31-9.bin",
+      "bytes": 20104,
+      "gzipBytes": 7881,
+      "geometryRoundtrip": true,
+      "sha256": "ff6c5b717251c8cb2df1d27f6c65cdcc15e82773bf5cd226e82117a736db09f0"
+    },
+    {
+      "name": "tiles/b-31-10.bin",
+      "bytes": 23692,
+      "gzipBytes": 10077,
+      "geometryRoundtrip": true,
+      "sha256": "7d70b5e988b263be4ee7bfbf5320b865facfd7754bc76d84be8ff64b5c973c51"
+    },
+    {
+      "name": "tiles/b-31-11.bin",
+      "bytes": 98000,
+      "gzipBytes": 26903,
+      "geometryRoundtrip": true,
+      "sha256": "73a09c4004f4001cbec76ff6ca439af8045b1519c6f17c3057b4de4cd29450e1"
+    },
+    {
+      "name": "tiles/b-31-12.bin",
+      "bytes": 780188,
+      "gzipBytes": 227821,
+      "geometryRoundtrip": true,
+      "sha256": "cbb47dcbee8313eea17e2a7d878e04c5eb3435cedebb1f0d083bbfd1f721882f"
+    },
+    {
+      "name": "tiles/b-31-13.bin",
+      "bytes": 1053572,
+      "gzipBytes": 307928,
+      "geometryRoundtrip": true,
+      "sha256": "7d1c7244d4a5356c9897996972d6f246faa99a8455075bcc3a6c0406b1d595ce"
+    },
+    {
+      "name": "tiles/b-31-14.bin",
+      "bytes": 1406940,
+      "gzipBytes": 421489,
+      "geometryRoundtrip": true,
+      "sha256": "fafc648f363d043b2261ae2d2d40365ac6d4002e66ee5876b24d4bb50e5d45f1"
+    },
+    {
+      "name": "tiles/b-31-15.bin",
+      "bytes": 1346172,
+      "gzipBytes": 390794,
+      "geometryRoundtrip": true,
+      "sha256": "0ae1f9fccf13146bb17b5e44b95e343762309ad7236346279f220233eafac4ec"
+    },
+    {
+      "name": "tiles/b-31-16.bin",
+      "bytes": 921708,
+      "gzipBytes": 276459,
+      "geometryRoundtrip": true,
+      "sha256": "c06f372f6d0e960803774c04ad117e6b2db53de6d71cf8a724e2e4adca913af1"
+    },
+    {
+      "name": "tiles/b-31-17.bin",
+      "bytes": 637212,
+      "gzipBytes": 184276,
+      "geometryRoundtrip": true,
+      "sha256": "46a3cac23a1e33f0187b57a19c0d6d3a95bbf4be03c2aaa6f4f0368109185916"
+    },
+    {
+      "name": "tiles/b-31-18.bin",
+      "bytes": 932956,
+      "gzipBytes": 258898,
+      "geometryRoundtrip": true,
+      "sha256": "a9f6545ae62fb0a5355e8146f0d60b94ff1ed7c40e91e4c0c6845108575ed9d4"
+    },
+    {
+      "name": "tiles/b-31-19.bin",
+      "bytes": 877996,
+      "gzipBytes": 250115,
+      "geometryRoundtrip": true,
+      "sha256": "db969842e63f754bbd1e2dfdc926edd73104329269b59affa93452b926b07f28"
+    },
+    {
+      "name": "tiles/b-31-20.bin",
+      "bytes": 415032,
+      "gzipBytes": 112950,
+      "geometryRoundtrip": true,
+      "sha256": "48eff3489bd78637105a543080e0e2f8d7f8d9f42f9d8f734c533da55b3103a6"
+    },
+    {
+      "name": "tiles/b-31-21.bin",
+      "bytes": 426772,
+      "gzipBytes": 123224,
+      "geometryRoundtrip": true,
+      "sha256": "64193f5c207e2139d82400b25ce72d54c6ca2c45aebff2652bf2d018a5fbf91b"
+    },
+    {
+      "name": "tiles/b-31-24.bin",
+      "bytes": 9892,
+      "gzipBytes": 3194,
+      "geometryRoundtrip": true,
+      "sha256": "d1bd652362be61ac1aa4ec7cfb15a5a5c90471e9368787fb09eb21e950ef6aa4"
+    },
+    {
+      "name": "tiles/b-32-7.bin",
+      "bytes": 362428,
+      "gzipBytes": 96446,
+      "geometryRoundtrip": true,
+      "sha256": "b3ce2838210993cd134dcfeb2939c7a34c3daf33bffa0a0f663bfb5ad2ccf147"
+    },
+    {
+      "name": "tiles/b-32-8.bin",
+      "bytes": 1238856,
+      "gzipBytes": 342809,
+      "geometryRoundtrip": true,
+      "sha256": "a44b9e97683f36e287997286118f32dd701789f44e9c2c18a0126efd8ad38376"
+    },
+    {
+      "name": "tiles/b-32-9.bin",
+      "bytes": 82068,
+      "gzipBytes": 29075,
+      "geometryRoundtrip": true,
+      "sha256": "4dd5b59221adb2083c33d35e62b28e2a6d890ef3de55c57fd7a1377ce383eead"
+    },
+    {
+      "name": "tiles/b-32-10.bin",
+      "bytes": 121608,
+      "gzipBytes": 33881,
+      "geometryRoundtrip": true,
+      "sha256": "f5dea0c743c8bb8341dcd612c86cf3938e5cec818a190c714405b60768fd59c2"
+    },
+    {
+      "name": "tiles/b-32-11.bin",
+      "bytes": 93392,
+      "gzipBytes": 32907,
+      "geometryRoundtrip": true,
+      "sha256": "bcd48cbab1c6e3d41f14fa5b7c7b55046c19bc6faf0fa5efec5f9084a8867965"
+    },
+    {
+      "name": "tiles/b-32-12.bin",
+      "bytes": 287784,
+      "gzipBytes": 88038,
+      "geometryRoundtrip": true,
+      "sha256": "73dc37e5c5d3247b7e96aa4830c98d2fac5144ee2b35a641b43a64354387a011"
+    },
+    {
+      "name": "tiles/b-32-13.bin",
+      "bytes": 780380,
+      "gzipBytes": 227344,
+      "geometryRoundtrip": true,
+      "sha256": "8e6d9078cc03e4160a89b062eeed1fcdbaaf097f00461dd5c975c103fd5ce201"
+    },
+    {
+      "name": "tiles/b-32-14.bin",
+      "bytes": 1281656,
+      "gzipBytes": 377350,
+      "geometryRoundtrip": true,
+      "sha256": "28f6ce970e69e77573a22a0e335493a9a3bded60b142a17c8455d2820654adf3"
+    },
+    {
+      "name": "tiles/b-32-15.bin",
+      "bytes": 606824,
+      "gzipBytes": 179321,
+      "geometryRoundtrip": true,
+      "sha256": "733104ffa53a5a706e077b66b90e80e17d4ac18f894954362bcd2fbda477e2d9"
+    },
+    {
+      "name": "tiles/b-32-16.bin",
+      "bytes": 743748,
+      "gzipBytes": 224209,
+      "geometryRoundtrip": true,
+      "sha256": "9890b9735ba6e037cbbd52d1e85afb6d508b670999b6e3d1da6ac09ec081441f"
+    },
+    {
+      "name": "tiles/b-32-17.bin",
+      "bytes": 1393896,
+      "gzipBytes": 391008,
+      "geometryRoundtrip": true,
+      "sha256": "88fe9c8215da5dada18541fe71091b5fbd3f90e8838f27962850d9a658373fdd"
+    },
+    {
+      "name": "tiles/b-32-18.bin",
+      "bytes": 1407336,
+      "gzipBytes": 395885,
+      "geometryRoundtrip": true,
+      "sha256": "a15ff75440166fa48cbba659541d9229c5e9bf6d3a548ce8f8408673d0ce4de7"
+    },
+    {
+      "name": "tiles/b-32-19.bin",
+      "bytes": 1099320,
+      "gzipBytes": 276428,
+      "geometryRoundtrip": true,
+      "sha256": "9c3a65a4cdd450cabd30ef550874e32f3e4768351fcf795e6b023eee2e755054"
+    },
+    {
+      "name": "tiles/b-32-20.bin",
+      "bytes": 871164,
+      "gzipBytes": 244740,
+      "geometryRoundtrip": true,
+      "sha256": "ab8d9fd81c22eba5bf637ef63f22de9ff9f1159dcf75239bc2acf7feb72ed11c"
+    },
+    {
+      "name": "tiles/b-32-21.bin",
+      "bytes": 1318716,
+      "gzipBytes": 366770,
+      "geometryRoundtrip": true,
+      "sha256": "0a1d502daa6810834632e82f598bab2c9d320474f7532b812354feb03dd905e8"
+    },
+    {
+      "name": "tiles/b-32-22.bin",
+      "bytes": 19904,
+      "gzipBytes": 4600,
+      "geometryRoundtrip": true,
+      "sha256": "02bdf55425aa6227ccdb2d125cfc8e7fbd9bad31fc9a906b81ff19736729583c"
+    },
+    {
+      "name": "tiles/b-32-24.bin",
+      "bytes": 11196,
+      "gzipBytes": 3741,
+      "geometryRoundtrip": true,
+      "sha256": "4686201d59036a2bd6befb9206022d51d467e94dc3edd209ffd2752d7a4e465d"
+    },
+    {
+      "name": "tiles/b-33-8.bin",
+      "bytes": 358560,
+      "gzipBytes": 100073,
+      "geometryRoundtrip": true,
+      "sha256": "7c04f2d6ef4d3449dbf9959ce34bd7955c8642042871e6734327abb5d4a1aea1"
+    },
+    {
+      "name": "tiles/b-33-9.bin",
+      "bytes": 292440,
+      "gzipBytes": 91721,
+      "geometryRoundtrip": true,
+      "sha256": "2bd10b68020fb029dc2899a883ebc1c04ac82a136dc9c2dd8d765efa8f6c7bc0"
+    },
+    {
+      "name": "tiles/b-33-10.bin",
+      "bytes": 938076,
+      "gzipBytes": 263171,
+      "geometryRoundtrip": true,
+      "sha256": "56f6854c54654def0ceb55ae79c9427660d87f156a8ddb5a3eee97c44284c65a"
+    },
+    {
+      "name": "tiles/b-33-11.bin",
+      "bytes": 695892,
+      "gzipBytes": 210378,
+      "geometryRoundtrip": true,
+      "sha256": "c47c4ec96cd6649e242323e11aafbff2861bfdd0d7d8d766507d4663111e5c5c"
+    },
+    {
+      "name": "tiles/b-33-12.bin",
+      "bytes": 44960,
+      "gzipBytes": 17290,
+      "geometryRoundtrip": true,
+      "sha256": "3eaed08aab5be50035338280a130c820cec54c157f8267d8745b458469f85efa"
+    },
+    {
+      "name": "tiles/b-33-13.bin",
+      "bytes": 30736,
+      "gzipBytes": 12745,
+      "geometryRoundtrip": true,
+      "sha256": "63199c0aafbc259c864fdb84ff02b6de2416ea1b070c7d164395f6ff5d6bac06"
+    },
+    {
+      "name": "tiles/b-33-14.bin",
+      "bytes": 793136,
+      "gzipBytes": 240541,
+      "geometryRoundtrip": true,
+      "sha256": "42fe5c65660fad24fbf4f4414d1283cc493772a8755b87a4f507836bc69a06a8"
+    },
+    {
+      "name": "tiles/b-33-15.bin",
+      "bytes": 669960,
+      "gzipBytes": 203874,
+      "geometryRoundtrip": true,
+      "sha256": "64e7784a9b1ed8e2b778efc3b69d4024c892058fa8716876d44db148f0f43470"
+    },
+    {
+      "name": "tiles/b-33-16.bin",
+      "bytes": 254172,
+      "gzipBytes": 81978,
+      "geometryRoundtrip": true,
+      "sha256": "e92552c3e5af806e0922681d70d77a8f102983da9107dcf162d5e2f987f9be08"
+    },
+    {
+      "name": "tiles/b-33-17.bin",
+      "bytes": 974076,
+      "gzipBytes": 288942,
+      "geometryRoundtrip": true,
+      "sha256": "20eb0c67b0ed52cff963250023c6478ed022c39f63fa917fe48e01e9b67eb8f6"
+    },
+    {
+      "name": "tiles/b-33-18.bin",
+      "bytes": 1276008,
+      "gzipBytes": 361271,
+      "geometryRoundtrip": true,
+      "sha256": "6ab6822397c43dc684be5410ae9d7255e1a046d38c68cca44c00b9830fb15b31"
+    },
+    {
+      "name": "tiles/b-33-19.bin",
+      "bytes": 968920,
+      "gzipBytes": 256053,
+      "geometryRoundtrip": true,
+      "sha256": "954a880eb80d5531df16bfd96152d22ae33e88136fbb142af861269f024922d6"
+    },
+    {
+      "name": "tiles/b-33-20.bin",
+      "bytes": 1056936,
+      "gzipBytes": 293064,
+      "geometryRoundtrip": true,
+      "sha256": "385df878611b5d4622212993653672ae34e3003b8c1a4c226a6dbad87a666e25"
+    },
+    {
+      "name": "tiles/b-33-21.bin",
+      "bytes": 1938720,
+      "gzipBytes": 539560,
+      "geometryRoundtrip": true,
+      "sha256": "54c63f2749257599b1a63f6fae992255ea191ac0e9873a400400661572bd75f3"
+    },
+    {
+      "name": "tiles/b-33-22.bin",
+      "bytes": 105092,
+      "gzipBytes": 28868,
+      "geometryRoundtrip": true,
+      "sha256": "da5b70b1dc93ddb1e41bbd64d1cbf0fd401f57ea1b58ed4d02a93c2ed02ece11"
+    },
+    {
+      "name": "tiles/b-33-23.bin",
+      "bytes": 2352,
+      "gzipBytes": 642,
+      "geometryRoundtrip": true,
+      "sha256": "60b6fd382e84a9317dfdf4446959482531331a12c99ce4bf9819c25244d7d913"
+    },
+    {
+      "name": "tiles/b-34-8.bin",
+      "bytes": 14536,
+      "gzipBytes": 3660,
+      "geometryRoundtrip": true,
+      "sha256": "0e71bd4764782fa8955bbb44f4fa8f473ad1e709ed437b57c9c70b8d64272246"
+    },
+    {
+      "name": "tiles/b-34-9.bin",
+      "bytes": 927548,
+      "gzipBytes": 271309,
+      "geometryRoundtrip": true,
+      "sha256": "59fb44687fa9f7a7a3adb362bc456b2a72cb1003a3dc65ab2b274caf5d2a6f4c"
+    },
+    {
+      "name": "tiles/b-34-10.bin",
+      "bytes": 1022196,
+      "gzipBytes": 291149,
+      "geometryRoundtrip": true,
+      "sha256": "35b67d4f25a876e9b65e9789099e689f7303370892252d3cf0e4478437d208bc"
+    },
+    {
+      "name": "tiles/b-34-11.bin",
+      "bytes": 146328,
+      "gzipBytes": 46817,
+      "geometryRoundtrip": true,
+      "sha256": "5e17895d4e5d0a4d36a77c90b72fb55967d9a93f2665b9ddb6e2cc66d28a71c0"
+    },
+    {
+      "name": "tiles/b-34-12.bin",
+      "bytes": 36260,
+      "gzipBytes": 14758,
+      "geometryRoundtrip": true,
+      "sha256": "fa3397024d1281c12fc8a82609ec55a715936623f24d9df281dcf14216ccf30c"
+    },
+    {
+      "name": "tiles/b-34-13.bin",
+      "bytes": 39952,
+      "gzipBytes": 15290,
+      "geometryRoundtrip": true,
+      "sha256": "33e2921f555c1d849c311d92b6f39b24a1610ee74d6c7a1c3cc5af89ee8ecf21"
+    },
+    {
+      "name": "tiles/b-34-14.bin",
+      "bytes": 28788,
+      "gzipBytes": 10775,
+      "geometryRoundtrip": true,
+      "sha256": "bf13de7cf08f053195491a945bf247e6c0327c51869c558219859b532ecb608a"
+    },
+    {
+      "name": "tiles/b-34-15.bin",
+      "bytes": 11768,
+      "gzipBytes": 4749,
+      "geometryRoundtrip": true,
+      "sha256": "fb926c6fdc4b60aac622e93b52b7241b4ed68390c8afa22675676da6281bb5ca"
+    },
+    {
+      "name": "tiles/b-34-16.bin",
+      "bytes": 78076,
+      "gzipBytes": 17811,
+      "geometryRoundtrip": true,
+      "sha256": "d41753f8b435bc9f272dc5e863c4e5cf7df505ec8c5fa947ffdb459d3b86ae9f"
+    },
+    {
+      "name": "tiles/b-34-17.bin",
+      "bytes": 477628,
+      "gzipBytes": 135914,
+      "geometryRoundtrip": true,
+      "sha256": "e9c0b0c5206467252986838edceeef1a5253771725e86891ac8a7f2bda70705a"
+    },
+    {
+      "name": "tiles/b-34-18.bin",
+      "bytes": 853088,
+      "gzipBytes": 241342,
+      "geometryRoundtrip": true,
+      "sha256": "fc174c2dada1356c72e453b5b4e4f01562ec8a42e33ad4b9d9e8665eed6b65bf"
+    },
+    {
+      "name": "tiles/b-34-19.bin",
+      "bytes": 1841208,
+      "gzipBytes": 500269,
+      "geometryRoundtrip": true,
+      "sha256": "5d66870ffb571befe5dede17771ab6a047b9506a5c8a01aa23d0d86fb522e80f"
+    },
+    {
+      "name": "tiles/b-34-20.bin",
+      "bytes": 1808304,
+      "gzipBytes": 501892,
+      "geometryRoundtrip": true,
+      "sha256": "b6013b056b41003f74e1b9fe2762bf61efa19817e37ce3a24cedee9fd13cb9f0"
+    },
+    {
+      "name": "tiles/b-34-21.bin",
+      "bytes": 528984,
+      "gzipBytes": 155342,
+      "geometryRoundtrip": true,
+      "sha256": "4b77b5439cc458973cb01cc7f53105256464f1f281cbcf588c019eeac321faa6"
+    },
+    {
+      "name": "tiles/b-34-22.bin",
+      "bytes": 133332,
+      "gzipBytes": 38104,
+      "geometryRoundtrip": true,
+      "sha256": "e8a4549165616624e0ac7f03bd5145bc4ad2f8f6c574ecb584b37a8b0abb45ea"
+    },
+    {
+      "name": "tiles/b-34-23.bin",
+      "bytes": 16204,
+      "gzipBytes": 6770,
+      "geometryRoundtrip": true,
+      "sha256": "823e7b9a1af863e8009be5687a15f2f6f827829e2a537852e567cf7cce761907"
+    },
+    {
+      "name": "tiles/b-34-24.bin",
+      "bytes": 2000,
+      "gzipBytes": 514,
+      "geometryRoundtrip": true,
+      "sha256": "2140e18d3eda011b5875e7ae077d2c5146efe62c9904ac782e634e5176a2bcf1"
+    },
+    {
+      "name": "tiles/b-35-9.bin",
+      "bytes": 251336,
+      "gzipBytes": 75936,
+      "geometryRoundtrip": true,
+      "sha256": "ba1abc9544385732fc8d0decb949da233ecb38daaac8ad718963c2beb7635b3f"
+    },
+    {
+      "name": "tiles/b-35-10.bin",
+      "bytes": 506984,
+      "gzipBytes": 154967,
+      "geometryRoundtrip": true,
+      "sha256": "d5df7dce48af8c70760b084463b97ceb4333c601acf38c9ea9ff7a867442f401"
+    },
+    {
+      "name": "tiles/b-35-11.bin",
+      "bytes": 75348,
+      "gzipBytes": 30073,
+      "geometryRoundtrip": true,
+      "sha256": "905d668bb52fa1ff0dda3a42335453b68f4b6664bfee141c1c546a80c55f239c"
+    },
+    {
+      "name": "tiles/b-35-12.bin",
+      "bytes": 62332,
+      "gzipBytes": 25833,
+      "geometryRoundtrip": true,
+      "sha256": "789fa0fb4caa254894b06e22466d307ac06429611d2546e56182c92c5b555abc"
+    },
+    {
+      "name": "tiles/b-35-13.bin",
+      "bytes": 289132,
+      "gzipBytes": 90105,
+      "geometryRoundtrip": true,
+      "sha256": "2ff5cfe1a7b0e2bc30b788088d8e68833dcdfb93f4c3c3820bf4f46890cac9a2"
+    },
+    {
+      "name": "tiles/b-35-14.bin",
+      "bytes": 60744,
+      "gzipBytes": 23933,
+      "geometryRoundtrip": true,
+      "sha256": "a26c917afa371d018a7a825224d3b55f22a65a820463d2e8f0848a55acd8a48b"
+    },
+    {
+      "name": "tiles/b-35-15.bin",
+      "bytes": 403928,
+      "gzipBytes": 123951,
+      "geometryRoundtrip": true,
+      "sha256": "f613cb0531bb99f65cfc9608ece765e4e4fb4619d047978cb627b37a0cdcc5db"
+    },
+    {
+      "name": "tiles/b-35-16.bin",
+      "bytes": 207800,
+      "gzipBytes": 56157,
+      "geometryRoundtrip": true,
+      "sha256": "041c2b806dc32f2cada90ef15f916a66b5bf2daed95be3a551bb1b0c6badc694"
+    },
+    {
+      "name": "tiles/b-35-17.bin",
+      "bytes": 1141536,
+      "gzipBytes": 324055,
+      "geometryRoundtrip": true,
+      "sha256": "c17d8d39c980c2df1ba51a688d2b1106f12f4de832d4cd23d21e50eeb8e97944"
+    },
+    {
+      "name": "tiles/b-35-18.bin",
+      "bytes": 833072,
+      "gzipBytes": 238967,
+      "geometryRoundtrip": true,
+      "sha256": "6107843fa5a3e71469951368dbcfee443f0e25dc6f6ee7dd36f30541c9526f3c"
+    },
+    {
+      "name": "tiles/b-35-19.bin",
+      "bytes": 1242384,
+      "gzipBytes": 355697,
+      "geometryRoundtrip": true,
+      "sha256": "193b81d146a02173bf727485233c6012a7092e151e488ee29ddbe756d9ad7540"
+    },
+    {
+      "name": "tiles/b-35-20.bin",
+      "bytes": 2097324,
+      "gzipBytes": 584378,
+      "geometryRoundtrip": true,
+      "sha256": "776d817df08c3998fadbf316889318e56d5575f7b8136a2bcfb8cb0dbf3d0b99"
+    },
+    {
+      "name": "tiles/b-35-21.bin",
+      "bytes": 1541244,
+      "gzipBytes": 403039,
+      "geometryRoundtrip": true,
+      "sha256": "68ee57a9462d00d1ae74a1dc5ce9e0b1e94f993cc1735469d772702fa87f2f15"
+    },
+    {
+      "name": "tiles/b-35-22.bin",
+      "bytes": 786560,
+      "gzipBytes": 226978,
+      "geometryRoundtrip": true,
+      "sha256": "fec9eabb41d7f4fb467e0d9234e2b93180ac3ef2d4b20e034b1d07e469be0cc0"
+    },
+    {
+      "name": "tiles/b-35-23.bin",
+      "bytes": 54640,
+      "gzipBytes": 14823,
+      "geometryRoundtrip": true,
+      "sha256": "4a4cbb79d658140fd8d2bac551669897c29187e7b0379178a29491c152b8cc64"
+    },
+    {
+      "name": "tiles/b-35-24.bin",
+      "bytes": 30248,
+      "gzipBytes": 11202,
+      "geometryRoundtrip": true,
+      "sha256": "76a98622a80c2880727882e81bfff80f0a4ca075b8bdd8a4bab4863e37cf2e94"
+    },
+    {
+      "name": "tiles/b-36-9.bin",
+      "bytes": 17592,
+      "gzipBytes": 3870,
+      "geometryRoundtrip": true,
+      "sha256": "e629458e7c7a547eef31b6940417089c83ea42b27677a621930e8a8666a9fc13"
+    },
+    {
+      "name": "tiles/b-36-10.bin",
+      "bytes": 175272,
+      "gzipBytes": 52818,
+      "geometryRoundtrip": true,
+      "sha256": "17815e6997b5b11f950b19b0d2330ba42d76d701460ea0235424ddc48eda34f9"
+    },
+    {
+      "name": "tiles/b-36-11.bin",
+      "bytes": 209548,
+      "gzipBytes": 62313,
+      "geometryRoundtrip": true,
+      "sha256": "1742ec559a593b12c5f8cae41873165ac8581dbe53fc40e0d657d1c063016798"
+    },
+    {
+      "name": "tiles/b-36-12.bin",
+      "bytes": 352876,
+      "gzipBytes": 114005,
+      "geometryRoundtrip": true,
+      "sha256": "955f0b2d7f1b52af9dfadc0a50e820510a2f53004bdc389ad6889fd880d822f4"
+    },
+    {
+      "name": "tiles/b-36-13.bin",
+      "bytes": 222688,
+      "gzipBytes": 67776,
+      "geometryRoundtrip": true,
+      "sha256": "316d8bf535aaa68abe9439f800dee8354a190dadb0a5fe24300498aff484d099"
+    },
+    {
+      "name": "tiles/b-36-14.bin",
+      "bytes": 63744,
+      "gzipBytes": 24451,
+      "geometryRoundtrip": true,
+      "sha256": "b300f1377bc90a84e561b524aec1295ae5bbb8878b3e7514c776463428e06a3e"
+    },
+    {
+      "name": "tiles/b-36-15.bin",
+      "bytes": 951204,
+      "gzipBytes": 284056,
+      "geometryRoundtrip": true,
+      "sha256": "e18bf767604ebd83a85ab8ecde709ba95515d35952e1873656a76c0cb539a3d4"
+    },
+    {
+      "name": "tiles/b-36-16.bin",
+      "bytes": 793356,
+      "gzipBytes": 234437,
+      "geometryRoundtrip": true,
+      "sha256": "f9897f43f3daa0812051e2d5b81f10e593dc82e12733371d8def70fd4bfc6142"
+    },
+    {
+      "name": "tiles/b-36-17.bin",
+      "bytes": 620252,
+      "gzipBytes": 173533,
+      "geometryRoundtrip": true,
+      "sha256": "0543d8dce49c9e531d4ab5061d0cf22b90986d793c098295f9ee522766a123a4"
+    },
+    {
+      "name": "tiles/b-36-18.bin",
+      "bytes": 327672,
+      "gzipBytes": 96547,
+      "geometryRoundtrip": true,
+      "sha256": "a03e867c507e72bbf535b0c088af5cf27d6ba3941405ad80153cde3d3b2a34d6"
+    },
+    {
+      "name": "tiles/b-36-19.bin",
+      "bytes": 1860828,
+      "gzipBytes": 523125,
+      "geometryRoundtrip": true,
+      "sha256": "1c1508a5ea4abc432a801445ceec016315264ac5f2f7f3009e0100815294b2c8"
+    },
+    {
+      "name": "tiles/b-36-20.bin",
+      "bytes": 1374156,
+      "gzipBytes": 389458,
+      "geometryRoundtrip": true,
+      "sha256": "490c2d0e2a070d2132c10b3cb96af217fd1eeb63f38ea3f4ce38666bc07e4966"
+    },
+    {
+      "name": "tiles/b-36-21.bin",
+      "bytes": 829448,
+      "gzipBytes": 233147,
+      "geometryRoundtrip": true,
+      "sha256": "abfa8bd1b879439a4e07262cca93e2ab0e9b2a3813e8ccc0dd6067eaeca5cd74"
+    },
+    {
+      "name": "tiles/b-36-22.bin",
+      "bytes": 1421436,
+      "gzipBytes": 400935,
+      "geometryRoundtrip": true,
+      "sha256": "c0776c6e919e9a9cd9f6aa2c7d9bd839a09a25ba1dbaec55f65dbc7cb4c71f99"
+    },
+    {
+      "name": "tiles/b-36-23.bin",
+      "bytes": 876492,
+      "gzipBytes": 258789,
+      "geometryRoundtrip": true,
+      "sha256": "69734be1ad6d5ae8b892b48134f4691579fac60544f34cf45190946a89df2b62"
+    },
+    {
+      "name": "tiles/b-36-24.bin",
+      "bytes": 42540,
+      "gzipBytes": 14015,
+      "geometryRoundtrip": true,
+      "sha256": "08e59bfc89eed3e35725bc3492e5a13b3afe88d548612adb4b987d2d3986bf0e"
+    },
+    {
+      "name": "tiles/b-37-10.bin",
+      "bytes": 184620,
+      "gzipBytes": 54389,
+      "geometryRoundtrip": true,
+      "sha256": "0e0f1bf86923b4c94c968eeeb56080c06ab33fb457b50caac86a09dcaa8154e2"
+    },
+    {
+      "name": "tiles/b-37-11.bin",
+      "bytes": 750900,
+      "gzipBytes": 225245,
+      "geometryRoundtrip": true,
+      "sha256": "80b69288a658e4c1b06601c827a0e137787a302a3e6d8b7a3610116be6c81233"
+    },
+    {
+      "name": "tiles/b-37-12.bin",
+      "bytes": 305668,
+      "gzipBytes": 100475,
+      "geometryRoundtrip": true,
+      "sha256": "cad4d588baf7f8583c63714d8a5bd813a66b15e24b1e729e0a2a29b292aa379e"
+    },
+    {
+      "name": "tiles/b-37-13.bin",
+      "bytes": 41724,
+      "gzipBytes": 14770,
+      "geometryRoundtrip": true,
+      "sha256": "537d4e6daac0e8006463eeda1ea6a37f2511de5f7e635ef27117b4e629a3e4be"
+    },
+    {
+      "name": "tiles/b-37-14.bin",
+      "bytes": 18320,
+      "gzipBytes": 7131,
+      "geometryRoundtrip": true,
+      "sha256": "b9c654e01b4244a9c199654228e3ca9d6d959b02207e182ddd1ba0a8767c227e"
+    },
+    {
+      "name": "tiles/b-37-15.bin",
+      "bytes": 424972,
+      "gzipBytes": 129805,
+      "geometryRoundtrip": true,
+      "sha256": "18767e7af49c5ca4a09b24fd7766c0b8fb2ff23543e2f6e6aa6e27a516834191"
+    },
+    {
+      "name": "tiles/b-37-16.bin",
+      "bytes": 958364,
+      "gzipBytes": 267610,
+      "geometryRoundtrip": true,
+      "sha256": "dd428b59854fe5275e1e8a8b0641ddb316c784f2840ca23c2e09b46fee99f038"
+    },
+    {
+      "name": "tiles/b-37-17.bin",
+      "bytes": 484004,
+      "gzipBytes": 136201,
+      "geometryRoundtrip": true,
+      "sha256": "909df35d9f2bb77ac174dbbd7ed774f1c6dd8674966b6570bc553e4ba01373f3"
+    },
+    {
+      "name": "tiles/b-37-18.bin",
+      "bytes": 1016168,
+      "gzipBytes": 288592,
+      "geometryRoundtrip": true,
+      "sha256": "6201feca5adb162de1e68c2b17a8f9b324d72c47690f67a33163f53e5e4f6bbd"
+    },
+    {
+      "name": "tiles/b-37-19.bin",
+      "bytes": 1061676,
+      "gzipBytes": 300157,
+      "geometryRoundtrip": true,
+      "sha256": "9558708cc79d5ad3b6030f8e96057cd94c71ee785ccac253287a25f2511dad45"
+    },
+    {
+      "name": "tiles/b-37-20.bin",
+      "bytes": 853224,
+      "gzipBytes": 239759,
+      "geometryRoundtrip": true,
+      "sha256": "bff38887de9bd282bcf1ae39d6d91a8a048b24c232250659001b9d55d3b7641f"
+    },
+    {
+      "name": "tiles/b-37-21.bin",
+      "bytes": 270216,
+      "gzipBytes": 82373,
+      "geometryRoundtrip": true,
+      "sha256": "3de68cf5d0127477980cf6fb730f86ec14b9168dd04d29181a0ed097a2593387"
+    },
+    {
+      "name": "tiles/b-37-22.bin",
+      "bytes": 1847028,
+      "gzipBytes": 514416,
+      "geometryRoundtrip": true,
+      "sha256": "5b3697f5960697bbd7ad7439a7e44236fc9adcb6065d2a5c1fd4c78c44e9c6d1"
+    },
+    {
+      "name": "tiles/b-37-23.bin",
+      "bytes": 1025700,
+      "gzipBytes": 290335,
+      "geometryRoundtrip": true,
+      "sha256": "49c59715a1a27cad2e0ccad3d98c32f639902016d1e0818c45133a86b82253d3"
+    },
+    {
+      "name": "tiles/b-37-24.bin",
+      "bytes": 82148,
+      "gzipBytes": 22876,
+      "geometryRoundtrip": true,
+      "sha256": "d7a3344cb38cdae40a45e359b12bcf6d6e8cc761784238f673ef5eb4bbdfae7d"
+    },
+    {
+      "name": "tiles/b-37-25.bin",
+      "bytes": 1980,
+      "gzipBytes": 433,
+      "geometryRoundtrip": true,
+      "sha256": "49f01371fc0c7bfed29a06856c218ac425d9d3dd69e69fec71bceb06fc3f6276"
+    },
+    {
+      "name": "tiles/b-38-11.bin",
+      "bytes": 356272,
+      "gzipBytes": 110222,
+      "geometryRoundtrip": true,
+      "sha256": "7b31c0fc6c80a2983294889f9a062e865a026fa058ed5059a7159bb63a054781"
+    },
+    {
+      "name": "tiles/b-38-12.bin",
+      "bytes": 50508,
+      "gzipBytes": 21466,
+      "geometryRoundtrip": true,
+      "sha256": "fe502b0f15b8c7d8c0b488bc1fc604726c520259565cb2dafdc9eb19c091c568"
+    },
+    {
+      "name": "tiles/b-38-13.bin",
+      "bytes": 31680,
+      "gzipBytes": 12888,
+      "geometryRoundtrip": true,
+      "sha256": "716cc43c0c4e369669b175cbaaee0044d1e052bdd940bc0897b116882919d2e3"
+    },
+    {
+      "name": "tiles/b-38-14.bin",
+      "bytes": 21304,
+      "gzipBytes": 8938,
+      "geometryRoundtrip": true,
+      "sha256": "d310aca45d9384ac1a3826a45b7537dfad3b4a39fa34dcd6eba307e3e700c88e"
+    },
+    {
+      "name": "tiles/b-38-15.bin",
+      "bytes": 289056,
+      "gzipBytes": 86721,
+      "geometryRoundtrip": true,
+      "sha256": "3883cb33e8a8b2b3dc7a7affa9b5bf760bf1da44e6222e9b268da8807bee83f0"
+    },
+    {
+      "name": "tiles/b-38-16.bin",
+      "bytes": 1367160,
+      "gzipBytes": 375035,
+      "geometryRoundtrip": true,
+      "sha256": "04aee0382c937080507644161f8b06eabe69984d8b3cf99ef764e6eb9629315c"
+    },
+    {
+      "name": "tiles/b-38-17.bin",
+      "bytes": 727292,
+      "gzipBytes": 209669,
+      "geometryRoundtrip": true,
+      "sha256": "73378cc5a723e068b8b5a3553510ee6c882dc7ff95367fbb240fb0af340a786d"
+    },
+    {
+      "name": "tiles/b-38-18.bin",
+      "bytes": 739760,
+      "gzipBytes": 217523,
+      "geometryRoundtrip": true,
+      "sha256": "eb8dd13c8c77a90789d2eab935e48078b233bf4b163767ea7eee86cb2e13daac"
+    },
+    {
+      "name": "tiles/b-38-19.bin",
+      "bytes": 945632,
+      "gzipBytes": 267127,
+      "geometryRoundtrip": true,
+      "sha256": "5ca74ea495fb798a04a9947967f2c5bc1b93b9fb75a969bb75324c2dd85e64de"
+    },
+    {
+      "name": "tiles/b-38-20.bin",
+      "bytes": 835328,
+      "gzipBytes": 232552,
+      "geometryRoundtrip": true,
+      "sha256": "e93d38f1c6eb528159d6ca7688c0edbc1abe7435e4d450255658c88d0e2f64a7"
+    },
+    {
+      "name": "tiles/b-38-21.bin",
+      "bytes": 322888,
+      "gzipBytes": 94605,
+      "geometryRoundtrip": true,
+      "sha256": "7d5fcf94c77ac9550ae9913defe29030c8ead4b0a76e9176c039ee8edb7e393c"
+    },
+    {
+      "name": "tiles/b-38-22.bin",
+      "bytes": 1545744,
+      "gzipBytes": 433877,
+      "geometryRoundtrip": true,
+      "sha256": "ed021e9dde85204e6f518625a1ed7cd0ebb6dd27e2687ad72a6b7268f8c18b5a"
+    },
+    {
+      "name": "tiles/b-38-23.bin",
+      "bytes": 1144932,
+      "gzipBytes": 320792,
+      "geometryRoundtrip": true,
+      "sha256": "dc35bd399cde38b93e42e1dcfbe8b038425aec687ab35f5952168caece013db8"
+    },
+    {
+      "name": "tiles/b-38-24.bin",
+      "bytes": 290860,
+      "gzipBytes": 86921,
+      "geometryRoundtrip": true,
+      "sha256": "d23b1749c806dd103a9a998a9ce8416f73d278bfe4ec03fedd9e726ed9e861b9"
+    },
+    {
+      "name": "tiles/b-38-25.bin",
+      "bytes": 31080,
+      "gzipBytes": 7015,
+      "geometryRoundtrip": true,
+      "sha256": "e33eaa68b3b0c30bfed7eeff5fa7375bfd90c4682c946d24f24e9e6bb6a0864e"
+    },
+    {
+      "name": "tiles/b-39-10.bin",
+      "bytes": 2396,
+      "gzipBytes": 620,
+      "geometryRoundtrip": true,
+      "sha256": "d5594169a6c11c87776f84ab39fd9625764a833761ea4dc94b9049f9c0d44b00"
+    },
+    {
+      "name": "tiles/b-39-11.bin",
+      "bytes": 79204,
+      "gzipBytes": 25950,
+      "geometryRoundtrip": true,
+      "sha256": "5ddfe4f12c4c243712b464cfe2e9aa8886510390c6811ac0763ce1baf84a32d2"
+    },
+    {
+      "name": "tiles/b-39-12.bin",
+      "bytes": 26572,
+      "gzipBytes": 11232,
+      "geometryRoundtrip": true,
+      "sha256": "7f9ba88ccdf164008f8e1069e49c8c960ff626ce73626369576a2a9b020a41ce"
+    },
+    {
+      "name": "tiles/b-39-13.bin",
+      "bytes": 34552,
+      "gzipBytes": 11920,
+      "geometryRoundtrip": true,
+      "sha256": "9d5cd5a6aed36b827993bd9404aa48b32529fcc1e498fa980207aadfdbd8deb9"
+    },
+    {
+      "name": "tiles/b-39-14.bin",
+      "bytes": 38544,
+      "gzipBytes": 14806,
+      "geometryRoundtrip": true,
+      "sha256": "3695104279d9fa2a6ee5b1adf2f337c9de5f1e1b8b75e7f0b488751c2238650a"
+    },
+    {
+      "name": "tiles/b-39-15.bin",
+      "bytes": 92196,
+      "gzipBytes": 26028,
+      "geometryRoundtrip": true,
+      "sha256": "d91db91e0e65c8d5c23ffeec1a145ba786ce0974b46990cbcfcfc8e83c4d112a"
+    },
+    {
+      "name": "tiles/b-39-16.bin",
+      "bytes": 940704,
+      "gzipBytes": 260860,
+      "geometryRoundtrip": true,
+      "sha256": "650270a31dd560b3ff90bef38ef7b05c16bfe418243b1779cfe9c8a68f306e49"
+    },
+    {
+      "name": "tiles/b-39-17.bin",
+      "bytes": 1789656,
+      "gzipBytes": 497683,
+      "geometryRoundtrip": true,
+      "sha256": "eec13e1120c0e24251f97c2c3c1e3c17ffb87fe32a2c4f51995e73ded79c428b"
+    },
+    {
+      "name": "tiles/b-39-18.bin",
+      "bytes": 1172268,
+      "gzipBytes": 316666,
+      "geometryRoundtrip": true,
+      "sha256": "013192fdb1dd9eafe47ad87a5035893571cb5d8a33cd0ee8b1298cffe76aa5e0"
+    },
+    {
+      "name": "tiles/b-39-19.bin",
+      "bytes": 20204,
+      "gzipBytes": 6463,
+      "geometryRoundtrip": true,
+      "sha256": "aa9ed79657690d49406468ca1c7a776737c0e7bf5698ab1b0ca8b408a47c928c"
+    },
+    {
+      "name": "tiles/b-39-20.bin",
+      "bytes": 94596,
+      "gzipBytes": 23474,
+      "geometryRoundtrip": true,
+      "sha256": "a5338ba2bd3a432945d554a292d1ba8cf6739418031d83685a3c3f57103d2e36"
+    },
+    {
+      "name": "tiles/b-39-21.bin",
+      "bytes": 96920,
+      "gzipBytes": 26368,
+      "geometryRoundtrip": true,
+      "sha256": "6c7fc27b6498916d9f8ca782c03d55610dd97617e9fd501afdbfe8c14d476424"
+    },
+    {
+      "name": "tiles/b-39-22.bin",
+      "bytes": 557776,
+      "gzipBytes": 157697,
+      "geometryRoundtrip": true,
+      "sha256": "a7ce1ab002325f954518d063802eec204162a8ed743f8e79d41f91f663a0bb6b"
+    },
+    {
+      "name": "tiles/b-39-23.bin",
+      "bytes": 438104,
+      "gzipBytes": 131029,
+      "geometryRoundtrip": true,
+      "sha256": "4327d1285d1a1a2581ea6a085ac24d0c7280a7ba8551ad523f1ede1739c72a5a"
+    },
+    {
+      "name": "tiles/b-39-24.bin",
+      "bytes": 687504,
+      "gzipBytes": 196236,
+      "geometryRoundtrip": true,
+      "sha256": "ff3f859ea72df47524aa2da0ffd0872b2ee50007084a2100cc5d8f17fe2950c0"
+    },
+    {
+      "name": "tiles/b-39-25.bin",
+      "bytes": 50040,
+      "gzipBytes": 11503,
+      "geometryRoundtrip": true,
+      "sha256": "d26d13aa7092f5a3baecf6683477de0ac166acf5df7980a68161fd6a2b2dd493"
+    },
+    {
+      "name": "tiles/b-40-11.bin",
+      "bytes": 99464,
+      "gzipBytes": 30238,
+      "geometryRoundtrip": true,
+      "sha256": "a2a955cea170bdb659ec492e40c932361550b7be098ccea24029ae80759f0bf3"
+    },
+    {
+      "name": "tiles/b-40-12.bin",
+      "bytes": 291712,
+      "gzipBytes": 90258,
+      "geometryRoundtrip": true,
+      "sha256": "72d11fcff31931806bd9d0e5aa45cd46b1c6f9380afd16c3ea08a3db9aa99c08"
+    },
+    {
+      "name": "tiles/b-40-13.bin",
+      "bytes": 14464,
+      "gzipBytes": 5141,
+      "geometryRoundtrip": true,
+      "sha256": "c2cd348f972f8866584ebd692aad9c275e841bb79c19f1a28aba0eb084365e19"
+    },
+    {
+      "name": "tiles/b-40-14.bin",
+      "bytes": 31024,
+      "gzipBytes": 10936,
+      "geometryRoundtrip": true,
+      "sha256": "522f15242693c51cd4f73030306ac65989dc97c7d6adfa2d6e022cd22e0d1e9a"
+    },
+    {
+      "name": "tiles/b-40-15.bin",
+      "bytes": 105836,
+      "gzipBytes": 29366,
+      "geometryRoundtrip": true,
+      "sha256": "d171c1369f0c78d3175fb0b9f0b33898b3974c5535750de0ffa723bbf7ccaf67"
+    },
+    {
+      "name": "tiles/b-40-16.bin",
+      "bytes": 949080,
+      "gzipBytes": 274634,
+      "geometryRoundtrip": true,
+      "sha256": "3971f71f5efbb472d58a050a7b9a9bd60849aa4732a2c1e5ea725c309cbab8a9"
+    },
+    {
+      "name": "tiles/b-40-17.bin",
+      "bytes": 2014104,
+      "gzipBytes": 560185,
+      "geometryRoundtrip": true,
+      "sha256": "15f19aa1ad1aa038bedbee341fc5bbececbe1dd46619b550d32fdcc41d0cd98f"
+    },
+    {
+      "name": "tiles/b-40-18.bin",
+      "bytes": 594392,
+      "gzipBytes": 171607,
+      "geometryRoundtrip": true,
+      "sha256": "ce5233652e1dc082102815c94965b7df0e3445160224e34d1638de9991cec149"
+    },
+    {
+      "name": "tiles/b-40-19.bin",
+      "bytes": 402400,
+      "gzipBytes": 117238,
+      "geometryRoundtrip": true,
+      "sha256": "5b26c7e3727a99713e0f064c35a6f53ca321464c0f497f820b4c8f429ef78151"
+    },
+    {
+      "name": "tiles/b-40-20.bin",
+      "bytes": 214556,
+      "gzipBytes": 63025,
+      "geometryRoundtrip": true,
+      "sha256": "edd18c8a2eb76b446008ec147b3b185d28b057cd3426e5f97157ff9fb6034c59"
+    },
+    {
+      "name": "tiles/b-40-21.bin",
+      "bytes": 188648,
+      "gzipBytes": 50652,
+      "geometryRoundtrip": true,
+      "sha256": "2ef18cacd8e123e954c12ef0f2a8916d543a6143665ebcc5e4506ed8feb18513"
+    },
+    {
+      "name": "tiles/b-40-22.bin",
+      "bytes": 461360,
+      "gzipBytes": 131464,
+      "geometryRoundtrip": true,
+      "sha256": "9dcd46b6e6278b9bab12874769a082527c8b6e7a6ffdf92787c5dce3cf714d6f"
+    },
+    {
+      "name": "tiles/b-40-23.bin",
+      "bytes": 31640,
+      "gzipBytes": 6897,
+      "geometryRoundtrip": true,
+      "sha256": "5d8e42b3a7ffdb00daef6cdce5144e1d79d680b65063bdac29a604deba10d2f6"
+    },
+    {
+      "name": "tiles/b-40-24.bin",
+      "bytes": 1980,
+      "gzipBytes": 434,
+      "geometryRoundtrip": true,
+      "sha256": "c3e8fcbb00efec7c95fe7ebdd57d8db28f7e92b5f7725eefc0181731a70c21a9"
+    },
+    {
+      "name": "tiles/b-41-11.bin",
+      "bytes": 58768,
+      "gzipBytes": 16730,
+      "geometryRoundtrip": true,
+      "sha256": "7eaea70687def47204d4516f08aea52becd5966314a7ddb39eaff3e099d467a7"
+    },
+    {
+      "name": "tiles/b-41-12.bin",
+      "bytes": 315520,
+      "gzipBytes": 92268,
+      "geometryRoundtrip": true,
+      "sha256": "39c518393d359b17e6cd6d4164792db4cd390ea73f6d6f6828e6949724d601a7"
+    },
+    {
+      "name": "tiles/b-41-13.bin",
+      "bytes": 6748,
+      "gzipBytes": 2797,
+      "geometryRoundtrip": true,
+      "sha256": "de84ef3e2f2cc3b775f89c69f91698b5c28ce3ae4fa8bf7727a80500b652eb42"
+    },
+    {
+      "name": "tiles/b-41-14.bin",
+      "bytes": 34168,
+      "gzipBytes": 13572,
+      "geometryRoundtrip": true,
+      "sha256": "34006566f569fd5f7ba2eff045ddf8d92f71d9aa30129dce551d3fafd25fe25a"
+    },
+    {
+      "name": "tiles/b-41-15.bin",
+      "bytes": 290316,
+      "gzipBytes": 86583,
+      "geometryRoundtrip": true,
+      "sha256": "c0daca292523803dac17658f6a080fe1648e6ca073aba0d6e777081faa69cf20"
+    },
+    {
+      "name": "tiles/b-41-16.bin",
+      "bytes": 233936,
+      "gzipBytes": 67845,
+      "geometryRoundtrip": true,
+      "sha256": "a7f55be44e7b7aaf3966aed4a350b789142e422692f2b4ab4dedcd3e85c21e3a"
+    },
+    {
+      "name": "tiles/b-41-17.bin",
+      "bytes": 1180932,
+      "gzipBytes": 330181,
+      "geometryRoundtrip": true,
+      "sha256": "bb4844b06ba914dc7b15b9baa5065f9210b38369cf6200f013def123553667df"
+    },
+    {
+      "name": "tiles/b-41-18.bin",
+      "bytes": 506744,
+      "gzipBytes": 149200,
+      "geometryRoundtrip": true,
+      "sha256": "0fd5ec12735de3351eb7215b6855fa817b4ac9d5f87ee96401f84dc9c4dc6598"
+    },
+    {
+      "name": "tiles/b-41-19.bin",
+      "bytes": 227160,
+      "gzipBytes": 64096,
+      "geometryRoundtrip": true,
+      "sha256": "a0aeb0675184794482b3df38155f3b958b2d0bbbc20d234efb46b2225f2a9d99"
+    },
+    {
+      "name": "tiles/b-41-20.bin",
+      "bytes": 786600,
+      "gzipBytes": 226777,
+      "geometryRoundtrip": true,
+      "sha256": "d0613af65100adccba1b8fb369e81255255d7e42b39cff4742c54c0c1cf52177"
+    },
+    {
+      "name": "tiles/b-41-21.bin",
+      "bytes": 1423008,
+      "gzipBytes": 401957,
+      "geometryRoundtrip": true,
+      "sha256": "0ec2a33063b3b7276447ffe9a7750e3d29ab5329bb32d0e06d7acdefa1b32de3"
+    },
+    {
+      "name": "tiles/b-41-22.bin",
+      "bytes": 425656,
+      "gzipBytes": 122359,
+      "geometryRoundtrip": true,
+      "sha256": "8ff5be5d34963b77df51e5fc2a6f4a4d1d6ef573b0c76ee553005154c4076e29"
+    },
+    {
+      "name": "tiles/b-42-12.bin",
+      "bytes": 235756,
+      "gzipBytes": 67578,
+      "geometryRoundtrip": true,
+      "sha256": "3bde7c316cde0f37c36fe0c0b8647cec4715b3bd7c36421540fc1617ee48b827"
+    },
+    {
+      "name": "tiles/b-42-13.bin",
+      "bytes": 5188,
+      "gzipBytes": 2021,
+      "geometryRoundtrip": true,
+      "sha256": "fe2e68c7c894eac6cd316a354b36f76a8792e99d4be8ea140b5ba76eb365284b"
+    },
+    {
+      "name": "tiles/b-42-14.bin",
+      "bytes": 6740,
+      "gzipBytes": 2595,
+      "geometryRoundtrip": true,
+      "sha256": "b853f6663ba20988268cf0a8bd8abc83ab4ee8dccd85c65e0547eedcb6f0b2ae"
+    },
+    {
+      "name": "tiles/b-42-15.bin",
+      "bytes": 9124,
+      "gzipBytes": 3499,
+      "geometryRoundtrip": true,
+      "sha256": "a01a95cf8aefb7d59e0f87528e4f08bcf87983e3bd0c7ff1b987fd4236d17235"
+    },
+    {
+      "name": "tiles/b-42-16.bin",
+      "bytes": 147732,
+      "gzipBytes": 41326,
+      "geometryRoundtrip": true,
+      "sha256": "304baecfe6c7311ac8b033627c55a7427027e5c3301cddd57c60c2b0b979c4d1"
+    },
+    {
+      "name": "tiles/b-42-17.bin",
+      "bytes": 1255092,
+      "gzipBytes": 350755,
+      "geometryRoundtrip": true,
+      "sha256": "8cfd95cf70f483892a74151e60089b2e0975064a08b00d3549a91e0da787d22c"
+    },
+    {
+      "name": "tiles/b-42-18.bin",
+      "bytes": 830900,
+      "gzipBytes": 232174,
+      "geometryRoundtrip": true,
+      "sha256": "f1698ab777f211c6b9095d5fbbe2aea7ae65532bfe548453259ae735682903f8"
+    },
+    {
+      "name": "tiles/b-42-19.bin",
+      "bytes": 379032,
+      "gzipBytes": 111986,
+      "geometryRoundtrip": true,
+      "sha256": "0b124d6da6cb691d5f7b63f031ac376c3d278fff8a0aac6f0907b51958402263"
+    },
+    {
+      "name": "tiles/b-42-20.bin",
+      "bytes": 757232,
+      "gzipBytes": 215379,
+      "geometryRoundtrip": true,
+      "sha256": "b356136e2db2baa6570c58ad79d914429c76af7aa4e93373e50c3cb24e23316c"
+    },
+    {
+      "name": "tiles/b-42-21.bin",
+      "bytes": 1262688,
+      "gzipBytes": 352184,
+      "geometryRoundtrip": true,
+      "sha256": "efb846e0f4b354cbecc10d800da18a1904dd47c019334cb4441ade290269635f"
+    },
+    {
+      "name": "tiles/b-42-22.bin",
+      "bytes": 114820,
+      "gzipBytes": 29767,
+      "geometryRoundtrip": true,
+      "sha256": "eef3ef6abcd8a404af95bbdf94d8b8b87c1f0cb85bd232ecaefddc52fd922619"
+    },
+    {
+      "name": "tiles/b-43-12.bin",
+      "bytes": 288872,
+      "gzipBytes": 84917,
+      "geometryRoundtrip": true,
+      "sha256": "6ef406ba4e5ae4ad0e7ab133b57794cffbe2ba904c0b5b0d6f4bedcfa30fb919"
+    },
+    {
+      "name": "tiles/b-43-13.bin",
+      "bytes": 60176,
+      "gzipBytes": 15013,
+      "geometryRoundtrip": true,
+      "sha256": "89918eb6069e3d15bf237a4f6b5138929d4aa34059361a8d6b8d6c0be2cb9a01"
+    },
+    {
+      "name": "tiles/b-43-14.bin",
+      "bytes": 64004,
+      "gzipBytes": 18053,
+      "geometryRoundtrip": true,
+      "sha256": "1dea4ad6a85bf7e5cd26383acdc4dece30278844914adb27e6c29d92eaaf9db0"
+    },
+    {
+      "name": "tiles/b-43-15.bin",
+      "bytes": 125808,
+      "gzipBytes": 36917,
+      "geometryRoundtrip": true,
+      "sha256": "acffbf8eb5aba29af1cbde7bccf57fb463873cb50fb3651fd3a957910321c020"
+    },
+    {
+      "name": "tiles/b-43-16.bin",
+      "bytes": 43324,
+      "gzipBytes": 12239,
+      "geometryRoundtrip": true,
+      "sha256": "e4e06f8d13c3bacfda66f246b1a3585b4a74fbd0e89ada4ddc52120b542cd970"
+    },
+    {
+      "name": "tiles/b-43-17.bin",
+      "bytes": 628556,
+      "gzipBytes": 178981,
+      "geometryRoundtrip": true,
+      "sha256": "d3938f0f3e6cc9ed0d0cef6e34e38951bd049177f6a862c329d2d2ba22ddb9f4"
+    },
+    {
+      "name": "tiles/b-43-18.bin",
+      "bytes": 901692,
+      "gzipBytes": 242501,
+      "geometryRoundtrip": true,
+      "sha256": "384e8b7e2018610d862e7c5f3081dbd4630c7bda16f9da739c2072357bb69ce9"
+    },
+    {
+      "name": "tiles/b-43-19.bin",
+      "bytes": 307596,
+      "gzipBytes": 88000,
+      "geometryRoundtrip": true,
+      "sha256": "e4a051b7ce705759a029522f7918c450d30c106a8577df8eb31ed6db473405e7"
+    },
+    {
+      "name": "tiles/b-43-20.bin",
+      "bytes": 399240,
+      "gzipBytes": 114932,
+      "geometryRoundtrip": true,
+      "sha256": "4d77584c4ddd144a781d12f5dcce3185af4c7a7743ffbd44d9a7b0ea8eeb40e2"
+    },
+    {
+      "name": "tiles/b-43-21.bin",
+      "bytes": 936296,
+      "gzipBytes": 264486,
+      "geometryRoundtrip": true,
+      "sha256": "12b7008dfd3a5652f57237d863a8f06fb71e1421ca14a075c88b364d011b5d6d"
+    },
+    {
+      "name": "tiles/b-43-22.bin",
+      "bytes": 592732,
+      "gzipBytes": 168692,
+      "geometryRoundtrip": true,
+      "sha256": "e8755d49c3ea7af69a8e2c9e18dd34c826922950b34e8fbfd82f8fb0f8e996e4"
+    },
+    {
+      "name": "tiles/b-43-23.bin",
+      "bytes": 71496,
+      "gzipBytes": 16201,
+      "geometryRoundtrip": true,
+      "sha256": "7b5c47ac36dc01384abada71f1b50a80ae123e559821adbcc7b83f9f15216cb4"
+    },
+    {
+      "name": "tiles/b-44-11.bin",
+      "bytes": 9552,
+      "gzipBytes": 2391,
+      "geometryRoundtrip": true,
+      "sha256": "e7eacd3f820bbd5565ee19fec133fd9ee9a2aa97170604d75ccfb88494be7c9a"
+    },
+    {
+      "name": "tiles/b-44-12.bin",
+      "bytes": 460508,
+      "gzipBytes": 139877,
+      "geometryRoundtrip": true,
+      "sha256": "bc7b81a16661951c48cd8072745e104fa1fa3201335da6ac91eb21f318e183f1"
+    },
+    {
+      "name": "tiles/b-44-13.bin",
+      "bytes": 713316,
+      "gzipBytes": 213545,
+      "geometryRoundtrip": true,
+      "sha256": "8172ede09ada86a11c08cd862eb4ef4c406ade09e6fdce4a51e409e1347fa5f0"
+    },
+    {
+      "name": "tiles/b-44-14.bin",
+      "bytes": 166380,
+      "gzipBytes": 49530,
+      "geometryRoundtrip": true,
+      "sha256": "abf48e489963b198ba07156eeed19a87be777b5a11609ffe0e93163ad360f40e"
+    },
+    {
+      "name": "tiles/b-44-15.bin",
+      "bytes": 80900,
+      "gzipBytes": 21621,
+      "geometryRoundtrip": true,
+      "sha256": "7b846c0c803efa7b9d57147faa273426ad7b1de81ab5fcdb9a2278c15456cfaa"
+    },
+    {
+      "name": "tiles/b-44-16.bin",
+      "bytes": 8288,
+      "gzipBytes": 3408,
+      "geometryRoundtrip": true,
+      "sha256": "2cbb6aaa41a9978f83609236da062ebfd3b9bce5d68fb84554c9a3e473fd0070"
+    },
+    {
+      "name": "tiles/b-44-17.bin",
+      "bytes": 436160,
+      "gzipBytes": 126912,
+      "geometryRoundtrip": true,
+      "sha256": "eb58cae3252e56a94b6b1a277d5a3117dd34ea8f49846c72e2d341caef6e6a69"
+    },
+    {
+      "name": "tiles/b-44-18.bin",
+      "bytes": 97272,
+      "gzipBytes": 28233,
+      "geometryRoundtrip": true,
+      "sha256": "cffdb17470044b4bbca6563807ed17592b4aa35731772d7249d421d897d2f2fe"
+    },
+    {
+      "name": "tiles/b-44-19.bin",
+      "bytes": 26512,
+      "gzipBytes": 6956,
+      "geometryRoundtrip": true,
+      "sha256": "e4ca2b50699c75e93c5ba333caabc54092ea5c93bb43240afd79900305e4d895"
+    },
+    {
+      "name": "tiles/b-44-20.bin",
+      "bytes": 73928,
+      "gzipBytes": 17222,
+      "geometryRoundtrip": true,
+      "sha256": "8a1da6633a0f19f60a8e8c076d7f7fc418a717b6a026f234159ace956f08b174"
+    },
+    {
+      "name": "tiles/b-44-21.bin",
+      "bytes": 202280,
+      "gzipBytes": 54177,
+      "geometryRoundtrip": true,
+      "sha256": "998add9cc39552e23558b340ce8b2efafebe95a5b0a24ef5b1eaef5739d6ced9"
+    },
+    {
+      "name": "tiles/b-44-22.bin",
+      "bytes": 386284,
+      "gzipBytes": 111708,
+      "geometryRoundtrip": true,
+      "sha256": "335867c243d7be1cfd43163400e6264b034f058e65172a33c102217822338b45"
+    },
+    {
+      "name": "tiles/b-44-23.bin",
+      "bytes": 35996,
+      "gzipBytes": 7836,
+      "geometryRoundtrip": true,
+      "sha256": "9c8eb562d45a6882c3aa03408f86fd51a92dab32707e76f5c62443ab3193640a"
+    },
+    {
+      "name": "tiles/b-45-10.bin",
+      "bytes": 18052,
+      "gzipBytes": 5938,
+      "geometryRoundtrip": true,
+      "sha256": "5560754add169ac8b632bb4e164a8c04c91ad5b103c141fd0b29ef653c3c8c68"
+    },
+    {
+      "name": "tiles/b-45-11.bin",
+      "bytes": 164448,
+      "gzipBytes": 46176,
+      "geometryRoundtrip": true,
+      "sha256": "b03a244f28d1b5768e9cb9c67025aac13baf07c69d610109db105908334a2ba2"
+    },
+    {
+      "name": "tiles/b-45-12.bin",
+      "bytes": 204060,
+      "gzipBytes": 59985,
+      "geometryRoundtrip": true,
+      "sha256": "78eacb3c606b91972a85e46db5ed59cd39e4b805666b9ffb09c89db7a7d66726"
+    },
+    {
+      "name": "tiles/b-45-13.bin",
+      "bytes": 1358076,
+      "gzipBytes": 395689,
+      "geometryRoundtrip": true,
+      "sha256": "373bae30f8bc58d256deb23c25663d8b3620b8ed515e53b417a85ce0c59591e4"
+    },
+    {
+      "name": "tiles/b-45-14.bin",
+      "bytes": 270576,
+      "gzipBytes": 81747,
+      "geometryRoundtrip": true,
+      "sha256": "3d6378ffccaad0d370a3ce64eb70abb52b2b45bda1847175553a6500c6392a49"
+    },
+    {
+      "name": "tiles/b-45-15.bin",
+      "bytes": 11872,
+      "gzipBytes": 4042,
+      "geometryRoundtrip": true,
+      "sha256": "ac3ea4c267a09871ca48314f75fba53dc28fb40a5a4f79d83215ead491432216"
+    },
+    {
+      "name": "tiles/b-45-17.bin",
+      "bytes": 214460,
+      "gzipBytes": 63466,
+      "geometryRoundtrip": true,
+      "sha256": "473a4715dc9f74f4d0e5f8d9082dc1151eacc9f8e7a3e939f04260776872f72a"
+    },
+    {
+      "name": "tiles/b-45-18.bin",
+      "bytes": 19640,
+      "gzipBytes": 5071,
+      "geometryRoundtrip": true,
+      "sha256": "f64023a1f4abe98d2199a6fe2cc77e47039081c7f28d5c6ca4baf527358ee87c"
+    },
+    {
+      "name": "tiles/b-45-21.bin",
+      "bytes": 5292,
+      "gzipBytes": 1035,
+      "geometryRoundtrip": true,
+      "sha256": "74c6229b067460c2b3ffcb9db57219860b4a288305412ad0b86b8fcd3950c433"
+    },
+    {
+      "name": "tiles/b-45-22.bin",
+      "bytes": 15660,
+      "gzipBytes": 3970,
+      "geometryRoundtrip": true,
+      "sha256": "c955edaec2d131da4beaea53f95bfa11f18c64ebb8ad3568c0fe4c4a7fe79fca"
+    },
+    {
+      "name": "tiles/b-46-9.bin",
+      "bytes": 93544,
+      "gzipBytes": 23557,
+      "geometryRoundtrip": true,
+      "sha256": "03866336991e468aded251bcd86c23cb049eba0468aa97e364e0da3aa4b9c3eb"
+    },
+    {
+      "name": "tiles/b-46-10.bin",
+      "bytes": 84116,
+      "gzipBytes": 23429,
+      "geometryRoundtrip": true,
+      "sha256": "f81934f58ef2aebddf3515dde2f4a175784e064a3c976edfa26702fc5a7b6d56"
+    },
+    {
+      "name": "tiles/b-46-11.bin",
+      "bytes": 20900,
+      "gzipBytes": 8180,
+      "geometryRoundtrip": true,
+      "sha256": "626d8fa8272fe7d0ea211ef70605caf18bcf6211a7f821e3aad9ccb349a28017"
+    },
+    {
+      "name": "tiles/b-46-12.bin",
+      "bytes": 68616,
+      "gzipBytes": 17318,
+      "geometryRoundtrip": true,
+      "sha256": "3f0388dff4ef60293261311bf6f8027eac0e381c148aba65af9fa931d6e7f491"
+    },
+    {
+      "name": "tiles/b-46-13.bin",
+      "bytes": 264212,
+      "gzipBytes": 83493,
+      "geometryRoundtrip": true,
+      "sha256": "09259bf0c6fe0f58e9c07347f6a55f913dd07a6cba65a809ce012ca4e4c0d86f"
+    },
+    {
+      "name": "tiles/b-46-14.bin",
+      "bytes": 67468,
+      "gzipBytes": 18688,
+      "geometryRoundtrip": true,
+      "sha256": "08c29b7cf251f34d76aa4b88a6405e502dce17867d2312083e982233b534f910"
+    },
+    {
+      "name": "tiles/b-46-15.bin",
+      "bytes": 12244,
+      "gzipBytes": 5000,
+      "geometryRoundtrip": true,
+      "sha256": "e93fe2794c8944fff0f87b8e746eea183ffb587c931240daf049624eac518f01"
+    },
+    {
+      "name": "tiles/b-46-17.bin",
+      "bytes": 24212,
+      "gzipBytes": 9433,
+      "geometryRoundtrip": true,
+      "sha256": "2214275fcc2cdefae4e946061ac131c2d870a6d1a71e34c91189af9a7f50f3aa"
+    },
+    {
+      "name": "tiles/b-46-18.bin",
+      "bytes": 3056,
+      "gzipBytes": 889,
+      "geometryRoundtrip": true,
+      "sha256": "73fb38a897c94b6f5d61b1e20ccc038a92dc157e69d9180d93af2642b2845699"
+    },
+    {
+      "name": "tiles/b-47-9.bin",
+      "bytes": 93936,
+      "gzipBytes": 24788,
+      "geometryRoundtrip": true,
+      "sha256": "d1ae29aa0c79e9a3526f9af4133a3f966ec4eade0207719b25d5b43f4773317e"
+    },
+    {
+      "name": "tiles/b-47-10.bin",
+      "bytes": 56032,
+      "gzipBytes": 14994,
+      "geometryRoundtrip": true,
+      "sha256": "81c94a900133f3b66f7097e533f06bca0a1e57152a29c044bd996a6c0bac58df"
+    },
+    {
+      "name": "tiles/b-47-11.bin",
+      "bytes": 24972,
+      "gzipBytes": 8953,
+      "geometryRoundtrip": true,
+      "sha256": "015772b515d4c5f1b5cadff957267e0b8900db1969ecff542331b06235566fcf"
+    },
+    {
+      "name": "tiles/b-47-12.bin",
+      "bytes": 6252,
+      "gzipBytes": 2464,
+      "geometryRoundtrip": true,
+      "sha256": "7706dddb18af305a1e0bbaedca14331e31adeb802395f62090a98741c3f7bc09"
+    },
+    {
+      "name": "tiles/b-47-13.bin",
+      "bytes": 33472,
+      "gzipBytes": 12775,
+      "geometryRoundtrip": true,
+      "sha256": "7f46ce58b8e659c4a5daef29a86018857789a8714eab22ff8d8ef0be5c682c94"
+    },
+    {
+      "name": "tiles/b-48-7.bin",
+      "bytes": 7996,
+      "gzipBytes": 1618,
+      "geometryRoundtrip": true,
+      "sha256": "c25468be304da33ccc1d56136f3547ad2c9429cc8504ff064fa67ecac2652420"
+    },
+    {
+      "name": "tiles/b-48-8.bin",
+      "bytes": 98628,
+      "gzipBytes": 25369,
+      "geometryRoundtrip": true,
+      "sha256": "6ec95fb6ef1f2ee3f22c8702aca65e4e5d297ae213279c288e8f4fb12491c87d"
+    },
+    {
+      "name": "tiles/b-48-9.bin",
+      "bytes": 47436,
+      "gzipBytes": 15527,
+      "geometryRoundtrip": true,
+      "sha256": "035682e4d10b31555e7419b9f67a72c9650e0a015eb24d807d455d4a91482117"
+    },
+    {
+      "name": "tiles/b-48-10.bin",
+      "bytes": 481088,
+      "gzipBytes": 139097,
+      "geometryRoundtrip": true,
+      "sha256": "0f6d8e1861039345f990939b0b7077b9ab22093283e3d1776cf49f9b8a5924ae"
+    },
+    {
+      "name": "tiles/b-48-11.bin",
+      "bytes": 946400,
+      "gzipBytes": 263718,
+      "geometryRoundtrip": true,
+      "sha256": "f3a490c0d610c97463f4f1c9aa4251939661e5e5a26936334f67cc95b6d77513"
+    },
+    {
+      "name": "tiles/b-48-12.bin",
+      "bytes": 7788,
+      "gzipBytes": 2476,
+      "geometryRoundtrip": true,
+      "sha256": "bbca31d6d2ed3fac2c72af904717050e98825deec244bd7e432ebdb1d951e8f1"
+    },
+    {
+      "name": "tiles/b-49-3.bin",
+      "bytes": 44156,
+      "gzipBytes": 14421,
+      "geometryRoundtrip": true,
+      "sha256": "c948e15159e2dcb5f49ce12d0d9da25789b938b1cfac93926b7a241a2e64227e"
+    },
+    {
+      "name": "tiles/b-49-4.bin",
+      "bytes": 23020,
+      "gzipBytes": 7482,
+      "geometryRoundtrip": true,
+      "sha256": "e870ff600c238d45781698b4a5f79d61062ba1b07790c223847f4780aa990f7c"
+    },
+    {
+      "name": "tiles/b-49-5.bin",
+      "bytes": 91132,
+      "gzipBytes": 26985,
+      "geometryRoundtrip": true,
+      "sha256": "cf8772202e71589881bbfc929ff62218e62a45577afed791e570321e2f189670"
+    },
+    {
+      "name": "tiles/b-49-6.bin",
+      "bytes": 193548,
+      "gzipBytes": 52784,
+      "geometryRoundtrip": true,
+      "sha256": "2f056e9703f21551acaaa5624866a233dfb48e5218b627448a3151346e53a18f"
+    },
+    {
+      "name": "tiles/b-49-7.bin",
+      "bytes": 429580,
+      "gzipBytes": 124749,
+      "geometryRoundtrip": true,
+      "sha256": "4a29719e86b6b3ff6930b11b7e4cac59abaa840267e854820c8f5a989d2eb83f"
+    },
+    {
+      "name": "tiles/b-49-8.bin",
+      "bytes": 226820,
+      "gzipBytes": 67673,
+      "geometryRoundtrip": true,
+      "sha256": "3b690ca63342ae7bb7487226fbe7c939ed2836165815087bfb9d096c0506d21a"
+    },
+    {
+      "name": "tiles/b-49-9.bin",
+      "bytes": 480944,
+      "gzipBytes": 143759,
+      "geometryRoundtrip": true,
+      "sha256": "846702e7937108a3bbaeb750366a54b6a11f2123203fb80e7ce9d36ea32f4f99"
+    },
+    {
+      "name": "tiles/b-49-10.bin",
+      "bytes": 473300,
+      "gzipBytes": 137251,
+      "geometryRoundtrip": true,
+      "sha256": "84dce33a6bee8964056e65e55571149aec4f4944c22b45050217c0a6ca36e93c"
+    },
+    {
+      "name": "tiles/b-49-11.bin",
+      "bytes": 461360,
+      "gzipBytes": 132944,
+      "geometryRoundtrip": true,
+      "sha256": "d3321745e0ca14075a5ecbf0f79ad2863f7013d8c7db1b14513734f3849e4afe"
+    },
+    {
+      "name": "tiles/b-49-12.bin",
+      "bytes": 2408,
+      "gzipBytes": 729,
+      "geometryRoundtrip": true,
+      "sha256": "6b52864b0f5eae4671d2072a8978a2eae5a81079818c89c4cef42171449d733c"
+    },
+    {
+      "name": "tiles/b-49-13.bin",
+      "bytes": 34700,
+      "gzipBytes": 14288,
+      "geometryRoundtrip": true,
+      "sha256": "c0479b0e1045e5da05789b361e63b109627dd108cdff644463ff704e85f119b9"
+    },
+    {
+      "name": "tiles/b-49-14.bin",
+      "bytes": 52612,
+      "gzipBytes": 15577,
+      "geometryRoundtrip": true,
+      "sha256": "f2a28a0f2a644c0e1dcb636d52eebdb3f51176266f835629ae4bda90b141b974"
+    },
+    {
+      "name": "tiles/b-49-15.bin",
+      "bytes": 18880,
+      "gzipBytes": 7564,
+      "geometryRoundtrip": true,
+      "sha256": "2708c9b12fe7a1bd1c6ecd0647f7d99171473c7acf1f1afb1e1fc219c95f2d8d"
+    },
+    {
+      "name": "tiles/b-50-1.bin",
+      "bytes": 4040,
+      "gzipBytes": 1421,
+      "geometryRoundtrip": true,
+      "sha256": "6da2280f2e0bb77041d5437739ac2125baca2e802ba32a0146d135759b3a4ab9"
+    },
+    {
+      "name": "tiles/b-50-2.bin",
+      "bytes": 7164,
+      "gzipBytes": 2476,
+      "geometryRoundtrip": true,
+      "sha256": "40d54fa1581550bc03e29c04e6cd5b094fbd34e2416f029fe4ba72bf903e2e4c"
+    },
+    {
+      "name": "tiles/b-50-3.bin",
+      "bytes": 25932,
+      "gzipBytes": 9051,
+      "geometryRoundtrip": true,
+      "sha256": "49f5302dd3a89a466a8d4e51120a65638f2b2e99ab961c91013ecd068cbe1700"
+    },
+    {
+      "name": "tiles/b-50-5.bin",
+      "bytes": 45392,
+      "gzipBytes": 14376,
+      "geometryRoundtrip": true,
+      "sha256": "05ef2b45da05a25ce7170210ec0e14db0824e291f66c5825724f463ffddc2cb2"
+    },
+    {
+      "name": "tiles/b-50-6.bin",
+      "bytes": 33156,
+      "gzipBytes": 11248,
+      "geometryRoundtrip": true,
+      "sha256": "95a87541acc9aaf1fa569c62b7732c1bf45e20f20649f15d9f083b2b537ea76b"
+    },
+    {
+      "name": "tiles/b-50-7.bin",
+      "bytes": 131264,
+      "gzipBytes": 35669,
+      "geometryRoundtrip": true,
+      "sha256": "86c77cb520218624cc158c5177b5d9a09fac8ccb625e91be7577cd2ce8153aa9"
+    },
+    {
+      "name": "tiles/b-50-8.bin",
+      "bytes": 82452,
+      "gzipBytes": 20851,
+      "geometryRoundtrip": true,
+      "sha256": "c58f3dcdfbee17bad6c31ebad7e32011c41c29c9604c1f5003985ad626b5c58b"
+    },
+    {
+      "name": "tiles/b-50-9.bin",
+      "bytes": 351336,
+      "gzipBytes": 100517,
+      "geometryRoundtrip": true,
+      "sha256": "3079a1a97f0114b5a7ba9bb3c53af81d71c8b37e2146dc7edf688f5a5a5a5434"
+    },
+    {
+      "name": "tiles/b-50-10.bin",
+      "bytes": 189212,
+      "gzipBytes": 50530,
+      "geometryRoundtrip": true,
+      "sha256": "02d9901d0ec4806dec3e088a8bc2ca4505f99206fa4c10264fd0a581f71cbf83"
+    },
+    {
+      "name": "tiles/b-50-11.bin",
+      "bytes": 397756,
+      "gzipBytes": 121795,
+      "geometryRoundtrip": true,
+      "sha256": "f0839773c0a187bb8476a456bdf3bab073cc00a91b37b159ba911ce8e4dc6b57"
+    },
+    {
+      "name": "tiles/b-50-12.bin",
+      "bytes": 29808,
+      "gzipBytes": 11882,
+      "geometryRoundtrip": true,
+      "sha256": "e4bae8c8e99955c22548ddd94919d4649294ddd51f357fd37a8f15859f7ea873"
+    },
+    {
+      "name": "tiles/b-50-13.bin",
+      "bytes": 43584,
+      "gzipBytes": 16143,
+      "geometryRoundtrip": true,
+      "sha256": "29d026c69a0e561b5c068f8eef0f80a9a2fee7b43235a8af08bb6113f1670bff"
+    },
+    {
+      "name": "tiles/b-50-14.bin",
+      "bytes": 175320,
+      "gzipBytes": 51826,
+      "geometryRoundtrip": true,
+      "sha256": "647f8a07de68ec0a120b0f08c3e24cd8d28bb1c95acb4edcb39eff90764f6644"
+    },
+    {
+      "name": "tiles/b-50-15.bin",
+      "bytes": 80240,
+      "gzipBytes": 28119,
+      "geometryRoundtrip": true,
+      "sha256": "a36c6a192efdac7d959c9d16f4be2f96b8a4fa79f9089d70dd0070b3bb9d4c0c"
+    },
+    {
+      "name": "tiles/b-50-16.bin",
+      "bytes": 5200,
+      "gzipBytes": 1780,
+      "geometryRoundtrip": true,
+      "sha256": "6c1dd6f3df1a25e57ca529aa41b1ca8f691ca295622484426989f1e2ead30044"
+    },
+    {
+      "name": "tiles/b-51-1.bin",
+      "bytes": 9136,
+      "gzipBytes": 2884,
+      "geometryRoundtrip": true,
+      "sha256": "a840211ebc60962255c230b4e6e6af91e0e42b7b3f1cb666da2cf7505842bfec"
+    },
+    {
+      "name": "tiles/b-51-2.bin",
+      "bytes": 74880,
+      "gzipBytes": 19195,
+      "geometryRoundtrip": true,
+      "sha256": "d17a97985b513a779147db7fd210b9b8492e99d0bf8b121e63e655a78b44053c"
+    },
+    {
+      "name": "tiles/b-51-3.bin",
+      "bytes": 101552,
+      "gzipBytes": 27435,
+      "geometryRoundtrip": true,
+      "sha256": "52f03f5fdf7ed42ec4bc08ac5200cfbcaf40391ee123351fff9e7ecfed0efa26"
+    },
+    {
+      "name": "tiles/b-51-4.bin",
+      "bytes": 21028,
+      "gzipBytes": 8390,
+      "geometryRoundtrip": true,
+      "sha256": "b78ec5ffe3deb06c9dd8aa994cacc6f30efa42843dff3cf5f765e32c9d0f514e"
+    },
+    {
+      "name": "tiles/b-51-5.bin",
+      "bytes": 17552,
+      "gzipBytes": 7090,
+      "geometryRoundtrip": true,
+      "sha256": "8e4152e29ded28fa285819769629a1582f79088d4d861b8f92128cb368e0607f"
+    },
+    {
+      "name": "tiles/b-51-6.bin",
+      "bytes": 254880,
+      "gzipBytes": 78945,
+      "geometryRoundtrip": true,
+      "sha256": "78e902f2268809f83748592ff1c4f146f66f4140883a2d02fbca0965bb1992df"
+    },
+    {
+      "name": "tiles/b-51-7.bin",
+      "bytes": 338100,
+      "gzipBytes": 101314,
+      "geometryRoundtrip": true,
+      "sha256": "c43c2f0974cce95456780d910672ff93c425e4a9a6ded328cb32d49a2f4cb3ec"
+    },
+    {
+      "name": "tiles/b-51-8.bin",
+      "bytes": 17356,
+      "gzipBytes": 5104,
+      "geometryRoundtrip": true,
+      "sha256": "9017e887cea68164138792120fd02500749d8707d3f27058518d46767839aaed"
+    },
+    {
+      "name": "tiles/b-51-10.bin",
+      "bytes": 181260,
+      "gzipBytes": 49147,
+      "geometryRoundtrip": true,
+      "sha256": "7c124771044bb3e7fc9fd387c56e0aba9fe064d5edadd7623d37aea18734a571"
+    },
+    {
+      "name": "tiles/b-51-11.bin",
+      "bytes": 423824,
+      "gzipBytes": 126936,
+      "geometryRoundtrip": true,
+      "sha256": "b0a431f59d56c351c73f1c82842e38af88851ec5a6542b95cb69d6b3dd17badb"
+    },
+    {
+      "name": "tiles/b-51-12.bin",
+      "bytes": 9048,
+      "gzipBytes": 3582,
+      "geometryRoundtrip": true,
+      "sha256": "eb1e97c0be2c97a0f42159cd6d6035e1de7d3f67f393e5b2a438126ac08555ac"
+    },
+    {
+      "name": "tiles/b-51-13.bin",
+      "bytes": 18296,
+      "gzipBytes": 7463,
+      "geometryRoundtrip": true,
+      "sha256": "c53d0abd08b9b0b0ed9939c17a241933fb48b680173c32f7156fa68cc908ffaa"
+    },
+    {
+      "name": "tiles/b-51-14.bin",
+      "bytes": 47648,
+      "gzipBytes": 14785,
+      "geometryRoundtrip": true,
+      "sha256": "9a73dac66477edc9f463c20896cc0b3f7370f9ccd4633a9e8fa386cc300e5c7b"
+    },
+    {
+      "name": "tiles/b-52-2.bin",
+      "bytes": 81172,
+      "gzipBytes": 22481,
+      "geometryRoundtrip": true,
+      "sha256": "688d9b843a426a1d394d48693e64b65a0d82a7f36975c51d31dedd561948fb5f"
+    },
+    {
+      "name": "tiles/b-52-3.bin",
+      "bytes": 279468,
+      "gzipBytes": 83288,
+      "geometryRoundtrip": true,
+      "sha256": "a8f9a283891c5a03f0f33ea82f5ba61196adfa8265ab0ef64ce729bda8ff6f4b"
+    },
+    {
+      "name": "tiles/b-52-4.bin",
+      "bytes": 24444,
+      "gzipBytes": 8396,
+      "geometryRoundtrip": true,
+      "sha256": "1713030a0488e30c523f9f10b4321f9820c469a6c12e233a56ca508dfe80fda9"
+    },
+    {
+      "name": "tiles/b-52-5.bin",
+      "bytes": 35884,
+      "gzipBytes": 13826,
+      "geometryRoundtrip": true,
+      "sha256": "20361438e4e49f86c4a5d1456dae6f4a2ba3ea41057d6fe6a96fe58aa01287a6"
+    },
+    {
+      "name": "tiles/b-52-6.bin",
+      "bytes": 57060,
+      "gzipBytes": 16391,
+      "geometryRoundtrip": true,
+      "sha256": "1f75f2f2ba833211275e86c733b940f1c5163adf7e7f4ba0805700e9c7e444e3"
+    },
+    {
+      "name": "tiles/b-52-7.bin",
+      "bytes": 21580,
+      "gzipBytes": 7024,
+      "geometryRoundtrip": true,
+      "sha256": "e18a78c2893ae5b52aa2715baab9fca388bd9b55a12e62e5a3adc897c1ca60aa"
+    },
+    {
+      "name": "tiles/b-52-8.bin",
+      "bytes": 196424,
+      "gzipBytes": 54602,
+      "geometryRoundtrip": true,
+      "sha256": "d1b4ef029a4ac1d1e5fdf146cb3d0667cd8606480d42d5d7ac7debd0bebc977e"
+    },
+    {
+      "name": "tiles/b-52-9.bin",
+      "bytes": 15324,
+      "gzipBytes": 4433,
+      "geometryRoundtrip": true,
+      "sha256": "112c858e3b2032f892d54b3d1ee1e9cc3be5954cecff9b4c12b31d47df5939f3"
+    },
+    {
+      "name": "tiles/b-52-10.bin",
+      "bytes": 142644,
+      "gzipBytes": 35292,
+      "geometryRoundtrip": true,
+      "sha256": "40f5f562a430d5a1dcc4a6f7d4b3b1258b755e01b3c16848e7ad579b1253a2c7"
+    },
+    {
+      "name": "tiles/b-52-11.bin",
+      "bytes": 163304,
+      "gzipBytes": 41839,
+      "geometryRoundtrip": true,
+      "sha256": "ec754735b04c2d424ab7cb0f91c4b57d92fc712e02784765235168aca70e59cb"
+    },
+    {
+      "name": "tiles/b-52-12.bin",
+      "bytes": 5732,
+      "gzipBytes": 2239,
+      "geometryRoundtrip": true,
+      "sha256": "a27041e8f181e4425111136df4efc9685348f4479b73c20e1d93204ef27475b3"
+    },
+    {
+      "name": "tiles/b-52-13.bin",
+      "bytes": 2144,
+      "gzipBytes": 596,
+      "geometryRoundtrip": true,
+      "sha256": "7682822f1bc484d31111e4f985e6749b19b2191ea8fce8306e3d862495e60db2"
+    },
+    {
+      "name": "tiles/b-52-14.bin",
+      "bytes": 41788,
+      "gzipBytes": 11619,
+      "geometryRoundtrip": true,
+      "sha256": "7755e52c9cda2b310eb29a88f59e8c4bc1e822cfde80ec8929609b519208512d"
+    },
+    {
+      "name": "tiles/b-53-3.bin",
+      "bytes": 90172,
+      "gzipBytes": 24967,
+      "geometryRoundtrip": true,
+      "sha256": "1e62eb1f7aa35d42fbb12832cc6f072e88305f586b04a4e817d61ca009aa943c"
+    },
+    {
+      "name": "tiles/b-53-4.bin",
+      "bytes": 88428,
+      "gzipBytes": 20858,
+      "geometryRoundtrip": true,
+      "sha256": "3ff7952bf0b12c1303b6a9c4b7eaedc0a28e5afc0a1bb70a336e58a126b962a8"
+    },
+    {
+      "name": "tiles/b-53-5.bin",
+      "bytes": 11608,
+      "gzipBytes": 4028,
+      "geometryRoundtrip": true,
+      "sha256": "655451d4f2530a3486076f8f0de0b230d78ba486d09027aa95faa679f53bd572"
+    },
+    {
+      "name": "tiles/b-53-6.bin",
+      "bytes": 11724,
+      "gzipBytes": 3881,
+      "geometryRoundtrip": true,
+      "sha256": "aa9855802de709a877fa1f16985e1ed16dcc61b69f353a0582728186bc477655"
+    },
+    {
+      "name": "tiles/b-53-7.bin",
+      "bytes": 18668,
+      "gzipBytes": 6667,
+      "geometryRoundtrip": true,
+      "sha256": "115ae7f11d5a4fd79f26698836cc86b2f2f71e8c117d9b71a2c24ac594585a8c"
+    },
+    {
+      "name": "tiles/b-53-8.bin",
+      "bytes": 199904,
+      "gzipBytes": 56046,
+      "geometryRoundtrip": true,
+      "sha256": "abc075b0139de8ae8bb920698edf90acaa64cf6f91af1ec17caa8955ed3f4ec1"
+    },
+    {
+      "name": "tiles/b-53-9.bin",
+      "bytes": 18516,
+      "gzipBytes": 5706,
+      "geometryRoundtrip": true,
+      "sha256": "cffa5041936b494585ccdf949722ea08c6fbc32f0daa7b01ba57642ec37b0d96"
+    },
+    {
+      "name": "tiles/b-53-10.bin",
+      "bytes": 29456,
+      "gzipBytes": 8212,
+      "geometryRoundtrip": true,
+      "sha256": "6fe4a06d109e5843319df3830d4d6843eb12c8a721d93152a8824d7596a25183"
+    },
+    {
+      "name": "tiles/b-53-11.bin",
+      "bytes": 135268,
+      "gzipBytes": 36664,
+      "geometryRoundtrip": true,
+      "sha256": "320e7b907efe7555e80b43ec6a276bda679fe085ae3ec0c377319004ff4fa329"
+    },
+    {
+      "name": "tiles/b-53-12.bin",
+      "bytes": 3824,
+      "gzipBytes": 1409,
+      "geometryRoundtrip": true,
+      "sha256": "1fad43a9e1761549eccd4740e584c66ff97b83c1ae23784cd187990424bdc52a"
+    },
+    {
+      "name": "tiles/b-53-13.bin",
+      "bytes": 7496,
+      "gzipBytes": 2854,
+      "geometryRoundtrip": true,
+      "sha256": "37cffa28219814c4c1de38205e160b7e5e67bd5d5f4641bd343fa916bf8640d8"
+    },
+    {
+      "name": "tiles/b-53-14.bin",
+      "bytes": 7896,
+      "gzipBytes": 2541,
+      "geometryRoundtrip": true,
+      "sha256": "ef47a313998a4ed1bd8583dba1f11b3eaee65de4f796e2f0068c178d76b84fb3"
+    },
+    {
+      "name": "tiles/b-54-3.bin",
+      "bytes": 30276,
+      "gzipBytes": 9727,
+      "geometryRoundtrip": true,
+      "sha256": "11a005a4a0d65a774b4a640672c1dad5dd30995e1253bca70b13b1b5438b5eee"
+    },
+    {
+      "name": "tiles/b-54-4.bin",
+      "bytes": 31260,
+      "gzipBytes": 11314,
+      "geometryRoundtrip": true,
+      "sha256": "17c2866d77d1e3a1a5b5e314e27b1e7fdb24eb94fcc4111aa68b3792ab124a84"
+    },
+    {
+      "name": "tiles/b-54-6.bin",
+      "bytes": 8984,
+      "gzipBytes": 3604,
+      "geometryRoundtrip": true,
+      "sha256": "f73f34fb92351ac833e8dee6692ea63ffffad3fb85556a076f50e2c537fdec0f"
+    },
+    {
+      "name": "tiles/b-54-7.bin",
+      "bytes": 25584,
+      "gzipBytes": 6787,
+      "geometryRoundtrip": true,
+      "sha256": "a5a969832f27911970d978d1236233de2f86d72529fce3b282489aeb938c3122"
+    },
+    {
+      "name": "tiles/b-54-8.bin",
+      "bytes": 58784,
+      "gzipBytes": 15984,
+      "geometryRoundtrip": true,
+      "sha256": "7df967679a987c8d4dbbe48a26319f0ca18f922441d5fc1ce550d3ea73889721"
+    },
+    {
+      "name": "tiles/b-54-11.bin",
+      "bytes": 92176,
+      "gzipBytes": 22779,
+      "geometryRoundtrip": true,
+      "sha256": "a70fc3ce4e9f573aff1486c2fa7f72a66cece5880819a4491cddb77f8e529201"
+    },
+    {
+      "name": "tiles/b-54-12.bin",
+      "bytes": 24620,
+      "gzipBytes": 7067,
+      "geometryRoundtrip": true,
+      "sha256": "f0e8c619d866b42da4d03ba5c2f8ce7f7471ade8b8309cec97fe289ec624e37f"
+    },
+    {
+      "name": "tiles/b-54-13.bin",
+      "bytes": 8892,
+      "gzipBytes": 3585,
+      "geometryRoundtrip": true,
+      "sha256": "5f6876df2c6998a53a908e021a56b24b48e8109c0dfb196f67f42f504ab3d762"
+    },
+    {
+      "name": "tiles/b-54-14.bin",
+      "bytes": 4300,
+      "gzipBytes": 1163,
+      "geometryRoundtrip": true,
+      "sha256": "88d785b0ff13983c515f6ce5a0f813190b37f820a4c5904799c98419ee8fd8e8"
+    },
+    {
+      "name": "tiles/b-55-3.bin",
+      "bytes": 19892,
+      "gzipBytes": 6245,
+      "geometryRoundtrip": true,
+      "sha256": "18a2369b6ba42808c67952ed30ce68d37b07e6efd9f1a30b0755225de3d1e21f"
+    },
+    {
+      "name": "tiles/b-55-4.bin",
+      "bytes": 326972,
+      "gzipBytes": 91835,
+      "geometryRoundtrip": true,
+      "sha256": "0a716d40c39fc7ba949879c4efe2647f957b46cbacb1fa9ad21f18310a64dccc"
+    },
+    {
+      "name": "tiles/b-55-6.bin",
+      "bytes": 14216,
+      "gzipBytes": 5667,
+      "geometryRoundtrip": true,
+      "sha256": "126bcb6ce750a1a48376fa9bf478ac439f2a4449669b2db0bfd1e1df835b9258"
+    },
+    {
+      "name": "tiles/b-55-7.bin",
+      "bytes": 101160,
+      "gzipBytes": 28695,
+      "geometryRoundtrip": true,
+      "sha256": "8cda37199f3b94a0a2599c276cf2fc3865305700c7bebe56bf4aa7466718ff1e"
+    },
+    {
+      "name": "tiles/b-55-12.bin",
+      "bytes": 58868,
+      "gzipBytes": 13576,
+      "geometryRoundtrip": true,
+      "sha256": "ac56534452171f69c45d85134a56ff2565974f20a627bc7e7c7618d97810e13e"
+    },
+    {
+      "name": "tiles/b-55-13.bin",
+      "bytes": 25592,
+      "gzipBytes": 5965,
+      "geometryRoundtrip": true,
+      "sha256": "c5d3db3cc977b0ce312ba0649222e7df2fb84c5ad77ccf75bc5d2d8d5026ea0d"
+    },
+    {
+      "name": "tiles/b-55-14.bin",
+      "bytes": 17776,
+      "gzipBytes": 6758,
+      "geometryRoundtrip": true,
+      "sha256": "32c394f73c22ae3a61369dc2cd4d17613c2061468ac8a35878edec2b7f26357c"
+    },
+    {
+      "name": "tiles/b-55-15.bin",
+      "bytes": 3088,
+      "gzipBytes": 675,
+      "geometryRoundtrip": true,
+      "sha256": "46f2ee859f7912a6dedd099d848a8d3010987fb5fc90cdfd244cc6b5269453ca"
+    },
+    {
+      "name": "tiles/b-56-3.bin",
+      "bytes": 2360,
+      "gzipBytes": 693,
+      "geometryRoundtrip": true,
+      "sha256": "d4bf9d6379be9388d74ccd2946b1f41759a6889b832d7df5de0ef436dc2af8c2"
+    },
+    {
+      "name": "tiles/b-56-4.bin",
+      "bytes": 18660,
+      "gzipBytes": 5178,
+      "geometryRoundtrip": true,
+      "sha256": "944c1b4d43aefef8bc0a190ead5eed4d82fe94b4eee77eed96ff53923c7eea24"
+    },
+    {
+      "name": "tiles/b-56-6.bin",
+      "bytes": 4152,
+      "gzipBytes": 1472,
+      "geometryRoundtrip": true,
+      "sha256": "68428d13a6c5ba2751ebac40dbb81693cb24ed060c7ef9c1b3551c0535671542"
+    },
+    {
+      "name": "tiles/b-56-7.bin",
+      "bytes": 18512,
+      "gzipBytes": 6949,
+      "geometryRoundtrip": true,
+      "sha256": "170ff4ea04e3e151a84c1c5bae0a0a60559cb3aeaac6d8ae9ef7bf0b63cb566c"
+    },
+    {
+      "name": "tiles/b-56-13.bin",
+      "bytes": 3712,
+      "gzipBytes": 779,
+      "geometryRoundtrip": true,
+      "sha256": "714eee9c681c314f2ee102b6e28ebbfa8061c62007f3bf2b1c6eded28bc52532"
+    },
+    {
+      "name": "tiles/b-56-15.bin",
+      "bytes": 5200,
+      "gzipBytes": 1869,
+      "geometryRoundtrip": true,
+      "sha256": "b38e6705e9f9492fe4b911d6d2e31c500d7a8a25c3c58ab6fc7c21416f0ce474"
+    },
+    {
+      "name": "tiles/b-57-4.bin",
+      "bytes": 5960,
+      "gzipBytes": 1991,
+      "geometryRoundtrip": true,
+      "sha256": "230dc48cd8eef2f20fb8aba98f32cf4223c92b5dc5778a78b5b07a71ff196eff"
+    },
+    {
+      "name": "tiles/b-57-5.bin",
+      "bytes": 4128,
+      "gzipBytes": 1462,
+      "geometryRoundtrip": true,
+      "sha256": "c49423a24776ade2b59a0fc3696fa2a1ce1bfe21d52acd6747d94a8b99ba30e7"
+    },
+    {
+      "name": "tiles/b-57-6.bin",
+      "bytes": 14676,
+      "gzipBytes": 5235,
+      "geometryRoundtrip": true,
+      "sha256": "9904b0cd81dd8c238a44fc8a7ed104095e428d69234f4ab499495bce072f3721"
+    },
+    {
+      "name": "tiles/b-57-7.bin",
+      "bytes": 32260,
+      "gzipBytes": 9413,
+      "geometryRoundtrip": true,
+      "sha256": "7fb02a9f1c89695a6347f334063b4fe68455e2d654f6f20b2bc6d6e0f5b8de71"
+    },
+    {
+      "name": "tiles/b-58-5.bin",
+      "bytes": 6624,
+      "gzipBytes": 2559,
+      "geometryRoundtrip": true,
+      "sha256": "1ca1a5f33973a33582967c2c7ca7002e5fb952d80a6bf1cf889247f0f9a973d9"
+    },
+    {
+      "name": "overview.bin",
+      "bytes": 17949916,
+      "gzipBytes": 4591395,
+      "geometryRoundtrip": true,
+      "sha256": "b1ddee29460191f8e9ec70f0b971d326510ca50c7f7dbbab43c58abbd279f677"
+    }
+  ],
+  "tileBuildings": 532236,
+  "tileBytes": 445836788,
+  "tileGzipBytes": 128458670,
+  "sourceSha256": "58b0233729e064af3864bccc60d8049d66b4135faa3a0bc32cc7ab28e0ddcec1",
+  "bootstrapBytes": 3291203,
+  "bootstrapGzipBytes": 867760,
+  "geometryVersion": 1
+}

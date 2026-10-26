@@ -9,7 +9,7 @@ import { LINE } from './factory/theme';
 import type { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 import { buildLandmark } from './landmarks';
 import { CityLayers } from './city-layers';
-import { GeometryBatch, MAP_SCALE, boundsOf, distanceToSegment, insideBounds, makeProjection, pointInPolygon } from './geographic-geometry';
+import { GeometryBatch, MAP_SCALE, boundsOf, buildCityBase, distanceToSegment, insideBounds, makeProjection, pointInPolygon } from './geographic-geometry';
 
 interface GeographicZone {
   id: string;
@@ -56,21 +56,13 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
   const indexedRoutes: { route: CyclingRoute; paths: Point[][]; anchor: Point; bounds: Bounds }[] = [];
 
   // 海面与真实岸线保持原始平面，高程由裁海三角网覆盖；图层微小偏移只用于消除共面闪烁。
-  const sea = new GeometryBatch();
-  const seaBounds = rectangle(bounds, 15);
-  sea.polygon('sea', [[W(seaBounds[0], seaBounds[2], -.12), W(seaBounds[1], seaBounds[2], -.12), W(seaBounds[1], seaBounds[3], -.12), W(seaBounds[0], seaBounds[3], -.12)]]);
-  const seaGroup = sea.build('海面'); group.add(seaGroup);
-  const land = new GeometryBatch();
-  for (const polygon of data.land) {
-    land.polygon('ground', polygon.rings.map(ring => ring.map(coordinate => projection.flat(coordinate, 0))));
-    for (const ring of polygon.rings) land.path('line', ring.map(coordinate => projection.flat(coordinate, .025)), true);
-  }
-  const landGroup = land.build('真实陆地与海岸'); group.add(landGroup);
+  const base = data.cachedGeometry && ['base/sea', 'base/land', 'base/water', 'base/districts'].every(key => data.cachedGeometry?.has(key)) ? data.cachedGeometry : buildCityBase(data, projection);
+  const seaGroup = base.get('base/sea')!, landGroup = base.get('base/land')!;
+  group.add(seaGroup, landGroup);
 
   const districtIndexes: PolygonIndex[] = [];
   const zoneMap = new Map<string, GeographicZone>();
   const zoneLabelArea = new Map<string, number>();
-  const districtLines = new GeometryBatch();
   for (const district of data.districts) {
     const rings = district.rings.map(ring => ring.map(project));
     if (!rings[0]?.length) continue;
@@ -84,9 +76,8 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
       zoneMap.get(district.name)!.anchor = project(district.center);
       zoneLabelArea.set(district.name, squaredArea(extent));
     }
-    for (const ring of rings) districtLines.path('detail', drapedPath(ring, .12), true);
   }
-  group.add(districtLines.build('真实行政区界'));
+  group.add(base.get('base/districts')!);
   const zones = [...zoneMap.values()];
   const zoneAt = (point: Point): GeographicZone => {
     const district = districtIndexes.find(item => insideBounds(point, item.bounds) && pointInPolygon(point, item.rings));
@@ -143,7 +134,6 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
   landGroup.userData.entity = basePicker;
   seaGroup.userData.entity = basePicker;
 
-  const water = new GeometryBatch();
   const indexedWater: { polygon: PolygonIndex; entity: MiniEntity }[] = [];
   const waterLabels = new Map<string, { point: Point; area: number; height: number }>();
   for (const polygon of data.water) {
@@ -152,9 +142,6 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
     const extent = boundsOf(rings[0]);
     const elevations = polygon.rings[0].map(coordinate => projection.height(coordinate)).sort((a, b) => a - b);
     const waterHeight = (elevations[Math.floor(elevations.length / 3)] || 0) + MAP_SCALE;
-    const flat = rings.map(ring => ring.map(point => W(...point, waterHeight)));
-    water.polygon('sea', flat);
-    for (const ring of rings) water.path('detail', ring.map(point => W(...point, waterHeight + .02)), true);
     const anchor = midpoint(extent);
     const entity: MiniEntity = {
       id: `水体：${polygon.id}`, title: polygon.name || '河湖水域', kind: '河湖', groups: [], followable: false,
@@ -167,7 +154,7 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
     const area = squaredArea(extent);
     if (polygon.name && area > 250 && area > (waterLabels.get(polygon.name)?.area ?? 0)) waterLabels.set(polygon.name, { point: anchor, area, height: waterHeight });
   }
-  const waterGroup = water.build('真实河湖'); group.add(waterGroup);
+  const waterGroup = base.get('base/water')!; group.add(waterGroup);
   waterGroup.userData.entity = {
     ...basePicker,
     resolve: (point: THREE.Vector3) => {
@@ -275,5 +262,5 @@ export function buildGeographicScene(data: ShenzhenMapData, routes: CyclingRoute
     routeView('xili-east'), reservoir ? rectangle(reservoir.polygon.bounds, 15) : routeView('taojinshan-main'), routeView('yinhu-main'), routeView('wutong-main'),
   ];
   group.updateMatrixWorld(true);
-  return { group, entities, movements, roads: data.roads.length, buildings: data.buildingTiles?.reduce((sum, tile) => sum + tile.count, 0) || data.buildings?.length || data.landmarks.length, bounds, views, project, routePaths, routeBounds, zoneAt, relatedRoutesAt, surfaceHeight, terrainStep, updateLabels, update: cityLayers.update.bind(cityLayers), stats: cityLayers.stats.bind(cityLayers), retryLayers: cityLayers.retryLayers.bind(cityLayers), dispose: () => { cityLayers.dispose(); routeMaterial.dispose(); } };
+  return { group, entities, movements, roads: data.fastCity?.roadCount ?? data.roads.length, buildings: data.buildingTiles?.reduce((sum, tile) => sum + tile.count, 0) || data.buildings?.length || data.landmarks.length, bounds, views, project, routePaths, routeBounds, zoneAt, relatedRoutesAt, surfaceHeight, terrainStep, updateLabels, update: cityLayers.update.bind(cityLayers), stats: cityLayers.stats.bind(cityLayers), retryLayers: cityLayers.retryLayers.bind(cityLayers), dispose: () => { cityLayers.dispose(); routeMaterial.dispose(); } };
 }

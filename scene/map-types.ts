@@ -1,4 +1,5 @@
 import type { Coordinate, Source } from '@/lib/types';
+import type { Group } from 'three';
 
 export interface MapPolygon {
   id: string;
@@ -26,6 +27,7 @@ export interface BuildingTile {
   bounds: [number, number, number, number];
   /** 建筑面数量，不包含细路。 */
   count: number;
+  cache?: { url: string; bytes: number; buildings: number };
 }
 export interface BuildingTileData { buildings: MapPolygon[]; roads: MapRoad[] }
 export interface ClippedTerrainData {
@@ -63,4 +65,17 @@ export interface ShenzhenMapData {
   sources: Source[];
   generated: string;
   statistics: Record<string, unknown>;
+  fastCity?: {
+    version: 1;
+    baseUrl: string;
+    roadsUrl: string;
+    terrainUrl: string;
+    overviewUrl: string;
+    roadCount: number;
+    overviewBuildings: number;
+    renderedOverviewBuildings: number;
+    overviewOrphans: number;
+  };
+  /** 只由加载器写入的已解码缓冲；不属于JSON里的来源数据。 */
+  cachedGeometry?: Map<string, Group>;
 }

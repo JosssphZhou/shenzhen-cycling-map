@@ -3,6 +3,7 @@ import type { BuildingTile, BuildingTileData, ClippedTerrainData, MapPolygon, Sh
 import type { MiniEntity } from './entities';
 import { MAP_SCALE, meterProjection, type Projection } from './geographic-geometry';
 import { buildBuildings, buildClippedTerrain, buildGridTerrain, buildRoads, disposeGeometry } from './city-geometry';
+import { CachedCityLayers } from './city-cache-layers';
 
 interface OverviewBucket { buildings: MapPolygon[]; full: THREE.Group; remainder?: THREE.Group; dirty: boolean }
 interface LoadedTile { descriptor: BuildingTile; group: THREE.Group; buildings: MapPolygon[]; ids: string[]; used: number; facade: boolean }
@@ -33,11 +34,14 @@ export class CityLayers {
   private bytes = 0;
   private requests = 0;
   private excluded: Set<string>;
+  private cached: CachedCityLayers | null = null;
 
   constructor(private city: ShenzhenMapData, projection: Projection, private picker: MiniEntity) {
     this.group.name = '真实三维城市';
     this.projection = meterProjection(projection);
     this.excluded = new Set(city.landmarks.map(landmark => landmark.sourceId));
+    this.roads = { major: new THREE.Group(), minor: new THREE.Group(), paths: new THREE.Group(), rail: new THREE.Group() };
+    if (city.fastCity) { this.cached = new CachedCityLayers(city, projection, picker); this.group.add(this.cached.group); return; }
     if (city.terrain) {
       this.terrain = buildGridTerrain(city.terrain, this.projection);
       this.terrain.userData.entity = picker; this.group.add(this.terrain);
@@ -140,6 +144,7 @@ export class CityLayers {
     } finally { if (this.pending.get(descriptor.id) === controller) this.pending.delete(descriptor.id); }
   }
   update(camera: THREE.Camera, zoom: number, _width: number, _height: number, _time: number) {
+    if (this.cached) { this.cached.update(camera, zoom, _width); return; }
     if (this.disposed) return;
     const now = performance.now();
     this.roads.minor.visible = zoom > .025 / MAP_SCALE;
@@ -187,8 +192,9 @@ export class CityLayers {
     }
     this.rebuildOverview();
   }
-  retryLayers() { this.failed.clear(); this.terrainError = false; this.lastTiles = -Infinity; void this.loadTerrain(); }
+  retryLayers() { if (this.cached) { this.cached.retryLayers(); return; } this.failed.clear(); this.terrainError = false; this.lastTiles = -Infinity; void this.loadTerrain(); }
   stats() {
+    if (this.cached) return this.cached.stats();
     const tileErrors = [...this.failed.keys()].filter(id => this.visibleIds.has(id)).length;
     return { overviewBuildings: this.city.buildings?.length ?? 0, loadedBuildings: [...this.loaded.values()].filter(tile => tile.group.visible).reduce((sum, tile) => sum + tile.buildings.length, 0),
       loadedTiles: this.loaded.size, visibleTiles: [...this.loaded.values()].filter(tile => tile.group.visible).length,
@@ -199,6 +205,7 @@ export class CityLayers {
   dispose() {
     if (this.disposed) return;
     this.disposed = true; this.terrainController?.abort(); this.pending.forEach(controller => controller.abort()); this.pending.clear();
+    if (this.cached) { this.cached.dispose(); this.group.clear(); return; }
     // 全部建筑、道路和高程均用 Factory 共享材质，这里只回收自己创建的几何。
     disposeGeometry(this.group); this.group.clear(); this.loaded.clear(); this.overview.length = 0; this.loadedIds.clear(); this.bucketsByBuilding.clear();
   }
