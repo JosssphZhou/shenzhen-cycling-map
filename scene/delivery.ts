@@ -37,6 +37,7 @@ const coordinateKey = (coordinates: Coordinate[]) => coordinates.map(point => po
 /** 时间、订单和钱包由领域模块持有；本层只沿完整路线绘制当前状态。 */
 export class DeliveryLayer {
   readonly group = new THREE.Group();
+  readonly overlay = new THREE.Scene();
   private readonly courier = buildCourierModel();
   readonly rider = this.courier.group;
   readonly entity: MiniEntity;
@@ -75,6 +76,7 @@ export class DeliveryLayer {
     this.state = state;
     this.position = world.project(state.position);
     this.group.name = '外卖专注配送';
+    this.overlay.name = '配送骑手前景';
     this.rider.name = '外卖骑手';
     this.traceHead.geometry.setAttribute('instanceStart', new THREE.InterleavedBufferAttribute(this.traceBuffer, 3, 0));
     this.traceHead.geometry.setAttribute('instanceEnd', new THREE.InterleavedBufferAttribute(this.traceBuffer, 3, 3));
@@ -91,7 +93,8 @@ export class DeliveryLayer {
     this.route.renderOrder = 8;
     this.completed.renderOrder = 9;
     this.traceHead.renderOrder = 9;
-    this.group.add(this.route, this.completed, this.traceHead, this.rider, this.riderLabel.sprite);
+    this.group.add(this.route, this.completed, this.traceHead, this.riderLabel.sprite);
+    this.overlay.add(this.rider);
     this.entity = {
       id: 'delivery-rider', title: '外卖骑手', kind: '配送骑手', groups: [this.rider], relatedRouteIds: [], followable: true,
       info: () => ({ status: this.state.status, rows: [['片区', this.world.zoneAt(this.position).name], ['状态', this.state.active ? '正在配送' : '等待开工'], ['说明', '专注配送模拟']] }),
@@ -335,6 +338,6 @@ export class DeliveryLayer {
     this.routeMaterial.dispose(); this.completedMaterial.dispose();
     this.stopMaterial.dispose(); this.doneMaterial.dispose();
     this.riderLabel.texture.dispose(); this.riderLabel.material.dispose();
-    this.group.clear();
+    this.group.clear(); this.overlay.clear();
   }
 }

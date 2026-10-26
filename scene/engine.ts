@@ -260,7 +260,9 @@ export class CityEngine implements SceneController {
     const rect = this.canvas.getBoundingClientRect();
     this.ndc.set((clientX - rect.left) / rect.width * 2 - 1, -(clientY - rect.top) / rect.height * 2 + 1);
     this.ray.setFromCamera(this.ndc, this.camera);
-    for (const hit of this.ray.intersectObjects(this.scene.children, true)) {
+    const riderHits = this.delivery ? this.ray.intersectObjects(this.delivery.overlay.children, true) : [];
+    const hits = [...riderHits, ...this.ray.intersectObjects(this.scene.children, true)];
+    for (const hit of hits) {
       if (!(hit.object instanceof THREE.Mesh)) continue;
       let visible = true; for (let node: THREE.Object3D | null = hit.object; node; node = node.parent) if (!node.visible) visible = false;
       if (!visible || hit.point.x < this.world.bounds[0] || hit.point.x > this.world.bounds[1] || hit.point.z < this.world.bounds[2] || hit.point.z > this.world.bounds[3]) continue;
@@ -398,6 +400,21 @@ export class CityEngine implements SceneController {
     if (this.disposed) return; this.frameId = requestAnimationFrame(this.animate);
     try { this.tick(time); } catch (error) { const key = String(error instanceof Error ? error.stack : error); if (!this.reported.has(key)) { this.reported.add(key); console.error('深圳场景绘制失败', error); } }
   };
+  private renderFrame() {
+    if (!this.delivery) { this.renderer.render(this.scene, this.camera); return; }
+    const autoClear = this.renderer.autoClear, autoReset = this.renderer.info.autoReset;
+    this.renderer.info.autoReset = false;
+    this.renderer.info.reset();
+    try {
+      this.renderer.render(this.scene, this.camera);
+      this.renderer.autoClear = false;
+      this.renderer.clearDepth();
+      this.renderer.render(this.delivery.overlay, this.camera);
+    } finally {
+      this.renderer.autoClear = autoClear;
+      this.renderer.info.autoReset = autoReset;
+    }
+  }
   private tick(time: number) {
     const dt = Math.max(0, Math.min(.1, (time - this.lastTime) / 1000)); this.lastTime = Math.max(this.lastTime, time);
     if (!this.paused) { this.accumulator += dt; while (this.accumulator >= 1 / 60) { this.simTime += 1 / 60; this.weather.update(1 / 60, this.simTime, this.hour()); this.accumulator -= 1 / 60; } }
@@ -429,7 +446,7 @@ export class CityEngine implements SceneController {
     const stop = this.routeNext?.name ? this.screenAt(this.routeNext.point) : null, anchor = stop && this.selected ? this.anchor(this.selected) : null;
     if (stop && anchor && stop[0] > 0 && stop[0] < this.width && stop[1] > 30 && stop[1] < this.height && Math.hypot(stop[0] - anchor[0], stop[1] - anchor[1]) > 70) this.placeAt(this.tagStop, stop, `下一站 · ${this.routeNext!.name}`);
     else this.tagStop.hidden = true;
-    if (!this.contextLost) { const start = performance.now(); this.renderer.render(this.scene, this.camera); this.hasRendered = true; this.lastRenderMs = performance.now() - start; this.frameCount++; }
+    if (!this.contextLost) { const start = performance.now(); this.renderFrame(); this.hasRendered = true; this.lastRenderMs = performance.now() - start; this.frameCount++; }
     if (time - this.fpsSince >= 1000) { this.fps = Math.round(this.frameCount * 1000 / (time - this.fpsSince)); this.frameCount = 0; this.fpsSince = time; }
   }
   stats() { const city = this.world.stats?.() ?? {}; return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, delivery: this.delivery?.stats() ?? null, mode: '深圳真实三维城市', geographicRequests: this.mapMetrics.requests, mapBytes: this.mapMetrics.bytes, mapUrl: this.mapUrl, loadedTiles: city.loadedTiles, terrainClipped: city.terrainClipped, city, mapLayers: { roads: this.world.roads, buildings: this.world.buildings, ...city } }; }
