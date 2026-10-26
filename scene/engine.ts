@@ -389,7 +389,7 @@ export class CityEngine implements SceneController {
     const hour = this.hour(); this.palette.update(this.theme(), hour, this.weather.rain(), this.weather.fog()); this.markNight(nightAmount(hour));
     this.rain.update(dt, this.controls.target, this.width / this.camera.zoom, this.weather.rain()); this.fog.update(this.simTime, this.weather.fog());
     this.dynamics.update(dt, this.paused, this.camera, this.weather.rain() > .3 ? '雨' : this.weather.fog() > .3 ? '雾' : '晴', this.camera.zoom);
-    this.delivery?.update(dt, this.camera, this.reduced, nightAmount(hour), this.theme());
+    this.delivery?.update(dt, this.camera, this.reduced, nightAmount(hour), this.theme(), this.selected === this.delivery?.entity);
     const amount = this.reduced ? 1 : 1 - Math.exp(-dt * 6);
     if (this.following && this.selected) this.moveTarget(this.controls.target.clone().lerp(this.followTarget(), amount));
     if (this.goal) {

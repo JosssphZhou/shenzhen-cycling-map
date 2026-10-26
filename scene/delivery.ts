@@ -140,7 +140,7 @@ export class DeliveryLayer {
     this.completedMaterial.resolution.set(width, height);
   }
 
-  update(dt: number, camera: THREE.OrthographicCamera, reduced: boolean, night: number, theme: 'light' | 'dark') {
+  update(dt: number, camera: THREE.OrthographicCamera, reduced: boolean, night: number, theme: 'light' | 'dark', selected: boolean) {
     this.interpolation = reduced ? 1 : Math.min(1, this.interpolation + dt / .24);
     this.renderedDistance = this.distanceFrom + (this.targetDistance - this.distanceFrom) * this.interpolation;
     const point = this.path.at(this.renderedDistance);
@@ -149,6 +149,7 @@ export class DeliveryLayer {
     this.riderScale = THREE.MathUtils.clamp(18 / Math.max(.1, camera.zoom) / 1.5, 1.8, 7);
     this.placeRider();
     this.riderLabel.sprite.position.copy(W(...this.position, this.height(this.position) + this.riderScale * 2.1));
+    this.riderLabel.sprite.visible = !selected;
     this.sizeLabel(this.riderLabel, camera.zoom, 14);
     this.stops.forEach(stop => {
       const scale = THREE.MathUtils.clamp(6 / Math.max(.1, camera.zoom), .6, 8);
