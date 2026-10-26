@@ -150,6 +150,16 @@ export default function DeliveryPrototype() {
     controller.current?.setDelivery(sceneState);
   }, [sceneState]);
 
+  useEffect(() => {
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.target instanceof Element && event.target.closest('input,textarea,select,[contenteditable="true"]')) return;
+      if (pane === 'early') setPane('delivery');
+      else setCardVisible(false);
+    };
+    window.addEventListener('keydown', dismiss);
+    return () => window.removeEventListener('keydown', dismiss);
+  }, [pane]);
+
   const onController = useCallback((value: SceneController | null) => {
     controller.current = value;
     if (value && currentScene.current) {
@@ -332,7 +342,7 @@ export default function DeliveryPrototype() {
         ['你去专注', <p className="delivery-intro">{copy.intro}取餐、赶路、送达都交给骑手，收工再看今天的故事。</p>],
         ['体验', modeButtons],
         [copy.duration, mode === 'demo' ? <><span>45 分钟</span><span className="delivery-sub">{copy.demoHint}</span></> : <div className="delivery-minutes"><input type="number" min="5" max="180" step="1" value={minutes} aria-label="专注分钟数" onChange={event => setMinutes(event.target.value)} /><span>分钟</span></div>],
-        ...(mode === 'focus' ? [['常用', <div className="delivery-durations">{[25, 45, 60].map(value => <button key={value} aria-pressed={minutes === String(value)} onClick={() => setMinutes(String(value))}>{value}分</button>)}</div>] satisfies CardRow[] : []),
+        ...(mode === 'focus' ? [['常用', <div className="delivery-durations">{[25, 45, 60].map(value => <button key={value} aria-pressed={minutes === String(value)} onClick={() => setMinutes(String(value))}>{value}分</button>)}</div>]] satisfies CardRow[] : []),
         ['这一趟', '系统按时长安排多单，45分钟至少两单'],
         ['钱包', money(profile.walletCents)],
         ['骑手评分', `${profile.rating.toFixed(1)} / 5.0`],
