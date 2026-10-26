@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "98fefef479917613527cfc151ac61545ec0be064",
+  "sourceSha256": {
+    "lib/delivery/model.ts": "627ffb4f1e856164c603ca7d8db0b727626a8d4b2e7e563973035b637e4790b4",
+    "lib/delivery/scene-contract.ts": "f6654105ff7b08b888f6f908cd663db2fa98384deb45f8b686c83fdb9e610c00",
+    "scene/delivery.ts": "d6c669151d2329ede968917589cd12003333d06df8547b4e89fd1c79fa8160e2",
+    "scene/engine.ts": "c223c14b2685a2438bc002d15a3aff4d95667a74c0fa07f43f291afd522be3a9",
+    "scene/contract.ts": "1ef9612cf7772f8b056d01976463ee3fce3f0655771834788195d8bac38c12af",
+    "components/DeliveryPrototype.tsx": "cf4ec216b4db329b98ba813b25a4c38c2964c19dba1b6453ef3107f4dc538597",
+    "components/delivery-prototype.css": "e63073f3b32082efb0d62ee4cbcd9b56187d6ff67e8a19a5500e532fae628ba0",
+    "components/delivery-copy.json": "1f411543ef1643c2adc70d18e576e33b6a0b601443fa59daad0c9f73b48b90d3",
+    "app/prototype/delivery/page.tsx": "73fc89142b8de2a7b6b7c85e6ac5cd70eb56ce1078daa084c6ddddd5d0d24c5e",
+    "public/data/delivery-network.json": "514de1f1dde5cfaac45efe31ec78c2a85a340c9be49197b70e1c5769905ce2ba",
+    "app/factory.css": "a7ceeaf56c3b3a33b3e568e574592251d967a4fa54152b25ccf0c0be20c5b95e"
+  },
+  "browserSpace": 22,
+  "desktopEmulation": [
+    1440,
+    1000
+  ],
+  "mobileEmulation": [
+    429,
+    928
+  ],
+  "normalDurationMs": 2700000,
+  "demoDurationMs": 90000,
+  "realPhoneVerified": false,
+  "published": false
+}

@@ -1,0 +1,17 @@
+{
+  "stats": {
+    "position": [
+      113.9364082045913,
+      22.527030996250442
+    ],
+    "status": "正在赶往商家",
+    "active": true,
+    "pathPoints": 262,
+    "completedDistance": 0.003158471013232823,
+    "stops": 4
+  },
+  "loadedTiles": 10,
+  "card": "正在跑单",
+  "remaining": "44:59",
+  "canvas": 1
+}

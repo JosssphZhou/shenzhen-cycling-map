@@ -1,0 +1,73 @@
+{
+  "network": {
+    "nodes": 99339,
+    "edges": 111542,
+    "places": 95
+  },
+  "observations": [
+    {
+      "minutes": 5,
+      "orders": 1,
+      "meters": 585,
+      "completedAtEnd": 1,
+      "nonSourceEdges": 0
+    },
+    {
+      "minutes": 25,
+      "orders": 1,
+      "meters": 3956,
+      "completedAtEnd": 1,
+      "nonSourceEdges": 0
+    },
+    {
+      "minutes": 45,
+      "orders": 2,
+      "meters": 7536,
+      "completedAtEnd": 2,
+      "nonSourceEdges": 0
+    },
+    {
+      "minutes": 90,
+      "orders": 5,
+      "meters": 13470,
+      "completedAtEnd": 5,
+      "nonSourceEdges": 0
+    },
+    {
+      "minutes": 180,
+      "orders": 10,
+      "meters": 27668,
+      "completedAtEnd": 10,
+      "nonSourceEdges": 0
+    }
+  ],
+  "completion": {
+    "orders": 2,
+    "earnedCents": 1858,
+    "penaltyCents": 690,
+    "ratingChange": -0.24,
+    "duplicateBalanceUnchanged": true,
+    "duplicateReceipts": 1
+  },
+  "purchase": {
+    "ok": true,
+    "walletCents": 658,
+    "owned": [
+      "insulated-box"
+    ]
+  },
+  "early": {
+    "completed": 1,
+    "cancelled": 1,
+    "ratingChange": -0.3,
+    "position": [
+      113.95121143822924,
+      22.536519391607623
+    ],
+    "nextOrigin": [
+      113.95121143822924,
+      22.536519391607623
+    ],
+    "continuous": true
+  }
+}
