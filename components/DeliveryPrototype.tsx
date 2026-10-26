@@ -3,19 +3,20 @@
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import SelectionCard, { type CardAction, type CardRow } from './SelectionCard';
-import { INITIAL_SNAPSHOT, type SceneController, type SceneSnapshot } from '@/scene/contract';
+import { type SceneController, type SceneSnapshot } from '@/scene/contract';
 import {
   DELIVERY_UPGRADES, STORAGE_KEYS, buyUpgrade, createProfile, idleScene, loadProfile,
   parseNetwork, planShift, readShift, settleShift, transactProfile,
   type DeliveryMode, type DeliveryNetwork, type DeliveryProfile, type DeliveryReceipt,
   type OrderPhase,
 } from '@/lib/delivery/model';
-import type { DeliverySceneState } from '@/lib/delivery/scene-contract';
+import type { CourierBrand, DeliverySceneState } from '@/lib/delivery/scene-contract';
 import copy from './delivery-copy.json';
 import './delivery-prototype.css';
 
 const CityMap = dynamic(() => import('./CityMap'), { ssr: false });
 const MAP_ROUTES: [] = [];
+const COURIER_BRAND_KEY = 'shenzhen-delivery-prototype:courier-brand:v1';
 type Pane = 'delivery' | 'orders' | 'my' | 'explore' | 'receipt' | 'early';
 type StoreState = { kind: 'loading' } | { kind: 'invalid'; message: string } | { kind: 'ready'; profile: DeliveryProfile; persistence: 'local' | 'memory'; notice: string };
 type NetworkState = { kind: 'loading' } | { kind: 'error'; message: string } | { kind: 'ready'; network: DeliveryNetwork };
@@ -34,12 +35,15 @@ export default function DeliveryPrototype() {
   const card = useRef<HTMLElement>(null);
   const currentProfile = useRef<DeliveryProfile | null>(null);
   const currentScene = useRef<DeliverySceneState | null>(null);
+  const cityClock = useRef<HTMLSpanElement>(null);
+  const cityPhase = useRef<HTMLSpanElement>(null);
   const busyRef = useRef(false);
   const settledAttempt = useRef('');
   const [store, setStore] = useState<StoreState>({ kind: 'loading' });
   const [networkState, setNetworkState] = useState<NetworkState>({ kind: 'loading' });
   const [networkAttempt, setNetworkAttempt] = useState(0);
   const [mode, setMode] = useState<DeliveryMode>('focus');
+  const [brand, setBrand] = useState<CourierBrand>('meituan');
   const [pane, setPane] = useState<Pane>('delivery');
   const [cardVisible, setCardVisible] = useState(true);
   const [minutes, setMinutes] = useState('45');
@@ -47,11 +51,14 @@ export default function DeliveryPrototype() {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [receipt, setReceipt] = useState<DeliveryReceipt | null>(null);
-  const [snapshot, setSnapshot] = useState<SceneSnapshot>(INITIAL_SNAPSHOT);
+  const [cityPaused, setCityPaused] = useState(false);
   const profile = store.kind === 'ready' ? store.profile : null;
   const shift = profile?.activeShift ?? null;
   const progress = useMemo(() => shift ? readShift({ shift, now }) : null, [shift, now]);
-  const sceneState = useMemo(() => progress?.scene ?? (profile ? idleScene(profile) : null), [progress, profile]);
+  const sceneState = useMemo(() => {
+    const scene = progress?.scene ?? (profile ? idleScene(profile) : null);
+    return scene ? { ...scene, brand } : null;
+  }, [progress, profile, brand]);
   currentScene.current = sceneState;
 
   const acceptProfile = useCallback((value: DeliveryProfile, persistence: 'local' | 'memory', notice = '') => {
@@ -77,11 +84,20 @@ export default function DeliveryPrototype() {
 
   useEffect(() => {
     const initialMode = new URLSearchParams(location.search).get('mode') === 'demo' ? 'demo' : 'focus';
+    try {
+      const savedBrand = localStorage.getItem(COURIER_BRAND_KEY);
+      if (savedBrand === 'meituan' || savedBrand === 'eleme') setBrand(savedBrand);
+    } catch { /* 平台偏好不可读时使用默认骑手，不影响配送存档。 */ }
     setMode(initialMode);
     readStore(initialMode);
+  }, [readStore]);
+
+  useEffect(() => {
+    if (!shift) return;
+    setNow(Date.now());
     const timer = window.setInterval(() => setNow(Date.now()), 250);
     return () => clearInterval(timer);
-  }, [readStore]);
+  }, [shift]);
 
   useEffect(() => {
     const abort = new AbortController();
@@ -99,7 +115,10 @@ export default function DeliveryPrototype() {
 
   useEffect(() => {
     const resume = () => { if (document.visibilityState === 'visible') readStore(mode); };
-    const sync = (event: StorageEvent) => { if (event.key === STORAGE_KEYS[mode]) readStore(mode); };
+    const sync = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEYS[mode]) readStore(mode);
+      if (event.key === COURIER_BRAND_KEY && (event.newValue === 'meituan' || event.newValue === 'eleme')) setBrand(event.newValue);
+    };
     document.addEventListener('visibilitychange', resume);
     window.addEventListener('pageshow', resume);
     window.addEventListener('storage', sync);
@@ -168,7 +187,17 @@ export default function DeliveryPrototype() {
       value.followDelivery();
     }
   }, []);
-  const onSnapshot = useCallback((value: SceneSnapshot) => setSnapshot(value), []);
+  const onSnapshot = useCallback((value: SceneSnapshot) => {
+    if (cityClock.current && cityClock.current.textContent !== value.clock) cityClock.current.textContent = value.clock;
+    if (cityPhase.current && cityPhase.current.textContent !== value.phase) cityPhase.current.textContent = value.phase;
+    setCityPaused(previous => previous === value.paused ? previous : value.paused);
+  }, []);
+
+  function selectBrand(next: CourierBrand) {
+    setBrand(next);
+    try { localStorage.setItem(COURIER_BRAND_KEY, next); }
+    catch { setMessage('骑手已切换，但浏览器暂时无法保存平台选择。'); }
+  }
 
   function openPane(next: Pane) {
     setPane(next);
@@ -205,7 +234,7 @@ export default function DeliveryPrototype() {
       settledAttempt.current = '';
       setReceipt(null);
       openPane('delivery');
-      const frame = next.activeShift ? readShift({ shift: next.activeShift, now: Date.now() }).scene : idleScene(next);
+      const frame = { ...(next.activeShift ? readShift({ shift: next.activeShift, now: Date.now() }).scene : idleScene(next)), brand };
       currentScene.current = frame;
       controller.current?.setDelivery(frame);
       controller.current?.focusDelivery();
@@ -240,6 +269,10 @@ export default function DeliveryPrototype() {
   const modeButtons = <div className="delivery-mode" role="group" aria-label="体验模式">
     <button aria-pressed={mode === 'focus'} disabled={busy} onClick={() => selectMode('focus')}>正常专注</button>
     <button aria-pressed={mode === 'demo'} disabled={busy} onClick={() => selectMode('demo')}>{copy.demo}</button>
+  </div>;
+  const brandButtons = <div className="delivery-brands" role="group" aria-label="配送平台">
+    <button aria-pressed={brand === 'meituan'} onClick={() => selectBrand('meituan')}><span className="delivery-brand-dot meituan" />美团</button>
+    <button aria-pressed={brand === 'eleme'} onClick={() => selectBrand('eleme')}><span className="delivery-brand-dot eleme" />饿了么</button>
   </div>;
   let title = '在深圳，开工。';
   let kind = `外卖专注，${modeLabel}`;
@@ -287,6 +320,7 @@ export default function DeliveryPrototype() {
       title = copy.profile;
       status = `${profile.completedOrders} 单已送达`;
       rows = [
+        ['平台', brandButtons],
         ['钱包', <span className="delivery-metric">{money(profile.walletCents)}</span>],
         ['评分', `${profile.rating.toFixed(1)} / 5.0`],
         ['已专注', `${Math.floor(profile.totalFocusMinutes)} 分钟`],
@@ -341,6 +375,7 @@ export default function DeliveryPrototype() {
       rows = [
         ['你去专注', <p className="delivery-intro">{copy.intro}取餐、赶路、送达都交给骑手，收工再看今天的故事。</p>],
         ['体验', modeButtons],
+        ['平台', brandButtons],
         [copy.duration, mode === 'demo' ? <><span>45 分钟</span><span className="delivery-sub">{copy.demoHint}</span></> : <div className="delivery-minutes"><input type="number" min="5" max="180" step="1" value={minutes} aria-label="专注分钟数" onChange={event => setMinutes(event.target.value)} /><span>分钟</span></div>],
         ...(mode === 'focus' ? [['常用', <div className="delivery-durations">{[25, 45, 60].map(value => <button key={value} aria-pressed={minutes === String(value)} onClick={() => setMinutes(String(value))}>{value}分</button>)}</div>]] satisfies CardRow[] : []),
         ['这一趟', '系统按时长安排多单，45分钟至少两单'],
@@ -364,7 +399,7 @@ export default function DeliveryPrototype() {
   return <main className="delivery-prototype">
     <figure>
       <div className="cap">
-        <span className="hi delivery-title"><span className="delivery-dot" />图 2，<span id="clock">{snapshot.clock}</span><span id="phase">{snapshot.phase}</span></span>
+        <span className="hi delivery-title"><span className="delivery-dot" />图 2，<span id="clock" ref={cityClock}>10:00</span><span id="phase" ref={cityPhase} /></span>
         <nav className="sites" aria-label="配送生活">
           {navItems.map(item => <button key={item.pane} aria-current={pane === item.pane && cardVisible ? 'true' : undefined} onClick={() => openPane(item.pane)}>{item.label}</button>)}
           <button onClick={() => controller.current?.overview()}>深圳全景</button>
@@ -372,13 +407,13 @@ export default function DeliveryPrototype() {
         </nav>
       </div>
       <div className="stage" id="stage">
-        <CityMap routes={MAP_ROUTES} onController={onController} onSnapshot={onSnapshot} />
+        <CityMap routes={MAP_ROUTES} initialCoordinate={sceneState?.position} onController={onController} onSnapshot={onSnapshot} />
         <div className="tools" id="tools">
           <button id="zoomIn" title="放大 (+)" aria-label="放大" onClick={() => controller.current?.zoomBy(1.4)}><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" /></svg></button>
           <button id="zoomOut" title="缩小 (−)" aria-label="缩小" onClick={() => controller.current?.zoomBy(1 / 1.4)}><svg viewBox="0 0 16 16"><path d="M3 8h10" /></svg></button>
           <button id="home" title="找到骑手" aria-label="找到骑手" onClick={() => controller.current?.focusDelivery()}><svg viewBox="0 0 16 16"><path d="M2.5 7.5 8 3l5.5 4.5M4 6.5V13h8V6.5" /></svg></button>
           <span className="gap" />
-          <button id="pause" title="只暂停城市动画，专注仍继续" aria-label={snapshot.paused ? '继续城市动画' : '暂停城市动画'} aria-pressed={snapshot.paused} onClick={() => controller.current?.togglePause()}><svg viewBox="0 0 16 16"><path d={snapshot.paused ? 'M5 3.5v9l7-4.5z' : 'M5.5 3.5v9M10.5 3.5v9'} /></svg></button>
+          <button id="pause" title="只暂停城市动画，专注仍继续" aria-label={cityPaused ? '继续城市动画' : '暂停城市动画'} aria-pressed={cityPaused} onClick={() => controller.current?.togglePause()}><svg viewBox="0 0 16 16"><path d={cityPaused ? 'M5 3.5v9l7-4.5z' : 'M5.5 3.5v9M10.5 3.5v9'} /></svg></button>
           <button id="theme" title="明暗主题 (T)" aria-label="切换明暗主题" onClick={() => controller.current?.toggleTheme()}><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" /><path d="M8 3a5 5 0 0 0 0 10z" fill="currentColor" /></svg></button>
           <button id="time" title="只快进城市时刻，不改变专注计时" aria-label="快进城市六小时" onClick={() => controller.current?.skipTime()}><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5.5" /><path d="M8 4.8V8l2.2 1.6" /></svg></button>
         </div>

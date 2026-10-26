@@ -4,8 +4,13 @@
 .delivery-prototype .delivery-dot { width:6px; height:6px; border-radius:50%; background:#c99c66; flex:none; }
 .delivery-prototype .card { z-index:3; }
 .delivery-prototype .delivery-intro { margin:0; color:var(--page-ink); font-size:12px; line-height:1.8; text-align:left; }
-.delivery-prototype .delivery-mode, .delivery-prototype .delivery-durations { display:flex; gap:6px; flex-wrap:wrap; }
-.delivery-prototype .delivery-mode button, .delivery-prototype .delivery-durations button { padding:5px 9px; font-size:12px; }
+.delivery-prototype .delivery-mode, .delivery-prototype .delivery-durations, .delivery-prototype .delivery-brands { display:flex; gap:6px; flex-wrap:wrap; }
+.delivery-prototype .delivery-mode button, .delivery-prototype .delivery-durations button, .delivery-prototype .delivery-brands button { padding:5px 9px; font-size:12px; }
+.delivery-prototype .delivery-brands { justify-content:flex-end; }
+.delivery-prototype .delivery-brands button { display:inline-flex; align-items:center; gap:6px; }
+.delivery-prototype .delivery-brand-dot { width:6px; height:6px; border-radius:50%; }
+.delivery-prototype .delivery-brand-dot.meituan { background:#ffd34e; }
+.delivery-prototype .delivery-brand-dot.eleme { background:#00a7f0; }
 .delivery-prototype button[aria-pressed="true"] { color:var(--page-ink-hi); border-color:var(--page-line); }
 .delivery-prototype button:disabled { opacity:.42; cursor:not-allowed; }
 .delivery-prototype .delivery-minutes { display:flex; align-items:center; justify-content:flex-end; gap:8px; }

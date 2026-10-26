@@ -4,9 +4,9 @@ import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js
 import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 import type { DeliverySceneState } from '@/lib/delivery/scene-contract';
 import type { Coordinate } from '@/lib/types';
-import { Part, pose } from './factory/kernel/part';
+import { pose } from './factory/kernel/part';
 import { W } from './factory/kernel/iso';
-import { buildCyclist } from './landmarks';
+import { buildCourierModel } from './courier-model';
 import { ExactPath, terrainSegment, type Bounds, type MiniEntity, type Point } from './entities';
 
 interface DeliveryWorld {
@@ -37,7 +37,8 @@ const coordinateKey = (coordinates: Coordinate[]) => coordinates.map(point => po
 /** 时间、订单和钱包由领域模块持有；本层只沿完整路线绘制当前状态。 */
 export class DeliveryLayer {
   readonly group = new THREE.Group();
-  readonly rider = buildCyclist();
+  private readonly courier = buildCourierModel();
+  readonly rider = this.courier.group;
   readonly entity: MiniEntity;
   private state: DeliverySceneState;
   private path = new ExactPath([]);
@@ -46,50 +47,57 @@ export class DeliveryLayer {
   private distanceFrom = 0;
   private interpolation = 1;
   private heading = 0;
+  private sourcePath: Coordinate[] | null = null;
   private pathKey = '';
-  private completedKey = '';
+  private completedPoint: Coordinate | null = null;
+  private completedPointCount = -1;
   private stopKey = '';
   private pathPoints: Point[] = [];
   private stops: StopMarker[] = [];
   private labelTheme = '';
   private riderScale = 1.8;
   private position: Point;
+  private routePositions = new Float32Array(0);
+  private segmentDistances: number[] = [0];
+  private lastTraceDistance = NaN;
+  private routeBuilds = 0;
   private readonly riderLabel = this.label('外卖骑手');
-  private readonly warm = new THREE.MeshBasicMaterial({ color: WARM_DAY, side: THREE.DoubleSide });
-  private readonly lid = new THREE.MeshBasicMaterial({ color: WARM_NIGHT, side: THREE.DoubleSide });
   private readonly stopMaterial = new THREE.MeshBasicMaterial({ color: WARM_DAY, transparent: true, opacity: .95, side: THREE.DoubleSide, depthTest: false, depthWrite: false });
   private readonly doneMaterial = new THREE.MeshBasicMaterial({ color: '#89908f', transparent: true, opacity: .7, side: THREE.DoubleSide, depthTest: false, depthWrite: false });
   private readonly routeMaterial = new LineMaterial({ color: WARM_DAY, linewidth: 2.3, transparent: true, opacity: .9, depthTest: false, depthWrite: false });
   private readonly completedMaterial = new LineMaterial({ color: '#90948e', linewidth: 1.6, transparent: true, opacity: .55, depthTest: false, depthWrite: false });
   private readonly route = new LineSegments2(new LineSegmentsGeometry(), this.routeMaterial);
   private readonly completed = new LineSegments2(new LineSegmentsGeometry(), this.completedMaterial);
+  private readonly traceBuffer = new THREE.InstancedInterleavedBuffer(new Float32Array(6), 6, 1).setUsage(THREE.DynamicDrawUsage);
+  private readonly traceHead = new LineSegments2(new LineSegmentsGeometry(), this.completedMaterial);
 
   constructor(private world: DeliveryWorld, state: DeliverySceneState) {
     this.state = state;
     this.position = world.project(state.position);
     this.group.name = '外卖专注配送';
     this.rider.name = '外卖骑手';
-    const box = new Part();
-    box.box(-1.02, -.3, .72, .63, .6, .57, 'n');
-    box.box(-1.04, -.32, 1.29, .67, .64, .075, 'k');
-    const cargo = box.build('配送餐箱');
-    for (const object of cargo.children) {
-      if (object instanceof THREE.Mesh && object.userData.fill) object.material = object.userData.fill === 'kob' || object.userData.fill === 'kod' ? this.lid : this.warm;
-    }
-    this.rider.add(cargo);
+    this.traceHead.geometry.setAttribute('instanceStart', new THREE.InterleavedBufferAttribute(this.traceBuffer, 3, 0));
+    this.traceHead.geometry.setAttribute('instanceEnd', new THREE.InterleavedBufferAttribute(this.traceBuffer, 3, 3));
+    this.traceHead.geometry.instanceCount = 1;
+    this.route.visible = false;
+    this.completed.visible = false;
+    this.traceHead.visible = false;
     this.route.raycast = () => {};
     this.completed.raycast = () => {};
+    this.traceHead.raycast = () => {};
     this.route.frustumCulled = false;
     this.completed.frustumCulled = false;
+    this.traceHead.frustumCulled = false;
     this.route.renderOrder = 8;
     this.completed.renderOrder = 9;
-    this.group.add(this.route, this.completed, this.rider, this.riderLabel.sprite);
+    this.traceHead.renderOrder = 9;
+    this.group.add(this.route, this.completed, this.traceHead, this.rider, this.riderLabel.sprite);
     this.entity = {
       id: 'delivery-rider', title: '外卖骑手', kind: '配送骑手', groups: [this.rider], relatedRouteIds: [], followable: true,
       info: () => ({ status: this.state.status, rows: [['片区', this.world.zoneAt(this.position).name], ['状态', this.state.active ? '正在配送' : '等待开工'], ['说明', '专注配送模拟']] }),
       bbox: () => {
         const [x, z] = this.position, height = this.height(this.position), margin = this.riderScale * 1.1;
-        return new THREE.Box3(W(x - margin, z - margin, height + .12), W(x + margin, z + margin, height + this.riderScale * 1.65));
+        return new THREE.Box3(W(x - margin, z - margin, height + .12), W(x + margin, z + margin, height + this.riderScale * 1.9));
       },
     };
     this.rider.userData.entity = this.entity;
@@ -102,15 +110,30 @@ export class DeliveryLayer {
 
   setState(state: DeliverySceneState) {
     this.state = state;
-    const pathKey = coordinateKey(state.path), pathChanged = this.pathKey !== pathKey;
+    this.courier.setBrand(state.brand ?? 'meituan');
+    const pathKey = this.sourcePath === state.path ? this.pathKey : coordinateKey(state.path), pathChanged = this.pathKey !== pathKey;
+    this.sourcePath = state.path;
     if (pathChanged) {
       this.pathKey = pathKey;
       this.pathPoints = state.path.map(coordinate => this.world.project(coordinate));
       this.path = new ExactPath(this.pathPoints);
-      this.replaceLine(this.route, this.pathPoints);
+      this.buildRoute();
     }
-    const completedPoints = state.completedPath.map(coordinate => this.world.project(coordinate));
-    const targetDistance = new ExactPath(completedPoints).length;
+    const lastPoint = state.completedPath.at(-1);
+    const completedChanged = pathChanged || this.completedPointCount !== state.completedPath.length
+      || this.completedPoint?.[0] !== lastPoint?.[0] || this.completedPoint?.[1] !== lastPoint?.[1];
+    let targetDistance = this.targetDistance;
+    if (completedChanged) {
+      targetDistance = 0;
+      let previous: Point | undefined;
+      for (const coordinate of state.completedPath) {
+        const point = this.world.project(coordinate);
+        if (previous) targetDistance += Math.hypot(point[0] - previous[0], point[1] - previous[1]);
+        previous = point;
+      }
+      this.completedPoint = lastPoint ? [lastPoint[0], lastPoint[1]] : null;
+      this.completedPointCount = state.completedPath.length;
+    }
     if (pathChanged || targetDistance < this.renderedDistance || !this.path.length) {
       this.renderedDistance = targetDistance;
       this.position = this.world.project(state.position);
@@ -120,8 +143,6 @@ export class DeliveryLayer {
       this.interpolation = 0;
     }
     this.targetDistance = targetDistance;
-    const completedKey = coordinateKey(state.completedPath);
-    if (this.completedKey !== completedKey) { this.completedKey = completedKey; this.replaceLine(this.completed, completedPoints); }
     const stopKey = state.stops.map(stop => `${stop.coordinate.join(',')}:${stop.kind}:${stop.label}`).join(';');
     if (this.stopKey !== stopKey) {
       this.stopKey = stopKey;
@@ -146,6 +167,7 @@ export class DeliveryLayer {
     const point = this.path.at(this.renderedDistance);
     if (point) { this.position = [point.x, point.y]; this.heading = point.h; }
     else this.position = this.world.project(this.state.position);
+    this.updateTrace();
     this.riderScale = THREE.MathUtils.clamp(18 / Math.max(.1, camera.zoom) / 1.5, 1.8, 7);
     this.placeRider();
     this.riderLabel.sprite.position.copy(W(...this.position, this.height(this.position) + this.riderScale * 2.1));
@@ -159,9 +181,8 @@ export class DeliveryLayer {
       this.sizeLabel(stop.label, camera.zoom, 12);
       stop.label.sprite.visible = camera.zoom > 1.25;
     });
-    this.warm.color.copy(WARM_DAY).lerp(WARM_NIGHT, night);
-    this.routeMaterial.color.copy(this.warm.color);
-    this.stopMaterial.color.copy(this.warm.color);
+    this.routeMaterial.color.copy(WARM_DAY).lerp(WARM_NIGHT, night);
+    this.stopMaterial.color.copy(this.routeMaterial.color);
     const labelTheme = `${theme}:${night > .5 ? 'night' : 'day'}`;
     if (labelTheme !== this.labelTheme) {
       this.labelTheme = labelTheme;
@@ -180,13 +201,59 @@ export class DeliveryLayer {
     }
   }
 
-  private replaceLine(line: LineSegments2, points: Point[]) {
+  private buildRoute() {
     const positions: number[] = [];
-    for (let index = 1; index < points.length; index++) positions.push(...terrainSegment(points[index - 1], points[index], point => this.height(point), Math.min(.4, (this.world.terrainStep ?? 1.6) / 4), .3));
-    line.geometry.dispose();
-    line.geometry = new LineSegmentsGeometry();
-    if (positions.length) line.geometry.setPositions(positions);
-    line.visible = positions.length > 0;
+    this.segmentDistances = [0];
+    let distance = 0;
+    for (let index = 1; index < this.pathPoints.length; index++) {
+      const segment = terrainSegment(this.pathPoints[index - 1], this.pathPoints[index], point => this.height(point), Math.min(.4, (this.world.terrainStep ?? 1.6) / 4), .3);
+      for (let offset = 0; offset < segment.length; offset += 6) {
+        positions.push(segment[offset], segment[offset + 1], segment[offset + 2], segment[offset + 3], segment[offset + 4], segment[offset + 5]);
+        distance += Math.hypot(segment[offset + 3] - segment[offset], segment[offset + 5] - segment[offset + 2]);
+        this.segmentDistances.push(distance);
+      }
+    }
+    this.route.geometry.dispose();
+    this.completed.geometry.dispose();
+    this.route.geometry = new LineSegmentsGeometry();
+    this.completed.geometry = new LineSegmentsGeometry();
+    this.routePositions = new Float32Array(positions);
+    if (positions.length) {
+      this.route.geometry.setPositions(this.routePositions);
+      this.completed.geometry.setAttribute('instanceStart', this.route.geometry.getAttribute('instanceStart'));
+      this.completed.geometry.setAttribute('instanceEnd', this.route.geometry.getAttribute('instanceEnd'));
+    }
+    this.route.visible = positions.length > 0;
+    this.completed.geometry.instanceCount = 0;
+    this.completed.visible = false;
+    this.traceHead.visible = false;
+    this.lastTraceDistance = NaN;
+    this.routeBuilds++;
+  }
+
+  private updateTrace() {
+    const distance = Math.max(0, Math.min(this.path.length, this.renderedDistance));
+    if (distance === this.lastTraceDistance) return;
+    this.lastTraceDistance = distance;
+    const segmentCount = this.segmentDistances.length - 1;
+    let low = 0, high = segmentCount;
+    while (low < high) {
+      const middle = (low + high) >> 1;
+      if (this.segmentDistances[middle + 1] <= distance) low = middle + 1;
+      else high = middle;
+    }
+    this.completed.geometry.instanceCount = low;
+    this.completed.visible = low > 0;
+    this.traceHead.visible = low < segmentCount && distance > this.segmentDistances[low];
+    if (!this.traceHead.visible) return;
+    const offset = low * 6, values = this.traceBuffer.array;
+    values[0] = this.routePositions[offset];
+    values[1] = this.routePositions[offset + 1];
+    values[2] = this.routePositions[offset + 2];
+    values[3] = this.position[0];
+    values[4] = this.height(this.position) + .3;
+    values[5] = this.position[1];
+    this.traceBuffer.needsUpdate = true;
   }
 
   private addStop(stop: DeliverySceneState['stops'][number], index: number) {
@@ -250,7 +317,7 @@ export class DeliveryLayer {
     return { bounds: [x0 - 10, x1 + 10, z0 - 10, z1 + 10], heights: [y0, y1 + 4] };
   }
 
-  stats() { return { position: this.state.position, status: this.state.status, active: this.state.active, pathPoints: this.pathPoints.length, completedDistance: this.targetDistance, stops: this.stops.length }; }
+  stats() { return { position: this.state.position, status: this.state.status, active: this.state.active, brand: this.state.brand ?? 'meituan', pathPoints: this.pathPoints.length, completedDistance: this.targetDistance, stops: this.stops.length, routeBuilds: this.routeBuilds, routeSegments: this.segmentDistances.length - 1, completedSegments: this.completed.geometry.instanceCount }; }
 
   private clearStops() {
     for (const stop of this.stops) {
@@ -262,12 +329,10 @@ export class DeliveryLayer {
 
   dispose() {
     this.clearStops();
-    const geometries = new Set<THREE.BufferGeometry>();
-    this.rider.traverse(object => { if (object instanceof THREE.Mesh) geometries.add(object.geometry); });
-    geometries.forEach(geometry => geometry.dispose());
-    this.route.geometry.dispose(); this.completed.geometry.dispose();
+    this.courier.dispose();
+    this.route.geometry.dispose(); this.completed.geometry.dispose(); this.traceHead.geometry.dispose();
     this.routeMaterial.dispose(); this.completedMaterial.dispose();
-    this.warm.dispose(); this.lid.dispose(); this.stopMaterial.dispose(); this.doneMaterial.dispose();
+    this.stopMaterial.dispose(); this.doneMaterial.dispose();
     this.riderLabel.texture.dispose(); this.riderLabel.material.dispose();
     this.group.clear();
   }
