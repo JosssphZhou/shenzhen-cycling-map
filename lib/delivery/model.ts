@@ -186,6 +186,22 @@ function route(network: DeliveryNetwork, from: number, to: number): Coordinate[]
   points.push(network.nodes[from]); return points.reverse();
 }
 function random(seed: number) { let state = seed >>> 0; return () => { state = (Math.imul(state, 1664525) + 1013904223) >>> 0; return state / 4294967296; }; }
+function localPlace(network: DeliveryNetwork, node: number, kind: DeliveryPlace['kind']): DeliveryPlace {
+  const area = [...network.places].sort((a, b) => distance(a.coordinate, network.nodes[node]) - distance(b.coordinate, network.nodes[node]))[0]?.area ?? '后海';
+  return { id: `${kind}-${node}`, name: `${area}·${kind === 'merchant' ? '街边饭堂' : '附近取餐点'}`, kind, area, node, coordinate: network.nodes[node] };
+}
+function shortDelivery(network: DeliveryNetwork, from: number, maximum: number, rng: () => number) {
+  const adjacency = graph(network), visited = new Set([from]), path: Coordinate[] = [network.nodes[from]];
+  let node = from, meters = 0;
+  while (meters < maximum * .75 && visited.size < 1000) {
+    const options = adjacency[node].filter(edge => !visited.has(edge.node) && meters + edge.meters <= maximum);
+    if (!options.length) break;
+    const next = options[Math.floor(rng() * options.length)];
+    meters += next.meters; node = next.node; visited.add(node); path.push(network.nodes[node]);
+  }
+  if (meters < 20) throw new Error('当前位置附近没有适合这段时长的配送道路，请选择更长的专注时间。');
+  return { customer: localPlace(network, node, 'customer'), path };
+}
 
 export function createProfile(mode: DeliveryMode): DeliveryProfile {
   return { version: 1, mode, walletCents: 0, rating: 5, completedOrders: 0, totalFocusMinutes: 0, position: [...START_POSITION], resumePath: [START_POSITION], visitedAreas: ['后海'], visitedLandmarks: [], familiarShops: {}, ownedItems: [], activeShift: null, receipts: [] };
@@ -201,18 +217,18 @@ export function planShift({ network, profile, minutes, mode, now }: { network: D
   const firstShift = profile.receipts.length === 0, orders: DeliveryOrder[] = [];
   let time = 0;
   for (let index = 0; index < count; index++) {
+    const budget = minutes / count;
     const near = network.places.filter(place => place.kind === 'merchant').sort((a, b) => distance(a.coordinate, network.nodes[cursor]) - distance(b.coordinate, network.nodes[cursor])).slice(0, 5);
     const pickups = near.map(merchant => ({ merchant, path: route(network, cursor, merchant.node) })).sort((a, b) => length(a.path) - length(b.path));
-    const pickup = pickups[Math.floor(rng() * Math.min(2, pickups.length))];
+    const nearPickups = pickups.filter(pickup => length(pickup.path) <= budget * 60);
+    const pickup = nearPickups.length ? nearPickups[Math.floor(rng() * Math.min(2, nearPickups.length))] : { merchant: localPlace(network, cursor, 'merchant'), path: [network.nodes[cursor]] };
     const merchant = pickup?.merchant;
     if (!merchant) throw new Error('配送点尚未载入，请重新载入页面。');
-    const budget = minutes / count;
     const options = network.places.filter(place => place.kind === 'customer' && distance(place.coordinate, merchant.coordinate) > 250 && distance(place.coordinate, merchant.coordinate) < Math.min(3500, budget * 150));
     const ranked = options.sort((a, b) => Math.abs(distance(a.coordinate, merchant.coordinate) - budget * 95) - Math.abs(distance(b.coordinate, merchant.coordinate) - budget * 95));
     const candidates = ranked.slice(0, 8).map(customer => ({ customer, path: route(network, merchant.node, customer.node) }));
     const feasible = candidates.filter(candidate => length(pickup.path) + length(candidate.path) <= budget * 220);
-    const pool = feasible.length ? feasible : candidates.sort((a, b) => length(a.path) - length(b.path)).slice(0, 1);
-    const chosen = pool[Math.floor(rng() * pool.length)];
+    const chosen = feasible.length ? feasible[Math.floor(rng() * feasible.length)] : shortDelivery(network, merchant.node, Math.max(100, budget * 200 - length(pickup.path)), rng);
     if (!chosen) throw new Error('附近还没有可用的连续配送路线。');
     const customer = chosen.customer;
     const pickupPath = join(index === 0 ? resume : [], pickup.path);
