@@ -6,6 +6,7 @@ import { createRequire } from 'node:module';
 import { createHash } from 'node:crypto';
 import { createGunzip } from 'node:zlib';
 import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { packager } from '@electron/packager';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..'), require = createRequire(import.meta.url);
@@ -75,6 +76,19 @@ try {
     osxSign: { identity: '-', identityValidation: false, type: 'development', preAutoEntitlements: false, preEmbedProvisioningProfile: false, optionsForFile: () => ({ hardenedRuntime: false, timestamp: 'none' }) },
     extendInfo: { CFBundleDisplayName: name, CFBundleName: name, LSApplicationCategoryType: 'public.app-category.productivity', NSHighResolutionCapable: true },
   });
+  const archives = [];
+  const cleanDirectory = await mkdtemp(join(tmpdir(), 'shenzhen-desktop-archive-'));
+  try {
+    for (const application of pathsOut.map(path => join(path, `${name}.app`))) {
+      // 同步目录可能为.app附加Finder元数据；发布副本只保留已签名的文件内容。
+      const cleanApplication = join(cleanDirectory, `${name}.app`);
+      execFileSync('ditto', ['--noextattr', '--norsrc', application, cleanApplication]);
+      execFileSync('codesign', ['--verify', '--deep', '--strict', cleanApplication]);
+      const archive = join(output, `${name}-macOS-${process.arch}.zip`);
+      execFileSync('ditto', ['-c', '-k', '--noextattr', '--norsrc', '--keepParent', cleanApplication, archive]);
+      archives.push(archive);
+    }
+  } finally { await rm(cleanDirectory, { recursive: true, force: true }); }
   await writeFile(join(output, 'resource-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-  console.log(JSON.stringify({ applications: pathsOut.map(path => join(path, `${name}.app`)), signing: 'ad-hoc', notarized: false, resources: manifest.totals }, null, 2));
+  console.log(JSON.stringify({ applications: pathsOut.map(path => join(path, `${name}.app`)), archives, signing: 'ad-hoc', signatureVerified: true, notarized: false, resources: manifest.totals }, null, 2));
 } finally { await rm(staging, { recursive: true, force: true }); }
