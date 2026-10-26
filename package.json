@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "node scripts/serve-static.mjs",
     "postbuild": "node scripts/compress-static.mjs",
+    "build:city-cache": "node scripts/build-city-cache.mjs",
     "typecheck": "tsc --noEmit",
     "check:data": "node scripts/check-data.mjs"
   },

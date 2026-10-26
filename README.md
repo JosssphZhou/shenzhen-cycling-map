@@ -56,6 +56,8 @@ npm run build
 
 `public/data/shenzhen-city.json` 保存城市概览，`city-terrain.json` 保存按海岸裁切的地形，`tiles/` 保存按需加载的建筑和细路。来源与高度说明见[地图数据](docs/地图数据.md)。旧轻量底图仍保留作历史对照，当前页面使用恢复后的三维数据。
 
+`public/data/fast-city/` 保存按原构模参数离线生成的几何缓存。页面优先读取附近街区，全景道路与概览按视野需要加载；缓存缺失时回退原始数据。修改城市来源或几何构造后，先运行 `npm run build:city-cache`，再执行生产构建；仅修改界面和骑手时不必重建城市缓存。
+
 ## 外卖专注体验原型
 
 本地运行后访问：http://localhost:3701/prototype/delivery

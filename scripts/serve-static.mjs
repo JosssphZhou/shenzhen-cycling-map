@@ -13,6 +13,14 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('端口
 await stat(resolve(root, 'index.html')).catch(() => { throw new Error('没有找到构建输出，请先运行 npm run build。'); });
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8', '.txt': 'text/plain; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.gz': 'application/gzip' };
 const exists = async path => { try { const info = await stat(path); return info.isFile() ? info : null; } catch (error) { if (error.code !== 'ENOENT' && error.code !== 'ENOTDIR') throw error; return null; } };
+const acceptsGzip = header => {
+  const encodings = new Map(header.split(',').map(item => {
+    const [name, ...parameters] = item.trim().toLowerCase().split(';');
+    const quality = parameters.find(parameter => parameter.trim().startsWith('q='));
+    return [name, quality ? Number(quality.trim().slice(2)) : 1];
+  }));
+  return (encodings.get('gzip') ?? encodings.get('*') ?? 0) > 0;
+};
 
 const server = createServer(async (request, response) => {
   if (request.method !== 'GET' && request.method !== 'HEAD') { response.writeHead(405, { Allow: 'GET, HEAD' }); response.end(); return; }
@@ -27,7 +35,7 @@ const server = createServer(async (request, response) => {
     if (!info) { response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); response.end('没有找到这个页面或文件。'); return; }
     const type = mime[extname(path)] || 'application/octet-stream';
     let encoded = false;
-    if (/\bgzip\b/.test(request.headers['accept-encoding'] || '')) {
+    if (acceptsGzip(request.headers['accept-encoding'] || '')) {
       const compressed = await exists(path + '.gz');
       if (compressed) { path += '.gz'; info = compressed; encoded = true; }
     }

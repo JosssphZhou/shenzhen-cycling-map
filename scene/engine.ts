@@ -74,6 +74,7 @@ export class CityEngine implements SceneController {
   private registeredTextMaterials = new Set<THREE.MeshBasicMaterial>();
   private layerNote = '';
   private maximumHeight = 50;
+  private mapUrl = '/data/shenzhen-city.json';
 
   constructor(private canvas: HTMLCanvasElement, private stage: HTMLElement, private onSnapshot: (snapshot: SceneSnapshot) => void, data: ShenzhenMapData, routes: CyclingRoute[], private mapMetrics: { requests: number; bytes: number }) {
     this.tagHover = stage.querySelector('#tagHover')!; this.tagSel = stage.querySelector('#tagSel')!;
@@ -91,6 +92,7 @@ export class CityEngine implements SceneController {
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       this.renderer.setClearColor(0x000000, 0);
       this.routes = routes;
+      this.mapUrl = data.fastCity ? '/data/fast-city/bootstrap.json' : '/data/shenzhen-city.json';
       const terrainHeights = data.terrain?.values || [];
       const highestGround = terrainHeights.reduce((maximum, height) => Math.max(maximum, height), 0) * .02;
       const highestBuilding = (data.buildings || []).reduce((maximum, building) => Math.max(maximum, building.height || 12), 0) * .02;
@@ -377,14 +379,20 @@ export class CityEngine implements SceneController {
   private restored = () => { this.contextLost = false; this.note.hidden = true; applyTheme(); this.resize(); this.updateLayerNote(); };
   private updateLayerNote() {
     if (this.contextLost) return;
-    const error = this.world.stats?.().layerError;
-    const message = typeof error === 'string' ? error : '';
+    const layers = this.world.stats?.();
+    const error = layers?.layerError;
+    const loading = layers && 'loadingMessage' in layers ? layers.loadingMessage : null;
+    const message = typeof error === 'string' ? error : typeof loading === 'string' ? loading : '';
     if (message === this.layerNote) return;
     this.layerNote = message;
     if (!message) { this.note.hidden = true; this.note.removeAttribute('style'); return; }
     this.note.style.cssText = 'inset:auto 10px 10px 54px;margin:0;padding:6px 10px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;background:var(--panel);border:1px solid var(--edge);border-radius:6px';
-    const retry = document.createElement('button'); retry.type = 'button'; retry.textContent = '重试'; retry.onclick = () => this.world.retryLayers?.();
-    this.note.replaceChildren(document.createTextNode(message), retry); this.note.hidden = false;
+    this.note.replaceChildren(document.createTextNode(message));
+    if (error) {
+      const retry = document.createElement('button'); retry.type = 'button'; retry.textContent = '重试'; retry.onclick = () => this.world.retryLayers?.();
+      this.note.append(retry);
+    }
+    this.note.hidden = false;
   }
   private animate = (time: number) => {
     if (this.disposed) return; this.frameId = requestAnimationFrame(this.animate);
@@ -424,7 +432,7 @@ export class CityEngine implements SceneController {
     if (!this.contextLost) { const start = performance.now(); this.renderer.render(this.scene, this.camera); this.hasRendered = true; this.lastRenderMs = performance.now() - start; this.frameCount++; }
     if (time - this.fpsSince >= 1000) { this.fps = Math.round(this.frameCount * 1000 / (time - this.fpsSince)); this.frameCount = 0; this.fpsSince = time; }
   }
-  stats() { const city = this.world.stats?.() ?? {}; return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, delivery: this.delivery?.stats() ?? null, mode: '深圳真实三维城市', geographicRequests: this.mapMetrics.requests, mapBytes: this.mapMetrics.bytes, mapUrl: '/data/shenzhen-city.json', loadedTiles: city.loadedTiles, terrainClipped: city.terrainClipped, city, mapLayers: { roads: this.world.roads, buildings: this.world.buildings, ...city } }; }
+  stats() { const city = this.world.stats?.() ?? {}; return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, delivery: this.delivery?.stats() ?? null, mode: '深圳真实三维城市', geographicRequests: this.mapMetrics.requests, mapBytes: this.mapMetrics.bytes, mapUrl: this.mapUrl, loadedTiles: city.loadedTiles, terrainClipped: city.terrainClipped, city, mapLayers: { roads: this.world.roads, buildings: this.world.buildings, ...city } }; }
   debug() {
     return { stats: () => this.stats(), overview: () => this.overview(), view: (index: number) => this.goView(index), all: () => this.entities().map(entity => ({ id: entity.id, kind: entity.kind, title: entity.title, followable: entity.followable })), select: (id: string) => this.select(this.entities().find(entity => entity.id === id) || null), screenOf: (id: string) => {
       const entity = this.entities().find(candidate => candidate.id === id); if (!entity) return null;
