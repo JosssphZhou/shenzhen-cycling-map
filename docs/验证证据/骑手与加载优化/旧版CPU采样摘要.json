@@ -1,0 +1,16 @@
+{
+  "excludedFromBenchmark": true,
+  "durationMs": 10731.93,
+  "inclusiveSampledMs": {
+    "buildRoads": 467,
+    "buildBuildings": 177,
+    "clippedTerrain": 88,
+    "render": 1667,
+    "animation": 2209
+  },
+  "sourceMapping": {
+    "o3": "scene/city-geometry.ts buildRoads",
+    "o0": "scene/city-geometry.ts buildBuildings"
+  },
+  "caveat": "采样时间包含子调用，部分组可能重叠；实际静态产物，未减速，不作为A/B结果"
+}

@@ -111,6 +111,7 @@ export class DeliveryLayer {
   setState(state: DeliverySceneState) {
     this.state = state;
     this.courier.setBrand(state.brand ?? 'meituan');
+    this.entity.title = state.brand === 'eleme' ? '饿了么骑手' : '美团骑手';
     const pathKey = this.sourcePath === state.path ? this.pathKey : coordinateKey(state.path), pathChanged = this.pathKey !== pathKey;
     this.sourcePath = state.path;
     if (pathChanged) {
@@ -183,10 +184,10 @@ export class DeliveryLayer {
     });
     this.routeMaterial.color.copy(WARM_DAY).lerp(WARM_NIGHT, night);
     this.stopMaterial.color.copy(this.routeMaterial.color);
-    const labelTheme = `${theme}:${night > .5 ? 'night' : 'day'}`;
+    const labelTheme = `${theme}:${night > .5 ? 'night' : 'day'}:${this.state.brand}`;
     if (labelTheme !== this.labelTheme) {
       this.labelTheme = labelTheme;
-      this.paintLabel(this.riderLabel, '外卖骑手');
+      this.paintLabel(this.riderLabel, this.entity.title);
       this.stops.forEach((stop, index) => this.paintLabel(stop.label, `${this.state.stops[index]?.kind === 'pickup' ? '取' : '送'} ${this.state.stops[index]?.label ?? ''}`));
     }
   }

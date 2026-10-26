@@ -55,6 +55,7 @@ export class CityEngine implements SceneController {
   private goal: ViewGoal | null = null;
   private sized = false;
   private frameId = 0; private disposed = false; private contextLost = false;
+  private hasRendered = false;
   private lastTime = performance.now(); private simTime = 80; private accumulator = 0; private cardTime = 0;
   private shift = { h: 0, goal: 0 };
   private frameCount = 0; private fps = 0; private fpsSince = performance.now(); private lastRenderMs = 0;
@@ -178,6 +179,13 @@ export class CityEngine implements SceneController {
     this.select(this.delivery.entity);
     this.goal = { zoom: clamp(Math.min(this.width, this.height) / (this.width < 600 ? 65 : 100), this.controls.minZoom, this.controls.maxZoom) };
     this.setFollow(true);
+    if (!this.hasRendered) {
+      this.camera.zoom = this.goal.zoom;
+      this.camera.updateProjectionMatrix();
+      this.moveTarget(this.followTarget());
+      this.controls.update();
+      this.goal = null;
+    }
   }
   private followTarget() {
     const selected = this.selected;
@@ -413,7 +421,7 @@ export class CityEngine implements SceneController {
     const stop = this.routeNext?.name ? this.screenAt(this.routeNext.point) : null, anchor = stop && this.selected ? this.anchor(this.selected) : null;
     if (stop && anchor && stop[0] > 0 && stop[0] < this.width && stop[1] > 30 && stop[1] < this.height && Math.hypot(stop[0] - anchor[0], stop[1] - anchor[1]) > 70) this.placeAt(this.tagStop, stop, `下一站 · ${this.routeNext!.name}`);
     else this.tagStop.hidden = true;
-    if (!this.contextLost) { const start = performance.now(); this.renderer.render(this.scene, this.camera); this.lastRenderMs = performance.now() - start; this.frameCount++; }
+    if (!this.contextLost) { const start = performance.now(); this.renderer.render(this.scene, this.camera); this.hasRendered = true; this.lastRenderMs = performance.now() - start; this.frameCount++; }
     if (time - this.fpsSince >= 1000) { this.fps = Math.round(this.frameCount * 1000 / (time - this.fpsSince)); this.frameCount = 0; this.fpsSince = time; }
   }
   stats() { const city = this.world.stats?.() ?? {}; return { roads: this.world.roads, buildings: this.world.buildings, drawCalls: this.renderer.info.render.calls, triangles: this.renderer.info.render.triangles, fps: this.fps, lastRenderMs: this.lastRenderMs, zoom: this.camera.zoom, fitZoom: this.fitZoom, target: this.controls.target.toArray(), goal: this.goal ? { zoom: this.goal.zoom, target: this.goal.target?.toArray() } : null, selected: this.selected?.id || null, following: this.following, paused: this.paused, hour: this.hour(), weather: { kind: this.weather.kind, amount: this.weather.amount }, animation: this.dynamics.counts, delivery: this.delivery?.stats() ?? null, mode: '深圳真实三维城市', geographicRequests: this.mapMetrics.requests, mapBytes: this.mapMetrics.bytes, mapUrl: '/data/shenzhen-city.json', loadedTiles: city.loadedTiles, terrainClipped: city.terrainClipped, city, mapLayers: { roads: this.world.roads, buildings: this.world.buildings, ...city } }; }
