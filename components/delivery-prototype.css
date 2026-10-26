@@ -1,0 +1,42 @@
+.delivery-prototype .sites a { color:var(--page-ink); text-decoration:none; letter-spacing:.14em; }
+.delivery-prototype .sites a:hover { color:var(--page-ink-hi); text-decoration:underline; text-underline-offset:5px; }
+.delivery-prototype .delivery-title { display:flex; align-items:center; gap:9px; }
+.delivery-prototype .delivery-dot { width:6px; height:6px; border-radius:50%; background:#c99c66; flex:none; }
+.delivery-prototype .card { z-index:3; }
+.delivery-prototype .delivery-intro { margin:0; color:var(--page-ink); font-size:12px; line-height:1.8; text-align:left; }
+.delivery-prototype .delivery-mode, .delivery-prototype .delivery-durations { display:flex; gap:6px; flex-wrap:wrap; }
+.delivery-prototype .delivery-mode button, .delivery-prototype .delivery-durations button { padding:5px 9px; font-size:12px; }
+.delivery-prototype button[aria-pressed="true"] { color:var(--page-ink-hi); border-color:var(--page-line); }
+.delivery-prototype button:disabled { opacity:.42; cursor:not-allowed; }
+.delivery-prototype .delivery-minutes { display:flex; align-items:center; justify-content:flex-end; gap:8px; }
+.delivery-prototype .delivery-minutes input { width:72px; text-align:right; }
+.delivery-prototype .delivery-clock { font-size:28px; line-height:1.15; letter-spacing:.04em; font-variant-numeric:tabular-nums; }
+.delivery-prototype .delivery-sub { display:block; font-size:11px; color:var(--page-ink); line-height:1.65; margin-top:4px; }
+.delivery-prototype .delivery-order { display:grid; gap:4px; text-align:right; line-height:1.5; }
+.delivery-prototype .delivery-order small { margin-top:2px; }
+.delivery-prototype .delivery-shop { display:grid; gap:5px; text-align:left; }
+.delivery-prototype .delivery-shop > strong { font-weight:500; }
+.delivery-prototype .delivery-shop button { justify-self:start; padding:5px 9px; font-size:12px; }
+.delivery-prototype .delivery-metric { font-variant-numeric:tabular-nums; }
+.delivery-prototype .delivery-room { width:100%; height:100px; color:var(--page-line); }
+.delivery-prototype .delivery-room .room-plant { color:#9aab8f; }
+.delivery-prototype .delivery-trip { position:absolute; z-index:2; left:54px; right:330px; bottom:10px; display:flex; align-items:center; gap:12px; min-height:45px; padding:10px 12px; background:var(--page-panel); border:1px solid var(--page-edge); border-radius:8px; font-size:11px; letter-spacing:.05em; }
+.delivery-prototype .delivery-trip > span { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.delivery-prototype .delivery-trip .delivery-trip-status { flex:1; }
+.delivery-prototype .delivery-trip button { flex:none; border:0; padding:0; background:none; color:var(--page-ink-hi); }
+.delivery-prototype .delivery-trip-time { color:var(--page-ink-hi); font-variant-numeric:tabular-nums; }
+.delivery-prototype .delivery-empty { line-height:1.8; color:var(--page-ink); }
+.delivery-prototype .delivery-message { color:var(--page-ink-hi); line-height:1.7; text-align:left; }
+.delivery-prototype .delivery-story { display:block; text-align:left; line-height:1.8; }
+.delivery-prototype .delivery-cap-meta { font-size:11px; letter-spacing:.06em; }
+.delivery-prototype .delivery-neighborhood { color:var(--page-ink-hi); }
+@media (max-width:900px) {
+  .delivery-prototype .delivery-trip { right:10px; max-width:calc(100% - 64px); }
+}
+@media (max-width:600px) {
+  .delivery-prototype .card { bottom:66px; max-height:calc(55% - 30px); }
+  .delivery-prototype .delivery-trip { left:10px; right:10px; max-width:none; gap:8px; }
+  .delivery-prototype .delivery-trip-status { max-width:150px; }
+  .delivery-prototype .delivery-cap-meta { font-size:10px; letter-spacing:.02em; }
+  .delivery-prototype .delivery-clock { font-size:24px; }
+}
